@@ -208,5 +208,20 @@
             container.innerHTML += cardHTML;
         });
     </script>
+
+// ... (Code cũ ở trên giữ nguyên) ...
+
+        // 🔥 FIX LỖI NÚT BACK: Tự động tắt Loading khi quay lại trang 🔥
+        window.addEventListener('pageshow', function(event) {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+                loadingScreen.style.display = 'none'; 
+            }
+        });
+
+    </script> </body>
+</html>
+    
 </body>
 </html>
