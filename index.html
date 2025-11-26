@@ -37,7 +37,7 @@
     <style>
         body { background-color: #f8fafc; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         ::-webkit-scrollbar { width: 0px; background: transparent; }
-        .hidden { display: none; }
+        .hidden { display: none !important; } /* Thêm !important để chắc chắn ẩn */
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -58,7 +58,6 @@
                 <p class="text-center text-slate-500 text-sm font-medium mb-6 max-w-xs mx-auto leading-relaxed">
                     Chỉ cần CCCD • Lãi suất 0% lần đầu • Không gọi người thân
                 </p>
-                
                 <div class="flex justify-between text-xs text-slate-500 border-t border-dashed border-slate-200 pt-5 font-medium">
                     <div class="text-center w-1/3 border-r border-slate-100"><span class="block font-extrabold text-lg text-slate-900 mb-0.5">15+</span>Đối tác uy tín</div>
                     <div class="text-center w-1/3 border-r border-slate-100"><span class="block font-extrabold text-lg text-slate-900 mb-0.5">98%</span>Tỷ lệ duyệt</div>
@@ -80,17 +79,7 @@
                 </div>
             </div>
 
-            <div class="px-4 py-6 bg-slate-50 flex-grow">
-                
-                <div class="flex items-center justify-between mb-5 px-1">
-                    <h2 class="font-bold text-lg text-slate-800 flex items-center gap-3">
-                        <span class="w-1.5 h-6 bg-green-500 rounded-r-md block"></span> Đề xuất tốt nhất
-                    </h2>
-                    <span class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-1 rounded uppercase animate-pulse">Hot hôm nay</span>
-                </div>
-                <div id="app-container"></div>
-
-            </div>
+            <div class="px-4 py-6 bg-slate-50 flex-grow" id="app-container"></div>
 
             <div class="bg-slate-100 p-6 text-center pb-8 border-t border-slate-200 mt-auto">
                 <p class="text-[11px] text-slate-500 text-justify leading-relaxed mb-3">
@@ -108,16 +97,16 @@
     </div>
 
     <script>
-        // 🔥 DANH SÁCH APP (SỬA Ở ĐÂY) 🔥
+        // DANH SÁCH APP
         const danhSachApp = [
             {
                 ten: "Cashspace",
-                logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlglAneoRCaHQz6tgc_0vx3Ka6kQ5JuAU58A&s",
+                logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/1200px-Picture_icon_BLACK.svg.png",
                 hanmuc: "500k - 20Tr",
                 laisuat: "0% Lần đầu",
                 tag: "ĐANG TĂNG TỈ LỆ DUYỆT",
                 mota: "Chấm điểm 9/10, duyệt nhanh",
-                link: "https://google.com/" 
+                link: "LINK_AFFILIATE_CUA_NI" 
             },
             {
                 ten: "MoneyCat",
@@ -128,16 +117,6 @@
                 mota: "Giải ngân trong 5 phút",
                 link: "LINK_AFFILIATE_CUA_NI"
             },
-
-            {
-        ten: "TÊN APP MỚI (Vd: Tamo)",
-        logo: "LINK ẢNH LOGO",
-        hanmuc: "1Tr - 15Tr",
-        laisuat: "0% Lần đầu",
-        tag: "DUYỆT NHANH",
-        mota: "Không gọi thẩm định, duyệt 5p",
-        link: "LINK_AFFILIATE_CUA_NI" 
-    },
         ];
 
         const container = document.getElementById('app-container');
@@ -151,25 +130,38 @@
         function handleRedirect(link) {
             const loadingScreen = document.getElementById('loading-screen');
             const manualLink = document.getElementById('manual-link');
+            
             loadingScreen.classList.remove('hidden');
             loadingScreen.style.display = 'flex';
             manualLink.href = link;
+
             setTimeout(() => { window.location.href = link; }, 1500);
             setTimeout(() => { manualLink.classList.remove('hidden'); }, 3000);
         }
 
+        // Render Header
+        const headerHTML = `
+            <div class="flex items-center justify-between mb-5 px-1">
+                <h2 class="font-bold text-lg text-slate-800 flex items-center gap-3">
+                    <span class="w-1.5 h-6 bg-green-500 rounded-r-md block"></span>
+                    Đề xuất tốt nhất
+                </h2>
+                <span class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-1 rounded uppercase animate-pulse">Hot hôm nay</span>
+            </div>
+        `;
+        container.innerHTML += headerHTML;
+
+        // Render App
         danhSachApp.forEach(app => {
             let fakeView = generateStableNumber(app.ten);
             
             const cardHTML = `
             <div onclick="handleRedirect('${app.link}')" class="cursor-pointer block w-full group mb-5 transform transition-all duration-200 hover:-translate-y-1">
                 <div class="bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden relative">
-                    
                     <div class="bg-blue-50 px-4 py-2 border-b border-blue-100 flex items-center gap-2">
                         <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                         <span class="text-[11px] font-bold text-blue-700 uppercase tracking-wide">${app.tag}</span>
                     </div>
-
                     <div class="p-5">
                         <div class="flex items-start gap-4 mb-5">
                             <div class="w-[52px] h-[52px] rounded-xl border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-0.5">
@@ -180,7 +172,6 @@
                                 <p class="text-xs text-slate-500 line-clamp-1 font-medium">${app.mota}</p>
                             </div>
                         </div>
-
                         <div class="grid grid-cols-2 gap-0 mb-5 bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
                             <div class="text-center border-r border-slate-200 p-3">
                                 <p class="text-[10px] text-slate-400 uppercase font-bold mb-1 tracking-wider">Hạn mức</p>
@@ -191,12 +182,10 @@
                                 <p class="font-extrabold text-action text-[15px]">${app.laisuat}</p>
                             </div>
                         </div>
-
                         <button class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white font-bold py-3.5 rounded-xl shadow-btn transition-all active:scale-95 flex items-center justify-center gap-2 text-[15px] uppercase tracking-wide">
                             <span>ĐĂNG KÝ NGAY</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                         </button>
-                        
                         <div class="mt-3 text-center flex justify-center items-center gap-1 text-[11px] text-slate-400 font-medium">
                             <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>
                             <span>Đã có <strong class="text-slate-600">${fakeView}</strong> hồ sơ được duyệt hôm nay</span>
@@ -207,21 +196,17 @@
             `;
             container.innerHTML += cardHTML;
         });
-    </script>
 
-// ... (Code cũ ở trên giữ nguyên) ...
-
-        // 🔥 FIX LỖI NÚT BACK: Tự động tắt Loading khi quay lại trang 🔥
+        // 🔥 FIX NÚT BACK: Tự động tắt Loading khi người dùng quay lại trang 🔥
         window.addEventListener('pageshow', function(event) {
             const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) {
+            // Kiểm tra nếu màn hình đang hiện thì tắt nó đi
+            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
                 loadingScreen.classList.add('hidden');
-                loadingScreen.style.display = 'none'; 
+                loadingScreen.style.display = 'none';
             }
         });
 
-    </script> </body>
-</html>
-    
+    </script>
 </body>
 </html>
