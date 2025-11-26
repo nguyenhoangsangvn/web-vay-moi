@@ -21,10 +21,8 @@
                     colors: { 
                         brand: '#0052cc', 
                         action: '#16a34a', 
-                        action_hover: '#15803d',
                         bgbody: '#f8fafc',
                         textmain: '#1e293b',
-                        textsub: '#64748b' 
                     },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     boxShadow: { 
@@ -54,7 +52,7 @@
                         Đã kiểm duyệt hồ sơ
                     </div>
                 </div>
-                <h1 class="text-center text-[26px] md:text-3xl font-extrabold text-slate-900 leading-tight mb-2">
+                <h1 class="text-center text-[26px] font-extrabold text-slate-900 leading-tight mb-2">
                     Tổng Hợp Gói Vay <br/> <span class="text-blue-600">Duyệt Nhanh Trong Ngày</span>
                 </h1>
                 <p class="text-center text-slate-500 text-sm font-medium mb-6 max-w-xs mx-auto leading-relaxed">
@@ -82,8 +80,17 @@
                 </div>
             </div>
 
-            <div class="px-4 py-6 bg-slate-50 flex-grow" id="app-container">
+            <div class="px-4 py-6 bg-slate-50 flex-grow">
+                
+                <div class="flex items-center justify-between mb-5 px-1">
+                    <h2 class="font-bold text-lg text-slate-800 flex items-center gap-3">
+                        <span class="w-1.5 h-6 bg-green-500 rounded-r-md block"></span> Đề xuất tốt nhất
+                    </h2>
+                    <span class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-1 rounded uppercase animate-pulse">Hot hôm nay</span>
                 </div>
+                <div id="app-container"></div>
+
+            </div>
 
             <div class="bg-slate-100 p-6 text-center pb-8 border-t border-slate-200 mt-auto">
                 <p class="text-[11px] text-slate-500 text-justify leading-relaxed mb-3">
@@ -101,6 +108,7 @@
     </div>
 
     <script>
+        // 🔥 DANH SÁCH APP (SỬA Ở ĐÂY) 🔥
         const danhSachApp = [
             {
                 ten: "Cashspace",
@@ -140,24 +148,12 @@
             setTimeout(() => { manualLink.classList.remove('hidden'); }, 3000);
         }
 
-        // Render Header Section
-        const headerHTML = `
-            <div class="flex items-center justify-between mb-4 px-1">
-                <h2 class="font-bold text-[17px] text-slate-800 flex items-center gap-2.5">
-                    <span class="w-1.5 h-6 bg-action rounded-r-md block"></span>Đề xuất tốt nhất
-                </h2>
-                <span class="text-[10px] bg-red-50 text-red-500 px-2 py-1 rounded font-bold uppercase tracking-wide animate-pulse">Hot hôm nay</span>
-            </div>
-        `;
-        container.innerHTML += headerHTML;
-
         danhSachApp.forEach(app => {
             let fakeView = generateStableNumber(app.ten);
             
-            // THIẾT KẾ THẺ CHUẨN GỐC
             const cardHTML = `
             <div onclick="handleRedirect('${app.link}')" class="cursor-pointer block w-full group mb-5 transform transition-all duration-200 hover:-translate-y-1">
-                <div class="bg-white rounded-2xl shadow-card border border-slate-100 overflow-hidden relative">
+                <div class="bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden relative">
                     
                     <div class="bg-blue-50 px-4 py-2 border-b border-blue-100 flex items-center gap-2">
                         <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
