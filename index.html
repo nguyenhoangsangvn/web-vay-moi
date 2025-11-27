@@ -41,8 +41,8 @@
         }
     </script>
     <style>
-        /* GIỮ NGUYÊN SIZE TO CHO TOÀN WEB */
-        html { font-size: 17px; }
+        /* ĐÃ CHỈNH VỀ CHUẨN 16px */
+        html { font-size: 16px; }
         body { background-color: #f8fafc; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         ::-webkit-scrollbar { width: 0px; background: transparent; }
         .hidden { display: none !important; }
@@ -79,7 +79,6 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Mẹo Đăng Ký Nhanh
                     </h3>
-                    
                     <ul class="space-y-3 text-[12px] text-yellow-900 font-medium leading-snug">
                         <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5">1</span><span><strong>Công việc:</strong> Nếu làm tự do, cứ điền đại tên một công ty bất kỳ (tuyệt đối không để trống).</span></li>
                         <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5">2</span><span><strong>Thu nhập:</strong> Luôn chọn mức <strong>8 – 10 triệu/tháng</strong> (App không bắt chứng minh).</span></li>
@@ -131,7 +130,7 @@
 
     <script>
         // =========================================================
-        // DANH SÁCH APP (CÓ CHẾ ĐỘ LAZY LOAD ẢNH)
+        // DANH SÁCH APP (GIỮ NGUYÊN)
         // =========================================================
         const danhSachApp = [
             { ten: "Dong247", logo: "dong247.png", hanmuc: "500k - 20Tr", laisuat: "0% Lãi suất", tag: "DUYỆT TỰ ĐỘNG", mota: "Tỷ lệ duyệt cao, hoàn trả linh hoạt", link: "https://hl-link.net/TWDgz10" },
@@ -230,7 +229,7 @@
                     <div class="p-5">
                         <div class="flex items-start gap-4 mb-5">
                             <div class="w-[58px] h-[58px] rounded-xl border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-0.5">
-                                <img src="${app.logo}" class="w-full h-full object-contain rounded-lg" alt="Vay tiền online ${app.ten}" loading="lazy"/>
+                                <img src="${app.logo}" class="w-full h-full object-contain rounded-lg" alt="${app.ten}" loading="lazy"/>
                             </div>
                             <div class="flex-1 min-w-0 pt-1">
                                 <h3 class="font-bold text-slate-900 text-xl leading-tight mb-1">${app.ten}</h3>
