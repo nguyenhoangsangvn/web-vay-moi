@@ -28,6 +28,15 @@
                     boxShadow: { 
                         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)', 
                         'btn': '0 4px 6px -1px rgba(22, 163, 74, 0.4), 0 2px 4px -1px rgba(22, 163, 74, 0.2)' 
+                    },
+                    animation: {
+                        'pop-in': 'popIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        popIn: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
                     }
                 },
             },
@@ -72,17 +81,13 @@
                         Mẹo Đăng Ký Nhanh
                     </h3>
                     <ul class="space-y-3 text-[13px] text-yellow-900 font-medium leading-snug">
-                        <li class="flex gap-2.5 items-start"><span class="text-green-600 font-bold text-base mt-[-3px]">✅</span><span>Không cần đi làm công ty? → Cứ điền tên một công ty bất kỳ (đừng để trống)</span></li>
-                        <li class="flex gap-2.5 items-start"><span class="text-green-600 font-bold text-base mt-[-3px]">✅</span><span>Thu nhập dưới 5 triệu? → Chọn <strong>8–10 triệu/tháng</strong>, mấy app bên dưới không bắt chứng minh</span></li>
-                        <li class="flex gap-2.5 items-start"><span class="text-green-600 font-bold text-base mt-[-3px]">✅</span><span>Bị từ chối vì ảnh? → Chụp lại CMND/CCCD rõ nét, không mất góc – không ngược sáng</span></li>
-                        <li class="flex gap-2.5 items-start"><span class="text-green-600 font-bold text-base mt-[-3px]">✅</span><span>Có thể đăng ký nhiều app cùng lúc, trượt cái này còn cái khác – không ảnh hưởng gì đâu</span></li>
-                        <li class="flex gap-2.5 items-start"><span class="text-green-600 font-bold text-base mt-[-3px]">✅</span><span>Không nên dùng sim mới hoặc sim rác – dễ bị đánh rớt hồ sơ</span></li>
-                        <li class="flex gap-2.5 items-start"><span class="text-green-600 font-bold text-base mt-[-3px]">✅</span><span>Số tham chiếu người thân? → Cứ điền tạm, không gọi đâu</span></li>
-                        <hr class="border-yellow-300 my-3 opacity-50">
-                        <li class="flex gap-2.5 items-start">
-                            <span class="text-red-600 font-bold text-sm w-auto whitespace-nowrap">Lưu ý:</span>
-                            <span>Không tải app và ấn vào mail app gửi, anh em có thể đăng ký 3 app đầu hoặc nhiều app để tăng tỉ lệ duyệt</span>
-                        </li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">1</span><span><strong>Công việc:</strong> Nếu làm tự do, cứ điền đại tên một công ty bất kỳ (tuyệt đối không để trống).</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">2</span><span><strong>Thu nhập:</strong> Luôn chọn mức <strong>8 – 10 triệu/tháng</strong> (App không bắt chứng minh).</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">3</span><span><strong>Hình ảnh:</strong> Chụp CMND/CCCD phải rõ nét, đủ sáng và <strong>không bị mất 4 góc</strong>.</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">4</span><span><strong>Sim:</strong> Phải dùng sim chính chủ, có phát sinh cuộc gọi (Tránh sim rác/sim mới mua).</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">5</span><span><strong>Tham chiếu:</strong> Cứ điền số tạm hoặc số bạn bè (App thường chỉ duyệt tự động, không gọi).</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">6</span><span><strong>Mẹo:</strong> Nên đăng ký <strong>3-4 App cùng lúc</strong> (Trượt cái này còn có cái kia đỡ).</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 w-5 h-5 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">!</span><span class="text-red-600 font-bold">LƯU Ý: Đăng ký trực tiếp trên web, KHÔNG TẢI APP về máy để tránh bị theo dõi danh bạ.</span></li>
                     </ul>
                 </div>
             </div>
@@ -148,9 +153,11 @@
         }
 
         function handleRedirect(link, appName) {
-            // Gửi về GA
             if (typeof gtag === 'function') {
-                gtag('event', 'click_dang_ky', { 'app_ten': appName, 'link_aff': link });
+                gtag('event', 'click_dang_ky', {
+                    'app_ten': appName,
+                    'link_aff': link
+                });
             }
             
             const loadingScreen = document.getElementById('loading-screen');
@@ -167,12 +174,28 @@
 
         function showPopup() {
             const popup = document.getElementById('promo-popup');
-            if(popup) { popup.classList.remove('hidden'); popup.style.display = 'flex'; }
+            // 🔥 LOGIC MỚI: CHỈ HIỆN 1 LẦN DUY NHẤT 🔥
+            // Kiểm tra xem máy này đã hiện popup chưa
+            const hasSeenPopup = localStorage.getItem('hasSeenPopup');
+            
+            // Nếu chưa từng hiện (hasSeenPopup là null) thì mới hiện
+            if (!hasSeenPopup) {
+                if(popup) { 
+                    popup.classList.remove('hidden'); 
+                    popup.style.display = 'flex'; 
+                    
+                    // Đánh dấu là đã hiện rồi (Lưu vào bộ nhớ trình duyệt)
+                    localStorage.setItem('hasSeenPopup', 'true');
+                }
+            }
         }
+
         function closePopup() {
             const popup = document.getElementById('promo-popup');
             if(popup) { popup.classList.add('hidden'); popup.style.display = 'none'; }
         }
+        
+        // Gọi hàm hiện popup sau 3.5 giây
         setTimeout(() => { showPopup(); }, 3500);
 
         const headerHTML = `
