@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tổng Hợp Gói Vay Uy Tín - Duyệt Nhanh 24/7</title>
     
-    <meta name="description" content="Danh sách các app vay tiền online uy tín, duyệt nhanh trong ngày, lãi suất 0% lần đầu. Hỗ trợ nợ xấu, không thẩm định người thân.">
+    <meta name="description" content="Tổng hợp các gói vay online uy tín, duyệt nhanh trong ngày, lãi suất 0% lần đầu. Hỗ trợ nợ xấu, không thẩm định người thân.">
+    <meta name="theme-color" content="#0052cc">
+    
     <meta property="og:title" content="Vay Nhanh 24/7 - Duyệt Hồ Sơ 5 Phút">
     <meta property="og:description" content="Hỗ trợ nợ xấu, không gọi thẩm định, nhận tiền về ATM ngay.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1579621970563-ebec7560eb3e?q=80&w=1200&h=630&fit=crop">
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 
     <script async='async' src='https://www.googletagmanager.com/gtag/js?id=G-F5ZTEXFZYX'></script>
     <script>
@@ -28,18 +26,31 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { brand: '#0052cc', action: '#16a34a', bgbody: '#f8fafc', textmain: '#1e293b' },
+                    colors: { 
+                        brand: '#0052cc', 
+                        action: '#16a34a', 
+                        bgbody: '#f8fafc',
+                        textmain: '#1e293b',
+                    },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     boxShadow: { 
                         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)', 
                         'btn': '0 4px 6px -1px rgba(22, 163, 74, 0.4), 0 2px 4px -1px rgba(22, 163, 74, 0.2)' 
                     },
-                    animation: { 'pop-in': 'popIn 0.3s ease-out forwards' },
-                    keyframes: { popIn: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } } }
+                    animation: {
+                        'pop-in': 'popIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        popIn: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    }
                 },
             },
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <style>
         body { background-color: #f8fafc; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         ::-webkit-scrollbar { width: 0px; background: transparent; }
@@ -123,12 +134,12 @@
     <div id="loading-screen" class="hidden fixed inset-0 bg-white z-50 flex-col items-center justify-center text-center p-5">
         <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-action mb-4"></div>
         <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng...</h2>
-        <a id="manual-link" href="#" class="hidden mt-6 bg-action text-white font-bold py-2 px-6 rounded-lg">Tiếp tục</a>
+        <a id="manual-link" href="#" rel="nofollow noopener noreferrer" class="hidden mt-6 bg-action text-white font-bold py-2 px-6 rounded-lg">Tiếp tục</a>
     </div>
 
     <script>
         // =========================================================
-        // DANH SÁCH APP
+        // 🔥 DANH SÁCH APP (ĐƯA LÊN ĐẦU CHO DỄ SỬA) 🔥
         // =========================================================
         const danhSachApp = [
             { ten: "Dong247", logo: "dong247.png", hanmuc: "500k - 20Tr", laisuat: "0% Lãi suất", tag: "DUYỆT TỰ ĐỘNG", mota: "Tỷ lệ duyệt cao, hoàn trả linh hoạt", link: "https://hl-link.net/TWDgz10" },
@@ -145,18 +156,17 @@
 
         const container = document.getElementById('app-container');
         
+        // Số liệu ảo ổn định
         function generateStableNumber(str) {
             let hash = 0;
             for (let i = 0; i < str.length; i++) { hash = str.charCodeAt(i) + ((hash << 5) - hash); }
             return Math.abs(hash) % 1100 + 400; 
         }
 
+        // Xử lý chuyển hướng + GA4 Tracking
         function handleRedirect(link, appName) {
             if (typeof gtag === 'function') {
-                gtag('event', 'click_dang_ky', {
-                    'app_ten': appName,
-                    'link_aff': link
-                });
+                gtag('event', 'click_dang_ky', { 'app_ten': appName, 'link_aff': link });
             }
             
             const loadingScreen = document.getElementById('loading-screen');
@@ -171,6 +181,7 @@
             setTimeout(() => { manualLink.classList.remove('hidden'); }, 3000);
         }
 
+        // Logic Popup 1 lần
         function showPopup() {
             const popup = document.getElementById('promo-popup');
             const hasSeenPopup = localStorage.getItem('hasSeenPopup');
@@ -188,6 +199,7 @@
         }
         setTimeout(() => { showPopup(); }, 3500);
 
+        // Render Header
         const headerHTML = `
             <div class="flex items-center justify-between mb-5 px-1">
                 <h2 class="font-bold text-lg text-slate-800 flex items-center gap-3">
@@ -199,6 +211,7 @@
         `;
         container.innerHTML += headerHTML;
 
+        // Hàm nhảy số live
         function startLiveCounter(id) {
             let randomTime = Math.floor(Math.random() * 60000) + 15000;
             setTimeout(() => {
@@ -213,6 +226,7 @@
             }, randomTime);
         }
 
+        // Render Danh sách App
         danhSachApp.forEach((app, index) => {
             let fakeView = generateStableNumber(app.ten);
             let counterId = `counter-${index}`;
@@ -227,7 +241,7 @@
                     <div class="p-5">
                         <div class="flex items-start gap-4 mb-5">
                             <div class="w-[52px] h-[52px] rounded-xl border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-0.5">
-                                <img src="${app.logo}" class="w-full h-full object-contain rounded-lg" alt="${app.ten}" loading="lazy"/>
+                                <img src="${app.logo}" class="w-full h-full object-contain rounded-lg" alt="Vay tiền online ${app.ten}" loading="lazy"/>
                             </div>
                             <div class="flex-1 min-w-0 pt-0.5">
                                 <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">${app.ten}</h3>
@@ -260,6 +274,7 @@
             startLiveCounter(counterId);
         });
 
+        // Fix Back Button
         window.addEventListener('pageshow', function(event) {
             const loadingScreen = document.getElementById('loading-screen');
             if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
