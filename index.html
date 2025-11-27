@@ -116,7 +116,7 @@
             <p class="text-sm text-slate-600 mb-6 leading-relaxed">
                 Đăng ký ngay hôm nay để nhận khoản vay <strong>0% Lãi Suất</strong> và giải ngân ưu tiên trong <strong>5 phút</strong>.
             </p>
-            <button onclick="handleRedirect('https://hl-link.net/nVT5020')" class="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all active:scale-95 uppercase tracking-wide">
+            <button onclick="handleRedirect('https://hl-link.net/nVT5020', 'Popup_MoneyCat')" class="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all active:scale-95 uppercase tracking-wide">
                 NHẬN ƯU ĐÃI NGAY
             </button>
             <p class="mt-3 text-[10px] text-slate-400">Chỉ còn 15 suất cuối cùng</p>
@@ -131,99 +131,19 @@
 
     <script>
         // =========================================================
-        // 🔥 DANH SÁCH APP CHUẨN CHỈNH (10 APP) 🔥
+        // 🔥 DANH SÁCH APP 🔥
         // =========================================================
         const danhSachApp = [
-            {
-                ten: "Dong247",
-                logo: "dong247.png",
-                hanmuc: "500k - 20Tr",
-                laisuat: "0% Lãi suất",
-                tag: "DUYỆT TỰ ĐỘNG",
-                mota: "Tỷ lệ duyệt cao, hoàn trả linh hoạt",
-                link: "https://hl-link.net/TWDgz10" 
-            },
-            {
-                ten: "Cây Vàng",
-                logo: "cayvang.png",
-                hanmuc: "500k - 10Tr",
-                laisuat: "0% Lần đầu",
-                tag: "GIẢI NGÂN 15 PHÚT",
-                mota: "Tuổi 18-60, nhận tiền về thẻ ATM",
-                link: "https://hl-link.net/towLs20" 
-            },
-            {
-                ten: "Cashspace",
-                logo: "cashspace.png",
-                hanmuc: "500k - 20Tr",
-                laisuat: "Lãi thấp",
-                tag: "HỖ TRỢ 24/7",
-                mota: "Kết nối tài chính, duyệt nhanh",
-                link: "https://hl-link.net/wdpbn20" 
-            },
-            {
-                ten: "Moneyveo",
-                logo: "moneyveo.png",
-                hanmuc: "500k - 10Tr",
-                laisuat: "Ưu đãi tốt",
-                tag: "HỖ TRỢ 24/7",
-                mota: "Giải ngân vào tài khoản ngay",
-                link: "https://hl-link.net/BISmL10" 
-            },
-            {
-                ten: "Crezu",
-                logo: "crezu.png",
-                hanmuc: "500k - 20Tr",
-                laisuat: "0% Lần đầu",
-                tag: "DUYỆT 98%",
-                mota: "Không gọi thẩm định, miễn phí dịch vụ",
-                link: "https://hl-link.net/rWWD010" 
-            },
-            {
-                ten: "Jeff App",
-                logo: "jeff.jpg", // Đã giữ đuôi jpg
-                hanmuc: "1Tr - 15Tr",
-                laisuat: "Ưu đãi",
-                tag: "CÁ NHÂN HÓA",
-                mota: "Nhiều gói vay đa dạng cho mọi người",
-                link: "https://hl-link.net/doi5p20" 
-            },
-            {
-                ten: "Vaymeo",
-                logo: "vaymeo.png",
-                hanmuc: "500k - 20Tr",
-                laisuat: "0% Lần đầu",
-                tag: "MIỄN PHÍ DỊCH VỤ",
-                mota: "Duyệt tự động, không gọi người thân",
-                link: "https://hl-link.net/BkPMW20" 
-            },
-            {
-                ten: "Tieno",
-                logo: "tieno-1.jpg", // Đã giữ đuôi jpg
-                hanmuc: "500k - 10Tr",
-                laisuat: "Lãi thấp",
-                tag: "THỦ TỤC ĐƠN GIẢN",
-                mota: "Chỉ cần CMND/CCCD, tuổi 22-60",
-                link: "https://hl-link.net/nf65y30" 
-            },
-            {
-                ten: "VayVNĐ",
-                logo: "vayvnd.png",
-                hanmuc: "1Tr - 15Tr",
-                laisuat: "Ưu đãi tốt",
-                tag: "GIẢI NGÂN TRONG NGÀY",
-                mota: "Chỉ cần CMND/CCCD, thủ tục đơn giản",
-                link: "https://hl-link.net/55COP10" 
-            },
-            {
-                ten: "MoneyCat",
-                logo: "moneycat.png",
-                hanmuc: "500k - 10Tr",
-                laisuat: "0% Lần đầu",
-                tag: "GIẢI NGÂN 5 PHÚT",
-                mota: "Đăng ký online 100% nhanh chóng",
-                link: "https://hl-link.net/nVT5020" 
-            },
+            { ten: "Dong247", logo: "dong247.png", hanmuc: "500k - 20Tr", laisuat: "0% Lãi suất", tag: "DUYỆT TỰ ĐỘNG", mota: "Tỷ lệ duyệt cao, hoàn trả linh hoạt", link: "https://hl-link.net/TWDgz10" },
+            { ten: "Cây Vàng", logo: "cayvang.png", hanmuc: "500k - 10Tr", laisuat: "0% Lần đầu", tag: "GIẢI NGÂN 15 PHÚT", mota: "Tuổi 18-60, nhận tiền về thẻ ATM", link: "https://hl-link.net/towLs20" },
+            { ten: "Cashspace", logo: "cashspace.png", hanmuc: "500k - 20Tr", laisuat: "Lãi thấp", tag: "HỖ TRỢ 24/7", mota: "Kết nối tài chính, duyệt nhanh", link: "https://hl-link.net/wdpbn20" },
+            { ten: "Moneyveo", logo: "moneyveo.png", hanmuc: "500k - 10Tr", laisuat: "Ưu đãi tốt", tag: "HỖ TRỢ 24/7", mota: "Giải ngân vào tài khoản ngay", link: "https://hl-link.net/BISmL10" },
+            { ten: "Crezu", logo: "crezu.png", hanmuc: "500k - 20Tr", laisuat: "0% Lần đầu", tag: "DUYỆT 98%", mota: "Không gọi thẩm định, miễn phí dịch vụ", link: "https://hl-link.net/rWWD010" },
+            { ten: "Jeff App", logo: "jeff.jpg", hanmuc: "1Tr - 15Tr", laisuat: "Ưu đãi", tag: "CÁ NHÂN HÓA", mota: "Nhiều gói vay đa dạng cho mọi người", link: "https://hl-link.net/doi5p20" },
+            { ten: "Vaymeo", logo: "vaymeo.png", hanmuc: "500k - 20Tr", laisuat: "0% Lần đầu", tag: "MIỄN PHÍ DỊCH VỤ", mota: "Duyệt tự động, không gọi người thân", link: "https://hl-link.net/BkPMW20" },
+            { ten: "Tieno", logo: "tieno-1.jpg", hanmuc: "500k - 10Tr", laisuat: "Lãi thấp", tag: "THỦ TỤC ĐƠN GIẢN", mota: "Chỉ cần CMND/CCCD, tuổi 22-60", link: "https://hl-link.net/nf65y30" },
+            { ten: "VayVNĐ", logo: "vayvnd.png", hanmuc: "1Tr - 15Tr", laisuat: "Ưu đãi tốt", tag: "GIẢI NGÂN TRONG NGÀY", mota: "Chỉ cần CMND/CCCD, thủ tục đơn giản", link: "https://hl-link.net/55COP10" },
+            { ten: "MoneyCat", logo: "moneycat.png", hanmuc: "500k - 10Tr", laisuat: "0% Lần đầu", tag: "GIẢI NGÂN 5 PHÚT", mota: "Đăng ký online 100% nhanh chóng", link: "https://hl-link.net/nVT5020" },
         ];
 
         const container = document.getElementById('app-container');
@@ -234,7 +154,19 @@
             return Math.abs(hash) % 1100 + 400; 
         }
 
-        function handleRedirect(link) {
+        // 🔥 HÀM XỬ LÝ CHUYỂN HƯỚNG + GỬI DỮ LIỆU TRACKING 🔥
+        function handleRedirect(link, appName) {
+            // 1. Gửi sự kiện về Google Analytics
+            if (typeof gtag === 'function') {
+                gtag('event', 'click_dang_ky', {
+                    'app_ten': appName,
+                    'link_aff': link
+                });
+            } else {
+                console.log("Chưa load xong Google Analytics");
+            }
+
+            // 2. Hiệu ứng chuyển trang
             const loadingScreen = document.getElementById('loading-screen');
             const manualLink = document.getElementById('manual-link');
             
@@ -256,9 +188,8 @@
             const popup = document.getElementById('promo-popup');
             if(popup) { popup.classList.add('hidden'); popup.style.display = 'none'; }
         }
-        setTimeout(() => { showPopup(); }, 3500); // Hiện sau 3.5 giây
+        setTimeout(() => { showPopup(); }, 3500);
 
-        // Render Header
         const headerHTML = `
             <div class="flex items-center justify-between mb-5 px-1">
                 <h2 class="font-bold text-lg text-slate-800 flex items-center gap-3">
@@ -270,9 +201,8 @@
         `;
         container.innerHTML += headerHTML;
 
-        // 🔥 HÀM TỰ ĐỘNG TĂNG SỐ (LIVE) 🔥
         function startLiveCounter(id) {
-            let randomTime = Math.floor(Math.random() * 60000) + 15000; // 15s - 75s
+            let randomTime = Math.floor(Math.random() * 60000) + 15000;
             setTimeout(() => {
                 const el = document.getElementById(id);
                 if (el) {
@@ -285,13 +215,13 @@
             }, randomTime);
         }
 
-        // Render App Loop
         danhSachApp.forEach((app, index) => {
             let fakeView = generateStableNumber(app.ten);
             let counterId = `counter-${index}`;
             
+            // CHÚ Ý: Chỗ onclick đã thêm tham số app.ten để gửi về GA
             const cardHTML = `
-            <div onclick="handleRedirect('${app.link}')" class="cursor-pointer block w-full group mb-5 transform transition-all duration-200 hover:-translate-y-1">
+            <div onclick="handleRedirect('${app.link}', '${app.ten}')" class="cursor-pointer block w-full group mb-5 transform transition-all duration-200 hover:-translate-y-1">
                 <div class="bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden relative">
                     <div class="bg-blue-50 px-4 py-2 border-b border-blue-100 flex items-center gap-2">
                         <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
