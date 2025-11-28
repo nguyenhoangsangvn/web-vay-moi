@@ -52,9 +52,23 @@
         body { background-color: #f8fafc; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; font-size: 17px; }
         ::-webkit-scrollbar { width: 0px; background: transparent; }
         .hidden { display: none !important; }
+        /* Chặn bôi đen văn bản để hạn chế copy nội dung */
+        .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 text-[17px]">
+<body class="bg-slate-50 text-slate-900 text-[17px] no-select">
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { return false; } // F12
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Ctrl+Shift+C
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } // Ctrl+Shift+J
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U
+            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } // Ctrl+S
+        }
+    </script>
 
     <div id="main-screen" class="min-h-screen flex justify-center">
         <div class="w-full max-w-[480px] bg-white shadow-2xl min-h-screen relative flex flex-col">
