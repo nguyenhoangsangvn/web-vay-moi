@@ -3,138 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chính Sách & Điều Khoản Sử Dụng</title>
-    <meta name="robots" content="noindex"> <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/contract.png">
+    <title>Trung Tâm Hỗ Trợ & Chính Sách</title>
+    <meta name="robots" content="noindex">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/user-manual.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: { primary: '#0068FF', text: '#374151' },
+                    fontFamily: { sans: ['"Be Vietnam Pro"', 'sans-serif'] },
+                    colors: { primary: '#0068FF' },
                 },
             },
         }
     </script>
     <style>
-        body { background-color: #F3F4F6; color: #374151; -webkit-font-smoothing: antialiased; }
+        body { background-color: #ffffff; color: #374151; -webkit-font-smoothing: antialiased; }
         
-        /* Định dạng văn bản chuẩn */
-        h1 { font-size: 22px; font-weight: 800; color: #111827; text-transform: uppercase; margin-bottom: 4px; }
-        h2 { font-size: 16px; font-weight: 700; color: #1F2937; margin-top: 24px; margin-bottom: 12px; display: flex; align-items: center; }
-        h2::before { content: ''; display: inline-block; width: 4px; height: 18px; background-color: #0068FF; margin-right: 10px; border-radius: 2px; }
+        /* Typography thân thiện hơn */
+        h1 { font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+        h2 { font-size: 16px; font-weight: 700; color: #1F2937; margin-top: 24px; margin-bottom: 8px; }
+        p, li { font-size: 14px; line-height: 1.6; color: #555; text-align: justify; margin-bottom: 8px; }
         
-        p { font-size: 14px; line-height: 1.6; text-align: justify; margin-bottom: 10px; }
-        
-        /* List đẹp hơn */
-        ul { list-style: none; padding: 0; margin-bottom: 16px; }
-        li { font-size: 14px; line-height: 1.6; padding-left: 20px; position: relative; margin-bottom: 6px; }
-        li::before { content: '•'; color: #0068FF; font-weight: bold; font-size: 18px; position: absolute; left: 0; top: -2px; }
-
-        /* Card văn bản */
-        .doc-container {
-            background: white;
-            max-width: 768px;
-            margin: 20px auto;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border: 1px solid #E5E7EB;
-        }
-        @media (max-width: 640px) { .doc-container { margin: 10px; padding: 20px; } }
+        /* Highlight box nhẹ nhàng */
+        .info-box { background-color: #F3F4F6; border-radius: 12px; padding: 16px; margin: 12px 0; }
+        .blue-box { background-color: #EFF6FF; color: #1E40AF; border-radius: 12px; padding: 16px; margin: 12px 0; }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col">
 
-    <div class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-3xl mx-auto px-4 h-14 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                <span class="font-bold text-gray-800 text-sm uppercase tracking-wide">Trung Tâm Pháp Lý</span>
-            </div>
-            
-            <a href="index.html" class="flex items-center gap-1 text-[13px] font-bold text-gray-500 hover:text-blue-600 transition">
+    <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-xl mx-auto px-5 h-14 flex justify-between items-center">
+            <span class="font-bold text-gray-800 text-[15px]">Trung Tâm Pháp Lý</span>
+            <a href="index.html" class="text-[13px] font-medium text-gray-500 hover:text-primary flex items-center gap-1 bg-gray-50 px-3 py-1.5 rounded-full">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Quay lại
+                Về trang chủ
             </a>
         </div>
     </div>
 
-    <div class="flex-grow">
-        <div class="doc-container">
-            
-            <div class="text-center border-b border-gray-100 pb-6 mb-6">
-                <h1>Chính Sách & Điều Khoản</h1>
-                <p class="text-center text-xs text-gray-400 mb-0">Cập nhật lần cuối: 28/11/2025</p>
+    <div class="flex-grow px-5 py-6 max-w-xl mx-auto w-full">
+        
+        <div class="text-center mb-8">
+            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3">
+                <img src="https://img.icons8.com/fluency/48/pass.png" class="w-6 h-6"/>
             </div>
-
-            <div class="mb-8">
-                <h2>1. Tuyên bố miễn trừ trách nhiệm</h2>
-                <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-4">
-                    <p class="text-blue-900 font-medium mb-2 text-[13px]">
-                        Website này hoạt động với tư cách là nền tảng công nghệ tổng hợp và so sánh thông tin tài chính độc lập. Chúng tôi khẳng định:
-                    </p>
-                    <ul class="mb-0">
-                        <li class="text-blue-800">Chúng tôi <strong>KHÔNG phải là ngân hàng</strong>, tổ chức tín dụng hay công ty cho vay.</li>
-                        <li class="text-blue-800">Chúng tôi <strong>KHÔNG trực tiếp thu tiền</strong>, giải ngân hay thẩm định hồ sơ.</li>
-                    </ul>
-                </div>
-                <p>Mọi quyết định về việc phê duyệt khoản vay, lãi suất và hạn mức tín dụng hoàn toàn thuộc thẩm quyền của các Đối tác tài chính (bên thứ ba) mà người dùng lựa chọn kết nối.</p>
-            </div>
-
-            <div class="mb-8">
-                <h2>2. Công bố thông tin Lãi suất (APR)</h2>
-                <p>Để đảm bảo tính minh bạch và tuân thủ chính sách quảng cáo, chúng tôi cung cấp thông tin tham khảo về chi phí vay như sau:</p>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-                    <div class="bg-gray-50 p-3 rounded border border-gray-200 text-center">
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Lãi suất (APR)</span>
-                        <span class="block text-[14px] font-bold text-gray-800">0% - 20%/Năm</span>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded border border-gray-200 text-center">
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Kỳ hạn vay</span>
-                        <span class="block text-[14px] font-bold text-gray-800">91 ngày - 36 tháng</span>
-                    </div>
-                    <div class="bg-gray-50 p-3 rounded border border-gray-200 text-center">
-                        <span class="block text-[10px] text-gray-500 uppercase font-bold">Phí dịch vụ</span>
-                        <span class="block text-[14px] font-bold text-gray-800">Tùy đối tác</span>
-                    </div>
-                </div>
-
-                <p class="text-xs italic text-gray-500 bg-gray-50 p-3 rounded border border-gray-200">
-                    <strong>Ví dụ minh họa:</strong> Khách hàng vay 2.000.000 VNĐ trong thời hạn 90 ngày với lãi suất 12%/năm.<br>
-                    • Số tiền lãi phải trả: 2.000.000 * 12% / 365 * 90 = 59.178 VNĐ.<br>
-                    • Tổng số tiền thanh toán: 2.059.178 VNĐ.
-                </p>
-            </div>
-
-            <div class="mb-8">
-                <h2>3. Chính sách bảo mật dữ liệu</h2>
-                <p>Chúng tôi cam kết bảo vệ quyền riêng tư của người dùng theo tiêu chuẩn SSL/TLS:</p>
-                <ul>
-                    <li><strong>Dữ liệu thu thập:</strong> Chỉ thu thập dữ liệu ẩn danh (Cookies) để tối ưu hóa trải nghiệm người dùng.</li>
-                    <li><strong>Không lưu trữ thông tin nhạy cảm:</strong> Khi bạn nhập thông tin đăng ký, dữ liệu được mã hóa và gửi trực tiếp đến hệ thống của Đối tác tài chính. Website này KHÔNG lưu trữ Số điện thoại, CMND/CCCD của bạn.</li>
-                    <li><strong>Không chia sẻ trái phép:</strong> Chúng tôi cam kết không bán dữ liệu người dùng cho bên thứ ba.</li>
-                </ul>
-            </div>
-
-            <div>
-                <h2>4. Điều kiện sử dụng</h2>
-                <p>Người dùng khi truy cập và sử dụng dịch vụ tại Website phải đáp ứng các điều kiện sau:</p>
-                <ul>
-                    <li>Là công dân Việt Nam, độ tuổi từ 18 đến 60 tuổi.</li>
-                    <li>Có năng lực hành vi dân sự đầy đủ theo quy định của pháp luật.</li>
-                    <li>Sử dụng thông tin và dịch vụ cho mục đích cá nhân hợp pháp.</li>
-                </ul>
-            </div>
-
+            <h1>Chính Sách & Điều Khoản</h1>
+            <p class="text-center text-xs text-gray-400">Cập nhật mới nhất: 2025</p>
         </div>
+
+        <div class="blue-box">
+            <h2 class="!mt-0 text-blue-800 flex items-center gap-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Tuyên bố quan trọng
+            </h2>
+            <p class="!text-blue-900 mb-0 text-[13px]">
+                Chúng tôi là nền tảng công nghệ giúp bạn so sánh các gói vay. Chúng tôi <strong>không phải là ngân hàng</strong> và không trực tiếp cho vay tiền.
+            </p>
+        </div>
+
+        <div class="mt-6">
+            <h2>1. Bảo mật thông tin</h2>
+            <p>Sự riêng tư của bạn là ưu tiên hàng đầu. Chúng tôi cam kết:</p>
+            <ul class="list-disc pl-5 space-y-1 text-gray-600 text-[14px]">
+                <li>Dữ liệu được mã hóa theo tiêu chuẩn SSL an toàn.</li>
+                <li>Không lưu trữ số CMND/CCCD hay SĐT của bạn trên hệ thống này.</li>
+                <li>Không bán thông tin cho bên thứ 3 trái phép.</li>
+            </ul>
+        </div>
+
+        <div class="mt-6">
+            <h2>2. Minh bạch khoản vay (APR)</h2>
+            <p>Để bạn an tâm đăng ký, chúng tôi công khai các thông tin tham khảo:</p>
+            
+            <div class="info-box border border-gray-100">
+                <div class="flex justify-between border-b border-gray-200 pb-2 mb-2">
+                    <span class="text-[13px] font-semibold">Lãi suất (APR)</span>
+                    <span class="text-[13px] font-bold text-green-600">0% - 20%/Năm</span>
+                </div>
+                <div class="flex justify-between border-b border-gray-200 pb-2 mb-2">
+                    <span class="text-[13px] font-semibold">Kỳ hạn vay</span>
+                    <span class="text-[13px] font-bold text-gray-700">3 - 36 Tháng</span>
+                </div>
+                <div class="text-[12px] text-gray-500 italic bg-white p-2 rounded mt-2">
+                    <strong>Ví dụ:</strong> Vay 2 triệu trong 3 tháng (Lãi 12%/năm).<br>
+                    Tổng lãi phải trả: ~59.000đ.<br>
+                    Tổng thanh toán: 2.059.000đ.
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <h2>3. Điều kiện tham gia</h2>
+            <p>Dịch vụ chỉ dành cho công dân Việt Nam, trên 18 tuổi và có năng lực hành vi dân sự đầy đủ.</p>
+        </div>
+
     </div>
 
-    <div class="bg-white border-t border-gray-200 py-6 text-center">
-        <p class="text-[11px] text-gray-400">Copyright © 2025 Financial Service Aggregator. All rights reserved.</p>
+    <div class="bg-gray-50 border-t border-gray-100 py-8 px-5 mt-auto">
+        <div class="max-w-xl mx-auto text-center">
+            
+            <div class="flex justify-center gap-6 text-[12px] font-semibold text-gray-500 mb-6">
+                <a href="#" class="hover:text-primary transition">Trang chủ</a>
+                <a href="#" class="hover:text-primary transition">Bảo mật</a>
+                <a href="#" class="hover:text-primary transition">Hỗ trợ</a>
+            </div>
+
+            <p class="text-[11px] text-gray-400 mb-2">© 2025 Financial Service Aggregator.</p>
+            <p class="text-[10px] text-gray-300">All rights reserved.</p>
+        </div>
     </div>
 
 </body>
