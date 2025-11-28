@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Cổng Vay Quốc Gia - Duyệt Tự Động 2025</title>
-    <meta name="description" content="Tổng hợp các gói vay online uy tín, duyệt nhanh trong ngày. Hỗ trợ nợ xấu.">
-    <meta name="theme-color" content="#ffffff">
+    <title>Tổng Hợp Gói Vay Uy Tín - Duyệt Nhanh 24/7</title>
     
+    <meta name="description" content="Tổng hợp các gói vay online uy tín, duyệt nhanh trong ngày, lãi suất 0% lần đầu. Hỗ trợ nợ xấu, không thẩm định người thân.">
+    <meta name="keywords" content="vay tiền online, vay tín chấp, vay nhanh, tài chính cá nhân">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0052cc">
+    
+    <meta property="og:title" content="Vay Nhanh 24/7 - Duyệt Hồ Sơ 5 Phút">
+    <meta property="og:description" content="Hỗ trợ nợ xấu, không gọi thẩm định, nhận tiền về ATM ngay.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1579621970563-ebec7560eb3e?q=80&w=1200&h=630&fit=crop">
+    <meta property="og:type" content="website">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FinancialService",
-      "name": "National Loan Portal",
+      "name": "Tổng Hợp Gói Vay Uy Tín",
+      "description": "Dịch vụ so sánh và tổng hợp các gói vay tiền online nhanh, uy tín, lãi suất thấp.",
+      "url": "https://web-vay-moi.vercel.app", 
       "priceRange": "FREE",
-      "address": { "@type": "PostalAddress", "addressCountry": "VN" }
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "VN"
+      },
+      "openingHours": "Mo-Su 00:00-24:00"
     }
     </script>
-
-    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/verified-account.png">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
 
     <script async='async' src='https://www.googletagmanager.com/gtag/js?id=G-F5ZTEXFZYX'></script>
     <script>
@@ -34,66 +46,65 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Roboto', 'sans-serif'] },
                     colors: { 
-                        primary: '#0068FF',
-                        bg: '#F2F4F7',
+                        brand: '#0052cc', 
+                        action: '#16a34a', 
+                        bgbody: '#f8fafc',
+                        textmain: '#1e293b',
                     },
-                    boxShadow: { 'card': '0 1px 3px rgba(0,0,0,0.06)' }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    boxShadow: { 
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)', 
+                        'btn': '0 4px 6px -1px rgba(22, 163, 74, 0.4), 0 2px 4px -1px rgba(22, 163, 74, 0.2)' 
+                    },
+                    animation: {
+                        'pop-in': 'popIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        popIn: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        }
+                    }
                 },
             },
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <style>
-        body { background-color: #F2F4F7; color: #333; -webkit-font-smoothing: antialiased; }
-        
-        /* HEADER */
-        .header-clean { background: white; border-bottom: 1px solid #E5E7EB; position: sticky; top: 0; z-index: 50; }
-
-        /* NÚT "ĐÃ XÁC MINH" CHUẨN XỊN */
-        .verified-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background-color: #FFFFFF; border: 1px solid #D1D5DB; border-radius: 6px;
-            padding: 6px 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-        .verified-text { color: #6B7280; font-weight: 700; font-size: 13px; text-transform: uppercase; }
-
-        /* CARD APP */
-        .app-card {
-            background: white; border-radius: 10px; padding: 12px; margin-bottom: 10px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05); border: 1px solid white;
-        }
-        .app-card:active { border-color: #0068FF; background-color: #F9FAFB; }
-
-        /* NÚT BẤM */
-        .btn-action {
-            background-color: #0068FF; color: white; font-weight: 700;
-            border-radius: 6px; font-size: 12px; text-transform: uppercase;
-        }
+        body { background-color: #f8fafc; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; font-size: 17px; }
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        .hidden { display: none !important; }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-900 text-[17px]">
 
-    <div class="flex justify-center flex-grow">
-        <div class="w-full max-w-[480px] min-h-screen relative flex flex-col pb-10">
+    <div id="main-screen" class="min-h-screen flex justify-center">
+        <div class="w-full max-w-[480px] bg-white shadow-2xl min-h-screen relative flex flex-col">
             
-            <div class="header-clean px-4 py-4 text-center">
-                <h1 class="text-[18px] font-black text-gray-800 mb-3 uppercase tracking-tight">
-                    TỔNG HỢP GÓI VAY UY TÍN
-                </h1>
-                <div class="flex justify-center">
-                    <div class="verified-badge">
-                        <svg class="w-5 h-5 text-[#4285F4]" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                        </svg>
-                        <span class="verified-text">ĐÃ XÁC MINH</span>
+            <div class="bg-gradient-to-b from-blue-50 to-white px-4 pt-8 pb-6 border-b border-slate-100">
+                <div class="flex justify-center mb-4">
+                    <div class="bg-blue-100 text-blue-800 text-[11px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 border border-blue-200 shadow-sm uppercase tracking-wider">
+                        <svg class="w-3.5 h-3.5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Đã kiểm duyệt hồ sơ
                     </div>
+                </div>
+                <h1 class="text-center text-[26px] font-extrabold text-slate-900 leading-tight mb-2">
+                    Tổng Hợp Gói Vay <br/> <span class="text-blue-600">Duyệt Nhanh Trong Ngày</span>
+                </h1>
+                <p class="text-center text-slate-500 text-sm font-medium mb-6 max-w-xs mx-auto leading-relaxed">
+                    Chỉ cần CCCD • Lãi suất 0% lần đầu • Không gọi người thân
+                </p>
+                <div class="flex justify-between text-xs text-slate-500 border-t border-dashed border-slate-200 pt-5 font-medium">
+                    <div class="text-center w-1/3 border-r border-slate-100"><span class="block font-extrabold text-lg text-slate-900 mb-0.5">15+</span>Đối tác uy tín</div>
+                    <div class="text-center w-1/3 border-r border-slate-100"><span class="block font-extrabold text-lg text-slate-900 mb-0.5">98%</span>Tỷ lệ duyệt</div>
+                    <div class="text-center w-1/3"><span class="block font-extrabold text-lg text-slate-900 mb-0.5">5p</span>Giải ngân</div>
                 </div>
             </div>
 
-            <div class="px-4 mt-4">
+            <div class="px-4 pt-6 bg-slate-50">
                 <div class="bg-[#fffbeb] border border-yellow-200 rounded-xl p-5 shadow-sm">
-                    <h3 class="font-bold text-yellow-800 text-[15px] mb-4 flex items-center gap-2 uppercase">
+                    <h3 class="font-bold text-yellow-800 text-base mb-4 flex items-center gap-2 uppercase tracking-wide">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         Mẹo Đăng Ký Nhanh
                     </h3>
@@ -109,55 +120,52 @@
                 </div>
             </div>
 
-            <div class="px-4 mt-5" id="app-container">
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="font-bold text-gray-700 text-[14px] uppercase">Đề xuất hôm nay</h2>
-                    <span class="text-[10px] bg-red-100 text-red-600 px-2 py-0.5 rounded font-bold animate-pulse">HOT</span>
-                </div>
-                </div>
+            <div class="px-4 py-6 bg-slate-50 flex-grow" id="app-container"></div>
 
-            <div class="mt-8 px-4 text-center pb-8 opacity-80 border-t border-gray-200 pt-6">
-                
-                <div class="flex justify-center items-center gap-2 mb-5 flex-wrap">
-                    <div class="flex items-center gap-1.5 bg-white border border-gray-200 rounded-md px-2 py-1 shadow-sm">
-                        <svg class="w-3.5 h-3.5 text-green-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                        <span class="text-[9px] font-bold text-gray-600 uppercase">Bảo mật 100%</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 bg-white border border-gray-200 rounded-md px-2 py-1 shadow-sm">
-                        <svg class="w-3.5 h-3.5 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></svg>
-                        <span class="text-[9px] font-bold text-gray-600 uppercase">Đã xác minh</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 bg-white border border-gray-200 rounded-md px-2 py-1 shadow-sm">
-                        <svg class="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-9-2c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
-                        <span class="text-[9px] font-bold text-gray-600 uppercase">SSL Secured</span>
-                    </div>
-                </div>
-
-                <p class="text-[10px] text-gray-500 mb-3 text-justify leading-relaxed">
-                    <strong>Miễn trừ trách nhiệm:</strong> Website là nền tảng so sánh tài chính. Chúng tôi không phải ngân hàng. Lãi suất (APR) từ 0% - 20%. Kỳ hạn 91 ngày - 36 tháng.
+            <div class="bg-slate-100 p-6 text-center pb-8 border-t border-slate-200 mt-auto">
+                <p class="text-[11px] text-slate-500 text-justify leading-relaxed mb-3">
+                    <strong>Miễn trừ trách nhiệm:</strong> Website này là nền tảng tổng hợp và so sánh các giải pháp tài chính, đóng vai trò cầu nối giữa khách hàng và các đối tác cho vay uy tín. Chúng tôi không phải là ngân hàng hay tổ chức tín dụng, và không trực tiếp thực hiện việc cho vay. Dịch vụ của chúng tôi hoàn toàn miễn phí. Khách hàng có quyền tự do lựa chọn và cân nhắc kỹ trước khi đăng ký.
                 </p>
-                <div class="flex justify-center gap-4 text-[11px] font-bold text-gray-500 uppercase">
-                    <a href="policy.html" class="hover:text-primary">Bảo mật</a>
-                    <a href="policy.html" class="hover:text-primary">Điều khoản</a>
-                    <a href="policy.html" class="hover:text-primary">Liên hệ</a>
+                <div class="flex justify-center gap-4 mb-2 text-[11px] font-bold text-slate-400">
+                    <a href="policy.html" class="hover:text-slate-600">Chính sách bảo mật</a>
+                    <span>|</span>
+                    <a href="policy.html" class="hover:text-slate-600">Điều khoản sử dụng</a>
                 </div>
+                <p class="text-xs font-semibold text-slate-400">© 2025 Financial Service</p>
             </div>
-
         </div>
     </div>
 
-    <div id="toast-notify" class="hidden fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[360px] bg-gray-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
-        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-        <p class="text-[12px] flex-1">Hồ sơ của <span id="toast-name" class="font-bold">Nguyễn Văn A</span> vừa được duyệt</p>
+    <div id="promo-popup" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closePopup()"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-xs p-6 animate-pop-in text-center">
+            <button onclick="closePopup()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                <span class="text-4xl">🎁</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2">ƯU ĐÃI ĐẶC BIỆT!</h3>
+            <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+                Đăng ký ngay hôm nay để nhận khoản vay <strong>0% Lãi Suất</strong> và giải ngân ưu tiên trong <strong>5 phút</strong>.
+            </p>
+            <button onclick="handleRedirect('https://hl-link.net/nVT5020', 'Popup_MoneyCat')" class="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all active:scale-95 uppercase tracking-wide">
+                NHẬN ƯU ĐÃI NGAY
+            </button>
+            <p class="mt-3 text-[10px] text-slate-400">Chỉ còn 15 suất cuối cùng</p>
+        </div>
     </div>
 
-    <div id="loading-screen" class="hidden fixed inset-0 bg-white/95 z-50 flex-col items-center justify-center text-center p-5">
-        <div class="w-8 h-8 border-4 border-gray-200 border-t-[#0068FF] rounded-full animate-spin"></div>
-        <p class="mt-3 text-[12px] font-bold text-gray-500 uppercase">Đang kết nối...</p>
+    <div id="loading-screen" class="hidden fixed inset-0 bg-white z-50 flex-col items-center justify-center text-center p-5">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-action mb-4"></div>
+        <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng...</h2>
+        <a id="manual-link" href="#" rel="nofollow noopener noreferrer" class="hidden mt-6 bg-action text-white font-bold py-2 px-6 rounded-lg">Tiếp tục</a>
     </div>
 
     <script>
-        // DANH SÁCH APP GỐC ĐẦY ĐỦ CỦA NÍ
+        // =========================================================
+        // DANH SÁCH APP GỐC ĐẦY ĐỦ
+        // =========================================================
         const danhSachApp = [
             { ten: "Cây Vàng", logo: "cayvang.png", hanmuc: "500k - 10Tr", laisuat: "0% Lần đầu", tag: "GIẢI NGÂN 15P", mota: "Duyệt vay siêu tốc, nhận tiền 15 phút", link: "https://hl-link.net/towLs20" },
             { ten: "MoneyCat", logo: "moneycat.png", hanmuc: "500k - 3Tr", laisuat: "2.1%/Ngày", tag: "GIẢI NGÂN 24H", mota: "Vay nhanh chóng, tiền về tài khoản trong 24h", link: "https://hl-link.net/nVT5020" },
@@ -184,55 +192,134 @@
         ];
 
         const container = document.getElementById('app-container');
+        
+        // Số liệu ảo ổn định
+        function generateStableNumber(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) { hash = str.charCodeAt(i) + ((hash << 5) - hash); }
+            return Math.abs(hash) % 1100 + 400; 
+        }
 
-        // RENDER CARD SẠCH ĐẸP
+        // Xử lý chuyển hướng + GA4 Tracking
+        function handleRedirect(link, appName) {
+            if (typeof gtag === 'function') {
+                gtag('event', 'click_dang_ky', { 'app_ten': appName, 'link_aff': link });
+            }
+            
+            const loadingScreen = document.getElementById('loading-screen');
+            const manualLink = document.getElementById('manual-link');
+            
+            closePopup();
+            loadingScreen.classList.remove('hidden');
+            loadingScreen.style.display = 'flex';
+            manualLink.href = link;
+
+            setTimeout(() => { window.location.href = link; }, 1500);
+            setTimeout(() => { manualLink.classList.remove('hidden'); }, 3000);
+        }
+
+        // Logic Popup 1 lần
+        function showPopup() {
+            const popup = document.getElementById('promo-popup');
+            const hasSeenPopup = localStorage.getItem('hasSeenPopup');
+            if (!hasSeenPopup) {
+                if(popup) { 
+                    popup.classList.remove('hidden'); 
+                    popup.style.display = 'flex'; 
+                    localStorage.setItem('hasSeenPopup', 'true');
+                }
+            }
+        }
+        function closePopup() {
+            const popup = document.getElementById('promo-popup');
+            if(popup) { popup.classList.add('hidden'); popup.style.display = 'none'; }
+        }
+        setTimeout(() => { showPopup(); }, 3500);
+
+        // Render Header
+        const headerHTML = `
+            <div class="flex items-center justify-between mb-5 px-1">
+                <h2 class="font-bold text-lg text-slate-800 flex items-center gap-3">
+                    <span class="w-1.5 h-6 bg-green-500 rounded-r-md block"></span>
+                    Đề xuất tốt nhất
+                </h2>
+                <span class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-1 rounded uppercase animate-pulse">Hot hôm nay</span>
+            </div>
+        `;
+        container.innerHTML += headerHTML;
+
+        // Hàm nhảy số live
+        function startLiveCounter(id) {
+            let randomTime = Math.floor(Math.random() * 60000) + 15000;
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) {
+                    let currentNum = parseInt(el.innerText.replace(/,/g, ''));
+                    el.innerText = currentNum + 1;
+                    el.classList.add('text-green-600', 'scale-110');
+                    setTimeout(() => { el.classList.remove('text-green-600', 'scale-110'); }, 500);
+                    startLiveCounter(id);
+                }
+            }, randomTime);
+        }
+
+        // Render Danh sách App GỐC
         danhSachApp.forEach((app, index) => {
+            let fakeView = generateStableNumber(app.ten);
+            let counterId = `counter-${index}`;
+            
             const cardHTML = `
-            <div onclick="handleRedirect('${app.link}', '${app.ten}')" class="app-card flex items-center gap-3 cursor-pointer">
-                <div class="w-[52px] h-[52px] p-0.5 border border-gray-100 rounded-lg bg-white flex-shrink-0">
-                    <img src="${app.logo}" class="w-full h-full object-contain rounded-md" alt="${app.ten}" loading="lazy"/>
-                </div>
-                <div class="flex-1 min-w-0">
-                    <div class="flex items-center gap-2 mb-0.5">
-                        <h3 class="font-bold text-gray-800 text-[15px]">${app.ten}</h3>
-                        ${app.tag ? `<span class="bg-blue-50 text-[#0068FF] text-[9px] font-bold px-1.5 py-0.5 rounded border border-blue-100">${app.tag}</span>` : ''}
+            <div onclick="handleRedirect('${app.link}', '${app.ten}')" class="cursor-pointer block w-full group mb-5 transform transition-all duration-200 hover:-translate-y-1">
+                <div class="bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden relative">
+                    <div class="bg-blue-50 px-4 py-2 border-b border-blue-100 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-[11px] font-bold text-blue-700 uppercase tracking-wide">${app.tag}</span>
                     </div>
-                    <div class="flex items-center gap-3 text-[12px]">
-                        <span class="font-bold text-gray-600 bg-gray-100 px-1.5 rounded">${app.hanmuc}</span>
-                        <span class="font-bold text-green-600">${app.laisuat}</span>
+                    <div class="p-5">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="w-[52px] h-[52px] rounded-xl border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-0.5">
+                                <img src="${app.logo}" class="w-full h-full object-contain rounded-lg" alt="Vay tiền online ${app.ten}" loading="lazy"/>
+                            </div>
+                            <div class="flex-1 min-w-0 pt-0.5">
+                                <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">${app.ten}</h3>
+                                <p class="text-xs text-slate-500 line-clamp-1 font-medium">${app.mota}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-0 mb-5 bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
+                            <div class="text-center border-r border-slate-200 p-3">
+                                <p class="text-[10px] text-slate-400 uppercase font-bold mb-1 tracking-wider">Hạn mức</p>
+                                <p class="font-extrabold text-slate-900 text-[17px]">${app.hanmuc}</p>
+                            </div>
+                            <div class="text-center p-3">
+                                <p class="text-[10px] text-slate-400 uppercase font-bold mb-1 tracking-wider">Lãi suất</p>
+                                <p class="font-extrabold text-action text-[17px]">${app.laisuat}</p>
+                            </div>
+                        </div>
+                        <button class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white font-bold py-3.5 rounded-xl shadow-btn transition-all active:scale-95 flex items-center justify-center gap-2 text-[17px] uppercase tracking-wide">
+                            <span>ĐĂNG KÝ NGAY</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                        </button>
+                        <div class="mt-3 text-center flex justify-center items-center gap-1 text-[11px] text-slate-400 font-medium">
+                            <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>
+                            <span>Đã có <strong id="${counterId}" class="text-slate-600 transition-all duration-300">${fakeView}</strong> hồ sơ được duyệt hôm nay</span>
+                        </div>
                     </div>
                 </div>
-                <button class="btn-action py-2 px-4 shadow-sm">
-                    NHẬN
-                </button>
             </div>
             `;
             container.innerHTML += cardHTML;
+            startLiveCounter(counterId);
         });
 
-        function handleRedirect(link, appName) {
-            if (typeof gtag === 'function') { gtag('event', 'click_dang_ky', { 'app_ten': appName, 'link_aff': link }); }
-            
-            const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.classList.remove('hidden');
-            loadingScreen.style.display = 'flex';
-            setTimeout(() => { window.location.href = link; }, 500);
-        }
-
-        // Toast Notify
-        const fakeNames = ["Tuấn", "Hùng", "Lan", "Mai", "Ngọc", "Vinh"];
-        function showRandomToast() {
-            const toast = document.getElementById('toast-notify');
-            toast.querySelector('#toast-name').innerText = fakeNames[Math.floor(Math.random() * fakeNames.length)];
-            toast.classList.remove('hidden');
-            setTimeout(() => { toast.classList.add('hidden'); }, 3000);
-            setTimeout(showRandomToast, 5000);
-        }
-        setTimeout(showRandomToast, 2000);
-
+        // Fix Back Button
         window.addEventListener('pageshow', function(event) {
-            document.getElementById('loading-screen').classList.add('hidden');
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
+                loadingScreen.classList.add('hidden');
+                loadingScreen.style.display = 'none';
+            }
         });
+
     </script>
 </body>
 </html>
