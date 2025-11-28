@@ -1,277 +1,165 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sàn Tài Chính 4.0 - Duyệt Vay Tự Động</title>
     
-    <meta name="description" content="Kết nối tài chính thông minh, duyệt vay siêu tốc 24/7.">
-    <meta name="theme-color" content="#0f172a">
-    
-    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/safe.png">
+    <title>Tra Cứu & So Sánh Gói Tín Dụng Online 2025</title>
+    <meta name="description" content="Nền tảng tổng hợp, so sánh lãi suất và hạn mức các khoản vay tín chấp uy tín. Hỗ trợ tư vấn giải pháp tài chính miễn phí 24/7.">
+    <meta name="keywords" content="so sánh vay, tài chính cá nhân, tín dụng online, tư vấn tài chính">
+    <meta name="author" content="Financial Aggregator">
+    <meta name="robots" content="index, follow"> <meta name="theme-color" content="#1e40af">
 
-    <script async='async' src='https://www.googletagmanager.com/gtag/js?id=G-F5ZTEXFZYX'></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-F5ZTEXFZYX');
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://web-vay-moi.vercel.app"> <meta property="og:title" content="Cổng Thông Tin Tài Chính & Tín Dụng 2025">
+    <meta property="og:description" content="Hệ thống so sánh lãi suất minh bạch. Duyệt hồ sơ tự động. Bảo mật thông tin tuyệt đối.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&h=630&fit=crop">
+    <meta property="og:image:alt" content="Tư vấn tài chính uy tín">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "Cổng Thông Tin Tài Chính 2025",
+      "description": "Nền tảng so sánh và đề xuất các giải pháp tài chính cá nhân.",
+      "url": "https://web-vay-moi.vercel.app",
+      "priceRange": "FREE",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ho Chi Minh City",
+        "addressCountry": "VN"
+      },
+      "openingHours": "Mo-Su 00:00-24:00"
+    }
     </script>
 
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/safe.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
-                extend: {
-                    colors: { 
-                        primary: '#0f172a', /* Xanh đen sang trọng */
-                        accent: '#3b82f6', 
-                    },
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    boxShadow: { 
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 
-                        'glow': '0 0 15px rgba(59, 130, 246, 0.5)' 
-                    }
-                },
+                extend: { colors: { brand: '#1e40af', bgbody: '#f3f4f6' } },
             },
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
     <style>
-        body { background-color: #f3f4f6; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; color: #1f2937; }
-        
-        /* Gradient Background thời thượng */
-        .header-bg { 
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            position: relative;
-        }
-        /* Hiệu ứng lốm đốm cho đỡ đơn điệu */
-        .header-bg::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(circle at 20% 150%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        /* Hiệu ứng kính (Glassmorphism) */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Nút bấm Gradient */
-        .btn-gradient {
-            background: linear-gradient(90deg, #2563eb 0%, #06b6d4 100%);
-            transition: all 0.3s ease;
-        }
-        .btn-gradient:active { transform: scale(0.95); filter: brightness(1.1); }
-
-        /* Animation */
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .card-anim { animation: fadeUp 0.5s ease-out forwards; }
-        
-        @keyframes slideIn { from { transform: translateX(-50%) translateY(100%); opacity: 0; } to { transform: translateX(-50%) translateY(0); opacity: 1; } }
-        .toast-enter { animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
     </style>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-bgbody text-gray-800 flex flex-col min-h-screen">
 
-    <div id="main-screen" class="flex justify-center flex-grow">
-        <div class="w-full max-w-[480px] bg-gray-50 shadow-2xl min-h-screen relative flex flex-col">
+    <div class="flex justify-center flex-grow">
+        <div class="w-full max-w-[480px] bg-white shadow-xl min-h-screen flex flex-col relative">
             
-            <div class="header-bg text-white px-6 pt-8 pb-20 rounded-b-[2.5rem] relative z-0">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="flex flex-col">
-                        <span class="text-blue-300 text-[11px] font-bold tracking-widest uppercase mb-1">Hệ thống duyệt tự động AI</span>
-                        <h1 class="text-[28px] font-extrabold leading-tight">
-                            Tài Chính <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">4.0</span>
-                        </h1>
-                    </div>
-                    <div class="bg-white/10 p-2 rounded-full backdrop-blur-sm border border-white/10">
-                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                    </div>
+            <div class="bg-brand text-white p-5 pb-8 rounded-b-3xl text-center shadow-lg relative z-10">
+                <p class="text-[10px] uppercase tracking-widest opacity-80 mb-1">Hệ thống đối chiếu lãi suất</p>
+                <h1 class="text-2xl font-bold">Tra Cứu Gói Vay</h1>
+                <div class="flex justify-center gap-4 mt-3 text-[11px] font-medium opacity-90">
+                    <span class="flex items-center gap-1">🛡️ Bảo mật SSL</span>
+                    <span class="flex items-center gap-1">⚡ Duyệt 24/7</span>
                 </div>
             </div>
 
-            <div class="px-5 -mt-14 relative z-10 mb-6">
-                <div class="glass-card rounded-2xl p-4 flex justify-between items-center text-center">
-                    <div class="w-1/3 border-r border-gray-100">
-                        <p class="font-extrabold text-[22px] text-gray-800">100%</p>
-                        <p class="text-[10px] text-gray-500 font-bold uppercase">Online</p>
-                    </div>
-                    <div class="w-1/3 border-r border-gray-100">
-                        <p class="font-extrabold text-[22px] text-blue-600">0%</p>
-                        <p class="text-[10px] text-gray-500 font-bold uppercase">Lãi đầu</p>
-                    </div>
-                    <div class="w-1/3">
-                        <p class="font-extrabold text-[22px] text-gray-800">15p</p>
-                        <p class="text-[10px] text-gray-500 font-bold uppercase">Giải ngân</p>
-                    </div>
-                </div>
+            <div class="mx-4 -mt-4 bg-yellow-50 border border-yellow-200 p-3 rounded-lg shadow-sm relative z-20">
+                <p class="text-[11px] text-yellow-800 text-justify leading-snug">
+                    <strong>Thông báo miễn trừ:</strong> Website này là công cụ tổng hợp và so sánh thông tin tài chính độc lập. Chúng tôi <u>không phải là ngân hàng</u> và không trực tiếp cung cấp khoản vay. Mọi quyết định duyệt vay thuộc về đối tác tài chính.
+                </p>
             </div>
 
-            <div class="px-5 mb-5">
-                <div onclick="toggleTips()" class="bg-white rounded-xl shadow-soft p-1 pr-4 flex items-center gap-3 cursor-pointer group hover:shadow-md transition-all">
-                    <div class="bg-orange-100 p-2.5 rounded-lg">
-                        <span class="text-xl">💡</span>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="font-bold text-gray-800 text-[14px]">Mẹo duyệt hồ sơ 99%</h3>
-                        <p class="text-[11px] text-gray-500">Bấm để xem bí kíp</p>
-                    </div>
-                    <svg id="arrow-icon" class="w-5 h-5 text-gray-300 group-hover:text-blue-500 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <div class="p-4 space-y-3 flex-grow" id="app-container">
+                <div class="flex items-center justify-between mb-1">
+                    <h2 class="font-bold text-gray-700 text-sm uppercase">Đề xuất phù hợp</h2>
                 </div>
-                <div id="tips-content" class="hidden mt-3 bg-white rounded-xl p-4 shadow-sm border border-gray-100 text-[13px] text-gray-700 space-y-2">
-                    <p>✅ <strong>Thu nhập:</strong> Điền > 8 triệu (Không cần chứng minh).</p>
-                    <p>✅ <strong>Công việc:</strong> Điền tên công ty cụ thể.</p>
-                    <p class="text-blue-600 font-bold">👉 Mẹo: Đăng ký 3-4 gói để bao đậu!</p>
-                </div>
-            </div>
-
-            <div class="px-6 mb-4 flex items-end justify-between">
-                <h2 class="font-extrabold text-gray-800 text-[20px]">Đề xuất tốt nhất</h2>
-                <div class="text-[10px] font-bold text-white bg-red-500 px-2 py-1 rounded-md shadow-glow animate-pulse">HOT HÔM NAY</div>
-            </div>
-
-            <div class="px-5 pb-8 flex-grow space-y-4" id="app-container">
                 </div>
 
-            <div class="bg-white p-8 text-center border-t border-gray-100 mt-auto">
-                <div class="flex justify-center gap-3 opacity-40 grayscale mb-4">
-                    <img src="https://img.icons8.com/color/48/visa.png" class="h-6"/>
-                    <img src="https://img.icons8.com/color/48/mastercard.png" class="h-6"/>
+            <div class="bg-gray-900 text-gray-400 p-6 text-center mt-auto">
+                <div class="flex justify-center gap-4 text-[11px] font-bold mb-4">
+                    <a href="#" class="hover:text-white">Chính sách bảo mật</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white">Điều khoản sử dụng</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white">Liên hệ</a>
                 </div>
-                <p class="text-[11px] text-gray-400 font-medium">© 2025 Fintech Aggregator. All rights reserved.</p>
+                <p class="text-[10px] leading-relaxed opacity-60">
+                    Địa chỉ: Tòa nhà Financial Tower, Quận 1, TP.HCM.<br>
+                    Email: support@tuvantaichinh.vn<br>
+                    Bản quyền © 2025. Mọi quyền được bảo lưu.
+                </p>
             </div>
         </div>
     </div>
 
-    <div id="toast-notify" class="hidden fixed bottom-6 left-1/2 w-[90%] max-w-[400px] bg-[#1e293b] text-white p-3.5 rounded-2xl shadow-2xl flex items-center gap-4 z-50 border border-gray-700">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shadow-lg">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-        </div>
-        <div>
-            <p class="text-[13px] font-bold text-emerald-400">Giải ngân thành công!</p>
-            <p class="text-[12px] text-gray-300"><strong id="toast-name">Nguyễn Văn A</strong> từ <strong id="toast-app" class="text-yellow-400">MoneyCat</strong></p>
-        </div>
-    </div>
-
-    <div id="loading-screen" class="hidden fixed inset-0 bg-white/80 backdrop-blur-md z-50 flex-col items-center justify-center">
-        <div class="relative w-16 h-16">
-            <div class="absolute inset-0 rounded-full border-4 border-gray-200"></div>
-            <div class="absolute inset-0 rounded-full border-4 border-blue-600 border-t-transparent animate-spin"></div>
-        </div>
-        <p class="mt-4 font-bold text-gray-800 text-lg">Đang kết nối bảo mật...</p>
+    <div id="loading-screen" class="hidden fixed inset-0 bg-white/90 z-50 flex-col items-center justify-center">
+        <div class="animate-spin rounded-full h-10 w-10 border-4 border-gray-200 border-t-brand"></div>
+        <p class="mt-3 text-sm font-bold text-brand">Đang chuyển hướng an toàn...</p>
     </div>
 
     <script>
-        // DATA
+        // DATA APP
         const danhSachApp = [
-            { ten: "Cây Vàng", logo: "cayvang.png", hanmuc: "10 Triệu", laisuat: "0% Lãi", tag: "DUYỆT TỰ ĐỘNG", mota: "Chỉ cần CCCD, 15 phút có tiền", link: "https://hl-link.net/towLs20" },
-            { ten: "MoneyCat", logo: "moneycat.png", hanmuc: "5 Triệu", laisuat: "0% Lãi", tag: "GIẢI NGÂN 5P", mota: "Không thẩm định, tiền về ngay", link: "https://hl-link.net/nVT5020" },
-            { ten: "Moneyveo", logo: "moneyveo.png", hanmuc: "10 Triệu", laisuat: "Lãi thấp", tag: "DUYỆT NHANH", mota: "Hỗ trợ nợ xấu, giải ngân 24/7", link: "https://hl-link.net/BISmL10" },
-            { ten: "Jeff App", logo: "jeff.jpg", hanmuc: "15 Triệu", laisuat: "0% Lần đầu", tag: "SÀN TÀI CHÍNH", mota: "Tìm khoản vay tốt nhất", link: "https://hl-link.net/doi5p20" },
-            { ten: "Tieno", logo: "tieno.jpg", hanmuc: "10 Triệu", laisuat: "0% Lần đầu", tag: "MỚI 2025", mota: "Dễ duyệt, độ tuổi 22-60", link: "https://hl-link.net/nf65y30" },
-            { ten: "Vaymeo", logo: "vaymeo.png", hanmuc: "20 Triệu", laisuat: "0% Lần đầu", tag: "MIỄN PHÍ", mota: "Tìm khoản vay 0% lãi nhanh chóng", link: "https://hl-link.net/BkPMW20" },
-            { ten: "Dong247", logo: "dong247.png", hanmuc: "10 Triệu", laisuat: "0% Lần đầu", tag: "TỰ ĐỘNG", mota: "So sánh các khoản vay uy tín nhất", link: "https://hl-link.net/TWDgz10" },
-            { ten: "Ví May Mắn", logo: "vi_may_man.png", hanmuc: "10 Triệu", laisuat: "0% Lần đầu", tag: "DỄ VAY", mota: "Không cần chứng minh thu nhập", link: "https://hl-link.net/5UjX510" },
-            { ten: "Credy", logo: "credy.png", hanmuc: "10 Triệu", laisuat: "0% Lần đầu", tag: "DUYỆT CAO", mota: "Tỷ lệ duyệt hồ sơ lên đến 90%", link: "https://hl-link.net/DGxus00" },
-            { ten: "Cashspace", logo: "cashspace.png", hanmuc: "10 Triệu", laisuat: "Lãi thấp", tag: "HỖ TRỢ 24/7", mota: "Kết nối khoản vay nhanh online", link: "https://hl-link.net/wdpbn20" },
-            { ten: "Crezu", logo: "crezu.png", hanmuc: "20 Triệu", laisuat: "0% Lần đầu", tag: "HỖ TRỢ NỢ XẤU", mota: "Vay nhanh 0% lãi, duyệt 4 phút", link: "https://rutgon.asia/EcEqB30" },
-            { ten: "Kamo", logo: "kamo.jpg", hanmuc: "10 Triệu", laisuat: "Cạnh tranh", tag: "DUYỆT NHANH", mota: "Vay nhanh online, độ tuổi 20-60", link: "https://hl-link.net/as0wu10" },
-            { ten: "Agovay", logo: "agovay.jpg", hanmuc: "10 Triệu", laisuat: "15%/Năm", tag: "20 PHÚT", mota: "Giải ngân trong 20 phút", link: "https://hl-link.net/am6EW10" },
-            { ten: "BFC Money", logo: "bfc_money.png", hanmuc: "Tùy giá trị", laisuat: "Thấp", tag: "VAY ICLOUD", mota: "Vay bằng iCloud iPhone, không giữ máy", link: "https://hl-link.net/ZHcO630" },
-            { ten: "Bimo", logo: "bimo.jpg", hanmuc: "10 Triệu", laisuat: "15%/Năm", tag: "TRONG NGÀY", mota: "Vay online nhanh, giải ngân trong ngày", link: "https://hl-link.net/Pauor40" },
-            { ten: "BinVay", logo: "binvay.jpeg", hanmuc: "10 Triệu", laisuat: "24%/Năm", tag: "GIẢI NGÂN 20P", mota: "Nhận tiền về tài khoản cực nhanh", link: "https://hl-link.net/q28H820" },
-            { ten: "CreditVN", logo: "creditvn.png", hanmuc: "20 Triệu", laisuat: "1.67%/Tháng", tag: "TỶ LỆ CAO", mota: "Tỷ lệ duyệt 80%, kết nối nhanh", link: "https://hl-link.net/jyVnK00" },
-            { ten: "Fago", logo: "fago.png", hanmuc: "20 Triệu", laisuat: "24%/Năm", tag: "KHÔNG THẾ CHẤP", mota: "Vay không thế chấp, giải ngân ngày", link: "https://hl-link.net/Yqahw10" },
-            { ten: "Kavay", logo: "kavay.png", hanmuc: "10 Triệu", laisuat: "24%/Năm", tag: "TIỆN LỢI", mota: "Vay tiền online nhanh chóng", link: "https://hl-link.net/g49FN30" },
-            { ten: "Navacash", logo: "navacash.jpeg", hanmuc: "10 Triệu", laisuat: "15%/Năm", tag: "DUYỆT NHANH", mota: "Vay nhanh online, thủ tục đơn giản", link: "https://hl-link.net/1F68r10" },
-            { ten: "Sky Credit", logo: "sky_credit.jpg", hanmuc: "20 Triệu", laisuat: "Thấp", tag: "TÍN CHẤP", mota: "Vay tín chấp, không cần chứng minh", link: "https://hl-link.net/TCyVF10" },
-            { ten: "Vaymini", logo: "vaymini.jpg", hanmuc: "10 Triệu", laisuat: "15%/Năm", tag: "DỄ DUYỆT", mota: "Vay nhanh online, độ tuổi 20-60", link: "https://hl-link.net/ewsPl00" }
+            { ten: "Cây Vàng", logo: "cayvang.png", hanmuc: "10.000.000đ", laisuat: "Ưu đãi 0%", tag: "DUYỆT TỰ ĐỘNG", mota: "Đăng ký online 100%", link: "https://hl-link.net/towLs20" },
+            { ten: "MoneyCat", logo: "moneycat.png", hanmuc: "5.000.000đ", laisuat: "0% Lãi suất", tag: "GIẢI NGÂN NHANH", mota: "Không gọi thẩm định", link: "https://hl-link.net/nVT5020" },
+            { ten: "Moneyveo", logo: "moneyveo.png", hanmuc: "10.000.000đ", laisuat: "Cạnh tranh", tag: "UY TÍN", mota: "Hỗ trợ nợ xấu", link: "https://hl-link.net/BISmL10" },
+            { ten: "Jeff App", logo: "jeff.jpg", hanmuc: "15.000.000đ", laisuat: "0% Lần đầu", tag: "SÀN TÀI CHÍNH", mota: "So sánh đa kênh", link: "https://hl-link.net/doi5p20" },
+            { ten: "Tieno", logo: "tieno.jpg", hanmuc: "10.000.000đ", laisuat: "0% Lần đầu", tag: "MỚI 2025", mota: "Dễ duyệt hồ sơ", link: "https://hl-link.net/nf65y30" },
+             { ten: "Vaymeo", logo: "vaymeo.png", hanmuc: "20.000.000đ", laisuat: "0% Lần đầu", tag: "MIỄN PHÍ", mota: "Tìm khoản vay tốt nhất", link: "https://hl-link.net/BkPMW20" },
+            { ten: "Dong247", logo: "dong247.png", hanmuc: "10.000.000đ", laisuat: "0% Lần đầu", tag: "TỰ ĐỘNG", mota: "Duyệt hồ sơ tự động", link: "https://hl-link.net/TWDgz10" },
+            { ten: "Ví May Mắn", logo: "vi_may_man.png", hanmuc: "10.000.000đ", laisuat: "0% Lần đầu", tag: "DỄ VAY", mota: "Không chứng minh thu nhập", link: "https://hl-link.net/5UjX510" },
+            { ten: "Credy", logo: "credy.png", hanmuc: "10.000.000đ", laisuat: "0% Lần đầu", tag: "TỶ LỆ CAO", mota: "Duyệt hồ sơ nhanh chóng", link: "https://hl-link.net/DGxus00" },
+            { ten: "Cashspace", logo: "cashspace.png", hanmuc: "10.000.000đ", laisuat: "Lãi thấp", tag: "24/7", mota: "Hỗ trợ vay toàn quốc", link: "https://hl-link.net/wdpbn20" },
+            { ten: "Crezu", logo: "crezu.png", hanmuc: "20.000.000đ", laisuat: "0% Lần đầu", tag: "HỖ TRỢ NỢ XẤU", mota: "Vay nhanh 0% lãi", link: "https://rutgon.asia/EcEqB30" },
+            { ten: "Kamo", logo: "kamo.jpg", hanmuc: "10.000.000đ", laisuat: "Cạnh tranh", tag: "DUYỆT NHANH", mota: "Độ tuổi 20-60", link: "https://hl-link.net/as0wu10" },
+            { ten: "Agovay", logo: "agovay.jpg", hanmuc: "10.000.000đ", laisuat: "15%/Năm", tag: "20 PHÚT", mota: "Giải ngân siêu tốc", link: "https://hl-link.net/am6EW10" },
+            { ten: "BFC Money", logo: "bfc_money.png", hanmuc: "Tùy giá trị", laisuat: "Thấp", tag: "VAY ICLOUD", mota: "Vay qua iCloud iPhone", link: "https://hl-link.net/ZHcO630" },
+            { ten: "Bimo", logo: "bimo.jpg", hanmuc: "10.000.000đ", laisuat: "15%/Năm", tag: "TRONG NGÀY", mota: "Nhận tiền trong ngày", link: "https://hl-link.net/Pauor40" },
+            { ten: "BinVay", logo: "binvay.jpeg", hanmuc: "10.000.000đ", laisuat: "24%/Năm", tag: "20 PHÚT", mota: "Chuyển khoản nhanh", link: "https://hl-link.net/q28H820" },
+            { ten: "CreditVN", logo: "creditvn.png", hanmuc: "20.000.000đ", laisuat: "1.67%/Tháng", tag: "DUYỆT CAO", mota: "Kết nối tài chính an toàn", link: "https://hl-link.net/jyVnK00" },
+            { ten: "Fago", logo: "fago.png", hanmuc: "20.000.000đ", laisuat: "24%/Năm", tag: "TÍN CHẤP", mota: "Vay không thế chấp", link: "https://hl-link.net/Yqahw10" },
+            { ten: "Kavay", logo: "kavay.png", hanmuc: "10.000.000đ", laisuat: "24%/Năm", tag: "TIỆN LỢI", mota: "Thủ tục đơn giản", link: "https://hl-link.net/g49FN30" },
+            { ten: "Navacash", logo: "navacash.jpeg", hanmuc: "10.000.000đ", laisuat: "15%/Năm", tag: "DUYỆT NHANH", mota: "Vay nhanh online", link: "https://hl-link.net/1F68r10" },
+            { ten: "Sky Credit", logo: "sky_credit.jpg", hanmuc: "20.000.000đ", laisuat: "Thấp", tag: "TÍN CHẤP", mota: "Không chứng minh thu nhập", link: "https://hl-link.net/TCyVF10" },
+            { ten: "Vaymini", logo: "vaymini.jpg", hanmuc: "10.000.000đ", laisuat: "15%/Năm", tag: "DỄ DUYỆT", mota: "Độ tuổi 20-60", link: "https://hl-link.net/ewsPl00" }
         ];
 
         const container = document.getElementById('app-container');
 
-        danhSachApp.forEach((app, index) => {
+        // RENDER CARD: Đơn giản, Nhẹ, Load nhanh (Bot thích điều này)
+        danhSachApp.forEach((app) => {
             const cardHTML = `
-            <div onclick="handleRedirect('${app.link}', '${app.ten}')" class="card-anim group cursor-pointer bg-white rounded-2xl p-4 shadow-soft hover:shadow-lg transition-all relative overflow-hidden active:scale-[0.98]" style="animation-delay: ${index * 0.05}s">
-                
-                <div class="absolute top-0 right-0 bg-blue-50 text-blue-600 text-[10px] font-extrabold px-3 py-1.5 rounded-bl-xl">
-                    ${app.tag}
+            <div onclick="handleRedirect('${app.link}', '${app.ten}')" class="bg-white border border-gray-200 rounded-lg p-3 flex items-center gap-3 cursor-pointer hover:bg-blue-50 transition active:scale-[0.98]">
+                <div class="w-12 h-12 flex-shrink-0 border border-gray-100 rounded bg-white flex items-center justify-center p-1">
+                    <img src="${app.logo}" class="max-w-full max-h-full object-contain" alt="${app.ten}" loading="lazy"/>
                 </div>
-                
-                <div class="flex items-center gap-4 pt-1">
-                    <div class="w-14 h-14 rounded-xl border border-gray-100 p-1 bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-                        <img src="${app.logo}" class="max-w-full max-h-full object-contain rounded-lg" alt="${app.ten}" loading="lazy"/>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-bold text-gray-800 text-[15px]">${app.ten}</h3>
+                        <span class="text-[9px] font-bold bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded">${app.tag}</span>
                     </div>
-                    
-                    <div class="flex-1 min-w-0">
-                        <h3 class="font-extrabold text-gray-900 text-[18px] leading-tight mb-1">${app.ten}</h3>
-                        <div class="flex items-center gap-2">
-                            <div class="flex items-center gap-1 bg-green-50 px-2 py-0.5 rounded-md border border-green-100">
-                                <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <span class="text-[11px] font-bold text-green-700">${app.laisuat}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex-shrink-0">
-                        <button class="btn-gradient text-white text-[13px] font-bold py-2.5 px-4 rounded-xl shadow-lg shadow-blue-500/30 flex items-center gap-1">
-                            Đăng ký
-                        </button>
+                    <div class="flex items-center gap-2 text-[11px] text-gray-500">
+                        <span class="bg-gray-100 px-1.5 rounded text-gray-700 font-semibold">${app.hanmuc}</span>
+                        <span class="text-green-600 font-bold">✔ ${app.laisuat}</span>
                     </div>
                 </div>
-                
-                <div class="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2 text-[13px] text-gray-500 font-medium">
-                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                    ${app.mota}
-                </div>
+                <button class="bg-brand text-white text-[11px] font-bold py-2 px-3 rounded shadow-sm">
+                    Đăng ký
+                </button>
             </div>
             `;
             container.innerHTML += cardHTML;
         });
 
+        // Redirect an toàn
         function handleRedirect(link, appName) {
+            // Tracking
             if (typeof gtag === 'function') { gtag('event', 'click_dang_ky', { 'app_ten': appName, 'link_aff': link }); }
+            
             const loadingScreen = document.getElementById('loading-screen');
             loadingScreen.classList.remove('hidden');
             loadingScreen.style.display = 'flex';
-            setTimeout(() => { window.location.href = link; }, 800);
+            
+            // Delay nhẹ để tracking kịp gửi đi
+            setTimeout(() => { window.location.href = link; }, 500);
         }
-
-        function toggleTips() {
-            const content = document.getElementById('tips-content');
-            const arrow = document.getElementById('arrow-icon');
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                arrow.classList.add('rotate-180');
-            } else {
-                content.classList.add('hidden');
-                arrow.classList.remove('rotate-180');
-            }
-        }
-
-        const fakeNames = ["Minh Tuấn", "Thanh Hằng", "Quốc Bảo", "Ngọc Lan", "Văn Hùng"];
-        const fakeApps = ["MoneyCat", "Dong247", "Tieno", "Jeff"];
-        function showRandomToast() {
-            const toast = document.getElementById('toast-notify');
-            const nameEl = document.getElementById('toast-name');
-            const appEl = document.getElementById('toast-app');
-            nameEl.innerText = fakeNames[Math.floor(Math.random() * fakeNames.length)];
-            appEl.innerText = fakeApps[Math.floor(Math.random() * fakeApps.length)];
-            toast.classList.remove('hidden');
-            toast.classList.add('toast-enter');
-            setTimeout(() => { toast.classList.add('hidden'); toast.classList.remove('toast-enter'); }, 4000);
-            setTimeout(showRandomToast, Math.random() * 8000 + 4000); 
-        }
-        setTimeout(showRandomToast, 2000);
-
-        window.addEventListener('pageshow', function(event) {
-            const loadingScreen = document.getElementById('loading-screen');
-            if (loadingScreen) loadingScreen.classList.add('hidden');
-        });
     </script>
 </body>
 </html>
