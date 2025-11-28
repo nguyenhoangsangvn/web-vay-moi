@@ -286,7 +286,7 @@
                 <div class="bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden relative">
                     <div class="bg-blue-50 px-4 py-2 border-b border-blue-100 flex items-center gap-2">
                         <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        <span class="text-[11px] font-bold text-blue-700 uppercase tracking-wide">${app.tag}</span>
+                        <span class="text-xs font-bold text-blue-700 uppercase tracking-wide">${app.tag}</span>
                     </div>
                     <div class="p-5">
                         <div class="flex items-start gap-4 mb-5">
@@ -294,25 +294,25 @@
                                 <img src="${app.logo}" class="w-full h-full object-contain rounded-lg" alt="Vay tiền online ${app.ten}" loading="lazy"/>
                             </div>
                             <div class="flex-1 min-w-0 pt-0.5">
-                                <h3 class="font-bold text-slate-900 text-lg leading-tight mb-1">${app.ten}</h3>
-                                <p class="text-xs text-slate-500 line-clamp-1 font-medium">${app.mota}</p>
+                                <h3 class="font-bold text-slate-900 text-xl leading-tight mb-1">${app.ten}</h3>
+                                <p class="text-sm text-slate-500 line-clamp-1 font-medium">${app.mota}</p>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-0 mb-5 bg-slate-50 rounded-xl border border-slate-100 overflow-hidden">
                             <div class="text-center border-r border-slate-200 p-3">
-                                <p class="text-[10px] text-slate-400 uppercase font-bold mb-1 tracking-wider">Hạn mức</p>
-                                <p class="font-extrabold text-slate-900 text-[17px]">${app.hanmuc}</p>
+                                <p class="text-xs text-slate-400 uppercase font-bold mb-1 tracking-wider">Hạn mức</p>
+                                <p class="font-extrabold text-slate-900 text-xl">${app.hanmuc}</p>
                             </div>
                             <div class="text-center p-3">
-                                <p class="text-[10px] text-slate-400 uppercase font-bold mb-1 tracking-wider">Lãi suất</p>
-                                <p class="font-extrabold text-action text-[17px]">${app.laisuat}</p>
+                                <p class="text-xs text-slate-400 uppercase font-bold mb-1 tracking-wider">Lãi suất</p>
+                                <p class="font-extrabold text-action text-xl">${app.laisuat}</p>
                             </div>
                         </div>
-                        <button class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white font-bold py-3.5 rounded-xl shadow-btn transition-all active:scale-95 flex items-center justify-center gap-2 text-[17px] uppercase tracking-wide">
+                        <button class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white font-bold py-3.5 rounded-xl shadow-btn transition-all active:scale-95 flex items-center justify-center gap-2 text-lg uppercase tracking-wide">
                             <span>ĐĂNG KÝ NGAY</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                         </button>
-                        <div class="mt-3 text-center flex justify-center items-center gap-1 text-[11px] text-slate-400 font-medium">
+                        <div class="mt-3 text-center flex justify-center items-center gap-1 text-xs text-slate-400 font-medium">
                             <svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>
                             <span>Đã có <strong id="${counterId}" class="text-slate-600 transition-all duration-300">${fakeView}</strong> hồ sơ được duyệt hôm nay</span>
                         </div>
