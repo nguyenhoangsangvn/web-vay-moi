@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Cổng Thông Tin Giải Pháp Tài Chính 2025</title>
+    <title>Cổng Thông Tin Giải Pháp Tài Chính 2025 (VER 11.0)</title>
     <meta name="description" content="Nền tảng công nghệ so sánh và đề xuất các gói vay tín chấp uy tín.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0052cc">
@@ -52,21 +52,55 @@
         body { background-color: #f8fafc; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; font-size: 17px; }
         ::-webkit-scrollbar { width: 0px; background: transparent; }
         .hidden { display: none !important; }
-        /* Chặn bôi đen văn bản để hạn chế copy nội dung */
         .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+        
+        /* CSS cho màn hình chặn TikTok */
+        #open-browser-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 9999; color: white;
+            flex-direction: column; align-items: center; justify-content: center; text-align: center;
+            padding: 20px;
+        }
+        .arrow-guide {
+            position: absolute; top: 10px; right: 20px; font-size: 40px; animation: bounce 1s infinite;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 text-[17px] no-select">
 
+    <div id="open-browser-overlay">
+        <div class="arrow-guide">↗</div>
+        <img src="https://img.icons8.com/color/96/chrome.png" alt="Chrome" style="margin-bottom: 20px;">
+        <h2 class="text-xl font-bold mb-4">VUI LÒNG MỞ BẰNG TRÌNH DUYỆT</h2>
+        <p class="mb-6 text-gray-300">Để đảm bảo bảo mật và không bị lỗi link, vui lòng:</p>
+        <ol class="text-left bg-white/10 p-5 rounded-xl space-y-3 text-sm border border-white/20">
+            <li>1. Bấm vào dấu <strong>3 chấm (...)</strong> hoặc nút <strong>Chia sẻ</strong> ở góc trên cùng.</li>
+            <li>2. Chọn <strong>"Mở bằng trình duyệt"</strong> (Open in Browser).</li>
+        </ol>
+        <button onclick="location.reload()" class="mt-8 bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full text-sm font-bold transition-all">Đã mở xong? Tải lại trang</button>
+    </div>
+
+    <script>
+        function isInApp() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            return (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1 || ua.indexOf("Instagram") > -1 || ua.indexOf("TikTok") > -1 || ua.indexOf("Zalo") > -1); 
+        }
+        if (isInApp()) {
+            document.getElementById('open-browser-overlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    </script>
+
     <script>
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
-            if(e.keyCode == 123) { return false; } // F12
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } // Ctrl+Shift+I
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } // Ctrl+Shift+C
-            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } // Ctrl+Shift+J
-            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } // Ctrl+U
-            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } // Ctrl+S
+            if(e.keyCode == 123) { return false; } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; } 
+            if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; } 
         }
     </script>
 
@@ -103,7 +137,7 @@
                     <ul class="relative z-10 space-y-3.5 text-[13px] text-slate-700 font-medium leading-relaxed">
                         <li class="flex gap-3 items-start">
                             <span class="flex-shrink-0 w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 shadow-sm">✓</span>
-                            <span><strong>Thu nhập:</strong> Hệ thống ưu tiên duyệt hồ sơ ghi nhận mức thu nhập <strong>> 7 triệu/tháng</strong>.</span>
+                            <span><strong>Thu nhập:</strong> Hệ thống ưu tiên hồ sơ ghi nhận mức thu nhập <strong>> 7 triệu/tháng</strong>.</span>
                         </li>
                         <li class="flex gap-3 items-start">
                             <span class="flex-shrink-0 w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 shadow-sm">✓</span>
@@ -111,11 +145,11 @@
                         </li>
                         <li class="flex gap-3 items-start">
                             <span class="flex-shrink-0 w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 shadow-sm">✓</span>
-                            <span><strong>Sim chính chủ:</strong> Sử dụng sim hoạt động trên 6 tháng, có phát sinh cước gọi thường xuyên.</span>
+                            <span><strong>Sim chính chủ:</strong> Dùng sim hoạt động > 6 tháng, có phát sinh cước gọi.</span>
                         </li>
                         <li class="flex gap-3 items-start">
                             <span class="flex-shrink-0 w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 shadow-sm">✓</span>
-                            <span><strong>Đăng ký bù:</strong> Nên đăng ký <strong>3 - 4 gói cùng lúc</strong>. Nếu gói này trượt thì còn gói khác duyệt ngay.</span>
+                            <span><strong>Đăng ký bù:</strong> Nên đăng ký <strong>3 - 4 gói cùng lúc</strong> để tăng xác suất duyệt thành công.</span>
                         </li>
                     </ul>
                 </div>
@@ -152,7 +186,10 @@
                     <span>•</span>
                     <a href="policy.html" target="_blank" class="hover:text-blue-600 transition">Điều khoản</a>
                 </div>
-                <p class="text-xs font-semibold text-slate-300">© 2025 Financial Service Aggregator</p>
+                <p class="text-xs font-semibold text-slate-300">
+                    © 2025 Financial Service Aggregator
+                    <span class="block mt-1 text-[9px] opacity-60 text-slate-400 tracking-widest uppercase">• VER 11.0 •</span>
+                </p>
             </div>
         </div>
     </div>
@@ -181,9 +218,9 @@
     </div>
 
     <script>
+        console.log("%c WEBSITE ĐANG CHẠY BẢN: INDEX VER 11 ", "background: #0052cc; color: #fff; font-size: 14px; font-weight: bold; padding: 5px;");
+
         const danhSachApp = [
-            // ĐÃ MÃ HÓA LINK
-            { ten: "Cây Vàng", logo: "cayvang.png", hanmuc: "500k - 10Tr", laisuat: "0% Lần đầu", tag: "GIẢI NGÂN 15P", mota: "Duyệt vay siêu tốc, nhận tiền 15 phút", link: "aHR0cHM6Ly9obC1saW5rLm5ldC90b3dMczIw", isEncoded: true },
             { ten: "MoneyCat", logo: "moneycat.png", hanmuc: "500k - 3Tr", laisuat: "2.1%/Ngày", tag: "GIẢI NGÂN 24H", mota: "Vay nhanh chóng, tiền về tài khoản trong 24h", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9uVlQ1MDIw", isEncoded: true },
             { ten: "Moneyveo", logo: "moneyveo.png", hanmuc: "500k - 10Tr", laisuat: "2.5%/Ngày", tag: "DUYỆT VAY NHANH", mota: "Hỗ trợ tư vấn tài chính chuyên nghiệp", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9CSVNtTDEw", isEncoded: true },
             { ten: "Jeff App", logo: "jeff.jpg", hanmuc: "500k - 15Tr", laisuat: "0% Lần đầu", tag: "DUYỆT NHIỀU NGUỒN", mota: "Sàn kết nối tài chính, tìm khoản vay tốt nhất", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9kb2k1cDIw", isEncoded: true },
@@ -202,10 +239,9 @@
             { ten: "CreditVN", logo: "creditvn.png", hanmuc: "500k - 20Tr", laisuat: "1.67%/Tháng", tag: "TỶ LỆ DUYỆT CAO", mota: "Kết nối khoản vay nhanh, tỷ lệ duyệt 80%", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9qeVZuSzAw", isEncoded: true },
             { ten: "Fago", logo: "fago.png", hanmuc: "1Tr - 20Tr", laisuat: "24%/Năm", tag: "DUYỆT NHANH", mota: "Vay không thế chấp, giải ngân trong ngày", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9ZcWFhdzEw", isEncoded: true },
             { ten: "Kavay", logo: "kavay.png", hanmuc: "500k - 10Tr", laisuat: "24%/Năm", tag: "DUYỆT NHANH", mota: "Vay tiền online nhanh, giải ngân trong ngày", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9nNDlGTjMw", isEncoded: true },
-            { ten: "Navacash", logo: "navacash.jpeg", hanmuc: "500k - 10Tr", laisuat: "15%/Năm", tag: "DUYỆT NHANH", mota: "Vay nhanh online, độ tuổi 20-60", link: "aHR0cHM6Ly9obC1saW5rLm5ldC8xRjY4cjEw", isEncoded: true },
+            { ten: "Navacash", logo: "navacash.jpeg", hanmuc: "500k - 10Tr", laisuat: "15%/Năm", tag: "DUYỆT NHANH", mota: "Vay nhanh online, độ tuổi 20-60", link: "aHR0cHM6Ly9obC1laW5rLm5ldC8xRjY4cjEw", isEncoded: true },
             { ten: "Sky Credit", logo: "sky_credit.jpg", hanmuc: "5Tr - 20Tr", laisuat: "Lãi suất thấp", tag: "DUYỆT NHANH", mota: "Vay tín chấp, không cần chứng minh thu nhập", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9UQ3lWRjEw", isEncoded: true },
             { ten: "Vaymini", logo: "vaymini.jpg", hanmuc: "500k - 10Tr", laisuat: "15%/Năm", tag: "DUYỆT NHANH", mota: "Vay nhanh online, độ tuổi 20-60", link: "aHR0cHM6Ly9obC1saW5rLm5ldC9ld3NQbDAw", isEncoded: true },
-            
         ];
 
         const container = document.getElementById('app-container');
@@ -220,9 +256,8 @@
         function getSafeLink(link, isEncoded) {
             if (isEncoded) {
                 try {
-                    return atob(link); // Giải mã Base64 ra link thật
+                    return atob(link); // Giải mã Base64
                 } catch (e) {
-                    console.error("Lỗi giải mã link:", e);
                     return link;
                 }
             }
@@ -230,7 +265,6 @@
         }
 
         function handleRedirect(link, appName, isEncoded) {
-            // Giải mã link trước khi dùng
             const finalLink = getSafeLink(link, isEncoded);
 
             if (typeof gtag === 'function') {
@@ -244,7 +278,6 @@
             loadingScreen.classList.remove('hidden');
             loadingScreen.style.display = 'flex';
             
-            // Thêm rel="nofollow" để Bot Google không phạt
             manualLink.setAttribute('rel', 'nofollow noreferrer');
             manualLink.href = finalLink;
 
@@ -297,7 +330,6 @@
         danhSachApp.forEach((app, index) => {
             let fakeView = generateStableNumber(app.ten);
             let counterId = `counter-${index}`;
-            // Kiểm tra xem dòng này có mã hóa không, nếu không khai báo thì mặc định là false
             let isEncoded = app.isEncoded ? true : false;
             
             const cardHTML = `
