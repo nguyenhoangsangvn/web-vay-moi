@@ -3,95 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chính Sách & Điều Khoản Sử Dụng</title>
-    <meta name="robots" content="noindex"> <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/contract.png">
+    <title>Điều Khoản & Chính Sách Bảo Mật</title>
+    <meta name="robots" content="noindex">
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/contract.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Roboto', 'sans-serif'] },
-                    colors: { primary: '#0068FF' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: '#0068FF', text: '#1F2937' },
                 },
             },
         }
     </script>
     <style>
-        body { background-color: #F9FAFB; color: #374151; -webkit-font-smoothing: antialiased; }
-        h2 { font-weight: 700; color: #111827; margin-top: 24px; margin-bottom: 12px; font-size: 18px; }
-        p, li { font-size: 14px; line-height: 1.6; color: #4B5563; margin-bottom: 10px; text-align: justify; }
-        ul { list-style-type: disc; padding-left: 20px; margin-bottom: 15px; }
-        .container-legal { max-width: 800px; margin: 0 auto; background: white; padding: 30px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        @media (max-width: 640px) { .container-legal { padding: 20px; } }
+        body { background-color: #F3F4F6; color: #374151; -webkit-font-smoothing: antialiased; }
+        
+        /* Typography chuẩn văn bản luật */
+        h1 { font-size: 24px; font-weight: 800; color: #111827; letter-spacing: -0.5px; margin-bottom: 8px; }
+        h2 { font-size: 16px; font-weight: 700; color: #1F2937; margin-top: 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        h2::before { content: ''; display: block; width: 4px; height: 16px; background: #0068FF; border-radius: 2px; }
+        
+        p { font-size: 14px; line-height: 1.6; color: #4B5563; margin-bottom: 12px; text-align: justify; }
+        
+        ul { margin-bottom: 16px; }
+        li { font-size: 14px; line-height: 1.6; color: #4B5563; margin-bottom: 6px; padding-left: 16px; position: relative; }
+        li::before { content: '•'; color: #9CA3AF; position: absolute; left: 0; font-weight: bold; }
+
+        .legal-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #E5E7EB;
+        }
     </style>
 </head>
-<body class="py-8 px-4">
+<body class="min-h-screen flex flex-col">
 
-    <div class="max-w-[800px] mx-auto mb-6 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-2 text-primary font-bold text-sm hover:underline">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            Quay lại trang chủ
-        </a>
-        <span class="text-xs text-gray-400">Cập nhật lần cuối: Tháng 11/2025</span>
+    <div class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="https://img.icons8.com/fluency/48/verified-account.png" class="w-6 h-6"/>
+                <span class="font-bold text-gray-800 text-sm uppercase">Trung Tâm Pháp Lý</span>
+            </div>
+            <a href="index.html" class="text-[13px] font-semibold text-primary bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Quay lại
+            </a>
+        </div>
     </div>
 
-    <div class="container-legal rounded-lg">
-        <h1 class="text-2xl font-black text-center mb-8 text-gray-900 uppercase">Chính Sách & Điều Khoản</h1>
+    <div class="flex-grow py-8 px-4">
+        <div class="max-w-3xl mx-auto">
+            
+            <div class="text-center mb-8">
+                <h1>CHÍNH SÁCH VÀ ĐIỀU KHOẢN</h1>
+                <p class="text-center text-xs text-gray-400">Hiệu lực từ ngày: 01/01/2025 • Cập nhật lần cuối: Hôm nay</p>
+            </div>
 
-        <div class="border-b pb-6 mb-6">
-            <h2>1. Giới thiệu chung</h2>
-            <p>Chào mừng bạn đến với Cổng Thông Tin Giải Pháp Tài Chính ("Website"). Website đóng vai trò là nền tảng trung gian kết nối người có nhu cầu vay vốn với các đối tác tài chính uy tín trên thị trường. Chúng tôi <strong>không phải là ngân hàng, tổ chức tín dụng</strong> và không trực tiếp cung cấp khoản vay.</p>
+            <div class="legal-card p-6 md:p-10">
+                
+                <div class="mb-2">
+                    <h2>1. Tuyên bố miễn trừ trách nhiệm</h2>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-4">
+                        <p class="mb-0 text-blue-900 font-medium text-[13px]">
+                            Website này hoạt động với tư cách là nền tảng công nghệ tổng hợp và so sánh thông tin tài chính độc lập. Chúng tôi khẳng định:
+                        </p>
+                        <ul class="mt-2 mb-0">
+                            <li class="text-blue-800">Chúng tôi <strong>KHÔNG phải là ngân hàng</strong>, tổ chức tín dụng hay công ty cho vay.</li>
+                            <li class="text-blue-800">Chúng tôi <strong>KHÔNG trực tiếp thu tiền</strong>, giải ngân hay thẩm định hồ sơ của khách hàng.</li>
+                        </ul>
+                    </div>
+                    <p>Mọi quyết định về việc phê duyệt khoản vay, lãi suất và hạn mức tín dụng hoàn toàn thuộc thẩm quyền của các Đối tác tài chính (bên thứ ba) mà người dùng lựa chọn kết nối.</p>
+                </div>
+
+                <hr class="border-gray-100 my-6">
+
+                <div>
+                    <h2>2. Công bố thông tin Lãi suất (APR)</h2>
+                    <p>Để đảm bảo tính minh bạch và tuân thủ chính sách quảng cáo, chúng tôi cung cấp thông tin tham khảo về chi phí vay như sau:</p>
+                    <ul class="bg-gray-50 p-4 rounded-lg border border-gray-100">
+                        <li><strong>Lãi suất phần trăm hàng năm (APR):</strong> Thấp nhất 0% (cho khoản vay đầu) và tối đa không quá 20%/năm.</li>
+                        <li><strong>Kỳ hạn thanh toán:</strong> Tối thiểu 91 ngày và tối đa 36 tháng.</li>
+                        <li><strong>Phí dịch vụ:</strong> Có thể áp dụng tùy theo quy định của từng đơn vị cho vay (sẽ được thông báo rõ trong hợp đồng).</li>
+                    </ul>
+                    <p class="text-sm italic text-gray-500 mt-2">
+                        <strong>Ví dụ minh họa:</strong> Khách hàng vay 2.000.000 VNĐ trong thời hạn 90 ngày với lãi suất 12%/năm.<br>
+                        - Số tiền lãi phải trả: 2.000.000 * 12% / 365 * 90 = 59.178 VNĐ.<br>
+                        - Tổng số tiền thanh toán: 2.059.178 VNĐ.
+                    </p>
+                </div>
+
+                <hr class="border-gray-100 my-6">
+
+                <div>
+                    <h2>3. Chính sách bảo mật dữ liệu</h2>
+                    <p>Chúng tôi cam kết bảo vệ quyền riêng tư của người dùng theo tiêu chuẩn SSL/TLS:</p>
+                    <ul>
+                        <li><strong>Dữ liệu thu thập:</strong> Chỉ thu thập dữ liệu ẩn danh (Cookies) để tối ưu hóa trải nghiệm người dùng.</li>
+                        <li><strong>Không lưu trữ thông tin nhạy cảm:</strong> Khi bạn nhập thông tin đăng ký, dữ liệu được mã hóa và gửi trực tiếp đến hệ thống của Đối tác tài chính. Website này KHÔNG lưu trữ Số điện thoại, CMND/CCCD của bạn.</li>
+                        <li><strong>Không chia sẻ trái phép:</strong> Chúng tôi cam kết không bán dữ liệu người dùng cho bên thứ ba.</li>
+                    </ul>
+                </div>
+
+                <hr class="border-gray-100 my-6">
+
+                <div>
+                    <h2>4. Điều kiện sử dụng dịch vụ</h2>
+                    <p>Người dùng khi truy cập và sử dụng dịch vụ tại Website phải đáp ứng các điều kiện sau:</p>
+                    <ul>
+                        <li>Là công dân Việt Nam, độ tuổi từ 18 đến 60 tuổi.</li>
+                        <li>Có năng lực hành vi dân sự đầy đủ theo quy định của pháp luật.</li>
+                        <li>Sử dụng thông tin và dịch vụ cho mục đích cá nhân hợp pháp, không sử dụng cho mục đích lừa đảo, rửa tiền.</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
-
-        <div class="border-b pb-6 mb-6">
-            <h2>2. Miễn trừ trách nhiệm</h2>
-            <p>Chúng tôi nỗ lực cung cấp thông tin chính xác và cập nhật nhất về các gói vay. Tuy nhiên:</p>
-            <ul>
-                <li>Mọi quyết định duyệt vay, hạn mức và lãi suất cuối cùng thuộc về thẩm quyền của Đơn vị cung cấp dịch vụ tài chính.</li>
-                <li>Chúng tôi không chịu trách nhiệm về bất kỳ thỏa thuận nào giữa Khách hàng và Đơn vị cho vay.</li>
-                <li>Khách hàng có trách nhiệm đọc kỹ hợp đồng trước khi ký kết.</li>
-            </ul>
-        </div>
-
-        <div class="border-b pb-6 mb-6">
-            <h2>3. Minh bạch lãi suất và Phí (APR)</h2>
-            <p>Nhằm đảm bảo tuân thủ chính sách quảng cáo tài chính, chúng tôi công bố thông tin tham khảo như sau:</p>
-            <ul>
-                <li><strong>Lãi suất hàng năm (APR):</strong> Từ 0% (ưu đãi lần đầu) đến tối đa 20%/năm.</li>
-                <li><strong>Kỳ hạn vay:</strong> Tối thiểu 91 ngày và tối đa 36 tháng.</li>
-                <li><strong>Ví dụ minh họa:</strong> Nếu bạn vay 2.000.000 VNĐ với kỳ hạn 90 ngày và lãi suất 12%/năm:
-                    <br>- Tiền lãi: 2.000.000 * 12% / 365 * 90 = 59.178 VNĐ.
-                    <br>- Tổng tiền thanh toán: 2.059.178 VNĐ.
-                </li>
-            </ul>
-        </div>
-
-        <div class="border-b pb-6 mb-6">
-            <h2>4. Chính sách bảo mật thông tin</h2>
-            <p>Chúng tôi cam kết bảo vệ quyền riêng tư của người dùng:</p>
-            <ul>
-                <li><strong>Thu thập dữ liệu:</strong> Chúng tôi chỉ thu thập các thông tin cơ bản (Cookies, IP) nhằm cải thiện trải nghiệm người dùng thông qua Google Analytics.</li>
-                <li><strong>Thông tin đăng ký:</strong> Khi bạn nhấp vào nút "Đăng ký", bạn sẽ được chuyển hướng trực tiếp đến trang web bảo mật của Đối tác tài chính. Chúng tôi <strong>KHÔNG lưu trữ</strong> thông tin cá nhân nhạy cảm (CMND/CCCD, Số điện thoại) của bạn trên hệ thống này.</li>
-                <li><strong>Chia sẻ dữ liệu:</strong> Chúng tôi không bán hoặc chia sẻ dữ liệu người dùng cho bên thứ ba trái phép.</li>
-            </ul>
-        </div>
-
-        <div>
-            <h2>5. Điều kiện sử dụng</h2>
-            <p>Người dùng truy cập và sử dụng dịch vụ phải đảm bảo:</p>
-            <ul>
-                <li>Là công dân Việt Nam từ đủ 18 tuổi trở lên.</li>
-                <li>Có năng lực hành vi dân sự đầy đủ.</li>
-                <li>Sử dụng thông tin cho mục đích cá nhân hợp pháp.</li>
-            </ul>
-        </div>
-
     </div>
 
-    <div class="text-center mt-8 text-xs text-gray-400">
-        &copy; 2025 Financial Service Aggregator. All rights reserved.
+    <div class="bg-white border-t border-gray-200 py-6 text-center">
+        <div class="flex justify-center items-center gap-2 mb-2 opacity-60">
+            <img src="https://img.icons8.com/color/48/mcafee.png" class="h-5 grayscale"/>
+            <img src="https://img.icons8.com/color/48/verified-account.png" class="h-5 grayscale"/>
+            <span class="text-[10px] font-bold text-gray-400 border border-gray-300 px-1 rounded">SSL SECURED</span>
+        </div>
+        <p class="text-xs text-gray-400">Copyright © 2025 Financial Service Aggregator. All rights reserved.</p>
     </div>
 
 </body>
