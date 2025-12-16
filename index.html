@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cổng Thông Tin Giải Pháp Tài Chính 2025</title>
+    <title>FinTech Hub 2025 - Tổng Hợp Ưu Đãi</title>
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
+    
+    <script async='async' src='https://www.googletagmanager.com/gtag/js?id=G-F5ZTEXFZYX'></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F5ZTEXFZYX');
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,10 +32,10 @@
     <style>
         body { background-color: #f0f4f8; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         .no-select { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .desc-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     </style>
 </head>
 <body class="text-slate-900 text-[16px] no-select min-h-screen flex flex-col">
@@ -34,159 +43,166 @@
     <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <img src="https://img.icons8.com/color/48/money-bag.png" class="w-8 h-8 md:w-10 md:h-10" alt="Logo">
+                <img src="https://img.icons8.com/color/48/money-bag.png" class="w-9 h-9" alt="Logo">
                 <div>
-                    <h1 class="text-lg md:text-2xl font-extrabold text-slate-900 tracking-tight">FinTech <span class="text-blue-600">Hub</span></h1>
+                    <h1 class="text-xl font-extrabold text-slate-900 tracking-tight">FinTech <span class="text-blue-600">Hub</span></h1>
                 </div>
             </div>
-            <button onclick="window.scrollTo(0,0)" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs md:text-sm shadow-sm transition-colors font-bold">
-                Đăng ký ngay
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-bold shadow-sm transition-colors">
+                Làm mới
             </button>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-6 md:py-10 w-full">
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
         
-        <div class="text-center mb-6">
-            <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-2">
                 Tổng Hợp Gói Vay <span class="text-blue-600">Uy Tín</span>
             </h2>
+            <p class="text-slate-500 text-sm">Cập nhật danh sách mới nhất 2025</p>
         </div>
 
-        <div class="flex justify-center gap-2 mb-8 overflow-x-auto pb-2">
-            <button onclick="switchTab('vay')" id="btn-vay" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md transition-all">💸 Vay Tiền</button>
-            <button onclick="switchTab('bank')" id="btn-bank" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all">🏦 Ngân Hàng</button>
-            <button onclick="switchTab('the')" id="btn-the" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all">💳 Thẻ Tín Dụng</button>
+        <div class="flex justify-center gap-3 mb-8 overflow-x-auto pb-2 px-2">
+            <button onclick="switchTab('vay')" id="btn-vay" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md transition-all transform hover:scale-105">
+                💸 Vay Tiền
+            </button>
+            <button onclick="switchTab('bank')" id="btn-bank" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all transform hover:scale-105">
+                🏦 Ngân Hàng
+            </button>
+            <button onclick="switchTab('the')" id="btn-the" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all transform hover:scale-105">
+                💳 Thẻ Tín Dụng
+            </button>
         </div>
 
-        <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 min-h-[300px]"></div>
+        <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            </div>
         
         <div id="empty-state" class="hidden text-center py-12 col-span-full">
-            <div class="text-4xl mb-3">📭</div>
-            <p class="text-slate-500 text-sm">Chưa có ưu đãi nào trong mục này.</p>
+            <div class="text-5xl mb-3">📭</div>
+            <p class="text-slate-500 font-medium">Chưa có ưu đãi nào trong mục này.</p>
         </div>
 
     </main>
 
     <div class="bg-slate-100 p-6 text-center border-t border-slate-200 mt-auto">
-        <p class="text-[10px] text-slate-400 mb-2">© 2025 Financial Service Aggregator</p>
+        <p class="text-[11px] text-slate-400 font-semibold">© 2025 Financial Service Aggregator</p>
     </div>
 
     <div id="loading-screen" class="hidden fixed inset-0 bg-white/95 backdrop-blur z-50 flex-col items-center justify-center text-center p-5">
         <div class="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-green-600 mb-4"></div>
-        <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng...</h2>
-        <a id="manual-link" href="#" class="hidden mt-6 text-blue-600 text-sm underline">Click vào đây</a>
+        <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng đến trang đăng ký...</h2>
+        <p class="text-slate-500 text-sm mt-2">Vui lòng đợi trong giây lát</p>
     </div>
 
     <script>
-        // CẤU HÌNH LINK
-        const TRACKING_DOMAIN = 'https://hl-link.net/click'; 
+        // === CẤU HÌNH LIÊN KẾT ===
         const PUB_ID = '28janns';
+        
+        // CÔNG THỨC LINK CHUẨN CỦA HYPERLEAD (RIO)
+        // Nếu ní thấy link sai, chỉ cần sửa dòng này là xong hết
+        const BASE_LINK = 'https://hl-link.net/click';
 
-        // DỮ LIỆU CỨNG (Lấy từ API ní gửi - Đã làm sạch)
-        const RAW_OFFERS = [
-            {"name":"Tima CPS","offer_id":"tima","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/tima.png"},
-            {"name":"F88 - Vay tiền nhanh","offer_id":"f88","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/f88.png"},
-            {"name":"VietMoney","offer_id":"vietmoney","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vietmoney.png"},
-            {"name":"VayVNĐ","offer_id":"vayvnd","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-vayvnd.png"},
-            {"name":"Moneyveo","offer_id":"moneyveo","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/moneyveo.png"},
-            {"name":"Jeff App CPQL","offer_id":"jeffapp","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/jeffapp.jpg"},
-            {"name":"VIB Thẻ tín dụng","offer_id":"vib-2","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png"},
-            {"name":"Vay nhanh Cake","offer_id":"cake","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/cake.png"},
-            {"name":"Credit.vn","offer_id":"creditvn","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Group%20198.png"},
-            {"name":"Dong247","offer_id":"dong247","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/dong247.png"},
-            {"name":"Crezu","offer_id":"crezu","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/crezu.png"},
-            {"name":"Credy","offer_id":"credy","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/credy.png"},
-            {"name":"Kamo","offer_id":"kamo","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/kamo.jpg"},
-            {"name":"Kavay","offer_id":"kavay","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Kavay.png"},
-            {"name":"Bimo","offer_id":"bimo","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/bimo.jpg"},
-            {"name":"Chứng khoán VPS","offer_id":"vps","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vps.png"},
-            {"name":"Binixo","offer_id":"binixo","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo%20binixo%20%281%29.png"},
-            {"name":"Cashspace","offer_id":"cashspace","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vn.png"},
-            {"name":"Be Visa Credit","offer_id":"cake-cc","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Logo%201%20copy.jpg"},
-            {"name":"Boba Credit","offer_id":"bobacredit","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/dbc40e6fe95f3101684e.jpg"},
-            {"name":"VayMini","offer_id":"vaymini","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/IMG_5578.JPG"},
-            {"name":"Tintincash","offer_id":"tintincash","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/73244fb3a98371dd2892.jpg"},
-            {"name":"TPBank EVO","offer_id":"tpbankevo","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%204.png"},
-            {"name":"VIB Zalo","offer_id":"vib-3","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%202.png"},
-            {"name":"Finami","offer_id":"finami","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/imgpsh_fullsize_anim%20%281%29.png"},
-            {"name":"Navacash","offer_id":"navacash","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/nava_icon.jpeg"},
-            {"name":"BinVay","offer_id":"binvay","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo-binvay.jpeg"},
-            {"name":"Thẻ tín dụng Cake","offer_id":"cake-web","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Cake copy2 .jpg"},
-            {"name":"FE CREDIT","offer_id":"fec","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Logo_FullColor.png"},
-            {"name":"Agovay","offer_id":"agovay","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/49c27e1001bcd3e28aad.jpg"},
-            {"name":"VNSKY","offer_id":"vnsky","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/images.png"},
-            {"name":"Ví May Mắn","offer_id":"vimayman","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Ví may mắn.png"},
-            {"name":"Finzone","offer_id":"finzone","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/finzone-1.png"},
-            {"name":"Redbag","offer_id":"redbag-2","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/RedBag-LOGO-Standard-Horizontal.png"},
-            {"name":"Cashing Pro","offer_id":"cashingpro","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/LOGO-05.png"},
-            {"name":"TNEX Finance","offer_id":"tnex-cashloan","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tnex_finnace_logo_65a9f6aa9fee9.png"},
-            {"name":"Shopee","offer_id":"shopeemasoffer","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1200px-Shopee_logo.svg.png"},
-            {"name":"Đồng Shop Sun","offer_id":"dongshopsun1","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.jpeg"},
-            {"name":"MSB mBank","offer_id":"msb-ekyc","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb.png"},
-            {"name":"VPBank NEO","offer_id":"vpbankneo","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/VPBank.png"},
-            {"name":"TCBS","offer_id":"tcbs","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/TCBS.png"},
-            {"name":"KBank","offer_id":"kbankpayroll","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.png"},
-            {"name":"Fago","offer_id":"fago","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/fago_icon.png"},
-            {"name":"ACB One","offer_id":"acb1","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/ACB.png"},
-            {"name":"VPBank Auto","offer_id":"vpbank-mc","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/CC-01.png"},
-            {"name":"1688","offer_id":"1688","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1688-importation-training-selar.co-63bc637a2e010.png"},
-            {"name":"OCB OMNI","offer_id":"ocbcode1","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Picture1.png"},
-            {"name":"Cake Cashloan","offer_id":"cake-cashloan","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Cake cashloan.jpg"},
-            {"name":"Cathay Bank","offer_id":"cub","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1245_YYYYYYlogo_RGB-05 copy.png"},
-            {"name":"Vikki","offer_id":"vikki","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vikki_Original Logo Vikki DigitaL_Online.png"},
-            {"name":"BFC Money","offer_id":"bfcmoney","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-BFC.png"},
-            {"name":"Finmart","offer_id":"finmart","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo finmart.png"},
-            {"name":"SHB Finance","offer_id":"shbfinance","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/SHBF logo.webp"},
-            {"name":"CayVang","offer_id":"cayvangvn","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1667-cayvang-vn-2024-05-15.png"},
-            {"name":"MoneyCat","offer_id":"moneycatvn","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/unnamed (1).png"},
-            {"name":"Tieno","offer_id":"tienovn","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tieno-1.jpg"},
-            {"name":"Sky Credit","offer_id":"skycredit","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/photo_2025-05-07_11-18-14.jpg"},
-            {"name":"MSB TKTT","offer_id":"msb-tktt","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb-inkythuatso-07-13-40-57.jpg"},
-            {"name":"UOB","offer_id":"uob-ekyc","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/uob-logo-472x226.png"},
-            {"name":"Kafi Trade","offer_id":"kafitrade","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Gradient chữ đen@3x.png"},
-            {"name":"VIB MAX","offer_id":"vib-card","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png"},
-            {"name":"Vaymeo","offer_id":"vaymeo","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vaymeo.png"},
-            {"name":"Galaxy Play","offer_id":"galaxyplay","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/galaxyplay logo.jpeg"},
-            {"name":"LPBank","offer_id":"lpbank","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/666c22c1e8fc6ab7134d3f1b_lpbank_logo.jpg"},
-            {"name":"MBS","offer_id":"mbs","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/mbs.png"},
-            {"name":"Tử Vi Thái Âm","offer_id":"tuvithaiam","avatar":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/photo_2025-12-09_14-11-31.jpg"}
+        // === DỮ LIỆU CỨNG (Tao đã nhập sẵn từ hình API của ní) ===
+        const ALL_OFFERS = [
+            {"name":"MoneyCat","offer_id":"moneycatvn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/unnamed (1).png","desc":"0% lãi suất lần đầu, duyệt 5 phút"},
+            {"name":"Tima Vay","offer_id":"tima","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/tima.png","desc":"Vay qua đăng ký xe máy, duyệt nhanh"},
+            {"name":"F88 Cầm Cố","offer_id":"f88","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/f88.png","desc":"Cầm cố tài sản, giải ngân 15 phút"},
+            {"name":"VietMoney","offer_id":"vietmoney","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vietmoney.png","desc":"Dịch vụ cầm đồ trực tuyến uy tín"},
+            {"name":"VayVNĐ","offer_id":"vayvnd","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-vayvnd.png","desc":"Vay online nhanh chóng"},
+            {"name":"Moneyveo","offer_id":"moneyveo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/moneyveo.png","desc":"Hỗ trợ tư vấn tài chính 24/7"},
+            {"name":"Jeff App","offer_id":"jeffapp","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/jeffapp.jpg","desc":"Sàn so sánh vay, duyệt nhiều nguồn"},
+            {"name":"VIB Credit","offer_id":"vib-2","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png","desc":"Mở thẻ online, miễn phí thường niên"},
+            {"name":"Cake Vay","offer_id":"cake-cashloan","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/cake.png","desc":"Vay tiêu dùng theo lương"},
+            {"name":"Credit.vn","offer_id":"creditvn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Group%20198.png","desc":"Cổng thông tin tài chính tổng hợp"},
+            {"name":"Dong247","offer_id":"dong247","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/dong247.png","desc":"Duyệt vay tự động, giải ngân nhanh"},
+            {"name":"Crezu","offer_id":"crezu","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/crezu.png","desc":"0% lãi suất cho khoản vay đầu tiên"},
+            {"name":"Credy","offer_id":"credy","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/credy.png","desc":"Giải pháp tài chính linh hoạt"},
+            {"name":"Kamo","offer_id":"kamo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/kamo.jpg","desc":"Vay tín chấp lãi suất thấp"},
+            {"name":"Kavay","offer_id":"kavay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Kavay.png","desc":"Duyệt hồ sơ siêu tốc"},
+            {"name":"Bimo","offer_id":"bimo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/bimo.jpg","desc":"Vay tiền mặt online nhanh chóng"},
+            {"name":"VPS CK","offer_id":"vps","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vps.png","desc":"Mở tài khoản chứng khoán số đẹp"},
+            {"name":"Binixo","offer_id":"binixo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo%20binixo%20%281%29.png","desc":"Kết nối người vay và người cho vay"},
+            {"name":"Cashspace","offer_id":"cashspace","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vn.png","desc":"Đề xuất khoản vay phù hợp nhất"},
+            {"name":"Be Visa","offer_id":"cake-cc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Logo%201%20copy.jpg","desc":"Thẻ tín dụng Cake x Be"},
+            {"name":"Boba Credit","offer_id":"bobacredit","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/dbc40e6fe95f3101684e.jpg","desc":"Vay tiền online không cần gặp mặt"},
+            {"name":"VayMini","offer_id":"vaymini","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/IMG_5578.JPG","desc":"Khoản vay nhỏ, giải ngân nhanh"},
+            {"name":"Tintincash","offer_id":"tintincash","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/73244fb3a98371dd2892.jpg","desc":"Vay tiền siêu tốc 24/7"},
+            {"name":"TPBank EVO","offer_id":"tpbankevo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%204.png","desc":"Mở thẻ tín dụng TPBank Evo 100% Online"},
+            {"name":"VIB Zalo","offer_id":"vib-3","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%202.png","desc":"Mở thẻ VIB qua Zalo"},
+            {"name":"Finami","offer_id":"finami","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/imgpsh_fullsize_anim%20%281%29.png","desc":"So sánh các khoản vay uy tín"},
+            {"name":"Navacash","offer_id":"navacash","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/nava_icon.jpeg","desc":"Vay tiền mặt lãi suất ưu đãi"},
+            {"name":"BinVay","offer_id":"binvay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo-binvay.jpeg","desc":"Vay tiền nhanh, nhận tiền trong ngày"},
+            {"name":"Cake Thẻ","offer_id":"cake-web","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Cake copy2 .jpg","desc":"Thẻ tín dụng Cake Freedom"},
+            {"name":"FE CREDIT","offer_id":"fec","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Logo_FullColor.png","desc":"Vay tiêu dùng tín chấp FE Credit"},
+            {"name":"Agovay","offer_id":"agovay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/49c27e1001bcd3e28aad.jpg","desc":"Vay tiền online chuyển khoản"},
+            {"name":"Ví May Mắn","offer_id":"vimayman","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Ví may mắn.png","desc":"Ví vay tiền tiện lợi"},
+            {"name":"Finzone","offer_id":"finzone","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/finzone-1.png","desc":"Sàn tài chính kết nối khoản vay"},
+            {"name":"Redbag","offer_id":"redbag-2","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/RedBag-LOGO-Standard-Horizontal.png","desc":"Túi thần tài chính"},
+            {"name":"Cashing Pro","offer_id":"cashingpro","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/LOGO-05.png","desc":"Giải pháp cầm cố tài sản"},
+            {"name":"TNEX","offer_id":"tnex-cashloan","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tnex_finnace_logo_65a9f6aa9fee9.png","desc":"Vay tiêu dùng TNEX"},
+            {"name":"Đồng Shop Sun","offer_id":"dongshopsun1","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.jpeg","desc":"Vay tiền Nhật Bản"},
+            {"name":"MSB mBank","offer_id":"msb-ekyc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb.png","desc":"Mở tài khoản MSB số đẹp"},
+            {"name":"VPBank NEO","offer_id":"vpbankneo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/VPBank.png","desc":"Ngân hàng số VPBank NEO"},
+            {"name":"TCBS","offer_id":"tcbs","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/TCBS.png","desc":"Tài khoản chứng khoán Techcombank"},
+            {"name":"KBank","offer_id":"kbankpayroll","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.png","desc":"Mở tài khoản KBank nhận thưởng"},
+            {"name":"Fago","offer_id":"fago","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/fago_icon.png","desc":"Vay tiền nhanh Fago"},
+            {"name":"ACB One","offer_id":"acb1","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/ACB.png","desc":"Ngân hàng số ACB One"},
+            {"name":"VPBank Auto","offer_id":"vpbank-mc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/CC-01.png","desc":"Mở thẻ tín dụng VPBank tự động"},
+            {"name":"OCB OMNI","offer_id":"ocbcode1","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Picture1.png","desc":"Ngân hàng số OCB OMNI"},
+            {"name":"Cathay Bank","offer_id":"cub","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1245_YYYYYYlogo_RGB-05 copy.png","desc":"Vay tiêu dùng Cathay"},
+            {"name":"Vikki","offer_id":"vikki","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vikki_Original Logo Vikki DigitaL_Online.png","desc":"Ngân hàng số Vikki"},
+            {"name":"BFC Money","offer_id":"bfcmoney","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-BFC.png","desc":"Vay tiền BFC"},
+            {"name":"Finmart","offer_id":"finmart","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo finmart.png","desc":"Mở thẻ tín dụng Finmart"},
+            {"name":"SHB Finance","offer_id":"shbfinance","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/SHBF logo.webp","desc":"Vay tiền mặt SHB Finance"},
+            {"name":"CayVang","offer_id":"cayvangvn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1667-cayvang-vn-2024-05-15.png","desc":"Vay Cây Vàng"},
+            {"name":"Tieno","offer_id":"tienovn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tieno-1.jpg","desc":"Vay Tieno"},
+            {"name":"Sky Credit","offer_id":"skycredit","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/photo_2025-05-07_11-18-14.jpg","desc":"Vay Sky Credit"},
+            {"name":"MSB TKTT","offer_id":"msb-tktt","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb-inkythuatso-07-13-40-57.jpg","desc":"Tài khoản thanh toán MSB"},
+            {"name":"UOB","offer_id":"uob-ekyc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/uob-logo-472x226.png","desc":"Mở tài khoản UOB"},
+            {"name":"Kafi Trade","offer_id":"kafitrade","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Gradient chữ đen@3x.png","desc":"Chứng khoán Kafi"},
+            {"name":"VIB MAX","offer_id":"vib-card","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png","desc":"Thẻ tín dụng VIB Max"},
+            {"name":"Vaymeo","offer_id":"vaymeo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vaymeo.png","desc":"Vay tiền Vaymeo"},
+            {"name":"LPBank","offer_id":"lpbank","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/666c22c1e8fc6ab7134d3f1b_lpbank_logo.jpg","desc":"Mở tài khoản LPBank"},
+            {"name":"MBS","offer_id":"mbs","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/mbs.png","desc":"Chứng khoán MBS"},
+            {"name":"Avay","offer_id":"avay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-avay.png","desc":"Vay tín chấp Avay"}
         ];
 
         let currentTab = 'vay';
+        const container = document.getElementById('app-container');
+        const emptyState = document.getElementById('empty-state');
+
+        // TỪ KHÓA PHÂN LOẠI
         const KEYWORDS = {
-            the: ['thẻ tín dụng', 'credit', 'mở thẻ', 'evo', 'vib super', 'vib online', 'hsbc', 'lotte', 'sacombank', 'hdbank', 'finmart', 'vib-card'],
-            bank: ['tài khoản', 'ngân hàng', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank', 'vcb', 'bidv', 'ocb', 'nam a', 'tpbank', 'viettel', 'zalopay', 'vnpt', 'vikki', 'ubank', 'msb', 'uob', 'kafi', 'mbs', 'acb', 'lpbank'],
-            vay: ['vay', 'cầm đồ', 'tín chấp', 'tiền mặt', 'giải ngân', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan', 'mcredit', 'easy credit', 'mirae', 'bimo', 'kavay', 'credy', 'crezu', 'binixo', 'tima', 'fago', 'sky', 'cayvang', 'redbag', 'cashing', 'finzone']
+            the: ['thẻ tín dụng', 'credit', 'mở thẻ', 'thẻ hoàn tiền', 'evo', 'vib super', 'vib online', 'viban', 'hsbc', 'lotte', 'sacombank', 'hdbank', 'finmart', 'vib-card'],
+            bank: ['tài khoản', 'ngân hàng', 'thanh toán', 'số đẹp', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank', 'vcb', 'bidv', 'vietinbank', 'ocb', 'nam a', 'tpbank', 'viettel', 'zalopay', 'vnpt', 'vikki', 'ubank', 'msb', 'uob', 'kafi', 'mbs', 'acb', 'lpbank'],
+            vay: ['vay', 'cầm đồ', 'tín chấp', 'tiền mặt', 'giải ngân', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan', 'mcredit', 'easy credit', 'mirae', 'bimo', 'kavay', 'credy', 'crezu', 'binixo', 'tima', 'fago', 'sky', 'cayvang', 'redbag', 'cashing', 'finzone', 'avay', 'tintin']
         };
+
+        function checkCategory(item) {
+            const text = (item.name + " " + item.offer_id + " " + item.desc).toLowerCase();
+            for (let w of KEYWORDS.the) if (text.includes(w)) return 'the';
+            for (let w of KEYWORDS.bank) if (text.includes(w)) return 'bank';
+            return 'vay';
+        }
 
         function switchTab(tabName) {
             currentTab = tabName;
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (t === tabName) {
-                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md transition-all";
+                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md transition-all transform hover:scale-105";
                 } else {
-                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all";
+                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all transform hover:scale-105";
                 }
             });
             renderApps();
         }
 
-        function checkCategory(item) {
-            const text = (item.name + " " + item.offer_id).toLowerCase();
-            for (let w of KEYWORDS.the) if (text.includes(w)) return 'the';
-            for (let w of KEYWORDS.bank) if (text.includes(w)) return 'bank';
-            return 'vay';
-        }
-
         function renderApps() {
-            const container = document.getElementById('app-container');
-            const emptyState = document.getElementById('empty-state');
             container.innerHTML = '';
             
-            // Lọc dữ liệu
-            const filtered = RAW_OFFERS.filter(item => checkCategory(item) === currentTab);
+            const filtered = ALL_OFFERS.filter(item => checkCategory(item) === currentTab);
 
             if (filtered.length === 0) {
                 emptyState.classList.remove('hidden');
@@ -195,25 +211,25 @@
             }
 
             filtered.forEach((app, index) => {
-                // TẠO LINK
-                let finalLink = `${TRACKING_DOMAIN}?pub_id=${PUB_ID}&offer_id=${app.offer_id}`;
+                // TỰ ĐỘNG TẠO LINK CHUẨN
+                let finalLink = `${BASE_LINK}?pub_id=${PUB_ID}&offer_id=${app.offer_id}`;
                 
                 let infoBlock = '';
                 if(currentTab === 'vay') {
                     infoBlock = `
-                        <div class="grid grid-cols-2 gap-0 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
+                        <div class="grid grid-cols-2 gap-2 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
                             <div class="text-center border-r border-slate-200 py-2">
                                 <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Hạn mức</p>
-                                <p class="font-bold text-slate-900 text-xs md:text-sm">Hấp dẫn</p>
+                                <p class="font-bold text-slate-900 text-xs">Hấp dẫn</p>
                             </div>
                             <div class="text-center py-2">
                                 <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Lãi suất</p>
-                                <p class="font-bold text-action text-xs md:text-sm">Ưu đãi</p>
+                                <p class="font-bold text-action text-xs">Ưu đãi</p>
                             </div>
                         </div>`;
                 } else {
                     infoBlock = `<div class="mt-auto mb-4 text-center">
-                        <span class="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded">Mở Online 100%</span>
+                        <span class="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full">Mở Online 100%</span>
                     </div>`;
                 }
 
@@ -222,34 +238,36 @@
 
                 const html = `
                 <div class="group bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col h-full animate-pop-in">
-                    <div class="bg-blue-50/50 px-3 py-2 border-b border-blue-100 flex items-center justify-between">
+                    <div class="bg-blue-50/30 px-3 py-2 border-b border-blue-100 flex items-center justify-between">
                         <div class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                             <span class="text-[10px] font-bold text-blue-700 uppercase tracking-wide">
-                                ${currentTab === 'vay' ? 'DUYỆT NHANH' : (currentTab === 'bank' ? 'SỐ ĐẸP' : 'HOÀN TIỀN')}
+                                ${currentTab === 'vay' ? 'DUYỆT NHANH' : 'SỐ ĐẸP'}
                             </span>
                         </div>
-                        <span class="text-[9px] text-slate-400 font-medium border border-slate-200 px-1 rounded">QC</span>
+                        <span class="text-[9px] text-slate-400 font-medium border border-slate-200 px-1.5 py-0.5 rounded bg-white">QC</span>
                     </div>
-                    <div class="p-4 flex flex-col flex-grow">
-                        <div class="flex items-center gap-3 mb-4">
-                            <div class="w-12 h-12 rounded-lg border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1">
-                                <img src="${app.avatar}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='https://img.icons8.com/color/96/money-bag.png'"/>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="w-14 h-14 rounded-xl border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1">
+                                <img src="${app.logo}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='https://img.icons8.com/color/96/money-bag.png'"/>
                             </div>
-                            <div class="flex-1 min-w-0">
-                                <h3 class="font-bold text-slate-900 text-base leading-tight mb-0.5 truncate">${app.name}</h3>
-                                <p class="text-[11px] text-slate-500 leading-snug">Đăng ký online 24/7</p>
+                            <div class="flex-1 min-w-0 pt-0.5">
+                                <h3 class="font-bold text-slate-900 text-base leading-tight mb-1 truncate group-hover:text-blue-600 transition-colors">${app.name}</h3>
+                                <p class="text-[12px] text-slate-500 leading-snug line-clamp-2">${app.desc}</p>
                             </div>
                         </div>
                         
                         ${infoBlock}
 
-                        <button onclick="handleRedirect('${finalLink}', '${app.name}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 text-white font-bold py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
-                            ĐĂNG KÝ
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <button onclick="handleRedirect('${finalLink}', '${app.name}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white font-bold py-3 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
+                            <span>ĐĂNG KÝ NGAY</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
-                        <div class="mt-2 text-center text-[10px] text-slate-400">
-                            <span id="${counterId}" class="font-bold text-slate-600">${fakeView}</span> hồ sơ vừa duyệt
+                        
+                        <div class="mt-3 text-center flex justify-center items-center gap-1 text-[10px] text-slate-400">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+                            <span class="font-semibold text-slate-600">${fakeView}</span> hồ sơ vừa duyệt
                         </div>
                     </div>
                 </div>`;
@@ -261,12 +279,11 @@
         function handleRedirect(link, name) {
             if (typeof gtag === 'function') gtag('event', 'click_dang_ky', { 'app_ten': name, 'link': link });
             const loader = document.getElementById('loading-screen');
-            const manual = document.getElementById('manual-link');
             loader.classList.remove('hidden');
             loader.style.display = 'flex';
-            manual.href = link;
+            
+            // Chuyển hướng
             setTimeout(() => { window.location.href = link; }, 800);
-            setTimeout(() => { manual.classList.remove('hidden'); }, 3000);
         }
 
         function startLiveCounter(id) {
