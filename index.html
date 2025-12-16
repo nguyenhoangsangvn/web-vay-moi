@@ -40,14 +40,6 @@
 </head>
 <body class="text-slate-900 text-[16px] no-select min-h-screen flex flex-col">
 
-    <script>
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) {
-            if(e.keyCode == 123) return false;
-            if(e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'S'.charCodeAt(0))) return false;
-        }
-    </script>
-
     <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -58,10 +50,6 @@
                 </div>
             </div>
             <div class="flex items-center gap-4 text-sm font-semibold text-slate-600">
-                <div class="hidden md:flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    <span>Hệ thống Online</span>
-                </div>
                 <button onclick="fetchApps()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs md:text-sm shadow-sm transition-colors">
                     Cập nhật
                 </button>
@@ -93,19 +81,14 @@
             </button>
         </div>
 
-        <div id="debug-box" class="hidden mb-6 bg-red-50 border border-red-200 rounded-xl p-4 text-center">
-            <p id="debug-msg" class="text-xs text-red-500 font-mono mb-2"></p>
-            <button onclick="loadBackupData()" class="bg-red-100 text-red-700 text-xs font-bold px-3 py-1 rounded">Dùng danh sách dự phòng</button>
-        </div>
-
         <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 min-h-[300px]">
             <div id="skeleton-loader" class="col-span-full text-center py-10">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-slate-200 border-t-blue-600 mx-auto mb-3"></div>
-                <p class="text-sm text-slate-500 animate-pulse">Đang tải dữ liệu...</p>
+                <p class="text-sm text-slate-500 animate-pulse">Đang tải và phân loại dữ liệu...</p>
             </div>
         </div>
         
-        <div id="empty-state" class="hidden text-center py-12">
+        <div id="empty-state" class="hidden text-center py-12 col-span-full">
             <div class="text-4xl mb-3">📭</div>
             <p class="text-slate-500 text-sm">Chưa có ưu đãi nào trong mục này.</p>
         </div>
@@ -125,19 +108,25 @@
     <script>
         const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
 
-        // Biến lưu trữ toàn bộ dữ liệu tải về
         let globalData = [];
         let currentTab = 'vay';
 
-        // Danh sách dự phòng (Giữ nguyên)
+        // TỪ KHÓA ĐỂ PHÂN LOẠI (Rất quan trọng)
+        const KEYWORDS = {
+            // Danh sách các ngân hàng hoặc ví điện tử (viết thường)
+            bank: ['bank', 'ngân hàng', 'mb', 'cake', 'tnex', 'kbank', 'ocb', 'vib', 'tpbank', 'techcombank', 'vpbank', 'sacombank', 'hdbank', 'mbbank', 'bidv', 'acb', 'msb', 'nam a', 'shinhan', 'viettel money', 'zalopay', 'momo'],
+            
+            // Danh sách liên quan đến thẻ tín dụng
+            credit: ['credit', 'thẻ', 'tín dụng', 'evo', 'hsbc', 'viban', 'thẻ hoàn tiền', 'visa', 'mastercard']
+        };
+
         const BACKUP_DATA = [
             { offer_name: "MoneyCat", logo: "https://moneycat.vn/public/img/logo.png", min_loan: 1000000, max_loan: 10000000, short_description: "Duyệt nhanh 5 phút", tracking_link: "https://hl-link.net/nVT5020" },
-            { offer_name: "Moneyveo", logo: "https://moneyveo.vn/img/logo.svg", min_loan: 500000, max_loan: 15000000, short_description: "Ưu đãi lãi suất thấp", tracking_link: "https://hl-link.net/BISmL10" }
+            { offer_name: "MB Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png", min_loan: 0, max_loan: 0, short_description: "Mở tài khoản số đẹp", tracking_link: "#" }
         ];
 
         const container = document.getElementById('app-container');
         const loader = document.getElementById('skeleton-loader');
-        const debugBox = document.getElementById('debug-box');
         const emptyState = document.getElementById('empty-state');
 
         function formatMoney(num) {
@@ -147,12 +136,11 @@
             return num;
         }
 
-        // 1. GỌI API (Logic cũ, không đổi)
         async function fetchApps() {
             container.innerHTML = '';
             container.appendChild(loader);
-            debugBox.classList.add('hidden');
             loader.classList.remove('hidden');
+            emptyState.classList.add('hidden');
 
             const methods = [
                 { url: 'https://corsproxy.io/?' + encodeURIComponent(API_URL), name: 'Proxy 1' },
@@ -171,20 +159,37 @@
                     
                     if (list.length > 0) {
                         globalData = list;
-                        switchTab('vay'); // Mặc định vào tab Vay
+                        switchTab('vay'); 
                         return;
                     }
                 } catch (e) { console.log(e); }
             }
-            // Nếu lỗi hết thì dùng backup
-            loadBackupData();
+            globalData = BACKUP_DATA;
+            switchTab('vay');
         }
 
-        // 2. CHUYỂN TAB (Logic Mới)
+        // === LOGIC PHÂN LOẠI MỚI (CHI TIẾT HƠN) ===
+        function checkCategory(text) {
+            text = text.toLowerCase();
+            
+            // Check Credit Card trước
+            for (let word of KEYWORDS.credit) {
+                if (text.includes(word)) return 'the';
+            }
+            
+            // Check Bank sau
+            for (let word of KEYWORDS.bank) {
+                if (text.includes(word)) return 'bank';
+            }
+            
+            // Còn lại là Vay
+            return 'vay';
+        }
+
         function switchTab(tabName) {
             currentTab = tabName;
 
-            // Đổi màu nút bấm (Style đơn giản)
+            // Đổi style nút bấm
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (t === tabName) {
@@ -194,28 +199,23 @@
                 }
             });
 
-            // Lọc dữ liệu
+            // Lọc dữ liệu dựa trên hàm checkCategory mạnh mẽ hơn
             const filtered = globalData.filter(item => {
-                const text = ((item.offer_name || "") + " " + (item.short_description || "")).toLowerCase();
+                // Gộp tất cả text lại để soi cho kỹ
+                const textToCheck = ((item.offer_name || "") + " " + (item.short_description || "") + " " + (item.category_name || "")).toLowerCase();
+                const detectedType = checkCategory(textToCheck);
                 
-                const isBank = text.includes('bank') || text.includes('ngân hàng') || text.includes('tk') || text.includes('cake') || text.includes('tnex');
-                const isCredit = text.includes('credit') || text.includes('tín dụng') || text.includes('evo') || text.includes('vib');
-
-                if (tabName === 'bank') return isBank;
-                if (tabName === 'the') return isCredit;
-                // Vay = Không phải bank & Không phải thẻ
-                return !isBank && !isCredit;
+                return detectedType === tabName;
             });
 
             renderApps(filtered);
         }
 
-        // 3. HIỂN THỊ (Giao diện cũ)
         function renderApps(list) {
             container.innerHTML = '';
             loader.classList.add('hidden');
 
-            if (list.length === 0) {
+            if (!list || list.length === 0) {
                 emptyState.classList.remove('hidden');
                 return;
             }
@@ -227,18 +227,41 @@
                     logo: app.logo || app.image || "https://img.icons8.com/color/96/money-bag.png",
                     link: app.tracking_link || app.link || "#",
                     mota: app.short_description || "Duyệt nhanh 24/7",
-                    hanmuc: (app.min_loan && app.max_loan) ? `${formatMoney(app.min_loan)} - ${formatMoney(app.max_loan)}` : "500k - 10Tr",
-                    // Đổi Tag theo Tab
-                    tag: currentTab === 'vay' ? "DUYỆT NHANH" : (currentTab === 'bank' ? "SỐ ĐẸP" : "MIỄN LÃI"),
+                    hanmuc: (app.min_loan && app.max_loan) ? `${formatMoney(app.min_loan)} - ${formatMoney(app.max_loan)}` : "Hạn mức cao",
+                    tag: currentTab === 'vay' ? "DUYỆT NHANH" : (currentTab === 'bank' ? "SỐ ĐẸP" : "HOÀN TIỀN"),
                     laisuat: "Ưu đãi tốt"
                 };
+
+                // Logic ẩn hiện dòng Hạn mức: Nếu là Bank hoặc Thẻ thì ẩn đi cho đẹp
+                // Nếu là Vay thì hiện hạn mức và lãi suất
+                let infoBlock = '';
+                if(currentTab === 'vay') {
+                    infoBlock = `
+                        <div class="grid grid-cols-2 gap-0 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
+                            <div class="text-center border-r border-slate-200 py-2">
+                                <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Hạn mức</p>
+                                <p class="font-bold text-slate-900 text-xs md:text-sm">${item.hanmuc}</p>
+                            </div>
+                            <div class="text-center py-2">
+                                <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Lãi suất</p>
+                                <p class="font-bold text-action text-xs md:text-sm">${item.laisuat}</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // Nếu là Bank/Thẻ thì hiện khoảng trắng bù vào để nút bấm đều nhau
+                    infoBlock = `<div class="mt-auto mb-4">
+                        <p class="text-xs text-center text-blue-600 font-medium bg-blue-50 py-1.5 rounded">
+                            ${currentTab === 'bank' ? 'Mở Online 100%' : 'Miễn lãi 45 ngày'}
+                        </p>
+                    </div>`;
+                }
 
                 let counterId = `counter-${index}`;
                 let fakeView = Math.floor(Math.random() * 500) + 300;
 
-                // CARD UI CŨ (KHÔNG ĐỔI GÌ)
                 const html = `
-                <div class="group bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+                <div class="group bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col h-full animate-pop-in">
                     <div class="bg-blue-50/50 px-3 py-2 border-b border-blue-100 flex items-center justify-between">
                         <div class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
@@ -257,17 +280,7 @@
                             </div>
                         </div>
                         
-                        ${ currentTab === 'vay' ? `
-                        <div class="grid grid-cols-2 gap-0 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
-                            <div class="text-center border-r border-slate-200 py-2">
-                                <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Hạn mức</p>
-                                <p class="font-bold text-slate-900 text-xs md:text-sm">${item.hanmuc}</p>
-                            </div>
-                            <div class="text-center py-2">
-                                <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Lãi suất</p>
-                                <p class="font-bold text-action text-xs md:text-sm">${item.laisuat}</p>
-                            </div>
-                        </div>` : `<div class="mb-4 mt-auto"></div>` }
+                        ${infoBlock}
 
                         <button onclick="handleRedirect('${item.link}', '${item.ten}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 text-white font-bold py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
                             ĐĂNG KÝ
@@ -283,8 +296,6 @@
                 startLiveCounter(counterId);
             });
         }
-
-        function loadBackupData() { globalData = BACKUP_DATA; switchTab('vay'); debugBox.classList.remove('hidden'); }
 
         function handleRedirect(link, name) {
             if (typeof gtag === 'function') gtag('event', 'click_dang_ky', { 'app_ten': name, 'link': link });
@@ -311,9 +322,7 @@
             }, randomTime);
         }
 
-        // CHẠY NGAY
         fetchApps();
-
     </script>
 </body>
 </html>
