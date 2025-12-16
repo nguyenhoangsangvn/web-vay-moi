@@ -1,40 +1,19 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Vay Tiền Online Nhanh 2025 - So Sánh Lãi Suất | FinTech Hub</title>
-    <meta name="description" content="Tổng hợp 50+ gói vay tiền online chuyển khoản ngay, mở thẻ tín dụng và ngân hàng số uy tín nhất 2025. Duyệt tự động, lãi suất 0%, giải ngân siêu tốc 24/7.">
-    <meta name="keywords" content="vay tiền online, vay tiền nhanh, mở thẻ tín dụng, ngân hàng số, vay tín chấp, fintech hub, vay tiền cmnd">
-    <meta name="author" content="FinTech Hub">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://your-website-domain.com"> <meta property="og:type" content="website">
-    <meta property="og:title" content="Vay Tiền Online Nhanh - Duyệt Tự Động | FinTech Hub">
-    <meta property="og:description" content="Tìm khoản vay, mở thẻ tín dụng tốt nhất chỉ trong 30 giây. So sánh minh bạch, đăng ký online 100%.">
-    <meta property="og:image" content="https://img.icons8.com/color/480/money-bag.png"> <meta property="og:url" content="https://your-website-domain.com">
-
+    <title>FinTech Hub 2025 - Nền Tảng Tài Chính Số 1 Việt Nam</title>
+    <meta name="description" content="So sánh và đăng ký các gói vay tiền online nhanh, mở thẻ tín dụng và tài khoản ngân hàng số tốt nhất 2025. Duyệt tự động 24/7, lãi suất ưu đãi.">
+    <link rel="canonical" href="https://your-website-domain.com">
+    <meta property="og:image" content="https://img.icons8.com/color/480/money-bag.png">
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FinancialService",
-      "name": "FinTech Hub",
-      "image": "https://img.icons8.com/color/48/money-bag.png",
-      "description": "Nền tảng so sánh và tổng hợp các sản phẩm tài chính: Vay tiền online, Thẻ tín dụng, Ngân hàng số.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "VN"
-      },
-      "priceRange": "$$"
-    }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -42,287 +21,372 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: { brand: '#0052cc', accent: '#16a34a' },
-                    boxShadow: { 'soft': '0 10px 40px -10px rgba(0,0,0,0.08)' }
+                    colors: { 
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a' },
+                        dark: { 800: '#1e293b', 900: '#0f172a' }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+                        'premium': '0 20px 40px -15px rgba(0,0,0,0.15)'
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to right bottom, #0f172a, #1e3a8a, #172554)',
+                        'card-gradient': 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+                        'blue-gradient': 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                        'gold-gradient': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+                    }
                 }
             }
         }
     </script>
 
     <style>
-        body { background-color: #ffffff; -webkit-font-smoothing: antialiased; }
+        body { background-color: #f8fafc; -webkit-font-smoothing: antialiased; }
         .no-select { user-select: none; -webkit-tap-highlight-color: transparent; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .app-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .app-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-        .app-card:active { transform: scale(0.98); }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-dark {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Card Hover */
+        .hover-lift { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .active-scale:active { transform: scale(0.97); }
+
+        /* Animations */
+        .animate-fade-up { animation: fadeUp 0.6s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 50s linear infinite; }
+        .animate-marquee { animation: marquee 60s linear infinite; }
         .marquee-container:hover .animate-marquee { animation-play-state: paused; }
+
+        /* Decorative Blobs */
+        .blob { position: absolute; filter: blur(60px); opacity: 0.4; z-index: 0; }
+        .blob-1 { top: -10%; left: -10%; width: 300px; height: 300px; background-color: #3b82f6; }
+        .blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background-color: #8b5cf6; }
     </style>
 </head>
-<body class="font-sans text-slate-800 text-[15px] no-select">
+<body class="font-sans text-slate-800 text-[15px] no-select overflow-x-hidden">
 
-    <header class="bg-white/90 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50">
+    <header class="glass fixed top-0 left-0 right-0 z-50 transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-2 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <img src="https://img.icons8.com/color/48/money-bag.png" class="w-8 h-8 group-hover:rotate-12 transition-transform" alt="FinTech Hub Logo">
-                <div class="text-xl font-extrabold tracking-tight text-slate-900">FinTech <span class="text-blue-600">Hub</span></div>
+                <img src="https://img.icons8.com/fluency/48/money-bag.png" class="w-9 h-9 group-hover:-rotate-12 transition-transform drop-shadow-sm" alt="FinTech Hub Logo">
+                <div class="text-2xl font-extrabold tracking-tight text-slate-900">FinTech <span class="text-transparent bg-clip-text bg-blue-gradient">Hub</span></div>
             </div>
 
-            <nav class="hidden md:flex gap-8 font-medium text-sm text-slate-500">
-                <a href="javascript:void(0)" onclick="selectCategory('vay')" class="hover:text-blue-600 transition-colors">Vay Tiền</a>
-                <a href="javascript:void(0)" onclick="selectCategory('bank')" class="hover:text-blue-600 transition-colors">Ngân Hàng</a>
-                <a href="javascript:void(0)" onclick="selectCategory('the')" class="hover:text-blue-600 transition-colors">Thẻ Tín Dụng</a>
+            <nav class="hidden md:flex gap-8 font-semibold text-sm text-slate-600">
+                <a href="javascript:void(0)" onclick="selectCategory('vay')" class="hover:text-blue-600 transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:bg-blue-600 after:h-0.5 after:w-0 hover:after:w-full after:transition-all">Vay Tiền</a>
+                <a href="javascript:void(0)" onclick="selectCategory('bank')" class="hover:text-blue-600 transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:bg-blue-600 after:h-0.5 after:w-0 hover:after:w-full after:transition-all">Ngân Hàng</a>
+                <a href="javascript:void(0)" onclick="selectCategory('the')" class="hover:text-blue-600 transition-colors py-2 relative after:absolute after:bottom-0 after:left-0 after:bg-blue-600 after:h-0.5 after:w-0 hover:after:w-full after:transition-all">Thẻ Tín Dụng</a>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <span id="api-indicator" class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" title="Hệ thống Online"></span>
-                <button onclick="window.location.reload()" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 px-4 py-2 rounded-full text-xs font-bold transition-all active:scale-95">
-                    Làm mới
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 text-xs font-medium text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    Hệ thống Online
+                </div>
+                <button onclick="window.location.reload()" class="bg-slate-900 hover:bg-blue-600 text-white p-2.5 rounded-full shadow-sm transition-all active:scale-95">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                 </button>
             </div>
         </div>
     </header>
 
-    <section class="relative bg-white pt-16 pb-20 overflow-hidden">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+    <section class="relative pt-28 pb-24 overflow-hidden bg-hero-gradient">
+        <div class="absolute inset-0 overflow-hidden">
+             <svg class="absolute top-0 left-0 text-white/5 w-[800px] h-[800px] -translate-x-1/2 -translate-y-1/2 animate-[spin_120s_linear_infinite]" fill="currentColor" viewBox="0 0 200 200"><path d="M45.3,-77.6C58.3,-70.3,68.4,-56.4,76.7,-41.2C85,-26,91.6,-9.5,90.6,6.6C89.6,22.7,81.1,38.4,70.4,51.3C59.7,64.2,46.8,74.3,32.1,81.1C17.4,87.9,0.9,91.4,-16.3,89.1C-33.5,86.8,-51.4,78.7,-65.5,66.6C-79.6,54.5,-89.9,38.4,-94.9,21.1C-99.9,3.8,-99.6,-14.7,-92.6,-30.9C-85.6,-47.1,-71.9,-61,-56.7,-67.4C-41.5,-73.8,-24.8,-72.7,-9.2,-71.6C6.4,-70.5,22.8,-69.4,45.3,-77.6Z" transform="translate(100 100)"/></svg>
+             <svg class="absolute bottom-0 right-0 text-white/5 w-[600px] h-[600px] translate-x-1/3 translate-y-1/3 animate-[spin_90s_linear_infinite_reverse]" fill="currentColor" viewBox="0 0 200 200"><path d="M38.1,-63.7C49.8,-54.5,60.3,-45.7,69.3,-34.3C78.3,-22.9,85.8,-8.9,85.9,5.3C85.9,19.5,78.5,33.9,68.4,45.7C58.3,57.5,45.5,66.7,31.8,73.3C18.1,79.9,3.5,83.9,-11.6,83.1C-26.7,82.3,-42.3,76.7,-55.2,66.9C-68.1,57.1,-78.3,43.1,-83.5,27.8C-88.7,12.5,-88.9,-4.1,-83.9,-19.5C-78.9,-34.9,-68.7,-49.1,-55.6,-57.9C-42.5,-66.7,-26.5,-70.1,-11.3,-71.6C3.9,-73.1,19.1,-72.7,38.1,-63.7Z" transform="translate(100 100)"/></svg>
+        </div>
         
         <div class="relative max-w-6xl mx-auto px-4 text-center z-10">
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-wider mb-6">
-                Cập nhật dữ liệu 2025
+            <span class="animate-fade-up inline-flex items-center py-1.5 px-4 rounded-full bg-white/10 text-blue-200 text-xs font-bold uppercase tracking-wider mb-8 border border-white/20 backdrop-blur-sm">
+                <span class="mr-2">🚀</span> Nền tảng tài chính thế hệ mới
             </span>
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
-                Lựa chọn sản phẩm <br class="hidden sm:block"> 
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Tài chính phù hợp nhất</span>
+            <h1 class="animate-fade-up delay-100 text-4xl sm:text-6xl font-extrabold text-white mb-8 leading-tight drop-shadow-lg">
+                Lựa chọn thông minh cho <br class="hidden sm:block"> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-teal-300">Tương lai tài chính vững vàng</span>
             </h1>
-            <p class="text-slate-500 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-                Hệ thống so sánh thông minh giúp bạn tìm khoản vay, mở thẻ tín dụng hoặc tài khoản ngân hàng chỉ trong 30 giây.
+            <p class="animate-fade-up delay-200 text-blue-100/80 text-lg sm:text-xl mb-14 max-w-3xl mx-auto leading-relaxed font-medium">
+                Hệ thống phân tích dữ liệu lớn giúp bạn tìm kiếm khoản vay, thẻ tín dụng và giải pháp ngân hàng tối ưu nhất chỉ trong vài giây.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div onclick="selectCategory('vay')" class="cursor-pointer bg-white rounded-2xl border border-slate-100 p-6 shadow-soft hover:border-blue-300 hover:shadow-lg transition-all group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <img src="https://img.icons8.com/fluency/96/receive-cash.png" class="w-8 h-8" alt="Vay tiền online" loading="lazy">
+            <div class="animate-fade-up delay-200 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div onclick="selectCategory('vay')" class="cursor-pointer glass-dark rounded-3xl p-8 hover-lift group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">
+                        <img src="https://img.icons8.com/fluency/96/receive-cash.png" class="w-10 h-10 brightness-150" alt="Vay tiền online" loading="lazy">
                     </div>
-                    <h2 class="font-bold text-slate-900 text-lg group-hover:text-blue-600">Khoản vay</h2>
-                    <p class="text-xs text-slate-400 mt-1">Duyệt nhanh trong ngày</p>
+                    <h2 class="font-bold text-white text-xl mb-2 group-hover:text-blue-300 transition-colors">Khoản vay nhanh</h2>
+                    <p class="text-sm text-blue-200/70">Duyệt tự động, nhận tiền ngay</p>
                 </div>
-                <div onclick="selectCategory('bank')" class="cursor-pointer bg-white rounded-2xl border border-slate-100 p-6 shadow-soft hover:border-indigo-300 hover:shadow-lg transition-all group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-indigo-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <img src="https://img.icons8.com/fluency/96/museum.png" class="w-8 h-8" alt="Ngân hàng số" loading="lazy">
+                <div onclick="selectCategory('bank')" class="cursor-pointer glass-dark rounded-3xl p-8 hover-lift group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:scale-110 transition-transform">
+                        <img src="https://img.icons8.com/fluency/96/museum.png" class="w-10 h-10 brightness-150" alt="Ngân hàng số" loading="lazy">
                     </div>
-                    <h2 class="font-bold text-slate-900 text-lg group-hover:text-indigo-600">Ngân hàng</h2>
-                    <p class="text-xs text-slate-400 mt-1">Tài khoản số đẹp</p>
+                    <h2 class="font-bold text-white text-xl mb-2 group-hover:text-cyan-300 transition-colors">Ngân hàng số</h2>
+                    <p class="text-sm text-blue-200/70">Mở tài khoản, chọn số đẹp</p>
                 </div>
-                <div onclick="selectCategory('the')" class="cursor-pointer bg-white rounded-2xl border border-slate-100 p-6 shadow-soft hover:border-purple-300 hover:shadow-lg transition-all group">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-purple-50 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <img src="https://img.icons8.com/fluency/96/bank-cards.png" class="w-8 h-8" alt="Mở thẻ tín dụng" loading="lazy">
+                <div onclick="selectCategory('the')" class="cursor-pointer glass-dark rounded-3xl p-8 hover-lift group relative overflow-hidden">
+                     <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform">
+                        <img src="https://img.icons8.com/fluency/96/bank-cards.png" class="w-10 h-10 brightness-150" alt="Mở thẻ tín dụng" loading="lazy">
                     </div>
-                    <h2 class="font-bold text-slate-900 text-lg group-hover:text-purple-600">Thẻ tín dụng</h2>
-                    <p class="text-xs text-slate-400 mt-1">Hoàn tiền mua sắm</p>
+                    <h2 class="font-bold text-white text-xl mb-2 group-hover:text-purple-300 transition-colors">Thẻ tín dụng</h2>
+                    <p class="text-sm text-blue-200/70">Chi tiêu trước, hoàn tiền sau</p>
                 </div>
             </div>
         </div>
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#f8fafc" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,122.7C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+        </div>
     </section>
 
-    <main class="bg-slate-50 border-y border-slate-200 py-16 scroll-mt-20" id="main-content">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="relative bg-slate-50 pb-24 scroll-mt-24" id="main-content">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2" style="top: 50%;"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             
-            <div class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-                <h3 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
-                    Danh sách đề xuất
-                </h3>
-                <div class="flex gap-2 overflow-x-auto pb-2 w-full sm:w-auto scrollbar-hide">
-                    <button onclick="switchTab('vay')" id="btn-vay" class="btn-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-200">Vay Tiền</button>
-                    <button onclick="switchTab('bank')" id="btn-bank" class="btn-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200">Ngân Hàng</button>
-                    <button onclick="switchTab('the')" id="btn-the" class="btn-tab whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200">Thẻ Tín Dụng</button>
+            <div class="flex flex-col md:flex-row items-center justify-between mb-10 gap-6">
+                <div>
+                     <h3 class="text-3xl font-extrabold text-slate-900 flex items-center gap-3">
+                        <span class="relative flex h-8 w-8">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-8 w-8 bg-blue-gradient items-center justify-center">
+                              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                          </span>
+                        </span>
+                        Danh sách đề xuất
+                    </h3>
+                    <p class="text-slate-500 mt-2 font-medium">Các sản phẩm được AI lựa chọn phù hợp nhất với bạn</p>
+                </div>
+               
+                <div class="bg-white/70 backdrop-blur-md p-1.5 rounded-full shadow-sm border border-slate-200 flex gap-1 w-full md:w-auto overflow-x-auto scrollbar-hide">
+                    <button onclick="switchTab('vay')" id="btn-vay" class="btn-tab flex-1 md:flex-none whitespace-nowrap px-6 py-3 rounded-full text-sm font-bold transition-all">💸 Vay Tiền</button>
+                    <button onclick="switchTab('bank')" id="btn-bank" class="btn-tab flex-1 md:flex-none whitespace-nowrap px-6 py-3 rounded-full text-sm font-bold transition-all">🏦 Ngân Hàng</button>
+                    <button onclick="switchTab('the')" id="btn-the" class="btn-tab flex-1 md:flex-none whitespace-nowrap px-6 py-3 rounded-full text-sm font-bold transition-all">💳 Thẻ Tín Dụng</button>
                 </div>
             </div>
 
-            <div id="app-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+            <div id="app-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
 
-            <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center">
-                <div class="text-6xl mb-4 opacity-20 grayscale">📭</div>
-                <p class="text-slate-400 font-medium">Chưa có dữ liệu.</p>
+            <div id="empty-state" class="hidden flex-col items-center justify-center py-24 text-center bg-white/50 backdrop-blur-md rounded-3xl border border-dashed border-slate-300">
+                <img src="https://img.icons8.com/fluency/96/nothing-found.png" class="w-24 h-24 mb-4 opacity-80" alt="Empty">
+                <h4 class="text-xl font-bold text-slate-700 mb-2">Chưa tìm thấy sản phẩm</h4>
+                <p class="text-slate-500 font-medium">Vui lòng thử lại hoặc chọn danh mục khác.</p>
             </div>
         </div>
     </main>
 
-    <section class="bg-white py-16">
+    <section class="py-24 bg-white relative overflow-hidden">
+         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-50/50 rounded-[100%] blur-3xl -z-10"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900">Tại sao chọn chúng tôi?</h2>
-                <p class="text-slate-500 mt-2">Nền tảng tài chính thông minh dành cho người Việt</p>
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Tại sao chọn chúng tôi?</span>
+                <h2 class="text-4xl font-extrabold text-slate-900 mt-3">Công nghệ định hình <br> tương lai tài chính</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-2xl bg-white border border-slate-100 hover:shadow-xl transition-all text-center group">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-blue-50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-10 rounded-[2rem] bg-card-gradient border border-slate-100 shadow-premium hover-lift text-center group relative">
+                    <div class="w-20 h-20 mx-auto mb-8 bg-blue-gradient p-0.5 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform shadow-lg shadow-blue-500/20">
+                        <div class="w-full h-full bg-white rounded-2xl flex items-center justify-center back">
+                             <img src="https://img.icons8.com/fluency/96/artificial-intelligence.png" class="w-10 h-10" alt="AI">
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Gợi ý thông minh</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Tự động phân tích và đưa ra gói sản phẩm phù hợp nhất với nhu cầu của bạn.</p>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-4">Gợi ý bởi AI</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">Thuật toán thông minh tự động phân tích hồ sơ để tìm ra sản phẩm có tỷ lệ duyệt cao nhất.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-white border border-slate-100 hover:shadow-xl transition-all text-center group">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-green-50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                <div class="p-10 rounded-[2rem] bg-card-gradient border border-slate-100 shadow-premium hover-lift text-center group relative">
+                    <div class="w-20 h-20 mx-auto mb-8 bg-gold-gradient p-0.5 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform shadow-lg shadow-orange-500/20">
+                        <div class="w-full h-full bg-white rounded-2xl flex items-center justify-center">
+                            <img src="https://img.icons8.com/fluency/96/scales.png" class="w-10 h-10" alt="Compare">
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Dễ dàng so sánh</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">So sánh lãi suất, hạn mức minh bạch của hơn 50 đối tác trên một màn hình.</p>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-4">So sánh minh bạch</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">Mọi thông tin về lãi suất, phí ẩn đều được hiển thị rõ ràng, giúp bạn ra quyết định đúng đắn.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-white border border-slate-100 hover:shadow-xl transition-all text-center group">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-purple-50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                <div class="p-10 rounded-[2rem] bg-card-gradient border border-slate-100 shadow-premium hover-lift text-center group relative">
+                    <div class="w-20 h-20 mx-auto mb-8 bg-gradient-to-br from-purple-500 to-pink-500 p-0.5 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform shadow-lg shadow-purple-500/20">
+                        <div class="w-full h-full bg-white rounded-2xl flex items-center justify-center">
+                            <img src="https://img.icons8.com/fluency/96/security-checked.png" class="w-10 h-10" alt="Secure">
+                        </div>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-3">Tất cả trong một</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Đăng ký online nhanh chóng, hoàn toàn miễn phí trọn đời.</p>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-4">An toàn tuyệt đối</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">Chỉ hợp tác với các tổ chức tài chính uy tín được cấp phép. Dữ liệu của bạn được bảo mật.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-slate-50 border-t border-slate-200 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">
-                    Một công cụ duy nhất giúp bạn <br class="hidden sm:block">
-                    <span class="text-blue-600">làm chủ tài chính cá nhân</span>
-                </h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center mb-4 shadow-sm text-yellow-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                    <h3 class="font-bold text-slate-900 mb-2">Đa dạng sản phẩm</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed px-4">Hơn 150 khoản vay và thẻ tín dụng trên thị trường.</p>
+    <section class="py-20 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%23ffffff%27 fill-opacity=%271%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-blue-gradient mb-2">150+</div>
+                    <p class="text-blue-200 font-medium">Đối tác tài chính</p>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center mb-4 shadow-sm text-yellow-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                    <h3 class="font-bold text-slate-900 mb-2">Tự động 100%</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed px-4">Hệ thống duyệt tự động hoạt động liên tục 24/7.</p>
+                <div class="p-6 border-l border-slate-800">
+                    <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gold-gradient mb-2">24/7</div>
+                    <p class="text-blue-200 font-medium">Hoạt động liên tục</p>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center mb-4 shadow-sm text-yellow-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                    <h3 class="font-bold text-slate-900 mb-2">Minh bạch</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed px-4">Thông tin rõ ràng, đảm bảo quyền lợi tốt nhất.</p>
+                <div class="p-6 border-l border-slate-800">
+                     <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">98%</div>
+                    <p class="text-blue-200 font-medium">Tỷ lệ hài lòng</p>
                 </div>
-                <div class="flex flex-col items-center">
-                    <div class="w-12 h-12 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center mb-4 shadow-sm text-yellow-500"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
-                    <h3 class="font-bold text-slate-900 mb-2">Dễ dàng lựa chọn</h3>
-                    <p class="text-xs text-slate-500 leading-relaxed px-4">Đăng ký sản phẩm phù hợp với kỳ vọng chỉ vài cú click.</p>
+                <div class="p-6 border-l border-slate-800">
+                    <div class="text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 mb-2">0Đ</div>
+                    <p class="text-blue-200 font-medium">Phí dịch vụ</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-white border-t border-slate-200 py-16 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 mb-10 text-center">
-            <h2 class="text-2xl font-bold text-slate-900">Khách hàng nói gì về chúng tôi?</h2>
-            <p class="text-slate-500 text-sm mt-1">Hơn 10.000+ người dùng tin tưởng</p>
+    <section class="bg-white py-24 overflow-hidden relative">
+        <div class="blob blob-2" style="opacity: 0.2; top: 20%;"></div>
+        <div class="max-w-7xl mx-auto px-4 mb-16 text-center relative z-10">
+            <h2 class="text-3xl font-extrabold text-slate-900">Được tin tưởng bởi hàng ngàn người dùng</h2>
+            <p class="text-slate-500 text-lg mt-3 font-medium">Những câu chuyện thành công thực tế</p>
         </div>
         
-        <div class="marquee-container relative w-full">
-            <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
-            <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+        <div class="marquee-container relative w-full z-10">
+            <div class="absolute left-0 top-0 bottom-0 w-40 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-white to-transparent z-10"></div>
             
-            <div class="flex gap-6 animate-marquee w-max px-4">
-                <div class="w-[320px] bg-slate-50 rounded-2xl p-6 border border-slate-100 shrink-0">
-                    <p class="text-slate-600 italic text-sm mb-4">"Cứu tinh thực sự! Cần gấp 10 triệu mà ngại mượn bạn bè. Lên đây 5 phút là tìm được gói vay phù hợp."</p>
-                    <div class="flex items-center gap-3 border-t border-slate-200 pt-3">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-8 h-8 rounded-full" alt="Khách hàng" loading="lazy">
-                        <div><h4 class="font-bold text-xs text-slate-900">Tùng Đào</h4><p class="text-[10px] text-slate-500">Giáo viên</p></div>
+            <div class="flex gap-8 animate-marquee w-max px-4 py-4">
+                <div class="w-[400px] bg-white p-8 rounded-[2rem] border border-slate-100 shadow-premium shrink-0 relative">
+                    <div class="absolute -top-4 -left-4">
+                        <img src="https://img.icons8.com/fluency/48/quote-left.png" class="w-10 h-10 opacity-50" alt="quote">
+                    </div>
+                    <p class="text-slate-700 text-lg leading-relaxed font-medium italic mb-8 relative z-10">"Thực sự ấn tượng! Tôi cần gấp một khoản tiền để nhập hàng, lên FinTech Hub so sánh 5 phút là chọn được bên lãi tốt nhất. Giải ngân trong ngày luôn."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-14 h-14 rounded-full border-4 border-blue-50 shadow-sm" alt="Khách hàng" loading="lazy">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-lg">Tùng Đào</h4>
+                            <p class="text-sm text-blue-600 font-semibold">Chủ shop online</p>
+                        </div>
+                        <div class="ml-auto flex gap-1 text-yellow-400">★★★★★</div>
                     </div>
                 </div>
-                <div class="w-[320px] bg-slate-50 rounded-2xl p-6 border border-slate-100 shrink-0">
-                    <p class="text-slate-600 italic text-sm mb-4">"Giao diện dễ dùng, thông tin minh bạch. Mình mới mở được cái thẻ tín dụng hoàn tiền ngon lành."</p>
-                    <div class="flex items-center gap-3 border-t border-slate-200 pt-3">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-8 h-8 rounded-full" alt="Khách hàng" loading="lazy">
-                        <div><h4 class="font-bold text-xs text-slate-900">Mai Thanh</h4><p class="text-[10px] text-slate-500">Kinh doanh</p></div>
+                <div class="w-[400px] bg-white p-8 rounded-[2rem] border border-slate-100 shadow-premium shrink-0 relative">
+                    <div class="absolute -top-4 -left-4"><img src="https://img.icons8.com/fluency/48/quote-left.png" class="w-10 h-10 opacity-50" alt="quote"></div>
+                    <p class="text-slate-700 text-lg leading-relaxed font-medium italic mb-8 relative z-10">"Giao diện quá đẹp và dễ dùng. Nhờ web mà mình săn được cái thẻ tín dụng hoàn tiền ngon lành, lại còn được tặng vali nữa chứ. 10 điểm!"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-14 h-14 rounded-full border-4 border-blue-50 shadow-sm" alt="Khách hàng" loading="lazy">
+                        <div><h4 class="font-bold text-slate-900 text-lg">Mai Thanh</h4><p class="text-sm text-blue-600 font-semibold">NV Marketing</p></div>
+                        <div class="ml-auto flex gap-1 text-yellow-400">★★★★★</div>
                     </div>
                 </div>
-                <div class="w-[320px] bg-slate-50 rounded-2xl p-6 border border-slate-100 shrink-0">
-                    <p class="text-slate-600 italic text-sm mb-4">"Hệ thống so sánh rất trực quan. Tôi đã tiết kiệm được rất nhiều thời gian tự tìm hiểu."</p>
-                    <div class="flex items-center gap-3 border-t border-slate-200 pt-3">
-                        <img src="https://randomuser.me/api/portraits/men/86.jpg" class="w-8 h-8 rounded-full" alt="Khách hàng" loading="lazy">
-                        <div><h4 class="font-bold text-xs text-slate-900">Nam Phong</h4><p class="text-[10px] text-slate-500">Văn phòng</p></div>
+                <div class="w-[400px] bg-white p-8 rounded-[2rem] border border-slate-100 shadow-premium shrink-0 relative">
+                    <div class="absolute -top-4 -left-4"><img src="https://img.icons8.com/fluency/48/quote-left.png" class="w-10 h-10 opacity-50" alt="quote"></div>
+                    <p class="text-slate-700 text-lg leading-relaxed font-medium italic mb-8 relative z-10">"Uy tín là trên hết. Tôi rất sợ vào mấy trang web lừa đảo, nhưng ở đây toàn đối tác lớn, thông tin rõ ràng nên rất yên tâm."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" class="w-14 h-14 rounded-full border-4 border-blue-50 shadow-sm" alt="Khách hàng" loading="lazy">
+                        <div><h4 class="font-bold text-slate-900 text-lg">Hoàng Nam</h4><p class="text-sm text-blue-600 font-semibold">Kỹ sư</p></div>
+                        <div class="ml-auto flex gap-1 text-yellow-400">★★★★★</div>
                     </div>
                 </div>
-                <div class="w-[320px] bg-slate-50 rounded-2xl p-6 border border-slate-100 shrink-0">
-                    <p class="text-slate-600 italic text-sm mb-4">"Sinh viên như mình thỉnh thoảng kẹt tiền đóng học phí, lên đây tìm được mấy gói vay lãi 0% quá ngon."</p>
-                    <div class="flex items-center gap-3 border-t border-slate-200 pt-3">
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-8 h-8 rounded-full" alt="Khách hàng" loading="lazy">
-                        <div><h4 class="font-bold text-xs text-slate-900">Minh Quân</h4><p class="text-[10px] text-slate-500">Sinh viên</p></div>
+                <div class="w-[400px] bg-white p-8 rounded-[2rem] border border-slate-100 shadow-premium shrink-0 relative">
+                    <div class="absolute -top-4 -left-4">
+                        <img src="https://img.icons8.com/fluency/48/quote-left.png" class="w-10 h-10 opacity-50" alt="quote">
+                    </div>
+                    <p class="text-slate-700 text-lg leading-relaxed font-medium italic mb-8 relative z-10">"Thực sự ấn tượng! Tôi cần gấp một khoản tiền để nhập hàng, lên FinTech Hub so sánh 5 phút là chọn được bên lãi tốt nhất. Giải ngân trong ngày luôn."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-14 h-14 rounded-full border-4 border-blue-50 shadow-sm" alt="Khách hàng" loading="lazy">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-lg">Tùng Đào</h4>
+                            <p class="text-sm text-blue-600 font-semibold">Chủ shop online</p>
+                        </div>
+                        <div class="ml-auto flex gap-1 text-yellow-400">★★★★★</div>
                     </div>
                 </div>
-                <div class="w-[320px] bg-slate-50 rounded-2xl p-6 border border-slate-100 shrink-0">
-                    <p class="text-slate-600 italic text-sm mb-4">"Uy tín nha mọi người. Link đăng ký chính chủ, không phải web lừa đảo. Rất đáng tin cậy."</p>
-                    <div class="flex items-center gap-3 border-t border-slate-200 pt-3">
-                        <img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-8 h-8 rounded-full" alt="Khách hàng" loading="lazy">
-                        <div><h4 class="font-bold text-xs text-slate-900">Bích Ngọc</h4><p class="text-[10px] text-slate-500">Freelancer</p></div>
+                <div class="w-[400px] bg-white p-8 rounded-[2rem] border border-slate-100 shadow-premium shrink-0 relative">
+                    <div class="absolute -top-4 -left-4"><img src="https://img.icons8.com/fluency/48/quote-left.png" class="w-10 h-10 opacity-50" alt="quote"></div>
+                    <p class="text-slate-700 text-lg leading-relaxed font-medium italic mb-8 relative z-10">"Giao diện quá đẹp và dễ dùng. Nhờ web mà mình săn được cái thẻ tín dụng hoàn tiền ngon lành, lại còn được tặng vali nữa chứ. 10 điểm!"</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-14 h-14 rounded-full border-4 border-blue-50 shadow-sm" alt="Khách hàng" loading="lazy">
+                        <div><h4 class="font-bold text-slate-900 text-lg">Mai Thanh</h4><p class="text-sm text-blue-600 font-semibold">NV Marketing</p></div>
+                        <div class="ml-auto flex gap-1 text-yellow-400">★★★★★</div>
                     </div>
                 </div>
-                <div class="w-[320px] bg-slate-50 rounded-2xl p-6 border border-slate-100 shrink-0"><p class="text-slate-600 italic text-sm mb-4">"Cứu tinh thực sự! Cần gấp 10 triệu mà ngại mượn bạn bè. Lên đây 5 phút là tìm được gói vay phù hợp."</p><div class="flex items-center gap-3 border-t border-slate-200 pt-3"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-8 h-8 rounded-full" loading="lazy"><div><h4 class="font-bold text-xs text-slate-900">Tùng Đào</h4><p class="text-[10px] text-slate-500">Giáo viên</p></div></div></div>
-                <div class="w-[320px] bg-slate-50 rounded-2xl p-6 border border-slate-100 shrink-0"><p class="text-slate-600 italic text-sm mb-4">"Giao diện dễ dùng, thông tin minh bạch. Mình mới mở được cái thẻ tín dụng hoàn tiền ngon lành."</p><div class="flex items-center gap-3 border-t border-slate-200 pt-3"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-8 h-8 rounded-full" loading="lazy"><div><h4 class="font-bold text-xs text-slate-900">Mai Thanh</h4><p class="text-[10px] text-slate-500">Kinh doanh</p></div></div></div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-50 border-t border-slate-200 pt-12 pb-8">
+    <footer class="bg-slate-900 border-t border-slate-800 pt-16 pb-10 text-slate-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center gap-2 mb-4">
-                        <img src="https://img.icons8.com/color/48/money-bag.png" class="w-6 h-6" alt="FinTech Hub">
-                        <span class="text-lg font-extrabold text-slate-900">FinTech Hub</span>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="https://img.icons8.com/fluency/48/money-bag.png" class="w-8 h-8" alt="FinTech Hub">
+                        <span class="text-2xl font-extrabold text-white">FinTech <span class="text-transparent bg-clip-text bg-blue-gradient">Hub</span></span>
                     </div>
-                    <p class="text-slate-500 text-sm leading-relaxed max-w-sm">
-                        Cổng thông tin tài chính uy tín hàng đầu, giúp bạn kết nối với các giải pháp tài chính an toàn, minh bạch và nhanh chóng nhất.
+                    <p class="text-slate-400 text-base leading-relaxed max-w-md mb-6">
+                        Sứ mệnh của chúng tôi là minh bạch hóa thị trường tài chính, giúp người Việt tiếp cận các sản phẩm vay và ngân hàng tốt nhất một cách dễ dàng và an toàn.
                     </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.011-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85C2.333 3.854 3.852 2.31 7.111 2.162 8.377 2.104 8.756 2.163 12 2.163zm0-2.163C8.736 0 8.326.014 7.052.072 2.765.269.265 2.79.072 7.052.014 8.326 0 8.736 0 12s.014 3.674.072 4.948c.193 4.257 2.689 6.782 6.98 6.98 1.274.058 1.684.072 4.948.072 3.264 0 3.674-.014 4.948-.072 4.293-.197 6.785-2.722 6.98-6.98.058-1.274.072-1.684.072-4.948 0-3.264-.014-3.674-.072-4.948-.197-4.293-2.722-6.785-6.98-6.98C15.674.014 15.264 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg></a>
+                    </div>
                 </div>
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4 text-sm">Sản phẩm</h4>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li><a href="javascript:void(0)" onclick="selectCategory('vay')" class="hover:text-blue-600">Vay nhanh</a></li>
-                        <li><a href="javascript:void(0)" onclick="selectCategory('the')" class="hover:text-blue-600">Mở thẻ</a></li>
-                        <li><a href="javascript:void(0)" onclick="selectCategory('bank')" class="hover:text-blue-600">Tài khoản</a></li>
+                    <h4 class="font-bold text-white mb-6 text-sm uppercase tracking-wider">Sản phẩm</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="javascript:void(0)" onclick="selectCategory('vay')" class="hover:text-blue-400 transition-colors flex items-center gap-2"><span class="text-blue-500">›</span> Vay tiêu dùng nhanh</a></li>
+                        <li><a href="javascript:void(0)" onclick="selectCategory('the')" class="hover:text-blue-400 transition-colors flex items-center gap-2"><span class="text-blue-500">›</span> Mở thẻ tín dụng</a></li>
+                        <li><a href="javascript:void(0)" onclick="selectCategory('bank')" class="hover:text-blue-400 transition-colors flex items-center gap-2"><span class="text-blue-500">›</span> Tài khoản số đẹp</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4 text-sm">Hỗ trợ</h4>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-blue-600">Điều khoản</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Chính sách</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Liên hệ</a></li>
+                    <h4 class="font-bold text-white mb-6 text-sm uppercase tracking-wider">Hỗ trợ</h4>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Về chúng tôi</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Điều khoản sử dụng</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Câu hỏi thường gặp</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-slate-200 pt-6 text-center">
-                <p class="text-xs text-slate-400 font-medium">© 2025 FinTech Hub. All rights reserved.</p>
-                <p class="text-[10px] text-slate-300 mt-1">Cập nhật lúc: <span id="real-time">--:--</span></p>
+            <div class="border-t border-slate-800/50 pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-medium">
+                <p>© 2025 FinTech Hub. All rights reserved.</p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1">Designed with <span class="text-red-500">❤</span> for better finance.</p>
             </div>
         </div>
     </footer>
 
-    <script src="data.js?v=13"></script>
+    <script src="data.js?v=14"></script>
     <script>
         const VIP_IDS = ["moneycatvn", "tima", "jeffapp", "crezu", "kamo", "dong247"];
-        const DEFAULT_LOGO = "https://img.icons8.com/color/96/money-bag.png";
-        
+        const DEFAULT_LOGO = "https://img.icons8.com/fluency/96/money-bag.png";
         let currentTab = 'vay';
         let currentList = [];
         let isExpanded = false;
 
-        function updateTime() {
-            const el = document.getElementById('real-time');
-            if(el) el.innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
-        }
-        updateTime(); setInterval(updateTime, 60000);
-
         function selectCategory(type) {
             switchTab(type);
-            document.getElementById('main-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const mainContent = document.getElementById('main-content');
+            const yOffset = -80; // Offset for fixed header
+            const y = mainContent.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({top: y, behavior: 'smooth'});
         }
 
         function switchTab(tab) {
@@ -331,9 +395,9 @@
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (t === tab) {
-                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-200 transform scale-105 transition-all";
+                    btn.className = "btn-tab flex-1 md:flex-none whitespace-nowrap px-6 py-3 rounded-full text-sm font-bold bg-blue-gradient text-white shadow-lg shadow-blue-500/30 transform scale-105 transition-all";
                 } else {
-                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all";
+                    btn.className = "btn-tab flex-1 md:flex-none whitespace-nowrap px-6 py-3 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-blue-300 transition-all";
                 }
             });
             renderApps();
@@ -348,17 +412,11 @@
             if (!list) {
                 if (typeof OFFERS === 'undefined') return;
                 list = OFFERS.filter(item => item.type === currentTab);
-                
                 list.sort((a, b) => {
-                    const isVipA = VIP_IDS.includes(a.id);
-                    const isVipB = VIP_IDS.includes(b.id);
-                    if (isVipA && !isVipB) return -1;
-                    if (!isVipA && isVipB) return 1;
-
-                    const hasLinkA = a.link && a.link.trim().length > 5;
-                    const hasLinkB = b.link && b.link.trim().length > 5;
-                    if (hasLinkA && !hasLinkB) return -1;
-                    if (!hasLinkA && hasLinkB) return 1;
+                    const isVipA = VIP_IDS.includes(a.id); const isVipB = VIP_IDS.includes(b.id);
+                    if (isVipA && !isVipB) return -1; if (!isVipA && isVipB) return 1;
+                    const hasLinkA = a.link && a.link.length > 5; const hasLinkB = b.link && b.link.length > 5;
+                    if (hasLinkA && !hasLinkB) return -1; if (!hasLinkA && hasLinkB) return 1;
                     return 0;
                 });
                 currentList = list;
@@ -371,47 +429,49 @@
             }
             emptyState.classList.add('hidden'); emptyState.classList.remove('flex');
 
-            const itemsToShow = isExpanded ? list : list.slice(0, 6);
+            const itemsToShow = isExpanded ? list : list.slice(0, 8); // Show 8 initially
 
-            itemsToShow.forEach(app => {
+            itemsToShow.forEach((app, index) => {
                 const hasLink = app.link && app.link.trim().length > 5;
-                const btnClass = hasLink 
-                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md cursor-pointer" 
-                    : "bg-slate-100 text-slate-400 cursor-not-allowed";
-                const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
+                const btnClass = hasLink ? "bg-blue-gradient hover:shadow-lg hover:shadow-blue-500/30 text-white active-scale cursor-pointer" : "bg-slate-100 text-slate-400 cursor-not-allowed";
+                const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "TẠM NGƯNG";
                 const action = hasLink ? `onclick="window.open('${app.link}', '_blank')"` : "";
                 const isVip = VIP_IDS.includes(app.id);
-                const badge = isVip 
-                    ? '<div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10 shadow-sm">ĐỀ XUẤT 🔥</div>'
-                    : (currentTab === 'vay' && hasLink ? '<div class="absolute top-0 right-0 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10">DUYỆT NHANH</div>' : '');
+                const badge = isVip ? '<div class="absolute top-3 right-3 bg-gold-gradient text-white text-[10px] font-bold px-3 py-1 rounded-full z-10 shadow-sm animate-pulse">ĐỀ XUẤT 🔥</div>' : '';
+                const delayClass = index < 8 ? `delay-${(index % 4) * 100}` : '';
 
                 const html = `
-                <div class="bg-white rounded-2xl border border-slate-100 app-card overflow-hidden flex flex-col h-full relative group animate-fade-in">
+                <div class="glass bg-white rounded-[2rem] p-6 relative group hover-lift animate-fade-up ${delayClass} border border-slate-100/80 shadow-sm">
                     ${badge}
-                    <div class="p-5 flex flex-col flex-grow">
-                        <div class="flex items-start gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-2xl border border-slate-50 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1.5 transition-transform group-hover:scale-105">
+                    <div class="flex flex-col h-full">
+                        <div class="flex items-center gap-5 mb-6">
+                            <div class="w-20 h-20 rounded-2xl border-2 border-white shadow-md flex-shrink-0 overflow-hidden bg-white p-2 transition-transform group-hover:scale-105 relative z-10">
                                 <img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='${DEFAULT_LOGO}'" loading="lazy">
                             </div>
-                            <div class="flex-1 min-w-0 pt-1">
-                                <h3 class="font-bold text-slate-900 text-[17px] leading-tight mb-1 truncate">${app.name}</h3>
-                                <p class="text-[13px] text-slate-500 leading-snug line-clamp-2">${app.desc}</p>
+                            <div class="flex-1 min-w-0 pt-2">
+                                <h3 class="font-extrabold text-slate-900 text-lg leading-tight mb-1 truncate">${app.name}</h3>
+                                <div class="flex items-center gap-1 mb-2">
+                                    <span class="text-yellow-400 text-sm">★★★★★</span>
+                                    <span class="text-slate-400 text-xs">(4.9/5)</span>
+                                </div>
                             </div>
                         </div>
+                         <p class="text-sm text-slate-500 leading-relaxed line-clamp-2 mb-6 font-medium pl-1">${app.desc}</p>
+                        
                         ${currentTab === 'vay' ? `
-                        <div class="grid grid-cols-2 gap-3 mb-5 bg-slate-50/80 rounded-xl border border-slate-100 p-3 mt-auto">
-                            <div class="text-center border-r border-slate-200">
-                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Hạn mức</p>
-                                <p class="font-bold text-slate-800 text-sm mt-0.5">Hấp dẫn</p>
-                            </div>
+                        <div class="grid grid-cols-2 gap-3 mb-6 bg-slate-50 rounded-2xl border border-slate-100 p-4 mt-auto">
                             <div class="text-center">
-                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Lãi suất</p>
-                                <p class="font-bold text-green-600 text-sm mt-0.5">Ưu đãi</p>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Hạn mức đến</p>
+                                <p class="font-extrabold text-slate-900 text-base">20 Triệu</p>
                             </div>
-                        </div>` : '<div class="mb-4 mt-auto"></div>'}
-                        <button ${action} class="w-full ${btnClass} font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 text-[13px] uppercase tracking-wide active:scale-95">
-                            ${btnText}
-                            ${hasLink ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>' : ''}
+                            <div class="text-center border-l border-slate-200">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Lãi suất từ</p>
+                                <p class="font-extrabold text-emerald-500 text-base">0% /tháng</p>
+                            </div>
+                        </div>` : '<div class="mb-6 mt-auto"></div>'}
+                        
+                        <button ${action} class="w-full ${btnClass} font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wider relative overflow-hidden group/btn">
+                            <span class="relative z-10 flex items-center gap-2">${btnText} ${hasLink ? '<svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>' : ''}</span>
                         </button>
                     </div>
                 </div>`;
@@ -421,30 +481,24 @@
             const oldBtn = document.getElementById('load-more-container');
             if (oldBtn) oldBtn.remove();
             
-            if (list.length > 6 && !isExpanded) {
+            if (list.length > 8 && !isExpanded) {
                 container.insertAdjacentHTML('afterend', `
-                <div id="load-more-container" class="col-span-full flex justify-center mt-8">
-                    <button onclick="expandList()" class="group flex items-center gap-2 px-8 py-3 bg-white border border-slate-200 hover:border-blue-300 hover:bg-blue-50 rounded-full text-slate-600 font-bold text-sm shadow-sm transition-all hover:scale-105">
-                        Xem thêm ${list.length - 6} gói ưu đãi khác
-                        <svg class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                <div id="load-more-container" class="col-span-full flex justify-center mt-12">
+                    <button onclick="expandList()" class="group relative inline-flex items-center justify-center px-8 py-3.5 font-bold text-white transition-all duration-200 bg-slate-900 font-lg rounded-full hover:bg-blue-600 hover:shadow-lg hover:-translate-y-1 active:scale-95 overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">Xem thêm ${list.length - 8} lựa chọn khác <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span>
                     </button>
                 </div>`);
             }
         }
 
-        function expandList() {
-            isExpanded = true;
-            renderApps(currentList);
-        }
+        function expandList() { isExpanded = true; renderApps(currentList); }
 
         async function syncApi() {
             if (typeof OFFERS === 'undefined') return;
             try {
-                const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
-                const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`);
+                const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D')}`);
                 if (!res.ok) return;
-                const json = await res.json();
-                const raw = JSON.parse(json.contents);
+                const json = await res.json(); const raw = JSON.parse(json.contents);
                 const apiData = raw.data || (Array.isArray(raw) && raw[0]?.data) || [];
                 if (apiData.length > 0) {
                     let count = 0;
@@ -452,22 +506,15 @@
                         let item = OFFERS.find(o => o.id === newItem.offer_id);
                         if (item) {
                             if (item.logo !== newItem.avatar || item.name !== newItem.name) {
-                                item.logo = newItem.avatar || item.logo;
-                                item.name = newItem.name || item.name;
-                                count++;
+                                item.logo = newItem.avatar || item.logo; item.name = newItem.name || item.name; count++;
                             }
                         }
                     });
                     if (count > 0) renderApps();
-                    document.getElementById('api-indicator').className = "w-2.5 h-2.5 rounded-full bg-emerald-500";
                 }
-            } catch (e) { 
-                document.getElementById('api-indicator').className = "w-2.5 h-2.5 rounded-full bg-slate-300";
-            }
+            } catch (e) { console.error(e); }
         }
-
-        renderApps();
-        setTimeout(syncApi, 1500);
+        renderApps(); setTimeout(syncApi, 1500);
     </script>
 </body>
 </html>
