@@ -23,8 +23,6 @@
                     colors: { brand: '#0052cc', action: '#16a34a' },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     boxShadow: { 'card': '0 4px 6px -1px rgba(0,0,0,0.05)', 'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1)' },
-                    animation: { 'pop-in': 'popIn 0.3s ease-out forwards' },
-                    keyframes: { popIn: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } } }
                 },
             },
         }
@@ -111,7 +109,7 @@
             vay: ['vay', 'cầm đồ', 'tín chấp', 'khoản vay', 'giải ngân', 'tiền mặt', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'oncredit', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan finance', 'mcredit', 'easy credit', 'lotte', 'mirae']
         };
 
-        // Backup Data
+        // Backup
         const BACKUP_DATA = [
             { offer_name: "MoneyCat", logo: "https://moneycat.vn/public/img/logo.png", min_loan: 1000000, max_loan: 10000000, short_description: "Duyệt nhanh 5 phút", tracking_link: "https://hl-link.net/nVT5020" },
             { offer_name: "MB Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png", min_loan: 0, max_loan: 0, short_description: "Mở tài khoản số đẹp", tracking_link: "#" }
@@ -160,22 +158,17 @@
             switchTab('vay');
         }
 
-        // LOGIC PHÂN LOẠI
         function checkCategory(item) {
             const name = (item.offer_name || item.name || "").toLowerCase();
-            const desc = (item.short_description || "").toLowerCase();
             const cat = (item.category_name || "").toLowerCase();
             const fullText = name + " " + cat;
 
-            // 1. Check Thẻ
             for (let w of KEYWORDS.the) { if (fullText.includes(w)) return 'the'; }
-            // 2. Check Vay
             for (let w of KEYWORDS.vay) { if (fullText.includes(w)) return 'vay'; }
             if (cat.includes('vay') || cat.includes('loan')) return 'vay';
-            // 3. Check Bank
             for (let w of KEYWORDS.bank) { if (fullText.includes(w)) return 'bank'; }
 
-            return 'vay'; // Mặc định
+            return 'vay'; 
         }
 
         function switchTab(tabName) {
@@ -198,6 +191,7 @@
             renderApps(filtered);
         }
 
+        // === HÀM RENDER (CẬP NHẬT TÌM LINK) ===
         function renderApps(list) {
             container.innerHTML = '';
             loader.classList.add('hidden');
@@ -209,10 +203,19 @@
             emptyState.classList.add('hidden');
             
             list.forEach((app, index) => {
+                // TÌM LINK TIẾP THỊ (Tìm mọi biến có thể)
+                let trackingLink = app.tracking_link || app.link || app.url || app.click_url || app.short_link || "";
+                
+                // Nếu vẫn chưa có link, in ra console để kiểm tra
+                if (!trackingLink) {
+                    console.warn(`Offer [${app.offer_name || app.name}] không tìm thấy link! Các keys có trong object:`, Object.keys(app));
+                }
+
                 let item = {
                     ten: app.offer_name || app.name || "Gói Vay",
                     logo: app.logo || app.image || "https://img.icons8.com/color/96/money-bag.png",
-                    link: app.tracking_link || app.link || "#",
+                    // Nếu không có link thì để trống để xử lý nút bấm sau
+                    link: trackingLink, 
                     mota: app.short_description || "Duyệt nhanh 24/7",
                     hanmuc: (app.min_loan && app.max_loan) ? `${formatMoney(app.min_loan)} - ${formatMoney(app.max_loan)}` : "Hạn mức cao",
                     tag: currentTab === 'vay' ? "DUYỆT NHANH" : (currentTab === 'bank' ? "SỐ ĐẸP" : "HOÀN TIỀN"),
@@ -241,6 +244,23 @@
                     </div>`;
                 }
 
+                // XỬ LÝ NÚT BẤM KHI MẤT LINK
+                let buttonHtml = '';
+                if (item.link && item.link.length > 5) {
+                    // Có link xịn -> Nút Xanh
+                    buttonHtml = `
+                    <button onclick="handleRedirect('${item.link}', '${item.ten}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 text-white font-bold py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
+                        ĐĂNG KÝ
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>`;
+                } else {
+                    // Mất link -> Nút Xám (Disable)
+                    buttonHtml = `
+                    <button disabled class="w-full bg-gray-200 text-gray-400 font-bold py-2.5 rounded-lg cursor-not-allowed flex items-center justify-center gap-2 text-sm uppercase">
+                        ĐANG BẢO TRÌ
+                    </button>`;
+                }
+
                 let counterId = `counter-${index}`;
                 let fakeView = Math.floor(Math.random() * 500) + 300;
 
@@ -265,11 +285,8 @@
                         </div>
                         
                         ${infoBlock}
+                        ${buttonHtml}
 
-                        <button onclick="handleRedirect('${item.link}', '${item.ten}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 text-white font-bold py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
-                            ĐĂNG KÝ
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
                         <div class="mt-2 text-center text-[10px] text-slate-400">
                             <span id="${counterId}" class="font-bold text-slate-600">${fakeView}</span> hồ sơ vừa duyệt
                         </div>
