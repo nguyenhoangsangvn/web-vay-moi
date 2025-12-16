@@ -4,27 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FinTech Hub - Tài Chính 4.0</title>
-    <meta name="theme-color" content="#0f172a">
-    <link rel="icon" type="image/png" href="https://img.icons8.com/3d-fluency/94/money-bag.png">
+    <title>FinTech Hub 2025 - Giải Pháp Tài Chính Toàn Diện</title>
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
-                    colors: { 
-                        brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' }
-                    },
-                    boxShadow: {
-                        'glow': '0 0 20px rgba(37, 99, 235, 0.15)',
-                        'card': '0 10px 30px -10px rgba(0, 0, 0, 0.08)'
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: '#0052cc', accent: '#16a34a' }
                 }
             }
         }
@@ -34,146 +27,142 @@
         body { background-color: #f8fafc; -webkit-font-smoothing: antialiased; }
         .no-select { user-select: none; -webkit-tap-highlight-color: transparent; }
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* Ẩn thanh cuộn */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
-        
-        /* Glassmorphism Header */
-        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.3); }
-        
-        /* Card Animation */
-        .app-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .app-card:active { transform: scale(0.98); }
-        
-        /* Gradient Text */
-        .text-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Bottom Nav */
-        .bottom-nav-item.active { color: #2563eb; }
-        .bottom-nav-item.active svg { fill: #eff6ff; stroke: #2563eb; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Hiệu ứng Card nhẹ nhàng */
+        .app-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .app-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15); }
+        .btn-active:active { transform: scale(0.96); opacity: 0.9; }
     </style>
 </head>
-<body class="font-sans text-slate-800 text-[15px] no-select min-h-screen flex flex-col pb-20 md:pb-0">
+<body class="font-sans text-slate-800 text-[15px] no-select min-h-screen flex flex-col">
 
-    <header class="glass fixed top-0 w-full z-50 transition-all duration-300" id="header">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-                <div class="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30 text-white font-bold text-lg">
-                    $
-                </div>
-                <h1 class="text-xl font-extrabold tracking-tight text-slate-900">FinTech<span class="text-blue-600">Hub</span></h1>
+            <div class="flex items-center gap-2.5 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img src="https://img.icons8.com/color/48/money-bag.png" class="w-8 h-8" alt="Logo">
+                <h1 class="text-xl font-extrabold tracking-tight text-slate-900">FinTech <span class="text-blue-600">Hub</span></h1>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-500">
-                <button onclick="switchTab('vay')" class="hover:text-blue-600 transition-colors">Vay Tiền</button>
-                <button onclick="switchTab('bank')" class="hover:text-blue-600 transition-colors">Ngân Hàng</button>
-                <button onclick="switchTab('the')" class="hover:text-blue-600 transition-colors">Thẻ Tín Dụng</button>
+            <nav class="hidden md:flex gap-8 font-medium text-sm text-slate-600">
+                <a href="#" onclick="switchTab('vay')" class="hover:text-blue-600 transition-colors">Vay Tiền</a>
+                <a href="#" onclick="switchTab('bank')" class="hover:text-blue-600 transition-colors">Ngân Hàng Số</a>
+                <a href="#" onclick="switchTab('the')" class="hover:text-blue-600 transition-colors">Mở Thẻ</a>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <div class="hidden sm:flex flex-col items-end mr-2">
-                    <span class="text-[10px] text-slate-400 font-medium">Cập nhật lúc</span>
-                    <span id="real-time" class="text-xs font-bold text-slate-800 font-mono">--:--</span>
-                </div>
-                <button onclick="window.location.reload()" class="w-9 h-9 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200 flex items-center justify-center transition-all active:rotate-180">
-                    <svg class="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+            <div class="flex items-center gap-2">
+                <span id="api-indicator" class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" title="Hệ thống hoạt động"></span>
+                <button onclick="window.location.reload()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-bold transition-colors">
+                    Cập nhật
                 </button>
             </div>
         </div>
     </header>
 
-    <div class="pt-24 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 shadow-2xl shadow-blue-900/20 text-white p-6 sm:p-12 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
-            
-            <div class="relative z-10 max-w-xl">
-                <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-blue-100 text-[11px] font-bold uppercase tracking-wider mb-3 backdrop-blur-sm">
-                    ✨ Cập nhật ưu đãi 2025
-                </span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold leading-tight mb-3">
-                    Giải Pháp Tài Chính <br/> <span class="text-blue-300">Thông Minh & An Toàn</span>
-                </h2>
-                <p class="text-blue-100/80 text-sm sm:text-base mb-6 font-medium leading-relaxed">
-                    Tổng hợp các gói vay lãi suất thấp và thẻ tín dụng hoàn tiền tốt nhất thị trường.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center sm:justify-start">
-                    <div class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
-                        <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                        <span class="text-xs font-semibold">Duyệt 5 phút</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
-                        <svg class="w-4 h-4 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                        <span class="text-xs font-semibold">Lãi suất 0%</span>
-                    </div>
-                </div>
-            </div>
-            <div class="relative z-10 hidden sm:block">
-                <img src="https://img.icons8.com/3d-fluency/180/wallet.png" alt="Wallet" class="drop-shadow-2xl animate-[bounce_3s_infinite]">
-            </div>
+    <section class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-4 uppercase tracking-wide">
+                Cập nhật 2025
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight leading-tight">
+                Giải Pháp Tài Chính <br class="hidden sm:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Thông Minh & Uy Tín</span>
+            </h2>
+            <p class="text-slate-500 max-w-2xl mx-auto text-base sm:text-lg mb-6 leading-relaxed">
+                Tổng hợp các gói vay, thẻ tín dụng và ngân hàng số tốt nhất hiện nay. 
+                So sánh minh bạch, đăng ký online 100%.
+            </p>
         </div>
-    </div>
+    </section>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" id="main-content">
         
-        <div class="flex items-center gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide md:justify-center">
-            <button onclick="switchTab('vay')" id="tab-vay" class="whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm ring-1 ring-slate-200 bg-white text-slate-600 hover:bg-slate-50">💸 Vay Tiền</button>
-            <button onclick="switchTab('bank')" id="tab-bank" class="whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm ring-1 ring-slate-200 bg-white text-slate-600 hover:bg-slate-50">🏦 Ngân Hàng</button>
-            <button onclick="switchTab('the')" id="tab-the" class="whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm ring-1 ring-slate-200 bg-white text-slate-600 hover:bg-slate-50">💳 Thẻ Tín Dụng</button>
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                Danh sách đề xuất
+            </h3>
+            <p class="text-slate-400 text-xs font-medium bg-white px-3 py-1 rounded-full border border-gray-100 shadow-sm">
+                Cập nhật: <span id="real-time" class="text-blue-600 font-bold">--:--</span>
+            </p>
         </div>
 
-        <div id="app-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-12"></div>
+        <div class="flex justify-start sm:justify-center gap-3 mb-8 overflow-x-auto pb-2 px-1 scrollbar-hide">
+            <button onclick="switchTab('vay')" id="btn-vay" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all transform hover:scale-105">💸 Vay Tiền Online</button>
+            <button onclick="switchTab('bank')" id="btn-bank" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-gray-200 hover:bg-slate-50 transition-all hover:scale-105">🏦 Ngân Hàng Số</button>
+            <button onclick="switchTab('the')" id="btn-the" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-gray-200 hover:bg-slate-50 transition-all hover:scale-105">💳 Mở Thẻ Tín Dụng</button>
+        </div>
 
-        <div id="empty-state" class="hidden flex-col items-center justify-center py-16 text-center">
-            <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
-                <svg class="w-10 h-10 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-            </div>
-            <p class="text-slate-500 font-medium">Chưa có ưu đãi nào.</p>
+        <div id="app-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+
+        <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center">
+            <div class="text-6xl mb-4 opacity-20 grayscale">📭</div>
+            <p class="text-slate-400 font-medium">Chưa có ưu đãi trong mục này.</p>
         </div>
     </main>
 
-    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 pb-safe z-50 px-2 shadow-[0_-5px_10px_rgba(0,0,0,0.02)]">
-        <div class="grid grid-cols-3 h-[60px]">
-            <button onclick="switchTab('vay')" class="bottom-nav-item flex flex-col items-center justify-center gap-1 text-slate-400" id="nav-vay">
-                <svg class="w-6 h-6 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                <span class="text-[10px] font-bold">Vay Tiền</span>
-            </button>
-            <button onclick="switchTab('bank')" class="bottom-nav-item flex flex-col items-center justify-center gap-1 text-slate-400" id="nav-bank">
-                <svg class="w-6 h-6 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>
-                <span class="text-[10px] font-bold">Ngân Hàng</span>
-            </button>
-            <button onclick="switchTab('the')" class="bottom-nav-item flex flex-col items-center justify-center gap-1 text-slate-400" id="nav-the">
-                <svg class="w-6 h-6 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
-                <span class="text-[10px] font-bold">Thẻ Tín Dụng</span>
-            </button>
-        </div>
-    </div>
-
-    <footer class="bg-white border-t border-slate-100 py-8 mb-16 md:mb-0">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xs text-slate-400 font-medium">© 2025 FinTech Hub. Operated by RioFintech.</p>
+    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="https://img.icons8.com/color/48/money-bag.png" class="w-6 h-6" alt="Logo">
+                        <span class="text-lg font-extrabold text-slate-900">FinTech Hub</span>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Nền tảng tổng hợp và so sánh các sản phẩm tài chính uy tín.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-4">Liên kết nhanh</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" onclick="switchTab('vay')" class="hover:text-blue-600">Vay tiêu dùng</a></li>
+                        <li><a href="#" onclick="switchTab('the')" class="hover:text-blue-600">Mở thẻ tín dụng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-4">Thông tin</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-blue-600">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-100 pt-6 text-center">
+                <p class="text-xs text-slate-400 font-medium">© 2025 FinTech Hub. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="data.js?v=7"></script> <script>
-        // Cập nhật giờ
-        setInterval(() => {
+    <script src="data.js?v=8"></script> <script>
+        // CẬP NHẬT GIỜ
+        function updateTime() {
             document.getElementById('real-time').innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
-        }, 1000);
+        }
+        updateTime();
+        setInterval(updateTime, 60000); // Cập nhật mỗi phút
 
         let currentTab = 'vay';
         const container = document.getElementById('app-container');
         const emptyState = document.getElementById('empty-state');
+        const apiIndicator = document.getElementById('api-indicator');
         const DEFAULT_LOGO = "https://img.icons8.com/color/96/money-bag.png";
 
         function renderApps() {
             container.innerHTML = '';
             
             if (typeof OFFERS === 'undefined') {
-                container.innerHTML = `<div class="col-span-full text-center text-red-500 py-10 font-bold bg-red-50 rounded-xl">⚠️ Lỗi tải dữ liệu</div>`;
+                container.innerHTML = `<div class="col-span-full text-center text-red-500 py-10 font-bold bg-red-50 rounded-xl border border-red-200">⚠️ Lỗi kết nối dữ liệu (data.js)</div>`;
                 return;
             }
 
             let filtered = OFFERS.filter(item => item.type === currentTab);
 
-            // Sắp xếp: Có link lên đầu
+            // SẮP XẾP: CÓ LINK LÊN ĐẦU
             filtered.sort((a, b) => {
                 const hasLinkA = a.link && a.link.trim().length > 5;
                 const hasLinkB = b.link && b.link.trim().length > 5;
@@ -192,47 +181,44 @@
 
             filtered.forEach(app => {
                 const hasLink = app.link && app.link.trim().length > 5;
-                
-                // Style nút bấm Pro
                 const btnClass = hasLink 
-                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg shadow-blue-500/30 btn-active cursor-pointer" 
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-100 btn-active cursor-pointer" 
                     : "bg-slate-100 text-slate-400 cursor-not-allowed";
-                const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "HẾT LƯỢT";
+                const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
                 const action = hasLink ? `onclick="window.open('${app.link}', '_blank')"` : "";
 
                 const html = `
-                <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-card app-card relative overflow-hidden group">
-                    ${currentTab === 'vay' && hasLink ? 
-                    `<div class="absolute top-0 right-0">
-                        <div class="bg-gradient-to-r from-red-500 to-orange-500 text-white text-[9px] font-bold px-3 py-1 rounded-bl-xl shadow-md">HOT 🔥</div>
-                    </div>` : ''}
+                <div class="bg-white rounded-2xl border border-slate-100 app-card overflow-hidden flex flex-col h-full relative group">
+                    ${currentTab === 'vay' && hasLink ? '<div class="absolute top-0 right-0 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10">DUYỆT NHANH</div>' : ''}
+                    
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-2xl border border-slate-50 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1.5 group-hover:scale-105 transition-transform">
+                                <img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='${DEFAULT_LOGO}'">
+                            </div>
+                            <div class="flex-1 min-w-0 pt-1">
+                                <h3 class="font-bold text-slate-900 text-[17px] leading-tight mb-1 truncate">${app.name}</h3>
+                                <p class="text-[13px] text-slate-500 leading-snug line-clamp-2">${app.desc}</p>
+                            </div>
+                        </div>
+                        
+                        ${currentTab === 'vay' ? `
+                        <div class="grid grid-cols-2 gap-3 mb-5 bg-slate-50/80 rounded-xl border border-slate-100 p-3 mt-auto">
+                            <div class="text-center border-r border-slate-200">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Hạn mức</p>
+                                <p class="font-bold text-slate-800 text-sm mt-0.5">Hấp dẫn</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Lãi suất</p>
+                                <p class="font-bold text-green-600 text-sm mt-0.5">Ưu đãi</p>
+                            </div>
+                        </div>` : '<div class="mb-4 mt-auto"></div>'}
 
-                    <div class="flex items-start gap-4 mb-4">
-                        <div class="w-14 h-14 rounded-xl border border-slate-50 p-1 bg-white shadow-sm shrink-0">
-                            <img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain rounded-lg" alt="${app.name}" onerror="this.src='${DEFAULT_LOGO}'">
-                        </div>
-                        <div class="flex-1 min-w-0 pt-0.5">
-                            <h3 class="font-bold text-slate-900 text-base mb-1 truncate group-hover:text-blue-600 transition-colors">${app.name}</h3>
-                            <p class="text-[13px] text-slate-500 leading-snug line-clamp-2">${app.desc}</p>
-                        </div>
+                        <button ${action} class="w-full ${btnClass} font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 text-[13px] uppercase tracking-wide">
+                            ${btnText}
+                            ${hasLink ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>' : ''}
+                        </button>
                     </div>
-
-                    ${currentTab === 'vay' ? `
-                    <div class="flex items-center gap-2 mb-5 bg-slate-50/50 rounded-lg p-2 border border-slate-100">
-                        <div class="flex-1 text-center border-r border-slate-200">
-                            <p class="text-[10px] text-slate-400 font-bold uppercase">Hạn mức</p>
-                            <p class="text-sm font-bold text-slate-800">Cao</p>
-                        </div>
-                        <div class="flex-1 text-center">
-                            <p class="text-[10px] text-slate-400 font-bold uppercase">Lãi suất</p>
-                            <p class="text-sm font-bold text-green-600">0%</p>
-                        </div>
-                    </div>` : '<div class="mb-5"></div>'}
-
-                    <button ${action} class="w-full ${btnClass} font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 text-[12px] tracking-wide uppercase">
-                        ${btnText}
-                        ${hasLink ? '<svg class="w-4 h-4 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>' : ''}
-                    </button>
                 </div>`;
                 container.insertAdjacentHTML('beforeend', html);
             });
@@ -240,34 +226,25 @@
 
         function switchTab(tab) {
             currentTab = tab;
-            
-            // Update Top Tabs (Desktop)
             ['vay', 'bank', 'the'].forEach(t => {
-                const btn = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`btn-${t}`);
                 if (t === tab) {
-                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-500/25 transition-all transform scale-105";
+                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all transform hover:scale-105";
                 } else {
-                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all";
+                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all hover:scale-105";
                 }
             });
-
-            // Update Bottom Nav (Mobile)
-            ['vay', 'bank', 'the'].forEach(t => {
-                const nav = document.getElementById(`nav-${t}`);
-                if (t === tab) nav.classList.add('active');
-                else nav.classList.remove('active');
-            });
-
             renderApps();
         }
 
-        // --- API SYNC ---
+        // --- SYNC API (Cập nhật ngầm) ---
         async function syncApi() {
             if (typeof OFFERS === 'undefined') return;
             try {
                 const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
                 const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`);
-                if (!res.ok) throw new Error();
+                if (!res.ok) throw new Error("Proxy Error");
+                
                 const json = await res.json();
                 const raw = JSON.parse(json.contents);
                 const apiData = raw.data || (Array.isArray(raw) && raw[0]?.data) || [];
@@ -284,17 +261,19 @@
                             }
                         }
                     });
-                    if (count > 0) renderApps();
+                    if (count > 0) {
+                        renderApps(); 
+                    }
+                    apiIndicator.className = "w-2.5 h-2.5 rounded-full bg-green-500";
                 }
-            } catch (e) {}
+            } catch (e) { 
+                console.log('Sync skipped'); 
+                apiIndicator.className = "w-2.5 h-2.5 rounded-full bg-slate-300";
+            }
         }
 
-        // Init
+        // Start
         renderApps();
-        // Set active tab default styles
-        document.getElementById('nav-vay').classList.add('active');
-        document.getElementById('tab-vay').className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-500/25 transition-all transform scale-105";
-        
         setTimeout(syncApi, 1500);
     </script>
 </body>
