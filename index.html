@@ -102,23 +102,6 @@
         <p class="text-[10px] text-slate-400 mb-2">© 2025 Financial Service Aggregator</p>
     </div>
 
-    <div id="promo-popup" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closePopup()"></div>
-        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-xs p-6 animate-pop-in text-center">
-            <button onclick="closePopup()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">✕</button>
-            <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3 animate-bounce">
-                <span class="text-3xl">🎁</span>
-            </div>
-            <h3 class="text-lg font-extrabold text-slate-900 mb-2">ƯU ĐÃI ĐẶC BIỆT!</h3>
-            <p class="text-xs text-slate-600 mb-5 leading-relaxed">
-                Đăng ký ngay hôm nay để nhận khoản vay <strong>0% Lãi Suất</strong>.
-            </p>
-            <button onclick="handleRedirect('https://hl-link.net/nVT5020', 'Popup_MoneyCat')" class="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 text-white font-bold py-3 rounded-xl shadow-lg text-sm uppercase">
-                NHẬN ƯU ĐÃI NGAY
-            </button>
-        </div>
-    </div>
-
     <div id="loading-screen" class="hidden fixed inset-0 bg-white/95 backdrop-blur z-50 flex-col items-center justify-center text-center p-5">
         <div class="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-green-600 mb-4"></div>
         <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng...</h2>
@@ -129,7 +112,7 @@
         // === CẤU HÌNH API ===
         const ORIGINAL_API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
 
-        // DANH SÁCH DỰ PHÒNG (Dùng khi mạng lỗi)
+        // DANH SÁCH DỰ PHÒNG
         const BACKUP_DATA = [
             { name: "MoneyCat", logo: "https://moneycat.vn/public/img/logo.png", min_loan: 1000000, max_loan: 10000000, short_description: "Duyệt nhanh 5 phút", tracking_link: "https://hl-link.net/nVT5020" },
             { name: "Moneyveo", logo: "https://moneyveo.vn/img/logo.svg", min_loan: 500000, max_loan: 15000000, short_description: "Ưu đãi lãi suất thấp", tracking_link: "https://hl-link.net/BISmL10" }
@@ -147,14 +130,13 @@
             return num;
         }
 
-        // === HÀM GỌI API THÔNG MINH (THỬ NHIỀU CÁCH) ===
+        // === HÀM GỌI API THÔNG MINH ===
         async function fetchApps() {
             container.innerHTML = ''; 
             container.appendChild(loader);
             debugBox.classList.add('hidden');
             loader.classList.remove('hidden');
 
-            // Danh sách các cách để lấy dữ liệu (Ưu tiên từ trên xuống dưới)
             const methods = [
                 { name: 'Proxy 1 (Corsproxy.io)', url: 'https://corsproxy.io/?' + encodeURIComponent(ORIGINAL_API_URL) },
                 { name: 'Proxy 2 (AllOrigins)', url: 'https://api.allorigins.win/get?url=' + encodeURIComponent(ORIGINAL_API_URL) },
@@ -166,25 +148,20 @@
 
             for (let method of methods) {
                 try {
-                    console.log(`Đang thử cách: ${method.name}...`);
                     const response = await fetch(method.url);
                     if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
                     
                     const rawText = await response.json();
-                    
-                    // Xử lý dữ liệu tùy theo Proxy trả về
                     let realData = rawText;
                     if (method.name.includes('AllOrigins')) {
                         realData = JSON.parse(rawText.contents);
                     }
 
-                    // Tìm mảng dữ liệu trong đống JSON trả về
-                    // API thường trả về dạng: [array] hoặc {data: [array]} hoặc {offers: [array]}
                     let list = Array.isArray(realData) ? realData : (realData.data || realData.offers || []);
                     
                     if (list && list.length > 0) {
                         finalData = list;
-                        break; // Thành công thì thoát vòng lặp ngay
+                        break; 
                     } else {
                          throw new Error('Dữ liệu trả về rỗng');
                     }
@@ -199,7 +176,6 @@
                 renderApps(finalData);
                 loader.classList.add('hidden');
             } else {
-                // Nếu thử hết cách mà vẫn tạch
                 loader.classList.add('hidden');
                 debugBox.classList.remove('hidden');
                 debugMsg.innerText = `Lỗi: ${lastError}. Hãy thử dùng Backup.`;
@@ -211,8 +187,6 @@
             container.innerHTML = '';
             
             list.forEach((app, index) => {
-                // MAP DỮ LIỆU: Cột trái là tên trong code HTML - Cột phải là tên từ API
-                // Ní mở Console F12 lên xem API trả về tên gì thì sửa cột phải nếu cần
                 let item = {
                     ten: app.offer_name || app.name || app.title || "Gói Vay",
                     logo: app.logo || app.image || app.icon || "https://img.icons8.com/color/96/money-bag.png",
@@ -280,7 +254,7 @@
             if (typeof gtag === 'function') gtag('event', 'click_dang_ky', { 'app_ten': name, 'link': link });
             const loader = document.getElementById('loading-screen');
             const manual = document.getElementById('manual-link');
-            closePopup();
+            
             loader.classList.remove('hidden');
             loader.style.display = 'flex';
             manual.href = link;
@@ -301,16 +275,6 @@
                 }
             }, randomTime);
         }
-
-        function closePopup() { document.getElementById('promo-popup').classList.add('hidden'); document.getElementById('promo-popup').style.display = 'none'; }
-        
-        setTimeout(() => {
-            if(!localStorage.getItem('popup_seen_v3')) {
-                document.getElementById('promo-popup').classList.remove('hidden');
-                document.getElementById('promo-popup').style.display = 'flex';
-                localStorage.setItem('popup_seen_v3', 'true');
-            }
-        }, 4000);
 
         // CHẠY NGAY KHI VÀO WEB
         fetchApps();
