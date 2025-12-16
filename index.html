@@ -36,7 +36,6 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        /* Ẩn nội dung HTML thừa trong mô tả */
         .desc-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
     </style>
 </head>
@@ -79,7 +78,7 @@
         <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 min-h-[300px]">
             <div id="skeleton-loader" class="col-span-full text-center py-10">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-slate-200 border-t-blue-600 mx-auto mb-3"></div>
-                <p class="text-sm text-slate-500 animate-pulse">Đang tải dữ liệu...</p>
+                <p class="text-sm text-slate-500 animate-pulse">Đang tải toàn bộ dữ liệu...</p>
             </div>
         </div>
         
@@ -103,22 +102,20 @@
     <script>
         // === CẤU HÌNH ===
         const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
-        
-        // 🛠️ QUAN TRỌNG: Đây là công thức tạo link
         const TRACKING_DOMAIN = 'https://hl-link.net/click'; 
         const PUB_ID = '28janns';
 
         // Từ khóa để phân loại tab
         const KEYWORDS = {
             the: ['thẻ tín dụng', 'credit', 'mở thẻ', 'thẻ hoàn tiền', 'evo', 'vib super', 'vib online', 'viban', 'hsbc', 'lotte', 'sacombank', 'hdbank'],
-            bank: ['tài khoản', 'ngân hàng', 'thanh toán', 'số đẹp', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank', 'vcb', 'bidv', 'vietinbank', 'ocb', 'nam a', 'tpbank', 'viettel money', 'zalopay', 'vnpt', 'vikki', 'ubank', 'msb'],
+            bank: ['tài khoản', 'ngân hàng', 'thanh toán', 'số đẹp', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank', 'vcb', 'bidv', 'vietinbank', 'ocb', 'nam a', 'tpbank', 'viettel money', 'zalopay', 'vnpt', 'vikki', 'ubank', 'msb', 'uob'],
             vay: ['vay', 'cầm đồ', 'tín chấp', 'tiền mặt', 'giải ngân', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'oncredit', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan', 'mcredit', 'easy credit', 'mirae', 'bimo', 'kavay', 'credy', 'crezu', 'binixo', 'tima', 'atm']
         };
 
-        // Dữ liệu dự phòng (Phòng khi mạng lỗi)
+        // Dữ liệu dự phòng (Chỉ dùng khi API sập hoàn toàn)
         const BACKUP_DATA = [
-            { name: "MoneyCat", offer_id: "moneycat", avatar: "https://moneycat.vn/public/img/logo.png", about: "Duyệt nhanh 5 phút", tracking_link: "https://hl-link.net/nVT5020" },
-            { name: "MoneyVeo", offer_id: "moneyveo", avatar: "https://moneyveo.vn/img/logo.svg", about: "Ưu đãi lãi suất thấp", tracking_link: "https://hl-link.net/BISmL10" }
+            { name: "MoneyCat", offer_id: "moneycat", avatar: "https://moneycat.vn/public/img/logo.png", about: "Duyệt nhanh 5 phút" },
+            { name: "MoneyVeo", offer_id: "moneyveo", avatar: "https://moneyveo.vn/img/logo.svg", about: "Ưu đãi lãi suất thấp" }
         ];
 
         let globalData = [];
@@ -128,7 +125,35 @@
         const loader = document.getElementById('skeleton-loader');
         const emptyState = document.getElementById('empty-state');
 
-        // Hàm gọi API
+        function formatMoney(num) {
+            if (!num) return 'Liên hệ';
+            if (num >= 1000000) return (num/1000000) + 'Tr';
+            if (num >= 1000) return (num/1000) + 'k';
+            return num;
+        }
+
+        // HÀM MỚI: BÓC TÁCH DỮ LIỆU ĐÚNG CẤU TRÚC
+        function extractData(rawData) {
+            // Trường hợp 1: API trả về mảng bọc object bọc mảng (Cấu trúc của RioFintech hiện tại)
+            // Ví dụ: [{ status: 1, data: [ ...offers... ] }]
+            if (Array.isArray(rawData) && rawData.length > 0 && rawData[0].data && Array.isArray(rawData[0].data)) {
+                return rawData[0].data;
+            }
+            
+            // Trường hợp 2: Trả về object có key data
+            // Ví dụ: { status: 1, data: [ ...offers... ] }
+            if (rawData.data && Array.isArray(rawData.data)) {
+                return rawData.data;
+            }
+
+            // Trường hợp 3: Trả về mảng trực tiếp
+            if (Array.isArray(rawData)) {
+                return rawData;
+            }
+
+            return [];
+        }
+
         async function fetchApps() {
             container.innerHTML = '';
             container.appendChild(loader);
@@ -140,52 +165,55 @@
                 { url: 'https://api.allorigins.win/get?url=' + encodeURIComponent(API_URL), name: 'Proxy 2' }
             ];
 
+            let foundData = false;
+
             for (let method of methods) {
                 try {
+                    console.log(`Đang thử ${method.name}...`);
                     const res = await fetch(method.url);
                     if (!res.ok) throw new Error('Err');
                     
                     let raw = await res.json();
-                    // Xử lý dữ liệu trả về từ Proxy 2 (AllOrigins)
                     if (method.name === 'Proxy 2') raw = JSON.parse(raw.contents);
                     
-                    // Tìm mảng dữ liệu (API này trả về trong key 'data')
-                    let list = Array.isArray(raw) ? raw : (raw.data || []);
+                    // SỬ DỤNG HÀM BÓC TÁCH MỚI
+                    let list = extractData(raw);
                     
                     if (list.length > 0) {
+                        console.log(`Đã tải được ${list.length} offers`);
                         globalData = list;
                         switchTab('vay'); 
-                        return;
+                        foundData = true;
+                        return; // Thoát ngay khi tìm thấy
                     }
-                } catch (e) { console.log("Thử cách khác...", e); }
+                } catch (e) { console.log(e); }
             }
             
-            // Nếu lỗi hết thì dùng backup
-            globalData = BACKUP_DATA;
-            switchTab('vay');
+            if (!foundData) {
+                console.log("Không lấy được API, dùng Backup");
+                globalData = BACKUP_DATA;
+                switchTab('vay');
+            }
         }
 
         // Logic phân loại (Quét cả tên và mô tả)
         function checkCategory(item) {
             const name = (item.name || item.offer_name || "").toLowerCase();
-            // API trả về nội dung HTML trong 'about', cần làm sạch tag HTML để quét chữ
             const rawDesc = (item.about || item.description || "").toLowerCase();
-            const fullText = name + " " + rawDesc;
+            const cat = (item.category_name || "").toLowerCase();
+            const fullText = name + " " + rawDesc + " " + cat;
 
-            // Ưu tiên check Thẻ
             for (let w of KEYWORDS.the) { if (fullText.includes(w)) return 'the'; }
-            // Check Vay (nếu có từ khóa vay thì chốt luôn)
             for (let w of KEYWORDS.vay) { if (fullText.includes(w)) return 'vay'; }
-            // Check Bank
+            if (cat.includes('vay') || cat.includes('loan')) return 'vay';
             for (let w of KEYWORDS.bank) { if (fullText.includes(w)) return 'bank'; }
 
-            return 'vay'; // Mặc định là vay
+            return 'vay'; // Mặc định
         }
 
         function switchTab(tabName) {
             currentTab = tabName;
             
-            // Update UI Tab Button
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (t === tabName) {
@@ -210,25 +238,20 @@
             emptyState.classList.add('hidden');
             
             list.forEach((app, index) => {
-                // 1. TỰ ĐỘNG TẠO LINK (QUAN TRỌNG NHẤT)
+                // TỰ ĐỘNG GHÉP LINK
                 let finalLink = "";
-                // Nếu là dữ liệu backup thì dùng link có sẵn
                 if (app.tracking_link) {
                     finalLink = app.tracking_link;
                 } else {
-                    // Nếu là dữ liệu API thì ghép link
                     finalLink = `${TRACKING_DOMAIN}?pub_id=${PUB_ID}&offer_id=${app.offer_id}`;
                 }
 
-                // 2. Xử lý ảnh (API trả về ảnh to, nên resize bằng CSS object-contain)
                 let logoUrl = app.avatar || app.logo || "https://img.icons8.com/color/96/money-bag.png";
 
-                // 3. Xử lý mô tả (Xóa tag HTML của API trả về)
                 let tempDiv = document.createElement("div");
                 tempDiv.innerHTML = app.about || app.short_description || "Duyệt nhanh 24/7";
                 let cleanDesc = tempDiv.textContent || tempDiv.innerText || "";
                 
-                // 4. Chuẩn bị dữ liệu hiển thị
                 let item = {
                     ten: app.name || app.offer_name,
                     logo: logoUrl,
@@ -239,7 +262,6 @@
 
                 let infoBlock = '';
                 if(currentTab === 'vay') {
-                    // Với App Vay: Hiển thị Hạn mức giả định (Vì API ko có)
                     infoBlock = `
                         <div class="grid grid-cols-2 gap-0 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
                             <div class="text-center border-r border-slate-200 py-2">
@@ -253,7 +275,6 @@
                         </div>
                     `;
                 } else {
-                    // Với Bank/Thẻ: Hiển thị tag
                     infoBlock = `<div class="mt-auto mb-4 text-center">
                         <span class="inline-block bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded">Mở Online 100%</span>
                     </div>`;
@@ -306,7 +327,6 @@
             loader.classList.remove('hidden');
             loader.style.display = 'flex';
             manual.href = link;
-            // Delay chuyển hướng để hiện loader cho đẹp
             setTimeout(() => { window.location.href = link; }, 800);
             setTimeout(() => { manual.classList.remove('hidden'); }, 3000);
         }
