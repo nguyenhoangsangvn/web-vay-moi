@@ -2,6 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FinTech Hub 2025 - Tổng Hợp Ưu Đãi</title>
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
@@ -18,9 +19,7 @@
     <style>
         body { background-color: #f0f4f8; font-family: sans-serif; -webkit-font-smoothing: antialiased; }
         .no-select { user-select: none; }
-        /* Cắt chữ nếu dài quá 2 dòng */
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        /* Hiệu ứng nút bấm */
         .btn-hover:active { transform: scale(0.95); }
     </style>
 </head>
@@ -53,11 +52,7 @@
         </div>
 
         <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
-        
-        <div id="empty-state" class="hidden text-center py-12 col-span-full">
-            <div class="text-5xl mb-3">📭</div>
-            <p class="text-slate-500 font-medium">Chưa có ưu đãi nào.</p>
-        </div>
+        <div id="empty-state" class="hidden text-center py-12 col-span-full"><div class="text-5xl mb-3">📭</div><p class="text-slate-500 font-medium">Chưa có ưu đãi nào.</p></div>
     </main>
 
     <div class="bg-slate-100 p-6 text-center border-t border-slate-200 mt-auto">
@@ -68,9 +63,6 @@
         // ============================================================
         // 🔧 KHU VỰC CẤU HÌNH - NÍ CHỈ CẦN SỬA Ở ĐÂY
         // ============================================================
-        
-        // Tao đã nhập sẵn thông tin từ API cho ní rồi.
-        // Ní chỉ cần tìm chữ "DÁN_LINK_Ở_ĐÂY" và thay bằng link của ní là xong.
         
         const DATA = [
             // --- 1. NHÓM VAY TIỀN ---
@@ -114,10 +106,10 @@
             { type: "bank", name: "ACB One", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/ACB.png", desc: "Ngân hàng số ACB One", link: "DÁN_LINK_Ở_ĐÂY" },
             { type: "bank", name: "OCB OMNI", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Picture1.png", desc: "Ngân hàng số OCB OMNI", link: "DÁN_LINK_Ở_ĐÂY" },
             { type: "bank", name: "Vikki", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vikki_Original Logo Vikki DigitaL_Online.png", desc: "Ngân hàng số Vikki", link: "DÁN_LINK_Ở_ĐÂY" },
-            { type: "bank", name: "UOB", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/uob-logo-472x226.png", desc: "Mở tài khoản UOB", link: "DÁN_LINK_Ở_ĐÂY" },
-            { type: "bank", name: "LPBank", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/666c22c1e8fc6ab7134d3f1b_lpbank_logo.jpg", desc: "Mở tài khoản LPBank", link: "DÁN_LINK_Ở_ĐÂY" },
+            { type: "bank", name: "UOB", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/uob-logo-472x226.png", desc: "Tài khoản UOB", link: "DÁN_LINK_Ở_ĐÂY" },
+            { type: "bank", name: "LPBank", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/666c22c1e8fc6ab7134d3f1b_lpbank_logo.jpg", desc: "Tài khoản LPBank", link: "DÁN_LINK_Ở_ĐÂY" },
 
-            // --- 3. NHÓM THẺ TÍN DỤNG ---
+            // --- 3. THẺ TÍN DỤNG ---
             { type: "the", name: "VIB Credit", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png", desc: "Mở thẻ online, miễn phí thường niên", link: "DÁN_LINK_Ở_ĐÂY" },
             { type: "the", name: "TPBank EVO", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%204.png", desc: "Thẻ Evo 100% Online", link: "DÁN_LINK_Ở_ĐÂY" },
             { type: "the", name: "Be Visa", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/Logo%201%20copy.jpg", desc: "Thẻ Cake x Be", link: "DÁN_LINK_Ở_ĐÂY" },
@@ -127,7 +119,6 @@
             { type: "the", name: "Cake Thẻ", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Cake copy2 .jpg", desc: "Thẻ tín dụng Cake Freedom", link: "DÁN_LINK_Ở_ĐÂY" },
             { type: "the", name: "VIB MAX", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png", desc: "Thẻ tín dụng VIB Max", link: "DÁN_LINK_Ở_ĐÂY" }
         ];
-        // ============================================================
 
         let currentTab = 'vay';
         const container = document.getElementById('app-container');
@@ -135,7 +126,6 @@
 
         function switchTab(tab) {
             currentTab = tab;
-            // Đổi màu nút Tab
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if(t === tab) {
@@ -144,10 +134,10 @@
                     btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all transform hover:scale-105";
                 }
             });
-            render();
+            renderApps();
         }
 
-        function render() {
+        function renderApps() {
             container.innerHTML = '';
             const filtered = DATA.filter(item => item.type === currentTab);
 
@@ -158,20 +148,13 @@
             emptyState.classList.add('hidden');
 
             filtered.forEach((app, index) => {
-                // Kiểm tra Link
-                let isLinkValid = app.link && app.link !== "DÁN_LINK_Ở_ĐÂY" && app.link !== "";
-                
-                // Style nút bấm (Sáng nếu có link, Mờ nếu chưa có link)
-                let btnClass = isLinkValid 
+                let isConfigured = app.link && app.link !== "DÁN_LINK_Ở_ĐÂY" && app.link !== "";
+                let btnClass = isConfigured 
                     ? "bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white shadow-md hover:shadow-lg btn-hover cursor-pointer" 
                     : "bg-gray-200 text-gray-400 cursor-not-allowed";
-                
-                let btnText = isLinkValid ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
-                
-                // MỞ TAB MỚI KHI BẤM (để tránh lỗi Back quay vòng)
-                let clickAction = isLinkValid ? `onclick="window.open('${app.link}', '_blank')"` : "";
+                let btnText = isConfigured ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
+                let clickAction = isConfigured ? `onclick="window.open('${app.link}', '_blank')"` : "";
 
-                // Thông tin phụ
                 let infoBlock = (currentTab === 'vay') 
                     ? `<div class="grid grid-cols-2 gap-2 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
                             <div class="text-center border-r border-slate-200 py-2"><p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Hạn mức</p><p class="font-bold text-slate-900 text-xs md:text-sm">Hấp dẫn</p></div>
@@ -186,9 +169,7 @@
                     <div class="bg-blue-50/30 px-3 py-2 border-b border-blue-100 flex items-center justify-between">
                         <div class="flex items-center gap-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                            <span class="text-[10px] font-bold text-blue-700 uppercase tracking-wide">
-                                ${currentTab === 'vay' ? 'DUYỆT NHANH' : 'SỐ ĐẸP'}
-                            </span>
+                            <span class="text-[10px] font-bold text-blue-700 uppercase tracking-wide">${currentTab === 'vay' ? 'DUYỆT NHANH' : 'SỐ ĐẸP'}</span>
                         </div>
                         <span class="text-[9px] text-slate-400 font-medium border border-slate-200 px-1.5 py-0.5 rounded bg-white">QC</span>
                     </div>
@@ -202,14 +183,11 @@
                                 <p class="text-[12px] text-slate-500 leading-snug line-clamp-2">${app.desc}</p>
                             </div>
                         </div>
-                        
                         ${infoBlock}
-
                         <button ${clickAction} class="w-full ${btnClass} font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm uppercase">
                             <span>${btnText}</span>
-                            ${isLinkValid ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>' : ''}
+                            ${isConfigured ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>' : ''}
                         </button>
-                        
                         <div class="mt-3 text-center flex justify-center items-center gap-1 text-[10px] text-slate-400">
                             <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span><span class="font-semibold text-slate-600">${fakeView}</span> hồ sơ vừa duyệt
                         </div>
@@ -219,7 +197,6 @@
             });
         }
 
-        // Chạy lần đầu
         switchTab('vay');
     </script>
 </body>
