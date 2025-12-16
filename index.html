@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FinTech Hub 2025 - Tổng Hợp Ưu Đãi</title>
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: '#0052cc', accent: '#16a34a' }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #f8fafc; -webkit-font-smoothing: antialiased; }
+        .no-select { user-select: none; -webkit-tap-highlight-color: transparent; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        
+        /* Scrollbar ẩn */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Hiệu ứng Card */
+        .app-card { transition: transform 0.2s, box-shadow 0.2s; }
+        .app-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15); }
+        .btn-active:active { transform: scale(0.96); opacity: 0.9; }
+    </style>
+</head>
+<body class="font-sans text-slate-900 text-[15px] no-select min-h-screen flex flex-col">
+
+    <header class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="https://img.icons8.com/color/48/money-bag.png" class="w-8 h-8 sm:w-9 sm:h-9" alt="Logo">
+                <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900">FinTech <span class="text-blue-600">Hub</span></h1>
+            </div>
+            <div class="flex items-center gap-2">
+                <span id="api-indicator" class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" title="Hệ thống hoạt động"></span>
+                <button onclick="window.location.reload()" class="bg-gray-100 hover:bg-gray-200 text-slate-700 px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-colors">
+                    Làm mới
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        
+        <div class="text-center mb-8 sm:mb-12">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-2">
+                Gói Vay <span class="text-blue-600">Thịnh Hành</span>
+            </h2>
+            <p class="text-slate-500 text-sm font-medium">
+                Dữ liệu được cập nhật lúc <span id="real-time" class="text-blue-600 font-bold">--:--</span>
+            </p>
+        </div>
+
+        <div class="flex justify-center gap-3 mb-8 overflow-x-auto pb-2 px-2 scrollbar-hide">
+            <button onclick="switchTab('vay')" id="btn-vay" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all transform hover:scale-105">💸 Vay Tiền</button>
+            <button onclick="switchTab('bank')" id="btn-bank" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all hover:scale-105">🏦 Ngân Hàng</button>
+            <button onclick="switchTab('the')" id="btn-the" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all hover:scale-105">💳 Thẻ Tín Dụng</button>
+        </div>
+
+        <div id="app-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-12"></div>
+
+        <div id="empty-state" class="hidden flex-col items-center justify-center py-20 text-center">
+            <div class="text-6xl mb-4 opacity-20 grayscale">📭</div>
+            <p class="text-slate-400 font-medium">Chưa có ưu đãi trong mục này.</p>
+        </div>
+    </main>
+
+    <div class="bg-white border-t border-slate-200 py-8 text-center mt-auto">
+        <p class="text-xs text-slate-400 font-medium">© 2025 Financial Service Aggregator. Secure & Fast.</p>
+    </div>
+
+    <script src="data.js?v=5"></script>
+
+    <script>
+        // CẬP NHẬT GIỜ THỰC TẾ
+        document.getElementById('real-time').innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
+
+        let currentTab = 'vay';
+        const container = document.getElementById('app-container');
+        const emptyState = document.getElementById('empty-state');
+        const apiIndicator = document.getElementById('api-indicator');
+        const DEFAULT_LOGO = "https://img.icons8.com/color/96/money-bag.png";
+
+        function renderApps() {
+            container.innerHTML = '';
+            
+            if (typeof OFFERS === 'undefined') {
+                container.innerHTML = `<div class="col-span-full text-center text-red-500 py-10 font-bold bg-red-50 rounded-xl border border-red-200">⚠️ Lỗi: Không tìm thấy file data.js</div>`;
+                return;
+            }
+
+            let filtered = OFFERS.filter(item => item.type === currentTab);
+
+            // LOGIC SẮP XẾP: CÓ LINK LÊN TRÊN
+            filtered.sort((a, b) => {
+                const hasLinkA = a.link && a.link.trim().length > 5;
+                const hasLinkB = b.link && b.link.trim().length > 5;
+                if (hasLinkA && !hasLinkB) return -1;
+                if (!hasLinkA && hasLinkB) return 1;
+                return 0;
+            });
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+                return;
+            }
+            emptyState.classList.add('hidden');
+            emptyState.classList.remove('flex');
+
+            filtered.forEach(app => {
+                const hasLink = app.link && app.link.trim().length > 5;
+                const btnClass = hasLink 
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-100 btn-active cursor-pointer" 
+                    : "bg-slate-100 text-slate-400 cursor-not-allowed";
+                const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
+                const action = hasLink ? `onclick="window.open('${app.link}', '_blank')"` : "";
+
+                const html = `
+                <div class="bg-white rounded-2xl border border-slate-100 app-card overflow-hidden flex flex-col h-full relative group">
+                    ${currentTab === 'vay' && hasLink ? '<div class="absolute top-0 right-0 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10">DUYỆT NHANH</div>' : ''}
+                    
+                    <div class="p-5 flex flex-col flex-grow">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-2xl border border-slate-50 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1.5 group-hover:scale-105 transition-transform">
+                                <img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='${DEFAULT_LOGO}'">
+                            </div>
+                            <div class="flex-1 min-w-0 pt-1">
+                                <h3 class="font-bold text-slate-900 text-[17px] leading-tight mb-1 truncate">${app.name}</h3>
+                                <p class="text-[13px] text-slate-500 leading-snug line-clamp-2">${app.desc}</p>
+                            </div>
+                        </div>
+                        
+                        ${currentTab === 'vay' ? `
+                        <div class="grid grid-cols-2 gap-3 mb-5 bg-slate-50/80 rounded-xl border border-slate-100 p-3 mt-auto">
+                            <div class="text-center border-r border-slate-200">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Hạn mức</p>
+                                <p class="font-bold text-slate-800 text-sm mt-0.5">Hấp dẫn</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Lãi suất</p>
+                                <p class="font-bold text-green-600 text-sm mt-0.5">Ưu đãi</p>
+                            </div>
+                        </div>` : '<div class="mb-4 mt-auto"></div>'}
+
+                        <button ${action} class="w-full ${btnClass} font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 text-[13px] uppercase tracking-wide">
+                            ${btnText}
+                            ${hasLink ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>' : ''}
+                        </button>
+                    </div>
+                </div>`;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function switchTab(tab) {
+            currentTab = tab;
+            ['vay', 'bank', 'the'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === tab) {
+                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all transform hover:scale-105";
+                } else {
+                    btn.className = "whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all hover:scale-105";
+                }
+            });
+            renderApps();
+        }
+
+        // --- BACKGROUND API SYNC ---
+        async function syncApi() {
+            if (typeof OFFERS === 'undefined') return;
+            try {
+                const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
+                const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`);
+                if (!res.ok) throw new Error("Proxy Error");
+                
+                const json = await res.json();
+                const raw = JSON.parse(json.contents);
+                const apiData = raw.data || (Array.isArray(raw) && raw[0]?.data) || [];
+
+                if (apiData.length > 0) {
+                    let count = 0;
+                    apiData.forEach(newItem => {
+                        let item = OFFERS.find(o => o.id === newItem.offer_id);
+                        if (item) {
+                            if (item.logo !== newItem.avatar || item.name !== newItem.name) {
+                                item.logo = newItem.avatar || item.logo;
+                                item.name = newItem.name || item.name;
+                                count++;
+                            }
+                        }
+                    });
+                    if (count > 0) {
+                        renderApps(); // Update UI nếu có dữ liệu mới
+                    }
+                }
+            } catch (e) { console.log('Sync skipped'); }
+        }
+
+        // START
+        renderApps();
+        setTimeout(syncApi, 1500);
+    </script>
+</body>
+</html>
