@@ -32,7 +32,7 @@
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Hiệu ứng Card nhẹ nhàng */
+        /* Hiệu ứng Card */
         .app-card { transition: transform 0.2s, box-shadow 0.2s; }
         .app-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15); }
         .btn-active:active { transform: scale(0.96); opacity: 0.9; }
@@ -54,7 +54,7 @@
             </nav>
 
             <div class="flex items-center gap-2">
-                <span id="api-indicator" class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" title="Hệ thống hoạt động"></span>
+                <span id="api-indicator" class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
                 <button onclick="window.location.reload()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-bold transition-colors">
                     Cập nhật
                 </button>
@@ -62,81 +62,71 @@
         </div>
     </header>
 
-<section class="relative border-b border-gray-200 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-30">
-            <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-            <div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-400 opacity-20 blur-[100px]"></div>
-        </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-            
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-6 shadow-sm animate-bounce-slow">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                CẬP NHẬT DỮ LIỆU 2025
-            </div>
-
-            <h2 class="text-4xl sm:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
+    <section class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold mb-4 uppercase tracking-wide">
+                Cập nhật 2025
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight leading-tight">
                 Giải Pháp Tài Chính <br class="hidden sm:block">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-500 drop-shadow-sm">
-                    Thông Minh & Toàn Diện
-                </span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Thông Minh & Uy Tín</span>
             </h2>
-
-            <p class="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg mb-8 leading-relaxed font-medium">
-                Nền tảng tổng hợp và so sánh minh bạch hơn <span class="text-slate-900 font-bold">50+ gói vay</span> ưu đãi, thẻ tín dụng hoàn tiền và ngân hàng số tốt nhất thị trường.
+            <p class="text-slate-500 max-w-2xl mx-auto text-base sm:text-lg mb-6 leading-relaxed">
+                Tổng hợp các gói vay, thẻ tín dụng và ngân hàng số tốt nhất hiện nay. 
+                So sánh minh bạch, đăng ký online 100%.
             </p>
-
-            <div class="flex flex-wrap justify-center gap-4 sm:gap-8 mt-8">
-                <div class="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[10px] text-slate-500 font-bold uppercase">Duyệt hồ sơ</p>
-                        <p class="text-sm font-bold text-slate-900">Siêu Tốc</p>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[10px] text-slate-500 font-bold uppercase">Bảo mật</p>
-                        <p class="text-sm font-bold text-slate-900">Tuyệt Đối</p>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
-                    <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[10px] text-slate-500 font-bold uppercase">Lãi suất</p>
-                        <p class="text-sm font-bold text-slate-900">Ưu Đãi 0%</p>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full" id="main-content">
+    <section class="bg-slate-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+                <div class="flex flex-col items-center text-center sm:items-start sm:text-left">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 border border-slate-100">
+                        <img src="https://img.icons8.com/3d-fluency/94/light-on.png" class="w-9 h-9" alt="Idea">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Gợi ý sản phẩm phù hợp</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Hệ thống tự động phân tích và đưa ra gợi ý các gói vay, thẻ tín dụng phù hợp nhất dựa trên nhu cầu của bạn.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center text-center sm:items-start sm:text-left">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 border border-slate-100">
+                        <img src="https://img.icons8.com/3d-fluency/94/scales.png" class="w-9 h-9" alt="Compare">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Dễ dàng so sánh</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Chọn lựa và so sánh lãi suất, hạn mức của hơn 50+ đối tác tài chính uy tín chỉ trên một màn hình duy nhất.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center text-center sm:items-start sm:text-left">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 border border-slate-100">
+                        <img src="https://img.icons8.com/3d-fluency/94/search-client.png" class="w-9 h-9" alt="All in one">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Tất cả trong một</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Tìm kiếm, lựa chọn và đăng ký các sản phẩm tài chính nhanh chóng, miễn phí 100% trọn đời.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full" id="main-content">
         
-        <div class="flex items-center justify-between mb-6">
-            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+        <div class="flex items-center justify-between mb-8">
+            <h3 class="text-2xl font-extrabold text-slate-900 flex items-center gap-2">
                 <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
                 Danh sách đề xuất
             </h3>
-            <p class="text-slate-400 text-xs font-medium bg-white px-3 py-1 rounded-full border border-gray-100 shadow-sm">
-                Cập nhật: <span id="real-time" class="text-blue-600 font-bold">--:--</span>
+            <p class="text-slate-400 text-xs font-medium bg-white px-3 py-1 rounded-full border border-gray-100 shadow-sm hidden sm:block">
+                Cập nhật lúc: <span id="real-time" class="text-blue-600 font-bold">--:--</span>
             </p>
         </div>
 
-        <div class="flex justify-start sm:justify-center gap-3 mb-8 overflow-x-auto pb-2 px-1 scrollbar-hide">
+        <div class="flex justify-start sm:justify-center gap-3 mb-10 overflow-x-auto pb-2 px-1 scrollbar-hide">
             <button onclick="switchTab('vay')" id="btn-vay" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-lg shadow-blue-200 transition-all transform hover:scale-105">💸 Vay Tiền Online</button>
             <button onclick="switchTab('bank')" id="btn-bank" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-gray-200 hover:bg-slate-50 transition-all hover:scale-105">🏦 Ngân Hàng Số</button>
             <button onclick="switchTab('the')" id="btn-the" class="whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-gray-200 hover:bg-slate-50 transition-all hover:scale-105">💳 Mở Thẻ Tín Dụng</button>
@@ -159,50 +149,42 @@
                         <span class="text-lg font-extrabold text-slate-900">FinTech Hub</span>
                     </div>
                     <p class="text-slate-500 text-sm leading-relaxed">
-                        Nền tảng tổng hợp và so sánh các sản phẩm tài chính uy tín.
+                        Cổng thông tin tài chính uy tín, giúp bạn tiếp cận các nguồn vốn vay an toàn và minh bạch.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Liên kết nhanh</h4>
+                    <h4 class="font-bold text-slate-900 mb-4">Danh mục</h4>
                     <ul class="space-y-2 text-sm text-slate-500">
-                        <li><a href="#" onclick="switchTab('vay')" class="hover:text-blue-600">Vay tiêu dùng</a></li>
+                        <li><a href="#" onclick="switchTab('vay')" class="hover:text-blue-600">Vay tiêu dùng nhanh</a></li>
                         <li><a href="#" onclick="switchTab('the')" class="hover:text-blue-600">Mở thẻ tín dụng</a></li>
+                        <li><a href="#" onclick="switchTab('bank')" class="hover:text-blue-600">Tài khoản số đẹp</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Thông tin</h4>
+                    <h4 class="font-bold text-slate-900 mb-4">Chính sách</h4>
                     <ul class="space-y-2 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-blue-600">Chính sách bảo mật</a></li>
                         <li><a href="#" class="hover:text-blue-600">Điều khoản sử dụng</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="hover:text-blue-600">Miễn trừ trách nhiệm</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-100 pt-6 text-center">
-                <p class="text-xs text-slate-400 font-medium">© 2025 FinTech Hub. All rights reserved.</p>
+                <p class="text-xs text-slate-400 font-medium">© 2025 FinTech Hub. Designed for performance.</p>
             </div>
         </div>
     </footer>
 
-    <script src="data.js?v=9"></script> <script>
+    <script src="data.js?v=10"></script> <script>
         // ============================================================
-        // 🔴 CẤU HÌNH HÀNG TUYỂN (VIP LIST)
-        // Điền ID của các App ní muốn hiện đầu tiên vào đây (cách nhau dấu phẩy)
-        // Nếu để trống [], nó sẽ lấy 6 cái đầu tiên trong data.js
-        // ============================================================
-        const VIP_IDS = [
-            "moneycatvn", 
-            "tima", 
-            "jeffapp", 
-            "crezu", 
-            "kamo", 
-            "dong247"
-        ];
+        // 🔴 CẤU HÌNH HÀNG TUYỂN (VIP LIST) - Sửa ID ở đây
+        const VIP_IDS = ["moneycatvn", "tima", "jeffapp", "crezu", "kamo", "dong247"];
         // ============================================================
 
-        // CẬP NHẬT GIỜ
         function updateTime() {
-            document.getElementById('real-time').innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
+            const el = document.getElementById('real-time');
+            if(el) el.innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
         }
         updateTime();
         setInterval(updateTime, 60000);
@@ -212,38 +194,30 @@
         const emptyState = document.getElementById('empty-state');
         const DEFAULT_LOGO = "https://img.icons8.com/color/96/money-bag.png";
         
-        // Biến lưu trữ danh sách tạm thời để xử lý Xem thêm
         let currentList = [];
-        let isExpanded = false; // Trạng thái: false = rút gọn, true = xem hết
+        let isExpanded = false;
 
         function renderApps(fullList = null) {
             container.innerHTML = '';
             
-            // Logic lọc và sắp xếp
             let list = fullList;
             if (!list) {
                 if (typeof OFFERS === 'undefined') return;
-                
-                // 1. Lọc theo Tab
                 list = OFFERS.filter(item => item.type === currentTab);
 
-                // 2. Sắp xếp: VIP lên đầu -> Có Link lên nhì -> Còn lại xuống bét
                 list.sort((a, b) => {
-                    // Check VIP
                     const isVipA = VIP_IDS.includes(a.id);
                     const isVipB = VIP_IDS.includes(b.id);
                     if (isVipA && !isVipB) return -1;
                     if (!isVipA && isVipB) return 1;
 
-                    // Check Có Link
                     const hasLinkA = a.link && a.link.trim().length > 5;
                     const hasLinkB = b.link && b.link.trim().length > 5;
                     if (hasLinkA && !hasLinkB) return -1;
                     if (!hasLinkA && hasLinkB) return 1;
-                    
                     return 0;
                 });
-                currentList = list; // Lưu lại để dùng cho nút Xem thêm
+                currentList = list;
             }
 
             if (list.length === 0) {
@@ -255,10 +229,8 @@
             emptyState.classList.add('hidden');
             emptyState.classList.remove('flex');
 
-            // 3. Logic cắt danh sách (Hiển thị 6 hay hiển thị hết?)
             const itemsToShow = isExpanded ? list : list.slice(0, 6);
 
-            // 4. Vẽ Card
             itemsToShow.forEach(app => {
                 const hasLink = app.link && app.link.trim().length > 5;
                 const btnClass = hasLink 
@@ -267,7 +239,6 @@
                 const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
                 const action = hasLink ? `onclick="window.open('${app.link}', '_blank')"` : "";
                 
-                // Badge VIP
                 const isVip = VIP_IDS.includes(app.id);
                 const badge = isVip 
                     ? '<div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10 shadow-sm">ĐỀ XUẤT 🔥</div>'
@@ -308,16 +279,13 @@
                 container.insertAdjacentHTML('beforeend', html);
             });
 
-            // 5. Xử lý nút Xem Thêm
             handleLoadMoreButton(list.length);
         }
 
         function handleLoadMoreButton(totalItems) {
-            // Xóa nút cũ nếu có
             const oldBtn = document.getElementById('load-more-container');
             if (oldBtn) oldBtn.remove();
 
-            // Nếu số lượng App > 6 và chưa mở rộng -> Hiện nút
             if (totalItems > 6 && !isExpanded) {
                 const btnHtml = `
                 <div id="load-more-container" class="col-span-full flex justify-center mt-6">
@@ -330,16 +298,14 @@
             }
         }
 
-        // Hàm khi bấm nút Xem thêm
         function expandList() {
-            isExpanded = true; // Bật chế độ hiện hết
-            renderApps(currentList); // Vẽ lại với danh sách đầy đủ
+            isExpanded = true;
+            renderApps(currentList);
         }
 
         function switchTab(tab) {
             currentTab = tab;
-            isExpanded = false; // Reset lại trạng thái rút gọn khi chuyển tab
-            
+            isExpanded = false;
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (t === tab) {
@@ -351,7 +317,6 @@
             renderApps();
         }
 
-        // --- SYNC API (Cập nhật ngầm) ---
         async function syncApi() {
             if (typeof OFFERS === 'undefined') return;
             try {
@@ -374,9 +339,7 @@
                             }
                         }
                     });
-                    if (count > 0) {
-                        renderApps(); 
-                    }
+                    if (count > 0) renderApps(); 
                     document.getElementById('api-indicator').className = "w-2.5 h-2.5 rounded-full bg-green-500";
                 }
             } catch (e) { 
@@ -384,7 +347,6 @@
             }
         }
 
-        // START
         renderApps();
         setTimeout(syncApi, 1500);
     </script>
