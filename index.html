@@ -96,95 +96,64 @@
     </div>
 
     <script>
-        // === CẤU HÌNH LIÊN KẾT ===
-        const PUB_ID = '28janns';
-        
-        // CÔNG THỨC LINK CHUẨN CỦA HYPERLEAD (RIO)
-        // Nếu ní thấy link sai, chỉ cần sửa dòng này là xong hết
-        const BASE_LINK = 'https://hl-link.net/click';
-
-        // === DỮ LIỆU CỨNG (Tao đã nhập sẵn từ hình API của ní) ===
+        // === DỮ LIỆU CỨNG (ĐÃ GẮN LINK CHUẨN TỪ FILE ĐẦU TIÊN CỦA BẠN) ===
+        // Lưu ý: Những chỗ ghi "LINK_DASHBOARD" là bạn phải vào web HyperLead lấy link dán vào nhé
         const ALL_OFFERS = [
-            {"name":"MoneyCat","offer_id":"moneycatvn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/unnamed (1).png","desc":"0% lãi suất lần đầu, duyệt 5 phút"},
-            {"name":"Tima Vay","offer_id":"tima","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/tima.png","desc":"Vay qua đăng ký xe máy, duyệt nhanh"},
-            {"name":"F88 Cầm Cố","offer_id":"f88","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/f88.png","desc":"Cầm cố tài sản, giải ngân 15 phút"},
-            {"name":"VietMoney","offer_id":"vietmoney","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vietmoney.png","desc":"Dịch vụ cầm đồ trực tuyến uy tín"},
-            {"name":"VayVNĐ","offer_id":"vayvnd","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-vayvnd.png","desc":"Vay online nhanh chóng"},
-            {"name":"Moneyveo","offer_id":"moneyveo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/moneyveo.png","desc":"Hỗ trợ tư vấn tài chính 24/7"},
-            {"name":"Jeff App","offer_id":"jeffapp","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/jeffapp.jpg","desc":"Sàn so sánh vay, duyệt nhiều nguồn"},
-            {"name":"VIB Credit","offer_id":"vib-2","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png","desc":"Mở thẻ online, miễn phí thường niên"},
-            {"name":"Cake Vay","offer_id":"cake-cashloan","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/cake.png","desc":"Vay tiêu dùng theo lương"},
-            {"name":"Credit.vn","offer_id":"creditvn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Group%20198.png","desc":"Cổng thông tin tài chính tổng hợp"},
-            {"name":"Dong247","offer_id":"dong247","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/dong247.png","desc":"Duyệt vay tự động, giải ngân nhanh"},
-            {"name":"Crezu","offer_id":"crezu","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/crezu.png","desc":"0% lãi suất cho khoản vay đầu tiên"},
-            {"name":"Credy","offer_id":"credy","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/credy.png","desc":"Giải pháp tài chính linh hoạt"},
-            {"name":"Kamo","offer_id":"kamo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/kamo.jpg","desc":"Vay tín chấp lãi suất thấp"},
-            {"name":"Kavay","offer_id":"kavay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Kavay.png","desc":"Duyệt hồ sơ siêu tốc"},
-            {"name":"Bimo","offer_id":"bimo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/bimo.jpg","desc":"Vay tiền mặt online nhanh chóng"},
-            {"name":"VPS CK","offer_id":"vps","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vps.png","desc":"Mở tài khoản chứng khoán số đẹp"},
-            {"name":"Binixo","offer_id":"binixo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo%20binixo%20%281%29.png","desc":"Kết nối người vay và người cho vay"},
-            {"name":"Cashspace","offer_id":"cashspace","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vn.png","desc":"Đề xuất khoản vay phù hợp nhất"},
-            {"name":"Be Visa","offer_id":"cake-cc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Logo%201%20copy.jpg","desc":"Thẻ tín dụng Cake x Be"},
-            {"name":"Boba Credit","offer_id":"bobacredit","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/dbc40e6fe95f3101684e.jpg","desc":"Vay tiền online không cần gặp mặt"},
-            {"name":"VayMini","offer_id":"vaymini","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/IMG_5578.JPG","desc":"Khoản vay nhỏ, giải ngân nhanh"},
-            {"name":"Tintincash","offer_id":"tintincash","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/73244fb3a98371dd2892.jpg","desc":"Vay tiền siêu tốc 24/7"},
-            {"name":"TPBank EVO","offer_id":"tpbankevo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%204.png","desc":"Mở thẻ tín dụng TPBank Evo 100% Online"},
-            {"name":"VIB Zalo","offer_id":"vib-3","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%202.png","desc":"Mở thẻ VIB qua Zalo"},
-            {"name":"Finami","offer_id":"finami","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/imgpsh_fullsize_anim%20%281%29.png","desc":"So sánh các khoản vay uy tín"},
-            {"name":"Navacash","offer_id":"navacash","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/nava_icon.jpeg","desc":"Vay tiền mặt lãi suất ưu đãi"},
-            {"name":"BinVay","offer_id":"binvay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo-binvay.jpeg","desc":"Vay tiền nhanh, nhận tiền trong ngày"},
-            {"name":"Cake Thẻ","offer_id":"cake-web","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Cake copy2 .jpg","desc":"Thẻ tín dụng Cake Freedom"},
-            {"name":"FE CREDIT","offer_id":"fec","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Logo_FullColor.png","desc":"Vay tiêu dùng tín chấp FE Credit"},
-            {"name":"Agovay","offer_id":"agovay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/49c27e1001bcd3e28aad.jpg","desc":"Vay tiền online chuyển khoản"},
-            {"name":"Ví May Mắn","offer_id":"vimayman","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Ví may mắn.png","desc":"Ví vay tiền tiện lợi"},
-            {"name":"Finzone","offer_id":"finzone","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/finzone-1.png","desc":"Sàn tài chính kết nối khoản vay"},
-            {"name":"Redbag","offer_id":"redbag-2","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/RedBag-LOGO-Standard-Horizontal.png","desc":"Túi thần tài chính"},
-            {"name":"Cashing Pro","offer_id":"cashingpro","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/LOGO-05.png","desc":"Giải pháp cầm cố tài sản"},
-            {"name":"TNEX","offer_id":"tnex-cashloan","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tnex_finnace_logo_65a9f6aa9fee9.png","desc":"Vay tiêu dùng TNEX"},
-            {"name":"Đồng Shop Sun","offer_id":"dongshopsun1","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.jpeg","desc":"Vay tiền Nhật Bản"},
-            {"name":"MSB mBank","offer_id":"msb-ekyc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb.png","desc":"Mở tài khoản MSB số đẹp"},
-            {"name":"VPBank NEO","offer_id":"vpbankneo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/VPBank.png","desc":"Ngân hàng số VPBank NEO"},
-            {"name":"TCBS","offer_id":"tcbs","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/TCBS.png","desc":"Tài khoản chứng khoán Techcombank"},
-            {"name":"KBank","offer_id":"kbankpayroll","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.png","desc":"Mở tài khoản KBank nhận thưởng"},
-            {"name":"Fago","offer_id":"fago","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/fago_icon.png","desc":"Vay tiền nhanh Fago"},
-            {"name":"ACB One","offer_id":"acb1","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/ACB.png","desc":"Ngân hàng số ACB One"},
-            {"name":"VPBank Auto","offer_id":"vpbank-mc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/CC-01.png","desc":"Mở thẻ tín dụng VPBank tự động"},
-            {"name":"OCB OMNI","offer_id":"ocbcode1","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Picture1.png","desc":"Ngân hàng số OCB OMNI"},
-            {"name":"Cathay Bank","offer_id":"cub","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1245_YYYYYYlogo_RGB-05 copy.png","desc":"Vay tiêu dùng Cathay"},
-            {"name":"Vikki","offer_id":"vikki","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vikki_Original Logo Vikki DigitaL_Online.png","desc":"Ngân hàng số Vikki"},
-            {"name":"BFC Money","offer_id":"bfcmoney","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-BFC.png","desc":"Vay tiền BFC"},
-            {"name":"Finmart","offer_id":"finmart","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo finmart.png","desc":"Mở thẻ tín dụng Finmart"},
-            {"name":"SHB Finance","offer_id":"shbfinance","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/SHBF logo.webp","desc":"Vay tiền mặt SHB Finance"},
-            {"name":"CayVang","offer_id":"cayvangvn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1667-cayvang-vn-2024-05-15.png","desc":"Vay Cây Vàng"},
-            {"name":"Tieno","offer_id":"tienovn","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tieno-1.jpg","desc":"Vay Tieno"},
-            {"name":"Sky Credit","offer_id":"skycredit","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/photo_2025-05-07_11-18-14.jpg","desc":"Vay Sky Credit"},
-            {"name":"MSB TKTT","offer_id":"msb-tktt","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb-inkythuatso-07-13-40-57.jpg","desc":"Tài khoản thanh toán MSB"},
-            {"name":"UOB","offer_id":"uob-ekyc","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/uob-logo-472x226.png","desc":"Mở tài khoản UOB"},
-            {"name":"Kafi Trade","offer_id":"kafitrade","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Gradient chữ đen@3x.png","desc":"Chứng khoán Kafi"},
-            {"name":"VIB MAX","offer_id":"vib-card","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png","desc":"Thẻ tín dụng VIB Max"},
-            {"name":"Vaymeo","offer_id":"vaymeo","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vaymeo.png","desc":"Vay tiền Vaymeo"},
-            {"name":"LPBank","offer_id":"lpbank","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/666c22c1e8fc6ab7134d3f1b_lpbank_logo.jpg","desc":"Mở tài khoản LPBank"},
-            {"name":"MBS","offer_id":"mbs","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/mbs.png","desc":"Chứng khoán MBS"},
-            {"name":"Avay","offer_id":"avay","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-avay.png","desc":"Vay tín chấp Avay"}
+            // --- NHÓM VAY TIỀN (Đã có link từ file cũ) ---
+            {"name":"MoneyCat","link":"https://hl-link.net/nVT5020","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/unnamed (1).png","desc":"0% lãi suất lần đầu, duyệt 5 phút", "type": "vay"},
+            {"name":"Moneyveo","link":"https://hl-link.net/BISmL10","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/moneyveo.png","desc":"Hỗ trợ tư vấn tài chính 24/7", "type": "vay"},
+            {"name":"Tima Vay","link":"https://hl-link.net/towLs20","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/tima.png","desc":"Vay qua đăng ký xe máy, duyệt nhanh", "type": "vay"},
+            {"name":"Jeff App","link":"https://hl-link.net/doi5p20","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/jeffapp.jpg","desc":"Sàn so sánh vay, duyệt nhiều nguồn", "type": "vay"},
+            {"name":"Dong247","link":"https://hl-link.net/TWDgz10","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/dong247.png","desc":"Duyệt vay tự động, giải ngân nhanh", "type": "vay"},
+            {"name":"Crezu","link":"https://rutgon.asia/EcEqB30","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/crezu.png","desc":"0% lãi suất cho khoản vay đầu tiên", "type": "vay"},
+            {"name":"Credy","link":"https://hl-link.net/DGxus00","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/credy.png","desc":"Giải pháp tài chính linh hoạt", "type": "vay"},
+            {"name":"Kamo","link":"https://hl-link.net/as0wu10","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/kamo.jpg","desc":"Vay tín chấp lãi suất thấp", "type": "vay"},
+            {"name":"Kavay","link":"https://hl-link.net/g49FN30","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Kavay.png","desc":"Duyệt hồ sơ siêu tốc", "type": "vay"},
+            {"name":"Bimo","link":"https://hl-link.net/Pauor40","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/bimo.jpg","desc":"Vay tiền mặt online nhanh chóng", "type": "vay"},
+            {"name":"Binixo","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo%20binixo%20%281%29.png","desc":"Kết nối người vay và người cho vay", "type": "vay"},
+            {"name":"Cashspace","link":"https://hl-link.net/wdpbn20","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vn.png","desc":"Đề xuất khoản vay phù hợp nhất", "type": "vay"},
+            {"name":"VayMini","link":"https://hl-link.net/ewsPl00","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/IMG_5578.JPG","desc":"Khoản vay nhỏ, giải ngân nhanh", "type": "vay"},
+            {"name":"VayVNĐ","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-vayvnd.png","desc":"Vay online nhanh chóng", "type": "vay"},
+            {"name":"Tieno","link":"https://hl-link.net/nf65y30","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tieno-1.jpg","desc":"Vay Tieno", "type": "vay"},
+            {"name":"Sky Credit","link":"https://hl-link.net/TCyVF10","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/photo_2025-05-07_11-18-14.jpg","desc":"Vay Sky Credit", "type": "vay"},
+            {"name":"Vaymeo","link":"https://hl-link.net/BkPMW20","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vaymeo.png","desc":"Vay tiền Vaymeo", "type": "vay"},
+            {"name":"Ví May Mắn","link":"https://hl-link.net/5UjX510","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Ví may mắn.png","desc":"Ví vay tiền tiện lợi", "type": "vay"},
+            {"name":"BinVay","link":"https://hl-link.net/q28H820","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo-binvay.jpeg","desc":"Vay tiền nhanh, nhận tiền trong ngày", "type": "vay"},
+            {"name":"Agovay","link":"https://hl-link.net/am6EW10","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/49c27e1001bcd3e28aad.jpg","desc":"Vay tiền online chuyển khoản", "type": "vay"},
+            {"name":"BFC Money","link":"https://hl-link.net/ZHbO630","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-BFC.png","desc":"Vay tiền qua iCloud", "type": "vay"},
+            {"name":"Fago","link":"https://hl-link.net/Yqaaw10","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/fago_icon.png","desc":"Vay tiền nhanh Fago", "type": "vay"},
+            {"name":"Navacash","link":"https://hl-link.net/1F68r10","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/nava_icon.jpeg","desc":"Vay tiền mặt lãi suất ưu đãi", "type": "vay"},
+            {"name":"Credit.vn","link":"https://hl-link.net/jyVnK00","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Group%20198.png","desc":"Cổng thông tin tài chính tổng hợp", "type": "vay"},
+            {"name":"F88 Cầm Cố","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/f88.png","desc":"Cầm cố tài sản, giải ngân 15 phút", "type": "vay"},
+            {"name":"VietMoney","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vietmoney.png","desc":"Dịch vụ cầm đồ trực tuyến uy tín", "type": "vay"},
+            {"name":"Avay","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-avay.png","desc":"Vay tín chấp Avay", "type": "vay"},
+            
+            // --- NHÓM NGÂN HÀNG (Bạn cần điền link) ---
+            {"name":"KBank","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.png","desc":"Mở tài khoản KBank nhận thưởng", "type": "bank"},
+            {"name":"MB Bank","link":"LINK_DASHBOARD","logo":"https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png","desc":"Mở tài khoản MB số đẹp", "type": "bank"},
+            {"name":"Cake Bank","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/cake.png","desc":"Ngân hàng số Cake", "type": "bank"},
+            {"name":"TNEX","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tnex_finnace_logo_65a9f6aa9fee9.png","desc":"Ngân hàng thuần số TNEX", "type": "bank"},
+            {"name":"MSB mBank","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb.png","desc":"Mở tài khoản MSB số đẹp", "type": "bank"},
+            {"name":"VPBank NEO","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/VPBank.png","desc":"Ngân hàng số VPBank NEO", "type": "bank"},
+            {"name":"ACB One","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/ACB.png","desc":"Ngân hàng số ACB One", "type": "bank"},
+            {"name":"OCB OMNI","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Picture1.png","desc":"Ngân hàng số OCB OMNI", "type": "bank"},
+            {"name":"Vikki","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vikki_Original Logo Vikki DigitaL_Online.png","desc":"Ngân hàng số Vikki", "type": "bank"},
+            {"name":"UOB","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/uob-logo-472x226.png","desc":"Mở tài khoản UOB", "type": "bank"},
+            {"name":"LPBank","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/666c22c1e8fc6ab7134d3f1b_lpbank_logo.jpg","desc":"Mở tài khoản LPBank", "type": "bank"},
+
+            // --- NHÓM THẺ TÍN DỤNG (Bạn cần điền link) ---
+            {"name":"VIB Credit","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png","desc":"Mở thẻ online, miễn phí thường niên", "type": "the"},
+            {"name":"TPBank EVO","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%204.png","desc":"Mở thẻ tín dụng TPBank Evo 100% Online", "type": "the"},
+            {"name":"Be Visa","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Logo%201%20copy.jpg","desc":"Thẻ tín dụng Cake x Be", "type": "the"},
+            {"name":"VIB Zalo","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%202.png","desc":"Mở thẻ VIB qua Zalo", "type": "the"},
+            {"name":"VPBank Auto","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/CC-01.png","desc":"Mở thẻ tín dụng VPBank tự động", "type": "the"},
+            {"name":"Finmart","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo finmart.png","desc":"Mở thẻ tín dụng Finmart", "type": "the"},
+            {"name":"Cake Thẻ","link":"LINK_DASHBOARD","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Cake copy2 .jpg","desc":"Thẻ tín dụng Cake Freedom", "type": "the"},
         ];
 
         let currentTab = 'vay';
         const container = document.getElementById('app-container');
         const emptyState = document.getElementById('empty-state');
-
-        // TỪ KHÓA PHÂN LOẠI
-        const KEYWORDS = {
-            the: ['thẻ tín dụng', 'credit', 'mở thẻ', 'thẻ hoàn tiền', 'evo', 'vib super', 'vib online', 'viban', 'hsbc', 'lotte', 'sacombank', 'hdbank', 'finmart', 'vib-card'],
-            bank: ['tài khoản', 'ngân hàng', 'thanh toán', 'số đẹp', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank', 'vcb', 'bidv', 'vietinbank', 'ocb', 'nam a', 'tpbank', 'viettel', 'zalopay', 'vnpt', 'vikki', 'ubank', 'msb', 'uob', 'kafi', 'mbs', 'acb', 'lpbank'],
-            vay: ['vay', 'cầm đồ', 'tín chấp', 'tiền mặt', 'giải ngân', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan', 'mcredit', 'easy credit', 'mirae', 'bimo', 'kavay', 'credy', 'crezu', 'binixo', 'tima', 'fago', 'sky', 'cayvang', 'redbag', 'cashing', 'finzone', 'avay', 'tintin']
-        };
-
-        function checkCategory(item) {
-            const text = (item.name + " " + item.offer_id + " " + item.desc).toLowerCase();
-            for (let w of KEYWORDS.the) if (text.includes(w)) return 'the';
-            for (let w of KEYWORDS.bank) if (text.includes(w)) return 'bank';
-            return 'vay';
-        }
 
         function switchTab(tabName) {
             currentTab = tabName;
@@ -202,7 +171,7 @@
         function renderApps() {
             container.innerHTML = '';
             
-            const filtered = ALL_OFFERS.filter(item => checkCategory(item) === currentTab);
+            const filtered = ALL_OFFERS.filter(item => item.type === currentTab);
 
             if (filtered.length === 0) {
                 emptyState.classList.remove('hidden');
@@ -211,9 +180,16 @@
             }
 
             filtered.forEach((app, index) => {
-                // TỰ ĐỘNG TẠO LINK CHUẨN
-                let finalLink = `${BASE_LINK}?pub_id=${PUB_ID}&offer_id=${app.offer_id}`;
-                
+                // XỬ LÝ LINK: Nếu chưa có link (còn chữ LINK_DASHBOARD) thì ẩn nút hoặc báo lỗi
+                let isLinkValid = app.link && app.link !== "LINK_DASHBOARD";
+                let buttonClass = isLinkValid 
+                    ? "bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white shadow-md hover:shadow-lg active:scale-95" 
+                    : "bg-gray-200 text-gray-400 cursor-not-allowed";
+                let buttonText = isLinkValid ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
+                let clickAction = isLinkValid ? `onclick="handleRedirect('${app.link}', '${app.name}')"` : "";
+
+                let logoUrl = app.logo || "https://img.icons8.com/color/96/money-bag.png";
+
                 let infoBlock = '';
                 if(currentTab === 'vay') {
                     infoBlock = `
@@ -250,7 +226,7 @@
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-start gap-3 mb-4">
                             <div class="w-14 h-14 rounded-xl border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1">
-                                <img src="${app.logo}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='https://img.icons8.com/color/96/money-bag.png'"/>
+                                <img src="${logoUrl}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='https://img.icons8.com/color/96/money-bag.png'"/>
                             </div>
                             <div class="flex-1 min-w-0 pt-0.5">
                                 <h3 class="font-bold text-slate-900 text-base leading-tight mb-1 truncate group-hover:text-blue-600 transition-colors">${app.name}</h3>
@@ -260,9 +236,9 @@
                         
                         ${infoBlock}
 
-                        <button onclick="handleRedirect('${finalLink}', '${app.name}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white font-bold py-3 rounded-xl shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
-                            <span>ĐĂNG KÝ NGAY</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <button ${clickAction} class="w-full ${buttonClass} font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm uppercase">
+                            <span>${buttonText}</span>
+                            ${isLinkValid ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>' : ''}
                         </button>
                         
                         <div class="mt-3 text-center flex justify-center items-center gap-1 text-[10px] text-slate-400">
@@ -272,7 +248,6 @@
                     </div>
                 </div>`;
                 container.insertAdjacentHTML('beforeend', html);
-                startLiveCounter(counterId);
             });
         }
 
@@ -282,22 +257,7 @@
             loader.classList.remove('hidden');
             loader.style.display = 'flex';
             
-            // Chuyển hướng
             setTimeout(() => { window.location.href = link; }, 800);
-        }
-
-        function startLiveCounter(id) {
-            let randomTime = Math.floor(Math.random() * 60000) + 20000;
-            setTimeout(() => {
-                const el = document.getElementById(id);
-                if (el) {
-                    let num = parseInt(el.innerText);
-                    el.innerText = num + 1;
-                    el.classList.add('text-green-600');
-                    setTimeout(() => el.classList.remove('text-green-600'), 500);
-                    startLiveCounter(id);
-                }
-            }, randomTime);
         }
 
         // CHẠY NGAY
