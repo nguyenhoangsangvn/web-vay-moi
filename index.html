@@ -3,72 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Debug API - FinTech Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>body{background:#f0f4f8;font-family:sans-serif} .debug-box{background:#1e293b;color:#4ade80;padding:15px;font-family:monospace;font-size:11px;white-space:pre-wrap;word-break:break-all;border:2px solid #ef4444;margin:20px;border-radius:10px;}</style>
-</head>
-<body>
+    <title>Cổng Thông Tin Giải Pháp Tài Chính 2025</title>
+    <meta name="description" content="Nền tảng công nghệ so sánh và đề xuất các gói vay tín chấp uy tín.">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
 
-    <div class="max-w-4xl mx-auto mt-5">
-        <h2 class="text-center text-red-600 font-bold text-xl uppercase mb-2">⚠️ CHẾ ĐỘ SOI DỮ LIỆU GỐC</h2>
-        <p class="text-center text-sm text-gray-600 mb-2">Chụp màn hình cái khung đen bên dưới gửi cho tui nhé 👇</p>
-        <div id="raw-json" class="debug-box">Đang tải dữ liệu thô từ API... Vui lòng đợi...</div>
+    <script async='async' src='https://www.googletagmanager.com/gtag/js?id=G-F5ZTEXFZYX'></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F5ZTEXFZYX');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: '#0052cc', action: '#16a34a' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    boxShadow: { 'card': '0 4px 6px -1px rgba(0,0,0,0.05)', 'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1)' },
+                    animation: { 'pop-in': 'popIn 0.3s ease-out forwards' },
+                    keyframes: { popIn: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } } }
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <style>
+        body { background-color: #f0f4f8; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .no-select { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="text-slate-900 text-[16px] no-select min-h-screen flex flex-col">
+
+    <header class="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="https://img.icons8.com/color/48/money-bag.png" class="w-8 h-8 md:w-10 md:h-10" alt="Logo">
+                <div>
+                    <h1 class="text-lg md:text-2xl font-extrabold text-slate-900 tracking-tight">FinTech <span class="text-blue-600">Hub</span></h1>
+                </div>
+            </div>
+            <button onclick="fetchApps()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs md:text-sm shadow-sm transition-colors">
+                Làm mới
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-6 md:py-10 w-full">
+        
+        <div class="text-center mb-6">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3">
+                Tổng Hợp Gói Vay <span class="text-blue-600">Uy Tín</span>
+            </h2>
+        </div>
+
+        <div class="flex justify-center gap-2 mb-8 overflow-x-auto pb-2">
+            <button onclick="switchTab('vay')" id="btn-vay" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md transition-all">
+                💸 Vay Tiền
+            </button>
+            <button onclick="switchTab('bank')" id="btn-bank" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all">
+                🏦 Ngân Hàng
+            </button>
+            <button onclick="switchTab('the')" id="btn-the" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all">
+                💳 Thẻ Tín Dụng
+            </button>
+        </div>
+
+        <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 min-h-[300px]">
+            <div id="skeleton-loader" class="col-span-full text-center py-10">
+                <div class="animate-spin rounded-full h-10 w-10 border-4 border-slate-200 border-t-blue-600 mx-auto mb-3"></div>
+                <p class="text-sm text-slate-500 animate-pulse">Đang tải và tạo link...</p>
+            </div>
+        </div>
+        
+        <div id="empty-state" class="hidden text-center py-12 col-span-full">
+            <div class="text-4xl mb-3">📭</div>
+            <p class="text-slate-500 text-sm">Chưa có ưu đãi nào trong mục này.</p>
+        </div>
+
+    </main>
+
+    <div class="bg-slate-100 p-6 text-center border-t border-slate-200 mt-auto">
+        <p class="text-[10px] text-slate-400 mb-2">© 2025 Financial Service Aggregator</p>
     </div>
 
-    <div id="app-container" class="max-w-7xl mx-auto px-4 pb-20 grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    <div id="loading-screen" class="hidden fixed inset-0 bg-white/95 backdrop-blur z-50 flex-col items-center justify-center text-center p-5">
+        <div class="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-green-600 mb-4"></div>
+        <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng...</h2>
+        <a id="manual-link" href="#" class="hidden mt-6 text-blue-600 text-sm underline">Click vào đây</a>
+    </div>
 
     <script>
-        // CẤU HÌNH API
+        // CẤU HÌNH QUAN TRỌNG
         const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
+        const PUB_ID = '28janns'; // ID của bạn
+        
+        // Đường dẫn Tracking mặc định (Nếu không có link ngắn, code sẽ dùng cái này)
+        // Bạn có thể đổi 'hl-link.net' thành domain tracking khác nếu Network yêu cầu
+        const BASE_TRACKING_URL = 'https://hl-link.net/click'; 
 
-        const debugBox = document.getElementById('raw-json');
+        // BẢNG MAP LINK THỦ CÔNG (Nếu muốn link đẹp cho các App HOT thì điền vào đây)
+        // Code sẽ ưu tiên lấy link ở đây trước, nếu không có mới tự tạo link
+        const MANUAL_LINKS = {
+            'moneycatvn': 'https://hl-link.net/nVT5020',
+            'moneyveo': 'https://hl-link.net/BISmL10',
+            'jeffapp': 'https://hl-link.net/doi5p20',
+            // Thêm các app khác vào đây nếu muốn dùng link rút gọn
+        };
+
+        let globalData = [];
+        let currentTab = 'vay';
+
+        // TỪ KHÓA PHÂN LOẠI
+        const KEYWORDS = {
+            the: ['thẻ tín dụng', 'credit card', 'mở thẻ', 'thẻ hoàn tiền', 'evo', 'tpbank evo', 'vib super card', 'vib online plus', 'viban', 'hsbc'],
+            bank: ['tài khoản', 'ngân hàng', 'thanh toán', 'số đẹp', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank neo', 'vcb', 'bidv', 'vietinbank', 'ocb omni', 'nam a bank', 'tpbank mobile', 'hdbank', 'sacombank', 'viettel money', 'zalopay', 'vnpt money', 'vikki'],
+            vay: ['vay', 'cầm đồ', 'tín chấp', 'khoản vay', 'giải ngân', 'tiền mặt', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'oncredit', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan finance', 'mcredit', 'easy credit', 'lotte', 'mirae']
+        };
+
         const container = document.getElementById('app-container');
+        const loader = document.getElementById('skeleton-loader');
+        const emptyState = document.getElementById('empty-state');
 
-        async function fetchApps() {
-            try {
-                // Dùng Proxy để lách luật CORS
-                const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(API_URL);
-                const response = await fetch(proxyUrl);
-                const rawData = await response.json();
-                
-                // Lấy danh sách offer
-                // API RioFintech thường trả về mảng trực tiếp hoặc nằm trong key 'data'
-                let list = Array.isArray(rawData) ? rawData : (rawData.data || []);
-
-                if (list.length > 0) {
-                    // 1. IN DỮ LIỆU GỐC CỦA THẰNG ĐẦU TIÊN RA MÀN HÌNH ĐỂ SOI
-                    const firstItem = list[0];
-                    debugBox.innerHTML = "DỮ LIỆU CỦA GÓI VAY ĐẦU TIÊN:\n\n" + JSON.stringify(firstItem, null, 4);
-                    
-                    // 2. Render thử ra bên dưới
-                    renderTest(list);
-                } else {
-                    debugBox.innerHTML = "LỖI: API trả về danh sách rỗng! \n\nPhản hồi gốc:\n" + JSON.stringify(rawData, null, 4);
-                }
-
-            } catch (error) {
-                debugBox.innerHTML = "LỖI KẾT NỐI: " + error.message + "\n\n(Hãy thử tắt Wifi dùng 4G hoặc ngược lại)";
-            }
+        function formatMoney(num) {
+            if (!num) return 'Liên hệ';
+            if (num >= 1000000) return (num/1000000) + 'Tr';
+            if (num >= 1000) return (num/1000) + 'k';
+            return num;
         }
 
-        function renderTest(list) {
+        async function fetchApps() {
             container.innerHTML = '';
-            list.slice(0, 3).forEach(app => { // Chỉ hiện 3 cái test
-                // Thử tìm link ở mọi ngóc ngách
-                let link = app.tracking_link || app.link || app.url || app.click_url || "KHONG_THAY_LINK";
-                let name = app.offer_name || app.name || "No Name";
-                
-                let btnColor = (link !== "KHONG_THAY_LINK") ? "bg-green-600" : "bg-gray-400";
-                let btnText = (link !== "KHONG_THAY_LINK") ? "CÓ LINK NGON" : "MẤT LINK";
+            container.appendChild(loader);
+            loader.classList.remove('hidden');
+            emptyState.classList.add('hidden');
 
-                container.innerHTML += `
-                    <div class="bg-white p-4 rounded shadow">
-                        <h3 class="font-bold">${name}</h3>
-                        <p class="text-xs text-gray-500 truncate mt-1">Link tìm được: ${link}</p>
-                        <button class="w-full ${btnColor} text-white font-bold py-2 mt-2 rounded">${btnText}</button>
-                    </div>
-                `;
+            // Dùng Proxy để gọi API
+            const methods = [
+                { url: 'https://corsproxy.io/?' + encodeURIComponent(API_URL), name: 'Proxy 1' },
+                { url: 'https://api.allorigins.win/get?url=' + encodeURIComponent(API_URL), name: 'Proxy 2' }
+            ];
+
+            for (let method of methods) {
+                try {
+                    const res = await fetch(method.url);
+                    if (!res.ok) throw new Error('Err');
+                    let raw = await res.json();
+                    if (method.name === 'Proxy 2') raw = JSON.parse(raw.contents);
+                    
+                    let list = Array.isArray(raw) ? raw : (raw.data || raw.offers || []);
+                    
+                    if (list.length > 0) {
+                        globalData = list;
+                        switchTab('vay'); 
+                        return;
+                    }
+                } catch (e) { console.log(e); }
+            }
+            // Nếu lỗi Proxy thì hiện thông báo (vì ko có data backup nào đủ tốt)
+            container.innerHTML = `<div class="col-span-full text-center text-red-500 py-10">Không tải được dữ liệu. Vui lòng tải lại trang!</div>`;
+            loader.classList.add('hidden');
+        }
+
+        // PHÂN LOẠI THÔNG MINH
+        function checkCategory(item) {
+            const name = (item.name || item.offer_name || "").toLowerCase();
+            const cat = (item.category_name || "").toLowerCase();
+            const fullText = name + " " + cat;
+
+            for (let w of KEYWORDS.the) { if (fullText.includes(w)) return 'the'; }
+            for (let w of KEYWORDS.vay) { if (fullText.includes(w)) return 'vay'; }
+            if (cat.includes('vay') || cat.includes('loan')) return 'vay';
+            for (let w of KEYWORDS.bank) { if (fullText.includes(w)) return 'bank'; }
+
+            return 'vay'; // Mặc định là vay
+        }
+
+        function switchTab(tabName) {
+            currentTab = tabName;
+            ['vay', 'bank', 'the'].forEach(t => {
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === tabName) {
+                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md transition-all";
+                } else {
+                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 transition-all";
+                }
             });
+
+            const filtered = globalData.filter(item => {
+                const detectedType = checkCategory(item);
+                return detectedType === tabName;
+            });
+            renderApps(filtered);
+        }
+
+        // TẠO LINK VÀ HIỂN THỊ
+        function renderApps(list) {
+            container.innerHTML = '';
+            loader.classList.add('hidden');
+
+            if (!list || list.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+            
+            list.forEach((app, index) => {
+                let offerId = app.offer_id; // Lấy ID quan trọng nhất: offer_id
+                let finalLink = "";
+
+                // CHIẾN THUẬT TẠO LINK:
+                // 1. Kiểm tra xem có link thủ công trong bảng MANUAL_LINKS không
+                if (MANUAL_LINKS[offerId]) {
+                    finalLink = MANUAL_LINKS[offerId];
+                } 
+                // 2. Nếu không, tự động ghép link theo công thức chuẩn
+                else {
+                    // Công thức: domain + ?offer_id=... + &pub_id=...
+                    finalLink = `${BASE_TRACKING_URL}?offer_id=${offerId}&pub_id=${PUB_ID}`;
+                }
+
+                let item = {
+                    ten: app.name || app.offer_name || "Gói Dịch Vụ",
+                    logo: app.avatar || app.logo || "https://img.icons8.com/color/96/money-bag.png",
+                    link: finalLink, 
+                    mota: app.commission_rate || "Duyệt nhanh 24/7", // Lấy tạm hoa hồng làm mô tả cho hấp dẫn
+                    hanmuc: "Hạn mức cao", // API không có hạn mức, để mặc định
+                    tag: currentTab === 'vay' ? "DUYỆT NHANH" : (currentTab === 'bank' ? "SỐ ĐẸP" : "HOÀN TIỀN"),
+                    laisuat: "Ưu đãi tốt"
+                };
+
+                // Xử lý hiển thị mô tả ngắn gọn lại (bỏ HTML tag)
+                let div = document.createElement("div");
+                div.innerHTML = item.mota;
+                let textMota = div.textContent || div.innerText || "";
+                item.mota = textMota.substring(0, 60) + "...";
+
+                // Layout thông tin
+                let infoBlock = '';
+                if(currentTab === 'vay') {
+                    infoBlock = `
+                        <div class="grid grid-cols-2 gap-0 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
+                            <div class="text-center border-r border-slate-200 py-2">
+                                <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Hạn mức</p>
+                                <p class="font-bold text-slate-900 text-xs md:text-sm">Liên hệ</p>
+                            </div>
+                            <div class="text-center py-2">
+                                <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Lãi suất</p>
+                                <p class="font-bold text-action text-xs md:text-sm">Ưu đãi</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    infoBlock = `<div class="mt-auto mb-4">
+                        <p class="text-xs text-center text-blue-600 font-medium bg-blue-50 py-1.5 rounded">
+                            ${currentTab === 'bank' ? 'Mở Online 100%' : 'Miễn lãi 45 ngày'}
+                        </p>
+                    </div>`;
+                }
+
+                let counterId = `counter-${index}`;
+                let fakeView = Math.floor(Math.random() * 500) + 300;
+
+                const html = `
+                <div class="group bg-white rounded-2xl shadow-card hover:shadow-card-hover border border-slate-100 overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col h-full animate-pop-in">
+                    <div class="bg-blue-50/50 px-3 py-2 border-b border-blue-100 flex items-center justify-between">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                            <span class="text-[10px] font-bold text-blue-700 uppercase tracking-wide">${item.tag}</span>
+                        </div>
+                        <span class="text-[9px] text-slate-400 font-medium border border-slate-200 px-1 rounded">QC</span>
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 rounded-lg border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1">
+                                <img src="${item.logo}" class="w-full h-full object-contain" alt="${item.ten}" onerror="this.src='https://img.icons8.com/color/96/money-bag.png'"/>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-bold text-slate-900 text-base leading-tight mb-0.5 truncate">${item.ten}</h3>
+                                <p class="text-[11px] text-slate-500 line-clamp-2 leading-snug">${item.mota}</p>
+                            </div>
+                        </div>
+                        
+                        ${infoBlock}
+
+                        <button onclick="handleRedirect('${item.link}', '${item.ten}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 text-white font-bold py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
+                            ĐĂNG KÝ
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                        <div class="mt-2 text-center text-[10px] text-slate-400">
+                            <span id="${counterId}" class="font-bold text-slate-600">${fakeView}</span> hồ sơ vừa duyệt
+                        </div>
+                    </div>
+                </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+                startLiveCounter(counterId);
+            });
+        }
+
+        function handleRedirect(link, name) {
+            if (typeof gtag === 'function') gtag('event', 'click_dang_ky', { 'app_ten': name, 'link': link });
+            const loader = document.getElementById('loading-screen');
+            const manual = document.getElementById('manual-link');
+            loader.classList.remove('hidden');
+            loader.style.display = 'flex';
+            manual.href = link;
+            setTimeout(() => { window.location.href = link; }, 800);
+            setTimeout(() => { manual.classList.remove('hidden'); }, 3000);
+        }
+
+        function startLiveCounter(id) {
+            let randomTime = Math.floor(Math.random() * 60000) + 20000;
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) {
+                    let num = parseInt(el.innerText);
+                    el.innerText = num + 1;
+                    el.classList.add('text-green-600');
+                    setTimeout(() => el.classList.remove('text-green-600'), 500);
+                    startLiveCounter(id);
+                }
+            }, randomTime);
         }
 
         fetchApps();
