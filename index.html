@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+â<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,8 @@
                     colors: { brand: '#0052cc', action: '#16a34a' },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     boxShadow: { 'card': '0 4px 6px -1px rgba(0,0,0,0.05)', 'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1)' },
+                    animation: { 'pop-in': 'popIn 0.3s ease-out forwards' },
+                    keyframes: { popIn: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } } }
                 },
             },
         }
@@ -84,13 +86,6 @@
             <p class="text-slate-500 text-sm">Chưa có ưu đãi nào trong mục này.</p>
         </div>
 
-        <div class="mt-10 p-4 bg-gray-100 rounded-xl border border-gray-300 text-left">
-            <h4 class="font-bold text-xs text-gray-500 uppercase mb-2">Thông tin kiểm tra (Chụp màn hình cái này nếu lọc sai)</h4>
-            <div id="debug-log" class="text-[10px] font-mono text-gray-600 h-32 overflow-y-auto bg-white p-2 rounded border border-gray-200">
-                Đang chờ dữ liệu...
-            </div>
-        </div>
-
     </main>
 
     <div class="bg-slate-100 p-6 text-center border-t border-slate-200 mt-auto">
@@ -109,18 +104,14 @@
         let globalData = [];
         let currentTab = 'vay';
 
-        // 1. CHUẨN BỊ TỪ KHÓA PHÂN LOẠI
+        // TỪ KHÓA PHÂN LOẠI
         const KEYWORDS = {
-            // Mảng 1: Nhận diện THẺ TÍN DỤNG (Ưu tiên cao nhất)
             the: ['thẻ tín dụng', 'credit card', 'mở thẻ', 'thẻ hoàn tiền', 'evo', 'tpbank evo', 'vib super card', 'vib online plus', 'viban', 'hsbc'],
-            
-            // Mảng 2: Nhận diện NGÂN HÀNG (TKTT)
             bank: ['tài khoản', 'ngân hàng', 'thanh toán', 'số đẹp', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank neo', 'vcb', 'bidv', 'vietinbank', 'ocb omni', 'nam a bank', 'tpbank mobile', 'hdbank', 'sacombank', 'viettel money', 'zalopay', 'vnpt money'],
-            
-            // Mảng 3: Nhận diện VAY (Từ khóa vay đặc thù để tránh nhầm)
             vay: ['vay', 'cầm đồ', 'tín chấp', 'khoản vay', 'giải ngân', 'tiền mặt', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'oncredit', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan finance', 'mcredit', 'easy credit', 'lotte', 'mirae']
         };
 
+        // Backup Data
         const BACKUP_DATA = [
             { offer_name: "MoneyCat", logo: "https://moneycat.vn/public/img/logo.png", min_loan: 1000000, max_loan: 10000000, short_description: "Duyệt nhanh 5 phút", tracking_link: "https://hl-link.net/nVT5020" },
             { offer_name: "MB Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png", min_loan: 0, max_loan: 0, short_description: "Mở tài khoản số đẹp", tracking_link: "#" }
@@ -129,7 +120,6 @@
         const container = document.getElementById('app-container');
         const loader = document.getElementById('skeleton-loader');
         const emptyState = document.getElementById('empty-state');
-        const debugLog = document.getElementById('debug-log');
 
         function formatMoney(num) {
             if (!num) return 'Liên hệ';
@@ -161,7 +151,6 @@
                     
                     if (list.length > 0) {
                         globalData = list;
-                        logDataForDebug(list); // Ghi log để kiểm tra
                         switchTab('vay'); 
                         return;
                     }
@@ -171,44 +160,22 @@
             switchTab('vay');
         }
 
-        // === HÀM IN LOG ĐỂ SOI LỖI ===
-        function logDataForDebug(list) {
-            let html = `<strong>Tổng số offer lấy được: ${list.length}</strong><br/>`;
-            list.forEach(item => {
-                let name = item.offer_name || item.name || "No Name";
-                let cat = item.category_name || "No Cat";
-                html += `• [${name}] - Loại gốc: [${cat}] <br/>`;
-            });
-            debugLog.innerHTML = html;
-        }
-
-        // === LOGIC PHÂN LOẠI THÔNG MINH (TRỌNG TÂM SỬA LỖI) ===
+        // LOGIC PHÂN LOẠI
         function checkCategory(item) {
-            // Gộp tất cả thông tin lại để soi
             const name = (item.offer_name || item.name || "").toLowerCase();
             const desc = (item.short_description || "").toLowerCase();
-            const cat = (item.category_name || "").toLowerCase(); // Quan trọng: API thường có trường này
+            const cat = (item.category_name || "").toLowerCase();
             const fullText = name + " " + cat;
 
-            // 1. Ưu tiên bắt THẺ trước (Vì thẻ hay bị nhầm với Bank)
-            for (let w of KEYWORDS.the) {
-                if (fullText.includes(w)) return 'the';
-            }
-
-            // 2. Bắt VAY (Nếu có chữ "finance", "credit" mà không phải thẻ -> Vay)
-            for (let w of KEYWORDS.vay) {
-                if (fullText.includes(w)) return 'vay';
-            }
-            // Nếu Category API ghi rõ là "vay" -> Vay
+            // 1. Check Thẻ
+            for (let w of KEYWORDS.the) { if (fullText.includes(w)) return 'the'; }
+            // 2. Check Vay
+            for (let w of KEYWORDS.vay) { if (fullText.includes(w)) return 'vay'; }
             if (cat.includes('vay') || cat.includes('loan')) return 'vay';
+            // 3. Check Bank
+            for (let w of KEYWORDS.bank) { if (fullText.includes(w)) return 'bank'; }
 
-            // 3. Bắt BANK (Nếu thoát được 2 cửa trên)
-            for (let w of KEYWORDS.bank) {
-                if (fullText.includes(w)) return 'bank';
-            }
-
-            // Mặc định ném về Vay
-            return 'vay';
+            return 'vay'; // Mặc định
         }
 
         function switchTab(tabName) {
@@ -223,7 +190,6 @@
                 }
             });
 
-            // Lọc
             const filtered = globalData.filter(item => {
                 const detectedType = checkCategory(item);
                 return detectedType === tabName;
@@ -253,7 +219,6 @@
                     laisuat: "Ưu đãi tốt"
                 };
 
-                // Nếu là Bank/Thẻ thì ẩn hạn mức
                 let infoBlock = '';
                 if(currentTab === 'vay') {
                     infoBlock = `
