@@ -89,16 +89,8 @@
         <p class="text-[11px] text-slate-400 font-semibold">© 2025 Financial Service Aggregator</p>
     </div>
 
-    <div id="loading-screen" class="hidden fixed inset-0 bg-white/95 backdrop-blur z-50 flex-col items-center justify-center text-center p-5">
-        <div class="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-green-600 mb-4"></div>
-        <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng đến trang đăng ký...</h2>
-        <p class="text-slate-500 text-sm mt-2">Vui lòng đợi trong giây lát</p>
-    </div>
-
     <script>
-        // === KHO DỮ LIỆU CHÍNH (KHÔNG CẦN API NỮA) ===
-        // Tao đã nhập sẵn link cho nhóm VAY. 
-        // Nhóm BANK và THẺ có chữ "LINK_DASHBOARD" thì ní vào HyperLead copy link dán đè vào đó nhé.
+        // === KHO DỮ LIỆU CHÍNH ===
         const ALL_OFFERS = [
             // --- NHÓM VAY TIỀN ---
             {"name":"MoneyCat","link":"https://hl-link.net/nVT5020","logo":"https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/unnamed (1).png","desc":"0% lãi suất lần đầu, duyệt 5 phút", "type": "vay"},
@@ -201,6 +193,7 @@
                     ? "bg-gradient-to-r from-green-600 to-action hover:from-green-700 hover:to-green-600 text-white shadow-md hover:shadow-lg active:scale-95 cursor-pointer" 
                     : "bg-gray-200 text-gray-400 cursor-not-allowed";
                 let btnText = isLinkValid ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
+                // SỬ DỤNG window.open ĐỂ MỞ TAB MỚI -> TRÁNH LỖI BACK BUTTON
                 let clickAction = isLinkValid ? `onclick="handleRedirect('${app.link}', '${app.name}')"` : "";
 
                 // Fallback logo
@@ -268,12 +261,12 @@
             });
         }
 
+        // HÀM CHUYỂN HƯỚNG SANG TAB MỚI
         function handleRedirect(link, name) {
             if (typeof gtag === 'function') gtag('event', 'click_dang_ky', { 'app_ten': name, 'link': link });
-            const loader = document.getElementById('loading-screen');
-            loader.classList.remove('hidden');
-            loader.style.display = 'flex';
-            setTimeout(() => { window.location.href = link; }, 800);
+            
+            // Mở link trong tab mới để tránh lỗi back button
+            window.open(link, '_blank');
         }
 
         function startLiveCounter(id) {
@@ -292,6 +285,15 @@
 
         // CHẠY NGAY
         switchTab('vay');
+        
+        // SỬA LỖI MÀN HÌNH LOADING KHI BACK (Dự phòng nếu user vẫn mở tab cũ)
+        window.addEventListener('pageshow', function(event) {
+            const loader = document.getElementById('loading-screen');
+            if (loader) {
+                loader.classList.add('hidden');
+                loader.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
