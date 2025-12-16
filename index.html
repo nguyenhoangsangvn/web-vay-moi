@@ -4,252 +4,431 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Vay Tiền Nhanh Online Uy Tín Chỉ Cần CCCD tại CatCredit.vn</title>
-    <link rel="icon" type="image/png" href="https://catcredit.vn/wp-content/uploads/2025/11/cropped-catcredit-icon-32x32.png">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Roboto', 'sans-serif'] },
-                    colors: { 
-                        primary: '#fec629', /* Màu vàng CatCredit */
-                        secondary: '#d26e4b',
-                        dark: '#1d212a'
-                    },
-                    boxShadow: {
-                        'card': '0 10px 20px rgba(0,0,0,0.05)',
-                        'btn': '0 4px 10px rgba(244, 197, 66, 0.3)'
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        body { background-color: #f4efed; color: #1d212a; -webkit-font-smoothing: antialiased; }
+        /* --- 1. CẤU HÌNH MÀU SẮC & FONT (Lấy từ code gốc) --- */
+        :root {
+            --primary-color: #fec629;
+            --secondary-color: #d26e4b;
+            --text-color: #1d212a;
+            --bg-color: #f4efed;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-color); background-color: var(--bg-color); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
         
-        /* Custom Slider Style */
-        .meo-slider-wrapper { position: relative; padding: 10px 0; }
-        .meo-range {
-            -webkit-appearance: none; width: 100%; height: 16px; border-radius: 10px;
+        .container { max-width: 1250px; margin: 0 auto; padding: 0 15px; }
+        .row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+        .col { padding: 0 15px; width: 100%; }
+        
+        /* Responsive Grid */
+        @media (min-width: 768px) { .col-md-6 { width: 50%; } .col-md-4 { width: 33.333%; } .col-md-3 { width: 25%; } }
+        @media (min-width: 1024px) { .col-lg-6 { width: 50%; } .col-lg-3 { width: 25%; } }
+
+        /* --- 2. HEADER --- */
+        header { background: var(--white); height: 90px; display: flex; align-items: center; position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo img { max-height: 70px; }
+        
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a { font-weight: 700; font-size: 15px; text-transform: none; color: #000; }
+        .nav-menu a:hover { color: var(--secondary-color); }
+        
+        .mobile-menu-btn { display: none; font-size: 24px; cursor: pointer; }
+        @media (max-width: 850px) {
+            .nav-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+            header { height: 70px; }
+            .logo img { max-height: 50px; }
+        }
+
+        /* --- 3. BUTTONS --- */
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #222;
+            font-weight: 700;
+            padding: 12px 40px;
+            border-radius: 99px;
+            text-transform: none;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn-primary:hover { background-color: #eeb928; transform: translateY(-2px); }
+        .btn-full { width: 100%; text-align: center; }
+
+        /* --- 4. HERO SECTION (WIDGET VAY) --- */
+        .hero-section { padding: 50px 0; background: var(--white); }
+        .meo-title { font-size: 2.8em; font-weight: 900; line-height: 1.1; margin-bottom: 30px; color: #222; }
+        
+        .loan-widget { background: #f4efed; padding: 25px; border-radius: 20px; }
+        @media (min-width: 768px) { .loan-widget { background: transparent; padding: 0; } }
+
+        .loan-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-weight: 700; }
+        .loan-amount { font-size: 26px; color: #000; font-weight: 900; }
+        
+        /* Slider Input Customization */
+        input[type=range] {
+            width: 100%; -webkit-appearance: none; height: 12px; border-radius: 6px;
             background: linear-gradient(to right, #f7dda1 0%, #f5ba11 50%, #e0e0e0 50%, #e0e0e0 100%);
-            outline: none; transition: background 450ms ease-in; cursor: pointer;
+            outline: none; margin-bottom: 10px; cursor: pointer;
         }
-        .meo-range::-webkit-slider-thumb {
-            -webkit-appearance: none; appearance: none; width: 45px; height: 45px;
-            border-radius: 50%; background-color: #FCEeb5; opacity: 1;
-            /* Dùng icon chân mèo nếu có, không thì dùng màu */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; width: 45px; height: 45px; border-radius: 50%;
+            background-color: #FCEeb5;
             background-image: url("https://catcredit.vn/wp-content/uploads/2025/11/cats-paws.svg");
-            background-repeat: no-repeat; background-position: center; background-size: 24px;
-            cursor: pointer; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); border: 2px solid #fff;
+            background-size: 24px; background-repeat: no-repeat; background-position: center;
+            border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); margin-top: -2px;
         }
+        .range-labels { display: flex; justify-content: space-between; font-size: 14px; color: #666; margin-bottom: 30px; font-weight: 500; }
+
+        /* --- 5. BENEFITS SECTION --- */
+        .benefits-section { padding: 60px 0; background-image: url('https://catcredit.vn/wp-content/uploads/2025/11/bg-1.svg'); background-size: cover; }
+        .section-sub { color: var(--secondary-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; margin-bottom: 10px; }
+        .section-title { font-size: 36px; font-weight: 800; margin-bottom: 40px; line-height: 1.2; }
+
+        .benefit-card { background: var(--white); border-radius: 20px; padding: 30px; height: 100%; box-shadow: 0 5px 20px rgba(0,0,0,0.03); position: relative; overflow: hidden; }
+        .benefit-card h3 { font-size: 20px; margin-bottom: 15px; font-weight: 700; }
+        .benefit-card p { font-size: 15px; color: #555; margin-bottom: 20px; }
+        .benefit-img { text-align: right; margin-top: auto; }
+        .benefit-img img { width: 140px; display: inline-block; }
+
+        /* Mobile Horizontal Scroll for Benefits */
+        @media (max-width: 767px) {
+            .mobile-scroll {
+                display: flex; overflow-x: auto; gap: 15px; padding-bottom: 20px; margin: 0 -15px; padding: 0 15px 20px 15px;
+                scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+            }
+            .mobile-scroll .col { flex: 0 0 85%; scroll-snap-align: center; }
+            .mobile-scroll::-webkit-scrollbar { display: none; }
+        }
+
+        /* --- 6. STEPS SECTION --- */
+        .steps-section { padding: 60px 0; }
+        .step-item { display: flex; margin-bottom: 30px; }
+        .step-num { 
+            width: 40px; height: 40px; background: #fff5d6; color: #000; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; margin-right: 15px; flex-shrink: 0;
+        }
+        .step-content h3 { font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+        .step-content p { font-size: 15px; color: #666; }
+
+        /* --- 7. FAQ SECTION (Accordion) --- */
+        .faq-section { padding: 60px 0; background-image: url('https://catcredit.vn/wp-content/uploads/2025/11/line-2.svg'); background-size: cover; }
+        .accordion-item { background: var(--white); border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+        .accordion-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; }
+        .accordion-header:hover { color: var(--secondary-color); }
+        .accordion-body { padding: 0 20px 20px 20px; display: none; color: #555; }
+        .accordion-item.active .accordion-body { display: block; }
+        .accordion-icon { transition: transform 0.3s; }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+
+        /* --- 8. FOOTER --- */
+        footer { background: var(--white); padding: 50px 0 20px; border-top: 1px solid #eee; }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        .footer-links a { margin-right: 20px; font-weight: 500; font-size: 14px; color: #666; }
+        .footer-disclaimer { border-top: 1px solid #eee; margin-top: 30px; padding-top: 30px; font-size: 13px; color: #888; text-align: justify; }
+        .footer-disclaimer h4 { color: #333; margin: 15px 0 5px; font-size: 14px; }
         
-        /* Mobile Scroll Horizontal (Giống web gốc trên mobile) */
-        .scroll-horizontal {
-            display: flex; overflow-x: auto; gap: 15px; scroll-snap-type: x mandatory; padding-bottom: 20px;
-            -ms-overflow-style: none; scrollbar-width: none;
-        }
-        .scroll-horizontal::-webkit-scrollbar { display: none; }
-        .scroll-item { scroll-snap-align: center; flex: 0 0 85%; max-width: 85%; }
-        
-        @media (min-width: 768px) {
-            .scroll-horizontal { display: grid; grid-template-columns: repeat(2, 1fr); overflow: visible; padding-bottom: 0; }
-            .scroll-item { flex: auto; max-width: 100%; }
-        }
     </style>
 </head>
 <body>
 
-    <header class="bg-white/95 sticky top-0 z-50 shadow-sm h-[70px] flex items-center transition-all">
-        <div class="max-w-[1250px] mx-auto px-4 w-full flex justify-between items-center">
-            <a href="#" class="flex-shrink-0">
-                <img src="https://catcredit.vn/wp-content/uploads/2025/11/catcredit-logo.png" alt="CatCredit" class="h-[50px] md:h-[60px] object-contain">
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="https://catcredit.vn/wp-content/uploads/2025/11/catcredit-logo.png" alt="CatCredit Logo">
             </a>
-
-            <nav class="hidden md:flex gap-6 font-bold text-[15px] uppercase tracking-wide text-black">
-                <a href="#" class="hover:text-primary transition-colors">Vay tiền</a>
-                <a href="#" class="hover:text-primary transition-colors">Loại hình vay</a>
-                <a href="#" class="hover:text-primary transition-colors">Về CatCredit</a>
-                <a href="#" class="hover:text-primary transition-colors">Quy trình</a>
-                <a href="#" class="hover:text-primary transition-colors">FAQ</a>
+            
+            <nav class="nav-menu">
+                <a href="#vay-tien">Vay tiền</a>
+                <a href="#loai-hinh">Loại hình vay</a>
+                <a href="#ve-chung-toi">Về CatCredit</a>
+                <a href="#quy-trinh">Quy trình vay</a>
+                <a href="#faq">FAQ</a>
+                <a href="#">Blog</a>
             </nav>
 
-            <button class="md:hidden text-2xl text-black">
-                ☰
-            </button>
+            <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <section class="bg-white py-10 md:py-16">
-        <div class="max-w-[1250px] mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                
-                <div class="w-full md:w-1/2">
-                    <h2 class="text-[2.5rem] md:text-[3em] font-[900] leading-[1.2] text-[#222] mb-8">
-                        Chạm nhẹ một cái,<br>tiền về liền tay!
-                    </h2>
-
-                    <div class="bg-[#f4efed] md:bg-transparent rounded-2xl p-0 md:p-0">
-                        <div class="flex justify-between items-center mb-4 flex-wrap">
-                            <label class="text-base font-medium text-[#333]">Bạn cần vay bao nhiêu tiền?</label>
-                            <div class="text-2xl md:text-[28px] font-[800] text-[#222]"><span id="amount-display">14.500.000</span> ₫</div>
+    <section class="hero-section" id="vay-tien">
+        <div class="container">
+            <div class="row" style="align-items: center;">
+                <div class="col col-md-6">
+                    <div class="hero-content">
+                        <h1 class="meo-title">Chạm nhẹ một cái,<br>tiền về liền tay!</h1>
+                        
+                        <div class="loan-widget">
+                            <div class="loan-info">
+                                <span>Bạn cần vay bao nhiêu?</span>
+                                <span class="loan-amount" id="amount-text">14.500.000 ₫</span>
+                            </div>
+                            
+                            <div class="slider-container">
+                                <input type="range" min="500000" max="30000000" step="500000" value="14500000" id="loan-slider">
+                                <div class="range-labels">
+                                    <span>500,000 ₫</span>
+                                    <span>30,000,000 ₫</span>
+                                </div>
+                            </div>
+                            
+                            <button class="btn-primary btn-full">Vay Ngay!</button>
                         </div>
+                    </div>
+                </div>
+                
+                <div class="col col-md-6">
+                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/dang-ky-vay.svg" alt="Đăng ký vay" style="width: 100%; padding: 20px;">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="meo-slider-wrapper mb-8">
-                            <input type="range" min="500000" max="30000000" step="500000" value="14500000" class="meo-range" id="range-input">
-                            <div class="flex justify-between text-[#888] font-medium mt-3 text-sm">
-                                <span>500,000 ₫</span>
-                                <span>30,000,000 ₫</span>
+    <section class="benefits-section" id="loai-hinh">
+        <div class="container">
+            <div class="section-sub">Lợi ích vượt trội</div>
+            <h2 class="section-title">Vì sao người dùng chọn CatCredit?</h2>
+
+            <div class="row mobile-scroll">
+                <div class="col col-md-6 col-lg-6" style="margin-bottom: 20px;">
+                    <div class="benefit-card">
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <h3>Miễn phí 100% – Không phí ẩn</h3>
+                                <p>CatCredit là nền tảng so sánh & kết nối khoản vay hoàn toàn miễn phí. Bạn biết trước chính xác tổng chi phí.</p>
+                            </div>
+                            <div class="col col-md-6 benefit-img">
+                                <img src="https://catcredit.vn/wp-content/uploads/2025/11/Dich-vu-100-mien-phi.svg">
                             </div>
                         </div>
-
-                        <button onclick="window.location.href='#'" class="block w-full py-4 rounded-full bg-primary text-[#222] font-[800] text-lg text-center uppercase shadow-btn hover:bg-[#eeb928] transition-colors">
-                            Vay Ngay!
-                        </button>
                     </div>
                 </div>
 
-                <div class="w-full md:w-1/2 text-center">
-                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/dang-ky-vay.svg" class="w-full max-w-[500px] mx-auto drop-shadow-xl" alt="Đăng ký vay">
+                <div class="col col-md-6 col-lg-6" style="margin-bottom: 20px;">
+                    <div class="benefit-card">
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <h3>Nhanh chóng và đơn giản</h3>
+                                <p>Điền thông tin trong vài bước, lập tức nhận đề xuất vay phù hợp từ đối tác uy tín.</p>
+                            </div>
+                            <div class="col col-md-6 benefit-img">
+                                <img src="https://catcredit.vn/wp-content/uploads/2025/11/nhanh-chong-va-tien-loi.svg">
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="col col-md-6 col-lg-6" style="margin-bottom: 20px;">
+                    <div class="benefit-card">
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <h3>Linh hoạt & dễ chọn</h3>
+                                <p>Nhiều gói vay khác nhau: vay tiêu dùng, vay nóng... Lọc ra lựa chọn tối ưu nhất.</p>
+                            </div>
+                            <div class="col col-md-6 benefit-img">
+                                <img src="https://catcredit.vn/wp-content/uploads/2025/11/Don-gian-va-linh-hoat.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-md-6 col-lg-6" style="margin-bottom: 20px;">
+                    <div class="benefit-card">
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <h3>Bảo mật & đáng tin</h3>
+                                <p>Thông tin cá nhân được mã hóa an toàn. Chỉ chuyển dữ liệu khi bạn đồng ý.</p>
+                            </div>
+                            <div class="col col-md-6 benefit-img">
+                                <img src="https://catcredit.vn/wp-content/uploads/2025/11/an-toan-va-dang-tin-cay.svg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn-primary">Vay Ngay!</button>
             </div>
         </div>
     </section>
 
-    <section class="py-12 md:py-16 bg-cover bg-center" style="background-image: url('https://catcredit.vn/wp-content/uploads/2025/11/bg-1.svg');">
-        <div class="max-w-[1250px] mx-auto px-4">
-            <div class="text-left mb-10">
-                <div class="text-secondary font-bold uppercase text-sm mb-2 tracking-wider">Lợi ích vượt trội</div>
-                <h2 class="text-3xl md:text-4xl font-[900] text-dark">Vì sao người dùng chọn CatCredit?</h2>
-            </div>
-
-            <div class="scroll-horizontal">
-                
-                <div class="scroll-item bg-white rounded-[20px] p-6 shadow-card flex flex-col justify-between h-full">
-                    <div>
-                        <h3 class="text-xl font-bold mb-3">Miễn phí 100% – Không phí ẩn</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">CatCredit là nền tảng so sánh & kết nối khoản vay hoàn toàn miễn phí. Bạn biết trước chính xác tổng chi phí.</p>
-                    </div>
-                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/Dich-vu-100-mien-phi.svg" class="w-[60%] ml-auto mt-4" alt="Miễn phí">
-                </div>
-
-                <div class="scroll-item bg-white rounded-[20px] p-6 shadow-card flex flex-col justify-between h-full">
-                    <div>
-                        <h3 class="text-xl font-bold mb-3">Nhanh chóng và đơn giản</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Điền thông tin trong vài bước, lập tức nhận đề xuất vay phù hợp từ đối tác uy tín – chỉ mất 3–5 phút.</p>
-                    </div>
-                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/nhanh-chong-va-tien-loi.svg" class="w-[60%] ml-auto mt-4" alt="Nhanh chóng">
-                </div>
-
-                <div class="scroll-item bg-white rounded-[20px] p-6 shadow-card flex flex-col justify-between h-full">
-                    <div>
-                        <h3 class="text-xl font-bold mb-3">Linh hoạt & dễ chọn</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Nhiều gói vay: vay tiêu dùng, vay nóng, vay theo tháng… Lọc ra lựa chọn tối ưu nhất.</p>
-                    </div>
-                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/Don-gian-va-linh-hoat.svg" class="w-[60%] ml-auto mt-4" alt="Linh hoạt">
-                </div>
-
-                <div class="scroll-item bg-white rounded-[20px] p-6 shadow-card flex flex-col justify-between h-full">
-                    <div>
-                        <h3 class="text-xl font-bold mb-3">Bảo mật & đáng tin</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">Thông tin cá nhân được mã hóa và lưu trữ an toàn. Chỉ chuyển dữ liệu khi bạn đồng ý.</p>
-                    </div>
-                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/an-toan-va-dang-tin-cay.svg" class="w-[60%] ml-auto mt-4" alt="Bảo mật">
-                </div>
-
-            </div>
-
-            <div class="text-center mt-10">
-                <button class="bg-primary text-[#222] font-bold py-3 px-10 rounded-full shadow-btn hover:bg-[#eeb928] transition-transform active:scale-95">
-                    Vay Ngay!
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 bg-[#f4efed]">
-        <div class="max-w-[1250px] mx-auto px-4">
-            <div class="flex flex-col md:flex-row gap-10">
-                <div class="w-full md:w-1/2">
-                    <div class="text-secondary font-bold uppercase text-sm mb-2 tracking-wider">Vay nhanh trong 3 bước</div>
-                    <h2 class="text-3xl md:text-4xl font-[900] text-dark mb-6">Các bước đơn giản đến khoản vay lý tưởng</h2>
+    <section class="steps-section" id="quy-trinh">
+        <div class="container">
+            <div class="row" style="align-items: center;">
+                <div class="col col-md-6">
+                    <div class="section-sub">Vay nhanh trong 3 bước</div>
+                    <h2 class="section-title">Các bước đơn giản đến khoản vay lý tưởng</h2>
                     
-                    <div class="relative pl-10 space-y-8 border-l-2 border-gray-200 ml-4">
-                        <div class="relative">
-                            <span class="absolute -left-[52px] top-0 w-8 h-8 bg-white border-2 border-primary rounded-full flex items-center justify-center font-bold text-sm">01</span>
-                            <h3 class="text-xl font-bold mb-2">Chọn khoản tiền bạn cần</h3>
-                            <p class="text-gray-600 text-sm">Bạn chọn số tiền mong muốn và điền vài thông tin cơ bản để CatCredit hiểu nhu cầu.</p>
+                    <div class="step-item">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h3>Chọn khoản tiền bạn cần</h3>
+                            <p>Bạn chọn số tiền mong muốn và điền vài thông tin cơ bản để CatCredit hiểu nhu cầu.</p>
                         </div>
-                        <div class="relative">
-                            <span class="absolute -left-[52px] top-0 w-8 h-8 bg-white border-2 border-primary rounded-full flex items-center justify-center font-bold text-sm">02</span>
-                            <h3 class="text-xl font-bold mb-2">Nhận đề xuất phù hợp</h3>
-                            <p class="text-gray-600 text-sm">Hệ thống gợi ý nhiều gói vay uy tín để bạn so sánh và chọn lựa.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h3>Nhận đề xuất phù hợp</h3>
+                            <p>Dựa trên dữ liệu bạn cung cấp, CatCredit gợi ý nhiều gói vay uy tín để bạn so sánh.</p>
                         </div>
-                        <div class="relative">
-                            <span class="absolute -left-[52px] top-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center font-bold text-sm">03</span>
-                            <h3 class="text-xl font-bold mb-2">Nhận tiền giải ngân</h3>
-                            <p class="text-gray-600 text-sm">Hoàn thành thủ tục. Tiền sẽ được chuyển nhanh vào tài khoản ngân hàng của bạn.</p>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h3>Nhận tiền giải ngân</h3>
+                            <p>Hoàn thành thủ tục với đơn vị cho vay. Tiền sẽ được chuyển nhanh vào tài khoản.</p>
                         </div>
                     </div>
 
-                    <button class="mt-8 bg-primary text-[#222] font-bold py-3 px-10 rounded-full shadow-btn hover:bg-[#eeb928] transition-transform active:scale-95">
-                        Vay Ngay!
-                    </button>
+                    <button class="btn-primary" style="margin-top: 20px;">Vay Ngay!</button>
                 </div>
-
-                <div class="w-full md:w-1/2 text-right">
-                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/quy-trinh-vay.svg" class="w-full max-w-[450px] inline-block" alt="Quy trình">
+                
+                <div class="col col-md-6" style="text-align: right;">
+                    <img src="https://catcredit.vn/wp-content/uploads/2025/11/quy-trinh-vay.svg" alt="Quy trình" style="max-width: 90%; display: inline-block;">
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 pt-12 pb-6">
-        <div class="max-w-[1250px] mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
-                <img src="https://catcredit.vn/wp-content/uploads/2025/11/catcredit-logo.png" class="h-12" alt="Logo Footer">
-                <div class="flex gap-6 text-sm font-medium text-gray-600">
-                    <a href="#" class="hover:text-primary">Điều khoản sử dụng</a>
-                    <a href="#" class="hover:text-primary">Chính sách bảo mật</a>
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-6">
+                    <div class="section-sub">FAQ</div>
+                    <h2 class="section-title">Giải đáp thắc mắc thường gặp từ CatCredit</h2>
+                    <button class="btn-primary">Vay tiền ngay!</button>
+                </div>
+                <div class="col col-md-6" style="margin-top: 30px;">
+                    <div class="accordion">
+                        <div class="accordion-item active">
+                            <div class="accordion-header">
+                                CatCredit.vn là gì?
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                CatCredit là nền tảng hỗ trợ tìm kiếm – so sánh – kết nối khoản vay từ các đối tác uy tín. CatCredit không phải đơn vị cho vay trực tiếp.
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                Sử dụng CatCredit có tốn phí không?
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                Không. Người dùng được sử dụng hoàn toàn miễn phí. Bạn không phải trả bất kỳ khoản phí nào cho CatCredit.
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                Tôi có thể vay bao nhiêu tiền?
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                Tùy từng đối tác, hạn mức có thể từ: 1.000.000đ – 30.000.000đ hoặc hơn.
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                Ai có thể đăng ký vay?
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-body">
+                                Công dân Việt Nam từ 18 tuổi trở lên, hiện đang sinh sống tại Việt Nam và có CCCD còn hiệu lực.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="ve-chung-toi">
+        <div class="container">
+            <div class="row" style="align-items: center; margin-bottom: 30px;">
+                <div class="col col-md-6">
+                    <a href="#" class="footer-logo">
+                        <img src="https://catcredit.vn/wp-content/uploads/2025/11/catcredit-logo.png" alt="CatCredit Footer">
+                    </a>
+                </div>
+                <div class="col col-md-6" style="text-align: right;">
+                    <div class="footer-links">
+                        <a href="#">Điều khoản sử dụng</a>
+                        <a href="#">Chính sách bảo mật</a>
+                        <a href="#">Chính sách cookie</a>
+                    </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-100 pt-8 text-[13px] text-gray-500 leading-relaxed text-justify md:text-left">
-                <p class="mb-4"><strong>Thông Tin Quan Trọng:</strong> CatCredit không phải là tổ chức cho vay và không trực tiếp cung cấp bất kỳ khoản tín dụng nào. Nền tảng chỉ đóng vai trò hỗ trợ người dùng tìm kiếm, so sánh và kết nối với các đối tác uy tín.</p>
-                <p class="mb-4"><strong>Ví dụ minh họa:</strong> Vay 10.000.000 VNĐ, kỳ hạn 6 tháng. Trả hàng tháng: 1.833.333 VNĐ.</p>
-                <p>© 2025 Bản quyền thuộc về CatCredit.vn</p>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <div><p>© 2025 Bản quyền thuộc về CatCredit.vn</p></div>
+                <div style="text-align: right;"><p>Địa chỉ: Tòa nhà Vietcomreal, 68 Nguyễn Huệ, P. Bến Nghé, Q.1, TP. HCM</p></div>
+            </div>
+
+            <div class="footer-disclaimer">
+                <p><strong>Thông Tin Quan Trọng từ CatCredit.vn</strong></p>
+                <p>CatCredit không phải là tổ chức cho vay và không trực tiếp cung cấp bất kỳ khoản tín dụng nào. Nền tảng CatCredit chỉ đóng vai trò hỗ trợ người dùng tìm kiếm, so sánh và kết nối với các đối tác cho vay uy tín.</p>
+                <br>
+                <h4>Ví dụ minh họa khoản vay:</h4>
+                <p>Giả sử bạn vay 10.000.000 VNĐ với thời hạn 6 tháng (180 ngày). Số tiền trả hàng tháng: 1.833.333,3 VNĐ. Tiền lãi mỗi tháng: 166.666,7 VNĐ. Tổng số tiền cần thanh toán: 11.000.000 VNĐ.</p>
+                <br>
+                <h4>Cam kết cho vay có trách nhiệm:</h4>
+                <p>CatCredit hoạt động như đơn vị trung gian. Mọi phép tính hiển thị trên trang chỉ mang tính chất tham khảo. Thông tin chính xác sẽ được nêu rõ trên website hoặc hợp đồng của đối tác cho vay.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const slider = document.getElementById('range-input');
-            const amountDisplay = document.getElementById('amount-display');
+        // 1. Logic cho Slider tiền vay
+        const slider = document.getElementById('loan-slider');
+        const amountText = document.getElementById('amount-text');
 
-            const formatMoney = (num) => {
-                return new Intl.NumberFormat('vi-VN').format(num);
-            };
+        function updateSlider() {
+            const value = slider.value;
+            const min = slider.min;
+            const max = slider.max;
+            const percentage = ((value - min) / (max - min)) * 100;
+            
+            // Format tiền tệ
+            const money = new Intl.NumberFormat('vi-VN').format(value);
+            amountText.innerText = money + " ₫";
 
-            const updateSlider = () => {
-                const value = slider.value;
-                const min = slider.min;
-                const max = slider.max;
-                const percentage = ((value - min) / (max - min)) * 100;
+            // Update màu background slider
+            slider.style.background = `linear-gradient(to right, #f7dda1 0%, #f5ba11 ${percentage}%, #e0e0e0 ${percentage}%, #e0e0e0 100%)`;
+        }
 
-                // Cập nhật background gradient để phần đã kéo có màu vàng
-                slider.style.background = `linear-gradient(to right, #f7dda1 0%, #f5ba11 ${percentage}%, #e0e0e0 ${percentage}%, #e0e0e0 100%)`;
-                amountDisplay.textContent = formatMoney(value);
-            };
+        slider.addEventListener('input', updateSlider);
 
-            slider.addEventListener('input', updateSlider);
-            // Khởi chạy lần đầu
-            updateSlider();
+        // 2. Logic cho FAQ Accordion
+        const accItems = document.querySelectorAll('.accordion-item');
+        accItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            header.addEventListener('click', () => {
+                // Đóng các item khác
+                accItems.forEach(i => {
+                    if (i !== item) i.classList.remove('active');
+                });
+                // Toggle item hiện tại
+                item.classList.toggle('active');
+            });
         });
     </script>
 </body>
