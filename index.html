@@ -214,73 +214,90 @@
             </div>
         </div>
     </section>
-<section class="bg-white border-t border-gray-200 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+<section class="bg-white border-t border-gray-200 py-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div class="text-center">
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4">
-                    Hàng ngàn lý do khách hàng lựa chọn <span class="text-blue-600">FinTech Hub</span>
+                    Khách hàng nói gì về <span class="text-blue-600">FinTech Hub</span>?
                 </h2>
-                <p class="text-slate-500">Những câu chuyện thật từ người dùng đã trải nghiệm dịch vụ</p>
+                <p class="text-slate-500">Hơn 10.000+ người dùng đã tin tưởng và lựa chọn</p>
             </div>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 relative hover:shadow-lg transition-shadow">
-                    <div class="absolute top-6 left-6 opacity-10">
-                        <svg class="w-16 h-16 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.923 14.929 15.081C15.537 14.239 16.315 13.565 17.262 13.058V12.759C16.591 12.715 15.986 12.449 15.449 11.961C14.912 11.473 14.644 10.828 14.644 10.027C14.644 9.141 14.943 8.397 15.54 7.795C16.137 7.193 16.88 6.892 17.768 6.892C18.675 6.892 19.428 7.193 20.026 7.795C20.623 8.397 20.922 9.141 20.922 10.027C20.922 11.517 20.354 13.12 19.219 14.836C18.084 16.552 16.35 18.607 14.017 21ZM5.093 21L5.093 18C5.093 16.896 5.397 15.923 6.005 15.081C6.613 14.239 7.391 13.565 8.338 13.058V12.759C7.667 12.715 7.062 12.449 6.525 11.961C5.988 11.473 5.72 10.828 5.72 10.027C5.72 9.141 6.019 8.397 6.616 7.795C7.213 7.193 7.956 6.892 8.844 6.892C9.751 6.892 10.504 7.193 11.102 7.795C11.699 8.397 11.998 9.141 11.998 10.027C11.998 11.517 11.43 13.12 10.295 14.836C9.16 16.552 7.426 18.607 5.093 21Z"/></svg>
+        <style>
+            @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); } /* Chạy hết một nửa (là 1 set gốc) thì reset lại */
+            }
+            .animate-marquee {
+                 /* Thời gian chạy 40s, chạy đều, lặp vô tận */
+                animation: marquee 40s linear infinite;
+            }
+            /* Rê chuột vào thì tạm dừng */
+            .marquee-container:hover .animate-marquee {
+                animation-play-state: paused;
+            }
+        </style>
+
+        <div class="marquee-container relative w-full">
+             <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+            <div class="flex gap-6 animate-marquee w-max px-4">
+                
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0">
+                    <p class="text-slate-600 italic mb-6 leading-relaxed">"Cứu tinh thực sự! Đang cần gấp 10 triệu xoay sở mà ngại mượn bạn bè. Lên đây 5 phút là tìm được gói vay phù hợp, duyệt cái rẹt."</p>
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full" alt="User">
+                        <div><h4 class="font-bold text-slate-900 text-sm">Tùng Đào</h4><p class="text-xs text-slate-500">Giáo viên</p></div>
                     </div>
-                    
-                    <p class="text-slate-600 italic relative z-10 mb-6 leading-relaxed">
-                        "Đợt trước cần làm thẻ gấp vì thẻ mình bị khóa mà dịch quá không ra ngân hàng được, may tìm thấy <b>FinTech Hub</b> gợi ý tải ngân hàng số có tài khoản dùng ngay. Cứu tinh thực sự!"
-                    </p>
-                    
-                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-slate-200/50">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm" alt="User">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Tùng Đào</h4>
-                            <p class="text-xs text-slate-500">Giáo viên</p>
-                        </div>
+                </div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0">
+                    <p class="text-slate-600 italic mb-6 leading-relaxed">"Mình bán hàng online, nhiều khi cần vốn nhập hàng gấp. Nhờ FinTech Hub mà mình so sánh được bên nào lãi thấp nhất để vay. Rất tiện!"</p>
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full" alt="User">
+                        <div><h4 class="font-bold text-slate-900 text-sm">Mai Thanh</h4><p class="text-xs text-slate-500">Kinh doanh tự do</p></div>
+                    </div>
+                </div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0">
+                    <p class="text-slate-600 italic mb-6 leading-relaxed">"Giao diện dễ dùng, thông tin minh bạch. Mình mới mở được cái thẻ tín dụng hoàn tiền ngon lành nhờ gợi ý của web. 10 điểm!"</p>
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50">
+                        <img src="https://randomuser.me/api/portraits/men/86.jpg" class="w-10 h-10 rounded-full" alt="User">
+                        <div><h4 class="font-bold text-slate-900 text-sm">Nam Phong</h4><p class="text-xs text-slate-500">Nhân viên văn phòng</p></div>
+                    </div>
+                </div>
+                 <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0">
+                    <p class="text-slate-600 italic mb-6 leading-relaxed">"Hệ thống so sánh rất trực quan. Tôi đã tiết kiệm được rất nhiều thời gian thay vì phải tự đi tìm hiểu từng ngân hàng một."</p>
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-10 h-10 rounded-full" alt="User">
+                        <div><h4 class="font-bold text-slate-900 text-sm">Hồng Hạnh</h4><p class="text-xs text-slate-500">Kế toán</p></div>
+                    </div>
+                </div>
+                 <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0">
+                    <p class="text-slate-600 italic mb-6 leading-relaxed">"Sinh viên như mình thỉnh thoảng kẹt tiền đóng học phí, lên đây tìm được mấy gói vay nhỏ lãi 0% lần đầu quá ngon."</p>
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full" alt="User">
+                        <div><h4 class="font-bold text-slate-900 text-sm">Minh Quân</h4><p class="text-xs text-slate-500">Sinh viên</p></div>
+                    </div>
+                </div>
+                 <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0">
+                    <p class="text-slate-600 italic mb-6 leading-relaxed">"Uy tín nha mọi người. Link đăng ký chính chủ, không phải web lừa đảo. Mình đã giới thiệu cho mấy người bạn dùng thử rồi."</p>
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-10 h-10 rounded-full" alt="User">
+                        <div><h4 class="font-bold text-slate-900 text-sm">Bích Ngọc</h4><p class="text-xs text-slate-500">Freelancer</p></div>
                     </div>
                 </div>
 
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 relative hover:shadow-lg transition-shadow">
-                    <div class="absolute top-6 left-6 opacity-10">
-                        <svg class="w-16 h-16 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.923 14.929 15.081C15.537 14.239 16.315 13.565 17.262 13.058V12.759C16.591 12.715 15.986 12.449 15.449 11.961C14.912 11.473 14.644 10.828 14.644 10.027C14.644 9.141 14.943 8.397 15.54 7.795C16.137 7.193 16.88 6.892 17.768 6.892C18.675 6.892 19.428 7.193 20.026 7.795C20.623 8.397 20.922 9.141 20.922 10.027C20.922 11.517 20.354 13.12 19.219 14.836C18.084 16.552 16.35 18.607 14.017 21ZM5.093 21L5.093 18C5.093 16.896 5.397 15.923 6.005 15.081C6.613 14.239 7.391 13.565 8.338 13.058V12.759C7.667 12.715 7.062 12.449 6.525 11.961C5.988 11.473 5.72 10.828 5.72 10.027C5.72 9.141 6.019 8.397 6.616 7.795C7.213 7.193 7.956 6.892 8.844 6.892C9.751 6.892 10.504 7.193 11.102 7.795C11.699 8.397 11.998 9.141 11.998 10.027C11.998 11.517 11.43 13.12 10.295 14.836C9.16 16.552 7.426 18.607 5.093 21Z"/></svg>
-                    </div>
-
-                    <p class="text-slate-600 italic relative z-10 mb-6 leading-relaxed">
-                        "Mình làm thêm bán hàng online nhiều khi cần gấp 15 - 20 triệu nhập hàng. Nhờ có <b>FinTech Hub</b> mà công việc trôi chảy. Hỗ trợ tìm nguồn vay và giải ngân rất nhanh chóng."
-                    </p>
-
-                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-slate-200/50">
-                        <img src="https://randomuser.me/api/portraits/men/86.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm" alt="User">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Nam Phong</h4>
-                            <p class="text-xs text-slate-500">NV bán hàng</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 relative hover:shadow-lg transition-shadow">
-                    <div class="absolute top-6 left-6 opacity-10">
-                        <svg class="w-16 h-16 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.923 14.929 15.081C15.537 14.239 16.315 13.565 17.262 13.058V12.759C16.591 12.715 15.986 12.449 15.449 11.961C14.912 11.473 14.644 10.828 14.644 10.027C14.644 9.141 14.943 8.397 15.54 7.795C16.137 7.193 16.88 6.892 17.768 6.892C18.675 6.892 19.428 7.193 20.026 7.795C20.623 8.397 20.922 9.141 20.922 10.027C20.922 11.517 20.354 13.12 19.219 14.836C18.084 16.552 16.35 18.607 14.017 21ZM5.093 21L5.093 18C5.093 16.896 5.397 15.923 6.005 15.081C6.613 14.239 7.391 13.565 8.338 13.058V12.759C7.667 12.715 7.062 12.449 6.525 11.961C5.988 11.473 5.72 10.828 5.72 10.027C5.72 9.141 6.019 8.397 6.616 7.795C7.213 7.193 7.956 6.892 8.844 6.892C9.751 6.892 10.504 7.193 11.102 7.795C11.699 8.397 11.998 9.141 11.998 10.027C11.998 11.517 11.43 13.12 10.295 14.836C9.16 16.552 7.426 18.607 5.093 21Z"/></svg>
-                    </div>
-
-                    <p class="text-slate-600 italic relative z-10 mb-6 leading-relaxed">
-                        "Trước mình chỉ dùng cái thẻ ngân hàng làm từ năm cấp 3, khá bất tiện. Nhờ <b>FinTech Hub</b> mà mình tìm được ngân hàng đáp ứng được đúng nhu cầu, nhiều tiện ích lại còn được chọn số đẹp nữa."
-                    </p>
-
-                    <div class="flex items-center gap-4 mt-auto pt-6 border-t border-slate-200/50">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full border-2 border-white shadow-sm" alt="User">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Mai Thanh</h4>
-                            <p class="text-xs text-slate-500">Freelancer</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0"><p class="text-slate-600 italic mb-6 leading-relaxed">"Cứu tinh thực sự! Đang cần gấp 10 triệu xoay sở mà ngại mượn bạn bè. Lên đây 5 phút là tìm được gói vay phù hợp, duyệt cái rẹt."</p><div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full" alt="User"><div><h4 class="font-bold text-slate-900 text-sm">Tùng Đào</h4><p class="text-xs text-slate-500">Giáo viên</p></div></div></div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0"><p class="text-slate-600 italic mb-6 leading-relaxed">"Mình bán hàng online, nhiều khi cần vốn nhập hàng gấp. Nhờ FinTech Hub mà mình so sánh được bên nào lãi thấp nhất để vay. Rất tiện!"</p><div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full" alt="User"><div><h4 class="font-bold text-slate-900 text-sm">Mai Thanh</h4><p class="text-xs text-slate-500">Kinh doanh tự do</p></div></div></div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0"><p class="text-slate-600 italic mb-6 leading-relaxed">"Giao diện dễ dùng, thông tin minh bạch. Mình mới mở được cái thẻ tín dụng hoàn tiền ngon lành nhờ gợi ý của web. 10 điểm!"</p><div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50"><img src="https://randomuser.me/api/portraits/men/86.jpg" class="w-10 h-10 rounded-full" alt="User"><div><h4 class="font-bold text-slate-900 text-sm">Nam Phong</h4><p class="text-xs text-slate-500">Nhân viên văn phòng</p></div></div></div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0"><p class="text-slate-600 italic mb-6 leading-relaxed">"Hệ thống so sánh rất trực quan. Tôi đã tiết kiệm được rất nhiều thời gian thay vì phải tự đi tìm hiểu từng ngân hàng một."</p><div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50"><img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-10 h-10 rounded-full" alt="User"><div><h4 class="font-bold text-slate-900 text-sm">Hồng Hạnh</h4><p class="text-xs text-slate-500">Kế toán</p></div></div></div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0"><p class="text-slate-600 italic mb-6 leading-relaxed">"Sinh viên như mình thỉnh thoảng kẹt tiền đóng học phí, lên đây tìm được mấy gói vay nhỏ lãi 0% lần đầu quá ngon."</p><div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50"><img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full" alt="User"><div><h4 class="font-bold text-slate-900 text-sm">Minh Quân</h4><p class="text-xs text-slate-500">Sinh viên</p></div></div></div>
+                <div class="w-[350px] bg-slate-50 rounded-2xl p-6 border border-slate-100 relative shrink-0"><p class="text-slate-600 italic mb-6 leading-relaxed">"Uy tín nha mọi người. Link đăng ký chính chủ, không phải web lừa đảo. Mình đã giới thiệu cho mấy người bạn dùng thử rồi."</p><div class="flex items-center gap-4 mt-auto pt-4 border-t border-slate-200/50"><img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-10 h-10 rounded-full" alt="User"><div><h4 class="font-bold text-slate-900 text-sm">Bích Ngọc</h4><p class="text-xs text-slate-500">Freelancer</p></div></div></div>
 
             </div>
         </div>
-</section>
+    </section>
     <footer class="bg-slate-50 border-t border-slate-200 pt-12 pb-6 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
