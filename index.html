@@ -27,7 +27,6 @@
         body { background-color: #f8fafc; -webkit-font-smoothing: antialiased; }
         .no-select { user-select: none; }
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        /* Hiệu ứng Card mượt */
         .app-card { transition: transform 0.2s, box-shadow 0.2s; }
         .app-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1); }
         .btn-active:active { transform: scale(0.96); }
@@ -43,7 +42,7 @@
                 <h1 class="text-xl font-extrabold tracking-tight text-slate-900">FinTech <span class="text-blue-600">Hub</span></h1>
             </div>
             <div class="flex items-center gap-2">
-                <span id="api-indicator" class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" title="Đang kết nối API..."></span>
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                 <button onclick="window.location.reload()" class="bg-gray-100 hover:bg-gray-200 text-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors">
                     Làm mới
                 </button>
@@ -52,12 +51,9 @@
     </header>
 
     <main class="flex-grow max-w-6xl mx-auto px-4 py-8 w-full">
-        
         <div class="text-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">
-                Gói Vay <span class="text-blue-600">Thịnh Hành</span>
-            </h2>
-            <p id="status-msg" class="text-slate-500 text-xs font-medium">Đang tải dữ liệu gốc...</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-2">Gói Vay <span class="text-blue-600">Thịnh Hành</span></h2>
+            <p class="text-slate-500 text-xs font-medium">Dữ liệu được cập nhật từ data.js</p>
         </div>
 
         <div class="flex justify-center gap-2.5 mb-8 overflow-x-auto pb-2 px-2 scrollbar-hide">
@@ -67,119 +63,39 @@
         </div>
 
         <div id="app-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 pb-10"></div>
-
-        <div id="empty-state" class="hidden flex-col items-center justify-center py-16 text-center">
-            <div class="text-5xl mb-3 opacity-30 grayscale">📭</div>
-            <p class="text-slate-400 font-medium">Chưa có dữ liệu.</p>
-        </div>
     </main>
 
     <div class="bg-white border-t border-slate-200 py-6 text-center mt-auto">
         <p class="text-[11px] text-slate-400 font-medium">© 2025 Financial Service Aggregator.</p>
     </div>
 
+    <script src="data.js"></script>
+
     <script>
-        // =========================================================================
-        // 🔴 QUAN TRỌNG: ID Ở ĐÂY PHẢI KHỚP VỚI ID TRÊN API THÌ MỚI HIỆN LOGO
-        // Mẹo: Ní bấm F12 -> Console để xem ID chuẩn mà API trả về là gì.
-        // =========================================================================
-        
-        const OFFERS = [
-            // --- 1. VAY TIỀN (type: 'vay') ---
-            { id: "moneycatvn", type: "vay", name: "MoneyCat", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://moneycat.vn/public/img/logo.png", desc: "0% lãi suất lần đầu, duyệt 5 phút" },
-            { id: "tima", type: "vay", name: "Tima", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/tima.png", desc: "Vay qua đăng ký xe máy" },
-            { id: "moneyveo", type: "vay", name: "MoneyVeo", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://moneyveo.vn/img/logo.svg", desc: "Hỗ trợ tư vấn 24/7" },
-            { id: "f88", type: "vay", name: "F88", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/f88.png", desc: "Cầm cố tài sản, 15 phút có tiền" },
-            { id: "jeffapp", type: "vay", name: "Jeff App", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/jeffapp.jpg", desc: "Sàn so sánh vay đa dạng" },
-            { id: "dong247", type: "vay", name: "Dong247", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/dong247.png", desc: "Duyệt vay tự động" },
-            { id: "vayvnd", type: "vay", name: "VayVND", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-vayvnd.png", desc: "Vay cấp tốc online" },
-            { id: "crezu", type: "vay", name: "Crezu", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/crezu.png", desc: "0% lãi suất khoản đầu" },
-            { id: "kamo", type: "vay", name: "Kamo", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/kamo.jpg", desc: "Thủ tục đơn giản" },
-            { id: "kavay", type: "vay", name: "Kavay", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/Kavay.png", desc: "Giải ngân siêu tốc" },
-            { id: "bimo", type: "vay", name: "Bimo", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/bimo.jpg", desc: "Vay tiền mặt online" },
-            { id: "cashspace", type: "vay", name: "Cashspace", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/vn.png", desc: "Tìm khoản vay tốt nhất" },
-            { id: "vaymini", type: "vay", name: "VayMini", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/IMG_5578.JPG", desc: "Khoản vay nhỏ" },
-            { id: "tieno", type: "vay", name: "Tieno", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tieno-1.jpg", desc: "Duyệt dễ dàng" },
-            { id: "skycredit", type: "vay", name: "Sky Credit", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/photo_2025-05-07_11-18-14.jpg", desc: "Vay tín chấp" },
-            { id: "vaymeo", type: "vay", name: "Vaymeo", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vaymeo.png", desc: "Vay online 24/7" },
-            { id: "binvay", type: "vay", name: "BinVay", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo-binvay.jpeg", desc: "Tiền về trong ngày" },
-            { id: "agovay", type: "vay", name: "Agovay", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/49c27e1001bcd3e28aad.jpg", desc: "Vay tiền online chuyển khoản" },
-            { id: "bfcmoney", type: "vay", name: "BFC Money", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-BFC.png", desc: "Vay qua iCloud" },
-            { id: "fago", type: "vay", name: "Fago", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/fago_icon.png", desc: "Vay tiền nhanh Fago" },
-            { id: "navacash", type: "vay", name: "Navacash", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/nava_icon.jpeg", desc: "Lãi suất ưu đãi" },
-            { id: "creditvn", type: "vay", name: "Credit.vn", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/Group%20198.png", desc: "Cổng tài chính uy tín" },
-            { id: "credy", type: "vay", name: "Credy", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/credy.png", desc: "Giải pháp tài chính" },
-            { id: "vimayman", type: "vay", name: "Ví May Mắn", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Ví may mắn.png", desc: "Ví vay tiện lợi" },
-            { id: "shbfinance", type: "vay", name: "SHB Finance", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/SHBF logo.webp", desc: "Vay tiền mặt SHB Finance" },
-            { id: "cayvang", type: "vay", name: "CayVang", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1667-cayvang-vn-2024-05-15.png", desc: "Vay Cây Vàng" },
-            { id: "vietmoney", type: "vay", name: "VietMoney", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/vietmoney.png", desc: "Cầm đồ online" },
-            { id: "binixo", type: "vay", name: "Binixo", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo%20binixo%20%281%29.png", desc: "Kết nối vay nhanh" },
-            { id: "fec", type: "vay", name: "FE CREDIT", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Logo_FullColor.png", desc: "Vay tiêu dùng" },
-            { id: "finzone", type: "vay", name: "Finzone", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/finzone-1.png", desc: "Sàn tài chính" },
-            { id: "redbag-2", type: "vay", name: "Redbag", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/RedBag-LOGO-Standard-Horizontal.png", desc: "Túi thần tài chính" },
-            { id: "cashingpro", type: "vay", name: "Cashing Pro", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/LOGO-05.png", desc: "Giải pháp cầm cố" },
-            { id: "dongshopsun1", type: "vay", name: "Đồng Shop Sun", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.jpeg", desc: "Vay tiền Nhật Bản" },
-            { id: "avay", type: "vay", name: "Avay", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-avay.png", desc: "Vay tín chấp Avay" },
-
-            // --- 2. NGÂN HÀNG (type: 'bank') ---
-            { id: "kbankpayroll", type: "bank", name: "KBank", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo.png", desc: "Mở TK nhận thưởng" },
-            { id: "mb-ios", type: "bank", name: "MB Bank", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png", desc: "Tài khoản số đẹp" },
-            { id: "cake", type: "bank", name: "Cake Bank", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/cake.png", desc: "Ngân hàng số Cake" },
-            { id: "tnex-cashloan", type: "bank", name: "TNEX", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/tnex_finnace_logo_65a9f6aa9fee9.png", desc: "Ngân hàng thuần số" },
-            { id: "msb-ekyc", type: "bank", name: "MSB mBank", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb.png", desc: "Mở tài khoản MSB" },
-            { id: "vpbankneo", type: "bank", name: "VPBank NEO", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/VPBank.png", desc: "Ngân hàng số NEO" },
-            { id: "acb1", type: "bank", name: "ACB One", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/ACB.png", desc: "Ngân hàng số ACB" },
-            { id: "ocbcode1", type: "bank", name: "OCB OMNI", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Picture1.png", desc: "Ngân hàng OCB" },
-            { id: "vikki", type: "bank", name: "Vikki", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Vikki_Original Logo Vikki DigitaL_Online.png", desc: "Ngân hàng số Vikki" },
-            { id: "uob-ekyc", type: "bank", name: "UOB", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/uob-logo-472x226.png", desc: "Tài khoản UOB" },
-            { id: "lpbank", type: "bank", name: "LPBank", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/666c22c1e8fc6ab7134d3f1b_lpbank_logo.jpg", desc: "Tài khoản LPBank" },
-            { id: "msb-tktt", type: "bank", name: "MSB TKTT", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo-msb-inkythuatso-07-13-40-57.jpg", desc: "Tài khoản thanh toán" },
-
-            // --- 3. THẺ TÍN DỤNG (type: 'the') ---
-            { id: "vib-2", type: "the", name: "VIB Credit", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png", desc: "Mở thẻ online" },
-            { id: "tpbankevo", type: "the", name: "TPBank EVO", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%204.png", desc: "Thẻ Evo 100% Online" },
-            { id: "cake-cc", type: "the", name: "Be Visa", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/Logo%201%20copy.jpg", desc: "Thẻ Cake x Be" },
-            { id: "vib-3", type: "the", name: "VIB Zalo", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/Asset%202.png", desc: "Mở thẻ qua Zalo" },
-            { id: "vpbank-mc", type: "the", name: "VPBank Auto", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/CC-01.png", desc: "Thẻ VPBank Tự động" },
-            { id: "finmart", type: "the", name: "Finmart", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/logo finmart.png", desc: "Thẻ tín dụng Finmart" },
-            { id: "cake-web", type: "the", name: "Cake Thẻ", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Cake copy2 .jpg", desc: "Thẻ Cake Freedom" },
-            { id: "vib-card", type: "the", name: "VIB MAX", link: "DÁN_LINK_Ở_ĐÂY", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/vib-2.png", desc: "Thẻ tín dụng VIB Max" }
-        ];
-
-        // =========================================================================
-        
         let currentTab = 'vay';
         const container = document.getElementById('app-container');
-        const emptyState = document.getElementById('empty-state');
-        const statusMsg = document.getElementById('status-msg');
-        const apiIndicator = document.getElementById('api-indicator');
-
-        // FALLBACK IMAGE: Dùng icon này nếu ảnh lỗi
         const DEFAULT_LOGO = "https://img.icons8.com/color/96/money-bag.png";
 
         function renderApps() {
             container.innerHTML = '';
-            const filtered = OFFERS.filter(item => item.type === currentTab);
+            
+            // Lấy dữ liệu từ file data.js (biến OFFERS)
+            const filtered = (typeof OFFERS !== 'undefined') ? OFFERS.filter(item => item.type === currentTab) : [];
 
             if (filtered.length === 0) {
-                emptyState.classList.remove('hidden');
-                emptyState.classList.add('flex');
+                container.innerHTML = `<div class="col-span-full text-center py-10 opacity-50">📭 Chưa có dữ liệu</div>`;
                 return;
             }
-            emptyState.classList.add('hidden');
-            emptyState.classList.remove('flex');
 
             filtered.forEach(app => {
-                const hasLink = app.link && app.link !== "" && app.link !== "DÁN_LINK_Ở_ĐÂY";
+                const hasLink = app.link && app.link.length > 5;
                 const btnClass = hasLink 
                     ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md btn-active cursor-pointer" 
                     : "bg-gray-100 text-gray-400 cursor-not-allowed";
                 const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
                 const action = hasLink ? `onclick="window.open('${app.link}', '_blank')"` : "";
 
-                // QUAN TRỌNG: Xử lý ảnh lỗi bằng onerror
-                const imgHtml = `<img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain" alt="${app.name}" 
-                                 onerror="this.onerror=null; this.src='${DEFAULT_LOGO}'" loading="lazy">`;
+                const imgHtml = `<img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain" alt="${app.name}" onerror="this.src='${DEFAULT_LOGO}'">`;
 
                 const html = `
                 <div class="bg-white rounded-2xl border border-slate-100 app-card overflow-hidden flex flex-col h-full">
@@ -193,19 +109,17 @@
                                 <p class="text-[13px] text-slate-500 leading-snug line-clamp-2">${app.desc}</p>
                             </div>
                         </div>
-                        
                         ${currentTab === 'vay' ? `
                         <div class="grid grid-cols-2 gap-2 mb-5 bg-slate-50 rounded-lg border border-slate-100 p-2.5">
                             <div class="text-center border-r border-slate-200">
-                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Hạn mức</p>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">Hạn mức</p>
                                 <p class="font-bold text-slate-800 text-sm mt-0.5">Hấp dẫn</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wide">Lãi suất</p>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">Lãi suất</p>
                                 <p class="font-bold text-green-600 text-sm mt-0.5">Ưu đãi</p>
                             </div>
                         </div>` : '<div class="mb-6"></div>'}
-
                         <button ${action} class="w-full ${btnClass} font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 text-[13px] uppercase mt-auto">
                             ${btnText}
                             ${hasLink ? '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>' : ''}
@@ -229,54 +143,8 @@
             renderApps();
         }
 
-        // --- BACKGROUND API SYNC (V29: Có Log ID để Debug) ---
-        async function syncApi() {
-            try {
-                const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
-                // Dùng Proxy AllOrigins
-                const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`);
-                if (!res.ok) throw new Error("Proxy error");
-                
-                const json = await res.json();
-                const raw = JSON.parse(json.contents);
-                const apiData = raw.data || (Array.isArray(raw) && raw[0]?.data) || [];
-
-                if (apiData.length > 0) {
-                    console.log("🔥 DANH SÁCH ID TỪ API (CHECK CÁI NÀY ĐỂ SỬA ID TRONG CODE):");
-                    apiData.forEach(item => console.log(`API ID: ${item.offer_id} | Name: ${item.name}`));
-
-                    let updateCount = 0;
-                    apiData.forEach(newItem => {
-                        // Tìm item trong code có ID giống với API
-                        let item = OFFERS.find(o => o.id === newItem.offer_id);
-                        if (item) {
-                            if (item.logo !== newItem.avatar || item.name !== newItem.name) {
-                                item.logo = newItem.avatar || item.logo;
-                                item.name = newItem.name || item.name;
-                                updateCount++;
-                            }
-                        }
-                    });
-
-                    if (updateCount > 0) {
-                        statusMsg.innerText = "Dữ liệu đã được cập nhật từ hệ thống";
-                        statusMsg.className = "text-green-600 text-xs font-bold";
-                        renderApps();
-                    } else {
-                        statusMsg.innerText = "Dữ liệu đã là mới nhất";
-                    }
-                    apiIndicator.className = "w-2 h-2 rounded-full bg-green-500"; // Xanh: OK
-                }
-            } catch (e) {
-                console.log('API Sync failed:', e);
-                statusMsg.innerText = "Chế độ Offline (Dữ liệu gốc)";
-                apiIndicator.className = "w-2 h-2 rounded-full bg-red-500"; // Đỏ: Lỗi
-            }
-        }
-
-        // Start
+        // Init
         renderApps();
-        setTimeout(syncApi, 2000);
     </script>
 </body>
 </html>
