@@ -278,3 +278,67 @@
                     ${currentTab === 'vay' ? `
                     <div class="flex items-center justify-between bg-slate-50 rounded-lg px-2 py-1.5 mb-3 border border-slate-100">
                         <div class="text-center">
+                            <p class="text-[9px] text-slate-400 uppercase">Hạn mức</p>
+                            <p class="font-bold text-slate-900 text-[11px] md:text-xs">Cao</p>
+                        </div>
+                        <div class="w-[1px] h-4 bg-slate-200"></div>
+                        <div class="text-center">
+                            <p class="text-[9px] text-slate-400 uppercase">Lãi suất</p>
+                            <p class="font-bold text-green-600 text-[11px] md:text-xs">0%</p>
+                        </div>
+                    </div>` : '<div class="mb-2"></div>'}
+
+                    <button ${action} class="w-full ${btnClass} font-bold py-2 md:py-2.5 rounded-lg text-xs md:text-sm uppercase transition-all mt-auto flex items-center justify-center gap-1">
+                        ${btnText}
+                    </button>
+                </div>`;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+
+            // Xử lý nút Xem thêm
+            if (list.length > initialCount && !isExpanded) {
+                loadMoreBtn.classList.remove('hidden');
+                loadMoreBtn.classList.add('flex');
+            } else {
+                loadMoreBtn.classList.add('hidden');
+                loadMoreBtn.classList.remove('flex');
+            }
+        }
+
+        function expandList() {
+            isExpanded = true;
+            renderApps(currentList);
+        }
+
+        async function syncApi() {
+            if (typeof OFFERS === 'undefined') return;
+            try {
+                const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D')}`);
+                if (!res.ok) return;
+                const json = await res.json();
+                const raw = JSON.parse(json.contents);
+                const apiData = raw.data || (Array.isArray(raw) && raw[0]?.data) || [];
+                if (apiData.length > 0) {
+                    let count = 0;
+                    apiData.forEach(newItem => {
+                        let item = OFFERS.find(o => o.id === newItem.offer_id);
+                        if (item) {
+                            if (item.logo !== newItem.avatar || item.name !== newItem.name) {
+                                item.logo = newItem.avatar || item.logo;
+                                item.name = newItem.name || item.name;
+                                count++;
+                            }
+                        }
+                    });
+                    if (count > 0) renderApps();
+                }
+            } catch (e) {}
+        }
+
+        // Khởi tạo
+        document.getElementById('nav-vay').classList.add('text-blue-600');
+        renderApps();
+        setTimeout(syncApi, 1500);
+    </script>
+</body>
+</html>
