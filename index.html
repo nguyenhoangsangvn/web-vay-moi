@@ -23,8 +23,6 @@
                     colors: { brand: '#0052cc', action: '#16a34a' },
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     boxShadow: { 'card': '0 4px 6px -1px rgba(0,0,0,0.05)', 'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1)' },
-                    animation: { 'pop-in': 'popIn 0.3s ease-out forwards' },
-                    keyframes: { popIn: { '0%': { transform: 'scale(0.8)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } } }
                 },
             },
         }
@@ -46,26 +44,19 @@
                 <img src="https://img.icons8.com/color/48/money-bag.png" class="w-8 h-8 md:w-10 md:h-10" alt="Logo">
                 <div>
                     <h1 class="text-lg md:text-2xl font-extrabold text-slate-900 tracking-tight">FinTech <span class="text-blue-600">Hub</span></h1>
-                    <p class="text-[10px] md:text-xs text-slate-500 font-medium hidden md:block">Giải pháp tài chính 4.0</p>
                 </div>
             </div>
-            <div class="flex items-center gap-4 text-sm font-semibold text-slate-600">
-                <button onclick="fetchApps()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs md:text-sm shadow-sm transition-colors">
-                    Cập nhật
-                </button>
-            </div>
+            <button onclick="fetchApps()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs md:text-sm shadow-sm transition-colors">
+                Làm mới
+            </button>
         </div>
     </header>
 
     <main class="flex-grow max-w-7xl mx-auto px-4 py-6 md:py-10 w-full">
         
-        <div class="text-center mb-6 md:mb-10">
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-[11px] font-bold uppercase tracking-wider mb-4 border border-blue-200">
-                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                Duyệt hồ sơ tự động 24/7
-            </div>
-            <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3 leading-tight">
-                Tổng Hợp Gói Vay <br class="md:hidden" /> <span class="text-blue-600">Uy Tín Nhất 2025</span>
+        <div class="text-center mb-6">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3">
+                Tổng Hợp Gói Vay <span class="text-blue-600">Uy Tín</span>
             </h2>
         </div>
 
@@ -84,13 +75,20 @@
         <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 min-h-[300px]">
             <div id="skeleton-loader" class="col-span-full text-center py-10">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-slate-200 border-t-blue-600 mx-auto mb-3"></div>
-                <p class="text-sm text-slate-500 animate-pulse">Đang tải và phân loại dữ liệu...</p>
+                <p class="text-sm text-slate-500 animate-pulse">Đang tải dữ liệu...</p>
             </div>
         </div>
         
         <div id="empty-state" class="hidden text-center py-12 col-span-full">
             <div class="text-4xl mb-3">📭</div>
             <p class="text-slate-500 text-sm">Chưa có ưu đãi nào trong mục này.</p>
+        </div>
+
+        <div class="mt-10 p-4 bg-gray-100 rounded-xl border border-gray-300 text-left">
+            <h4 class="font-bold text-xs text-gray-500 uppercase mb-2">Thông tin kiểm tra (Chụp màn hình cái này nếu lọc sai)</h4>
+            <div id="debug-log" class="text-[10px] font-mono text-gray-600 h-32 overflow-y-auto bg-white p-2 rounded border border-gray-200">
+                Đang chờ dữ liệu...
+            </div>
         </div>
 
     </main>
@@ -111,13 +109,16 @@
         let globalData = [];
         let currentTab = 'vay';
 
-        // TỪ KHÓA ĐỂ PHÂN LOẠI (Rất quan trọng)
+        // 1. CHUẨN BỊ TỪ KHÓA PHÂN LOẠI
         const KEYWORDS = {
-            // Danh sách các ngân hàng hoặc ví điện tử (viết thường)
-            bank: ['bank', 'ngân hàng', 'mb', 'cake', 'tnex', 'kbank', 'ocb', 'vib', 'tpbank', 'techcombank', 'vpbank', 'sacombank', 'hdbank', 'mbbank', 'bidv', 'acb', 'msb', 'nam a', 'shinhan', 'viettel money', 'zalopay', 'momo'],
+            // Mảng 1: Nhận diện THẺ TÍN DỤNG (Ưu tiên cao nhất)
+            the: ['thẻ tín dụng', 'credit card', 'mở thẻ', 'thẻ hoàn tiền', 'evo', 'tpbank evo', 'vib super card', 'vib online plus', 'viban', 'hsbc'],
             
-            // Danh sách liên quan đến thẻ tín dụng
-            credit: ['credit', 'thẻ', 'tín dụng', 'evo', 'hsbc', 'viban', 'thẻ hoàn tiền', 'visa', 'mastercard']
+            // Mảng 2: Nhận diện NGÂN HÀNG (TKTT)
+            bank: ['tài khoản', 'ngân hàng', 'thanh toán', 'số đẹp', 'bank', 'cake', 'tnex', 'kbank', 'mb bank', 'vpbank neo', 'vcb', 'bidv', 'vietinbank', 'ocb omni', 'nam a bank', 'tpbank mobile', 'hdbank', 'sacombank', 'viettel money', 'zalopay', 'vnpt money'],
+            
+            // Mảng 3: Nhận diện VAY (Từ khóa vay đặc thù để tránh nhầm)
+            vay: ['vay', 'cầm đồ', 'tín chấp', 'khoản vay', 'giải ngân', 'tiền mặt', 'money', 'dong', 'robocash', 'doctor', 'senmo', 'tamo', 'jeff', 'f88', 'oncredit', 'takomo', 'kredivo', 'fiza', 'home credit', 'fe credit', 'shinhan finance', 'mcredit', 'easy credit', 'lotte', 'mirae']
         };
 
         const BACKUP_DATA = [
@@ -128,6 +129,7 @@
         const container = document.getElementById('app-container');
         const loader = document.getElementById('skeleton-loader');
         const emptyState = document.getElementById('empty-state');
+        const debugLog = document.getElementById('debug-log');
 
         function formatMoney(num) {
             if (!num) return 'Liên hệ';
@@ -159,6 +161,7 @@
                     
                     if (list.length > 0) {
                         globalData = list;
+                        logDataForDebug(list); // Ghi log để kiểm tra
                         switchTab('vay'); 
                         return;
                     }
@@ -168,28 +171,49 @@
             switchTab('vay');
         }
 
-        // === LOGIC PHÂN LOẠI MỚI (CHI TIẾT HƠN) ===
-        function checkCategory(text) {
-            text = text.toLowerCase();
-            
-            // Check Credit Card trước
-            for (let word of KEYWORDS.credit) {
-                if (text.includes(word)) return 'the';
+        // === HÀM IN LOG ĐỂ SOI LỖI ===
+        function logDataForDebug(list) {
+            let html = `<strong>Tổng số offer lấy được: ${list.length}</strong><br/>`;
+            list.forEach(item => {
+                let name = item.offer_name || item.name || "No Name";
+                let cat = item.category_name || "No Cat";
+                html += `• [${name}] - Loại gốc: [${cat}] <br/>`;
+            });
+            debugLog.innerHTML = html;
+        }
+
+        // === LOGIC PHÂN LOẠI THÔNG MINH (TRỌNG TÂM SỬA LỖI) ===
+        function checkCategory(item) {
+            // Gộp tất cả thông tin lại để soi
+            const name = (item.offer_name || item.name || "").toLowerCase();
+            const desc = (item.short_description || "").toLowerCase();
+            const cat = (item.category_name || "").toLowerCase(); // Quan trọng: API thường có trường này
+            const fullText = name + " " + cat;
+
+            // 1. Ưu tiên bắt THẺ trước (Vì thẻ hay bị nhầm với Bank)
+            for (let w of KEYWORDS.the) {
+                if (fullText.includes(w)) return 'the';
             }
-            
-            // Check Bank sau
-            for (let word of KEYWORDS.bank) {
-                if (text.includes(word)) return 'bank';
+
+            // 2. Bắt VAY (Nếu có chữ "finance", "credit" mà không phải thẻ -> Vay)
+            for (let w of KEYWORDS.vay) {
+                if (fullText.includes(w)) return 'vay';
             }
-            
-            // Còn lại là Vay
+            // Nếu Category API ghi rõ là "vay" -> Vay
+            if (cat.includes('vay') || cat.includes('loan')) return 'vay';
+
+            // 3. Bắt BANK (Nếu thoát được 2 cửa trên)
+            for (let w of KEYWORDS.bank) {
+                if (fullText.includes(w)) return 'bank';
+            }
+
+            // Mặc định ném về Vay
             return 'vay';
         }
 
         function switchTab(tabName) {
             currentTab = tabName;
 
-            // Đổi style nút bấm
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (t === tabName) {
@@ -199,12 +223,9 @@
                 }
             });
 
-            // Lọc dữ liệu dựa trên hàm checkCategory mạnh mẽ hơn
+            // Lọc
             const filtered = globalData.filter(item => {
-                // Gộp tất cả text lại để soi cho kỹ
-                const textToCheck = ((item.offer_name || "") + " " + (item.short_description || "") + " " + (item.category_name || "")).toLowerCase();
-                const detectedType = checkCategory(textToCheck);
-                
+                const detectedType = checkCategory(item);
                 return detectedType === tabName;
             });
 
@@ -232,8 +253,7 @@
                     laisuat: "Ưu đãi tốt"
                 };
 
-                // Logic ẩn hiện dòng Hạn mức: Nếu là Bank hoặc Thẻ thì ẩn đi cho đẹp
-                // Nếu là Vay thì hiện hạn mức và lãi suất
+                // Nếu là Bank/Thẻ thì ẩn hạn mức
                 let infoBlock = '';
                 if(currentTab === 'vay') {
                     infoBlock = `
@@ -249,7 +269,6 @@
                         </div>
                     `;
                 } else {
-                    // Nếu là Bank/Thẻ thì hiện khoảng trắng bù vào để nút bấm đều nhau
                     infoBlock = `<div class="mt-auto mb-4">
                         <p class="text-xs text-center text-blue-600 font-medium bg-blue-50 py-1.5 rounded">
                             ${currentTab === 'bank' ? 'Mở Online 100%' : 'Miễn lãi 45 ngày'}
