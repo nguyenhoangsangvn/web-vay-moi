@@ -27,7 +27,7 @@ const OFFERS = [
     { id: "credy", type: "vay", name: "Credy", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/credy.png", desc: "Giải pháp tài chính linh hoạt" },
     { id: "vimayman", type: "vay", name: "Ví May Mắn", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Ví may mắn.png", desc: "Ví vay tiền tiện lợi" },
     { id: "shbfinance", type: "vay", name: "SHB Finance", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/SHBF logo.webp", desc: "Vay tiền mặt SHB Finance" },
-    { id: "cayvang", type: "vay", name: "CayVang", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1667-cayvang-vn-2024-05-15.png", desc: "Vay Cây Vàng - Duyệt nhanh" },
+    { id: "cayvang", type: "vay", name: "CayVang", link: "https://hl-link.net/towLs20", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/1667-cayvang-vn-2024-05-15.png", desc: "Vay Cây Vàng - Duyệt nhanh" },
     { id: "vietmoney", type: "vay", name: "VietMoney", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/vietmoney.png", desc: "Cầm đồ trực tuyến an toàn" },
     { id: "binixo", type: "vay", name: "Binixo", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo%20binixo%20%281%29.png", desc: "Kết nối vay nhanh" },
     { id: "fec", type: "vay", name: "FE CREDIT", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/Logo_FullColor.png", desc: "Vay tiêu dùng tín chấp" },
