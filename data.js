@@ -4,7 +4,7 @@
 
 const OFFERS = [
     // --- 1. NHÓM VAY TIỀN ---
-    { id: "moneycatvn", type: "vay", name: "MoneyCat", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/unnamed (1).png", desc: "0% lãi suất lần đầu, duyệt 5 phút" },
+    { id: "moneycatvn", type: "vay", name: "MoneyCat", link: "https://hl-link.net/nVT5020", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/logo/unnamed (1).png", desc: "0% lãi suất lần đầu, duyệt 5 phút" },
     { id: "moneyveo", type: "vay", name: "MoneyVeo", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/moneyveo.png", desc: "Hỗ trợ tư vấn tài chính 24/7" },
     { id: "tima", type: "vay", name: "Tima", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/tima.png", desc: "Vay qua đăng ký xe máy/oto" },
     { id: "jeffapp", type: "vay", name: "Jeff App", link: "", logo: "https://storage.googleapis.com/hyperlead-public/production/assets/offers/jeffapp.jpg", desc: "Sàn so sánh vay đa dạng" },
