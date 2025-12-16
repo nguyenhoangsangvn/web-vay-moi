@@ -36,6 +36,10 @@
         .app-card { transition: transform 0.2s, box-shadow 0.2s; }
         .app-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15); }
         .btn-active:active { transform: scale(0.96); opacity: 0.9; }
+
+        /* Animation */
+        .animate-fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="font-sans text-slate-800 text-[15px] no-select min-h-screen flex flex-col">
@@ -78,42 +82,6 @@
         </div>
     </section>
 
-    <section class="bg-slate-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-                <div class="flex flex-col items-center text-center sm:items-start sm:text-left">
-                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 border border-slate-100">
-                        <img src="https://img.icons8.com/3d-fluency/94/light-on.png" class="w-9 h-9" alt="Idea">
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Gợi ý sản phẩm phù hợp</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">
-                        Hệ thống tự động phân tích và đưa ra gợi ý các gói vay, thẻ tín dụng phù hợp nhất dựa trên nhu cầu của bạn.
-                    </p>
-                </div>
-
-                <div class="flex flex-col items-center text-center sm:items-start sm:text-left">
-                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 border border-slate-100">
-                        <img src="https://img.icons8.com/3d-fluency/94/scales.png" class="w-9 h-9" alt="Compare">
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Dễ dàng so sánh</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">
-                        Chọn lựa và so sánh lãi suất, hạn mức của hơn 50+ đối tác tài chính uy tín chỉ trên một màn hình duy nhất.
-                    </p>
-                </div>
-
-                <div class="flex flex-col items-center text-center sm:items-start sm:text-left">
-                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4 border border-slate-100">
-                        <img src="https://img.icons8.com/3d-fluency/94/search-client.png" class="w-9 h-9" alt="All in one">
-                    </div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Tất cả trong một</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">
-                        Tìm kiếm, lựa chọn và đăng ký các sản phẩm tài chính nhanh chóng, miễn phí 100% trọn đời.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full" id="main-content">
         
         <div class="flex items-center justify-between mb-8">
@@ -140,43 +108,77 @@
         </div>
     </main>
 
-    <footer class="bg-white border-t border-slate-200 pt-10 pb-6 mt-auto">
+    <section class="bg-white border-t border-b border-gray-100 relative z-10 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Tại sao chọn chúng tôi?</h2>
+                <p class="text-slate-500 mt-2">Nền tảng tài chính thông minh dành cho người Việt</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+                <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
+                    <img src="https://img.icons8.com/3d-fluency/94/light-on.png" class="w-16 h-16 mb-4" alt="Idea">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Gợi ý thông minh</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Hệ thống tự động phân tích và đưa ra gợi ý các sản phẩm tài chính phù hợp nhất với nhu cầu của bạn.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
+                    <img src="https://img.icons8.com/3d-fluency/94/scales.png" class="w-16 h-16 mb-4" alt="Compare">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Dễ dàng so sánh</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        So sánh lãi suất, hạn mức của hơn 50+ đối tác uy tín minh bạch chỉ trên một màn hình.
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center text-center p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
+                    <img src="https://img.icons8.com/3d-fluency/94/search-client.png" class="w-16 h-16 mb-4" alt="All in one">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Tất cả trong một</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Tìm kiếm, lựa chọn và đăng ký nhanh chóng, hoàn toàn miễn phí trọn đời.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200 pt-12 pb-6 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
-                        <img src="https://img.icons8.com/color/48/money-bag.png" class="w-6 h-6" alt="Logo">
-                        <span class="text-lg font-extrabold text-slate-900">FinTech Hub</span>
+                        <img src="https://img.icons8.com/color/48/money-bag.png" class="w-7 h-7" alt="Logo">
+                        <span class="text-xl font-extrabold text-slate-900">FinTech Hub</span>
                     </div>
-                    <p class="text-slate-500 text-sm leading-relaxed">
-                        Cổng thông tin tài chính uy tín, giúp bạn tiếp cận các nguồn vốn vay an toàn và minh bạch.
+                    <p class="text-slate-500 text-sm leading-relaxed pr-4">
+                        Cổng thông tin tài chính uy tín hàng đầu, giúp bạn kết nối với các giải pháp tài chính an toàn, minh bạch và nhanh chóng nhất.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Danh mục</h4>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li><a href="#" onclick="switchTab('vay')" class="hover:text-blue-600">Vay tiêu dùng nhanh</a></li>
-                        <li><a href="#" onclick="switchTab('the')" class="hover:text-blue-600">Mở thẻ tín dụng</a></li>
-                        <li><a href="#" onclick="switchTab('bank')" class="hover:text-blue-600">Tài khoản số đẹp</a></li>
+                    <h4 class="font-bold text-slate-900 mb-4 text-[16px]">Danh mục sản phẩm</h4>
+                    <ul class="space-y-3 text-sm text-slate-600 font-medium">
+                        <li><a href="#" onclick="switchTab('vay')" class="hover:text-blue-600 transition-colors flex items-center gap-2">👉 Vay tiêu dùng nhanh</a></li>
+                        <li><a href="#" onclick="switchTab('the')" class="hover:text-blue-600 transition-colors flex items-center gap-2">👉 Mở thẻ tín dụng</a></li>
+                        <li><a href="#" onclick="switchTab('bank')" class="hover:text-blue-600 transition-colors flex items-center gap-2">👉 Tài khoản số đẹp</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Chính sách</h4>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-blue-600">Điều khoản sử dụng</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Chính sách bảo mật</a></li>
-                        <li><a href="#" class="hover:text-blue-600">Miễn trừ trách nhiệm</a></li>
+                    <h4 class="font-bold text-slate-900 mb-4 text-[16px]">Hỗ trợ khách hàng</h4>
+                    <ul class="space-y-3 text-sm text-slate-600 font-medium">
+                        <li><a href="#" class="hover:text-blue-600 transition-colors">Điều khoản sử dụng</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition-colors">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="hover:text-blue-600 transition-colors">Câu hỏi thường gặp (FAQ)</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-100 pt-6 text-center">
-                <p class="text-xs text-slate-400 font-medium">© 2025 FinTech Hub. Designed for performance.</p>
+            <div class="border-t border-slate-200 pt-8 text-center">
+                <p class="text-sm text-slate-500 font-medium">© 2025 FinTech Hub. Designed for performance & trust.</p>
             </div>
         </div>
     </footer>
 
-    <script src="data.js?v=10"></script> <script>
+    <script src="data.js?v=11"></script> <script>
         // ============================================================
         // 🔴 CẤU HÌNH HÀNG TUYỂN (VIP LIST) - Sửa ID ở đây
         const VIP_IDS = ["moneycatvn", "tima", "jeffapp", "crezu", "kamo", "dong247"];
