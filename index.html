@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FinTech Hub 2025 - Vay & Mở Thẻ Online</title>
+    <title>FinTech Hub 2025</title>
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/48/money-bag.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,146 +16,163 @@
             theme: {
                 extend: {
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: { brand: '#2563eb' },
-                    boxShadow: { 
-                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-                        'float': '0 10px 25px -5px rgba(0, 0, 0, 0.1)'
-                    }
+                    colors: { brand: '#2563eb' }
                 }
             }
         }
     </script>
 
     <style>
-        body { background-color: #f0f2f5; -webkit-tap-highlight-color: transparent; padding-bottom: 70px; /* Chừa chỗ menu dưới */ }
+        body { background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
-        /* Desktop & Mobile Tweaks */
-        @media (min-width: 768px) {
-            body { padding-bottom: 0; background-color: #ffffff; }
-        }
+        .app-card { transition: transform 0.2s; }
+        .app-card:active { transform: scale(0.98); }
     </style>
 </head>
-<body class="font-sans text-slate-800 text-sm">
+<body class="font-sans text-slate-800 text-[15px]">
 
-    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 h-14 md:h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <img src="https://img.icons8.com/color/48/money-bag.png" class="w-8 h-8">
-                <span class="text-lg md:text-xl font-extrabold text-slate-900">FinTech <span class="text-blue-600">Hub</span></span>
+                <span class="text-xl font-extrabold text-slate-900">FinTech <span class="text-blue-600">Hub</span></span>
             </div>
-
-            <nav class="hidden md:flex gap-8 font-medium text-slate-600">
+            
+            <nav class="hidden md:flex gap-6 font-medium text-sm text-slate-600">
                 <a href="javascript:void(0)" onclick="selectCategory('vay')" class="hover:text-blue-600">Vay Tiền</a>
                 <a href="javascript:void(0)" onclick="selectCategory('bank')" class="hover:text-blue-600">Ngân Hàng</a>
                 <a href="javascript:void(0)" onclick="selectCategory('the')" class="hover:text-blue-600">Thẻ Tín Dụng</a>
             </nav>
 
-            <button onclick="window.location.reload()" class="bg-slate-100 p-2 rounded-full md:px-4 md:py-1.5 md:rounded-lg text-slate-600 md:font-bold md:text-xs flex items-center gap-1 active:scale-95 transition-transform">
-                <svg class="w-5 h-5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                <span class="hidden md:inline">Cập nhật</span>
+            <button onclick="window.location.reload()" class="bg-slate-100 text-slate-600 px-3 py-1.5 rounded-lg text-xs font-bold active:bg-slate-200">
+                Cập nhật
             </button>
         </div>
     </header>
 
-    <section class="bg-white pb-6 pt-6 md:pt-16 md:pb-20 border-b border-slate-100">
-        <div class="max-w-6xl mx-auto px-4">
+    <section class="bg-white pb-10 pt-8 border-b border-slate-100">
+        <div class="max-w-5xl mx-auto px-4">
             <div class="text-center mb-8">
-                <h1 class="text-2xl md:text-5xl font-extrabold text-slate-900 mb-2 md:mb-4 leading-tight">
-                    Tài Chính Thông Minh <br class="hidden md:block">
-                    <span class="text-blue-600">Duyệt Nhanh 24/7</span>
+                <h1 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3">
+                    Lựa chọn <span class="text-blue-600">Giải Pháp Tài Chính</span>
                 </h1>
-                <p class="text-slate-500 text-xs md:text-lg max-w-2xl mx-auto">
-                    Tìm khoản vay, mở thẻ tín dụng tốt nhất chỉ trong 30 giây.
+                <p class="text-slate-500 text-sm md:text-base">
+                    Tìm kiếm khoản vay, thẻ tín dụng phù hợp nhất trong 30 giây.
                 </p>
             </div>
 
-            <div class="grid grid-cols-3 gap-3 md:gap-8 max-w-4xl mx-auto">
-                <div onclick="selectCategory('vay')" class="cursor-pointer bg-blue-50 md:bg-white md:border md:border-slate-100 rounded-xl p-3 md:p-6 text-center hover:shadow-lg transition-all active:scale-95">
-                    <img src="https://img.icons8.com/fluency/96/receive-cash.png" class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-2">
-                    <h3 class="font-bold text-slate-900 text-xs md:text-lg">Vay Nhanh</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+                <div onclick="selectCategory('vay')" class="cursor-pointer bg-blue-50 border border-blue-100 rounded-xl p-4 flex items-center md:block md:text-center md:p-8 hover:shadow-md transition-shadow active:bg-blue-100">
+                    <img src="https://img.icons8.com/fluency/96/receive-cash.png" class="w-12 h-12 md:w-16 md:h-16 md:mx-auto mr-4">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Vay Nhanh</h3>
+                        <p class="text-xs text-slate-500 mt-1 md:hidden">Duyệt tự động, nhận tiền ngay</p>
+                    </div>
+                    <div class="ml-auto md:hidden text-blue-600">➜</div>
                 </div>
-                <div onclick="selectCategory('bank')" class="cursor-pointer bg-indigo-50 md:bg-white md:border md:border-slate-100 rounded-xl p-3 md:p-6 text-center hover:shadow-lg transition-all active:scale-95">
-                    <img src="https://img.icons8.com/fluency/96/museum.png" class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-2">
-                    <h3 class="font-bold text-slate-900 text-xs md:text-lg">Ngân Hàng</h3>
+
+                <div onclick="selectCategory('bank')" class="cursor-pointer bg-indigo-50 border border-indigo-100 rounded-xl p-4 flex items-center md:block md:text-center md:p-8 hover:shadow-md transition-shadow active:bg-indigo-100">
+                    <img src="https://img.icons8.com/fluency/96/museum.png" class="w-12 h-12 md:w-16 md:h-16 md:mx-auto mr-4">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Ngân Hàng</h3>
+                        <p class="text-xs text-slate-500 mt-1 md:hidden">Mở tài khoản số đẹp</p>
+                    </div>
+                    <div class="ml-auto md:hidden text-indigo-600">➜</div>
                 </div>
-                <div onclick="selectCategory('the')" class="cursor-pointer bg-purple-50 md:bg-white md:border md:border-slate-100 rounded-xl p-3 md:p-6 text-center hover:shadow-lg transition-all active:scale-95">
-                    <img src="https://img.icons8.com/fluency/96/bank-cards.png" class="w-10 h-10 md:w-16 md:h-16 mx-auto mb-2">
-                    <h3 class="font-bold text-slate-900 text-xs md:text-lg">Mở Thẻ</h3>
+
+                <div onclick="selectCategory('the')" class="cursor-pointer bg-purple-50 border border-purple-100 rounded-xl p-4 flex items-center md:block md:text-center md:p-8 hover:shadow-md transition-shadow active:bg-purple-100">
+                    <img src="https://img.icons8.com/fluency/96/bank-cards.png" class="w-12 h-12 md:w-16 md:h-16 md:mx-auto mr-4">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg">Thẻ Tín Dụng</h3>
+                        <p class="text-xs text-slate-500 mt-1 md:hidden">Hoàn tiền mua sắm</p>
+                    </div>
+                    <div class="ml-auto md:hidden text-purple-600">➜</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="py-6 md:py-12 max-w-7xl mx-auto px-3 md:px-8 scroll-mt-16" id="main-content">
+    <main class="py-8 max-w-6xl mx-auto px-4 scroll-mt-20" id="main-content">
         
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg md:text-2xl font-bold text-slate-900 flex items-center gap-2">
-                <span class="w-1 h-5 md:h-6 bg-blue-600 rounded-full"></span>
-                Gợi ý cho bạn
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
+            <h3 class="text-xl font-bold text-slate-900 border-l-4 border-blue-600 pl-3">
+                Danh sách đề xuất
             </h3>
-            <div class="hidden md:flex gap-2">
-                <button onclick="switchTab('vay')" id="dt-vay" class="px-4 py-1.5 rounded-full text-sm font-bold bg-blue-600 text-white">Vay Tiền</button>
-                <button onclick="switchTab('bank')" id="dt-bank" class="px-4 py-1.5 rounded-full text-sm font-bold bg-white text-slate-600 border">Ngân Hàng</button>
-                <button onclick="switchTab('the')" id="dt-the" class="px-4 py-1.5 rounded-full text-sm font-bold bg-white text-slate-600 border">Thẻ</button>
+            
+            <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 no-scrollbar">
+                <button onclick="switchTab('vay')" id="btn-vay" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-sm transition-all">Vay Tiền</button>
+                <button onclick="switchTab('bank')" id="btn-bank" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 transition-all">Ngân Hàng</button>
+                <button onclick="switchTab('the')" id="btn-the" class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 transition-all">Thẻ Tín Dụng</button>
             </div>
         </div>
 
-        <div class="md:hidden flex gap-2 overflow-x-auto pb-2 no-scrollbar mb-4">
-            <button onclick="switchTab('vay')" id="mb-vay" class="whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold bg-blue-600 text-white shadow-sm">💸 Vay Nhanh</button>
-            <button onclick="switchTab('bank')" id="mb-bank" class="whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200">🏦 Ngân Hàng</button>
-            <button onclick="switchTab('the')" id="mb-the" class="whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200">💳 Thẻ Tín Dụng</button>
-        </div>
-
-        <div id="app-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+        <div id="app-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             </div>
 
-        <div id="load-more-btn" class="hidden justify-center mt-6">
-            <button onclick="expandList()" class="bg-white border border-slate-300 text-slate-600 px-6 py-2.5 rounded-full text-sm font-bold shadow-sm w-full md:w-auto active:bg-slate-50">
-                Xem thêm ưu đãi
+        <div id="load-more-btn" class="hidden justify-center mt-8">
+            <button onclick="expandList()" class="bg-white border border-slate-300 text-slate-600 px-8 py-3 rounded-full text-sm font-bold shadow-sm active:bg-slate-50">
+                Xem thêm kết quả ▼
             </button>
         </div>
 
-        <div id="empty-state" class="hidden flex-col items-center justify-center py-12 text-center">
-            <div class="text-4xl mb-2 opacity-30 grayscale">📭</div>
-            <p class="text-slate-400 text-sm">Chưa có dữ liệu mục này.</p>
+        <div id="empty-state" class="hidden flex-col items-center justify-center py-16 text-center">
+            <div class="text-5xl mb-3 opacity-20 grayscale">📭</div>
+            <p class="text-slate-400 text-sm">Chưa có dữ liệu.</p>
         </div>
     </main>
 
-    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-200 pb-safe z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
-        <div class="grid grid-cols-3 h-[60px]">
-            <button onclick="selectCategory('vay')" class="flex flex-col items-center justify-center gap-1 text-slate-400 active:text-blue-600" id="nav-vay">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <span class="text-[10px] font-bold">Vay Tiền</span>
-            </button>
-            <button onclick="selectCategory('bank')" class="flex flex-col items-center justify-center gap-1 text-slate-400 active:text-blue-600" id="nav-bank">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
-                <span class="text-[10px] font-bold">Ngân Hàng</span>
-            </button>
-            <button onclick="selectCategory('the')" class="flex flex-col items-center justify-center gap-1 text-slate-400 active:text-blue-600" id="nav-the">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                <span class="text-[10px] font-bold">Mở Thẻ</span>
-            </button>
-        </div>
-    </div>
-
-    <footer class="bg-slate-50 border-t border-slate-200 py-8 mb-16 md:mb-0">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="flex items-center justify-center gap-2 mb-3">
-                <img src="https://img.icons8.com/color/48/money-bag.png" class="w-5 h-5">
-                <span class="font-bold text-slate-900">FinTech Hub</span>
+    <section class="bg-white border-t border-slate-200 py-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-xl font-bold text-slate-900 mb-8 text-center">Lợi ích vượt trội</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <h3 class="font-bold text-slate-900 text-sm">Duyệt Nhanh</h3>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <div class="text-3xl mb-2">🔒</div>
+                    <h3 class="font-bold text-slate-900 text-sm">Bảo Mật</h3>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <div class="text-3xl mb-2">💰</div>
+                    <h3 class="font-bold text-slate-900 text-sm">Lãi Thấp</h3>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl">
+                    <div class="text-3xl mb-2">✅</div>
+                    <h3 class="font-bold text-slate-900 text-sm">Minh Bạch</h3>
+                </div>
             </div>
-            <p class="text-[11px] text-slate-400 max-w-sm mx-auto leading-relaxed">
-                Nền tảng tổng hợp sản phẩm tài chính. Chúng tôi không trực tiếp cho vay.<br>
-                © 2025 All rights reserved.
-            </p>
+        </div>
+    </section>
+
+    <section class="bg-slate-50 border-t border-slate-200 py-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-xl font-bold text-slate-900 mb-6 text-center">Khách hàng nói gì?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                    <p class="text-sm text-slate-600 italic mb-3">"Cần gấp 5 triệu đóng tiền nhà, lên đây tìm được gói vay lãi 0% tháng đầu. Quá ngon!"</p>
+                    <p class="text-xs font-bold text-slate-900">- Tùng Đào</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm">
+                    <p class="text-sm text-slate-600 italic mb-3">"Giao diện dễ dùng. Đã mở được thẻ tín dụng hoàn tiền, thủ tục online 100%."</p>
+                    <p class="text-xs font-bold text-slate-900">- Mai Thanh</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-100 shadow-sm md:block hidden">
+                    <p class="text-sm text-slate-600 italic mb-3">"Uy tín, nhiều lựa chọn ngân hàng. Đỡ mất công ra phòng giao dịch ngồi chờ."</p>
+                    <p class="text-xs font-bold text-slate-900">- Nam Phong</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center">
+        <div class="px-4">
+            <p class="font-bold text-slate-900 mb-1">FinTech Hub</p>
+            <p class="text-xs text-slate-400">© 2025. Nền tảng so sánh tài chính uy tín.</p>
         </div>
     </footer>
 
-    <script src="data.js?v=16"></script>
+    <script src="data.js?v=17"></script>
     <script>
         const VIP_IDS = ["moneycatvn", "tima", "jeffapp", "crezu", "kamo", "dong247"];
         const DEFAULT_LOGO = "https://img.icons8.com/color/96/money-bag.png";
@@ -163,16 +180,10 @@
         let currentList = [];
         let isExpanded = false;
 
-        // Cập nhật giờ
-        setInterval(() => {
-            const el = document.getElementById('real-time');
-            if(el) el.innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
-        }, 1000);
-
         function selectCategory(type) {
             switchTab(type);
             const main = document.getElementById('main-content');
-            const offset = 60; 
+            const offset = 70; 
             const top = main.getBoundingClientRect().top + window.pageYOffset - offset;
             window.scrollTo({top: top, behavior: 'smooth'});
         }
@@ -180,34 +191,14 @@
         function switchTab(tab) {
             currentTab = tab;
             isExpanded = false;
-            
-            // Sync Mobile & Desktop buttons state
             ['vay', 'bank', 'the'].forEach(t => {
-                // Mobile Chips
-                const mbBtn = document.getElementById(`mb-${t}`);
-                if (mbBtn) mbBtn.className = t === tab 
-                    ? "whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold bg-blue-600 text-white shadow-sm"
-                    : "whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold bg-white text-slate-600 border border-slate-200";
-                
-                // Desktop Tabs
-                const dtBtn = document.getElementById(`dt-${t}`);
-                if (dtBtn) dtBtn.className = t === tab
-                    ? "px-4 py-1.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md"
-                    : "px-4 py-1.5 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50";
-
-                // Bottom Nav Icons
-                const navBtn = document.getElementById(`nav-${t}`);
-                if (navBtn) {
-                    if (t === tab) {
-                        navBtn.classList.add('text-blue-600');
-                        navBtn.classList.remove('text-slate-400');
-                    } else {
-                        navBtn.classList.add('text-slate-400');
-                        navBtn.classList.remove('text-blue-600');
-                    }
+                const btn = document.getElementById(`btn-${t}`);
+                if (t === tab) {
+                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-blue-600 text-white shadow-md transition-all";
+                } else {
+                    btn.className = "whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-white text-slate-600 border border-slate-200 transition-all";
                 }
             });
-
             renderApps();
         }
 
@@ -215,7 +206,6 @@
             const container = document.getElementById('app-container');
             const emptyState = document.getElementById('empty-state');
             const loadMoreBtn = document.getElementById('load-more-btn');
-            
             container.innerHTML = '';
             
             let list = fullList;
@@ -223,7 +213,6 @@
                 if (typeof OFFERS === 'undefined') return;
                 list = OFFERS.filter(item => item.type === currentTab);
                 
-                // Sắp xếp: VIP -> Có Link -> Còn lại
                 list.sort((a, b) => {
                     const isVipA = VIP_IDS.includes(a.id); const isVipB = VIP_IDS.includes(b.id);
                     if (isVipA && !isVipB) return -1; if (!isVipA && isVipB) return 1;
@@ -236,87 +225,69 @@
 
             if (list.length === 0) {
                 emptyState.classList.remove('hidden'); emptyState.classList.add('flex');
-                loadMoreBtn.classList.add('hidden');
-                loadMoreBtn.classList.remove('flex');
+                loadMoreBtn.classList.add('hidden'); loadMoreBtn.classList.remove('flex');
                 return;
             }
             emptyState.classList.add('hidden'); emptyState.classList.remove('flex');
 
-            // Số lượng hiển thị: Mobile xem ít (6), Desktop xem nhiều (8)
-            const isMobile = window.innerWidth < 768;
-            const initialCount = isMobile ? 6 : 8;
+            const initialCount = 8;
             const itemsToShow = isExpanded ? list : list.slice(0, initialCount);
 
             itemsToShow.forEach(app => {
                 const hasLink = app.link && app.link.trim().length > 5;
                 const btnClass = hasLink ? "bg-blue-600 text-white shadow-sm active:bg-blue-700" : "bg-slate-100 text-slate-400 cursor-not-allowed";
-                const btnText = hasLink ? "Đăng Ký" : "Hết hạn";
+                const btnText = hasLink ? "ĐĂNG KÝ" : "Hết hạn";
                 const action = hasLink ? `onclick="window.open('${app.link}', '_blank')"` : "";
                 const isVip = VIP_IDS.includes(app.id);
-                
-                // Badge "HOT" cho Mobile nhìn gọn hơn
-                const badge = isVip ? '<div class="absolute top-0 right-0 bg-yellow-400 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl-lg z-10 shadow-sm">HOT</div>' : '';
+                const badge = isVip ? '<span class="absolute top-3 right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">HOT</span>' : '';
 
                 const html = `
-                <div class="bg-white rounded-xl p-3 md:p-5 border border-slate-100 shadow-card flex flex-col h-full relative group hover:shadow-float transition-all">
+                <div class="bg-white rounded-xl p-4 border border-slate-200 app-card relative flex flex-col h-full">
                     ${badge}
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl border border-slate-50 p-1 bg-white shadow-sm shrink-0">
-                            <img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain rounded-lg" onerror="this.src='${DEFAULT_LOGO}'" loading="lazy">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-14 h-14 rounded-lg border border-slate-100 p-1 bg-white shrink-0">
+                            <img src="${app.logo || DEFAULT_LOGO}" class="w-full h-full object-contain" onerror="this.src='${DEFAULT_LOGO}'">
                         </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-bold text-slate-900 text-sm md:text-base truncate">${app.name}</h3>
-                            <div class="flex items-center gap-1">
-                                <span class="text-yellow-400 text-[10px]">★★★★★</span>
-                                <span class="text-slate-400 text-[10px] hidden md:inline">(4.9)</span>
-                            </div>
+                        <div class="min-w-0">
+                            <h3 class="font-bold text-slate-900 text-base truncate">${app.name}</h3>
+                            <p class="text-xs text-slate-500 line-clamp-2 mt-0.5">${app.desc}</p>
                         </div>
                     </div>
                     
-                    <p class="text-[12px] md:text-sm text-slate-500 leading-snug line-clamp-2 mb-3 flex-grow">${app.desc}</p>
-                    
                     ${currentTab === 'vay' ? `
-                    <div class="flex items-center justify-between bg-slate-50 rounded-lg px-2 py-1.5 mb-3 border border-slate-100">
-                        <div class="text-center">
-                            <p class="text-[9px] text-slate-400 uppercase">Hạn mức</p>
-                            <p class="font-bold text-slate-900 text-[11px] md:text-xs">Cao</p>
+                    <div class="flex justify-between bg-slate-50 rounded-lg p-2 mb-3 text-xs">
+                        <div class="text-center w-1/2 border-r border-slate-200">
+                            <span class="block text-slate-400 text-[10px] uppercase">Hạn mức</span>
+                            <span class="font-bold text-slate-900">Cao</span>
                         </div>
-                        <div class="w-[1px] h-4 bg-slate-200"></div>
-                        <div class="text-center">
-                            <p class="text-[9px] text-slate-400 uppercase">Lãi suất</p>
-                            <p class="font-bold text-green-600 text-[11px] md:text-xs">0%</p>
+                        <div class="text-center w-1/2">
+                            <span class="block text-slate-400 text-[10px] uppercase">Lãi suất</span>
+                            <span class="font-bold text-green-600">0%</span>
                         </div>
-                    </div>` : '<div class="mb-2"></div>'}
+                    </div>` : '<div class="mt-auto mb-3"></div>'}
 
-                    <button ${action} class="w-full ${btnClass} font-bold py-2 md:py-2.5 rounded-lg text-xs md:text-sm uppercase transition-all mt-auto flex items-center justify-center gap-1">
+                    <button ${action} class="w-full ${btnClass} font-bold py-3 rounded-lg text-xs uppercase mt-auto">
                         ${btnText}
                     </button>
                 </div>`;
                 container.insertAdjacentHTML('beforeend', html);
             });
 
-            // Xử lý nút Xem thêm
             if (list.length > initialCount && !isExpanded) {
-                loadMoreBtn.classList.remove('hidden');
-                loadMoreBtn.classList.add('flex');
+                loadMoreBtn.classList.remove('hidden'); loadMoreBtn.classList.add('flex');
             } else {
-                loadMoreBtn.classList.add('hidden');
-                loadMoreBtn.classList.remove('flex');
+                loadMoreBtn.classList.add('hidden'); loadMoreBtn.classList.remove('flex');
             }
         }
 
-        function expandList() {
-            isExpanded = true;
-            renderApps(currentList);
-        }
+        function expandList() { isExpanded = true; renderApps(currentList); }
 
         async function syncApi() {
             if (typeof OFFERS === 'undefined') return;
             try {
                 const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D')}`);
                 if (!res.ok) return;
-                const json = await res.json();
-                const raw = JSON.parse(json.contents);
+                const json = await res.json(); const raw = JSON.parse(json.contents);
                 const apiData = raw.data || (Array.isArray(raw) && raw[0]?.data) || [];
                 if (apiData.length > 0) {
                     let count = 0;
@@ -324,9 +295,7 @@
                         let item = OFFERS.find(o => o.id === newItem.offer_id);
                         if (item) {
                             if (item.logo !== newItem.avatar || item.name !== newItem.name) {
-                                item.logo = newItem.avatar || item.logo;
-                                item.name = newItem.name || item.name;
-                                count++;
+                                item.logo = newItem.avatar || item.logo; item.name = newItem.name || item.name; count++;
                             }
                         }
                     });
@@ -335,8 +304,6 @@
             } catch (e) {}
         }
 
-        // Khởi tạo
-        document.getElementById('nav-vay').classList.add('text-blue-600');
         renderApps();
         setTimeout(syncApi, 1500);
     </script>
