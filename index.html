@@ -184,59 +184,98 @@
         </div>
     </footer>
 
-    <script src="data.js?v=8"></script> <script>
+    <script src="data.js?v=9"></script> <script>
+        // ============================================================
+        // 🔴 CẤU HÌNH HÀNG TUYỂN (VIP LIST)
+        // Điền ID của các App ní muốn hiện đầu tiên vào đây (cách nhau dấu phẩy)
+        // Nếu để trống [], nó sẽ lấy 6 cái đầu tiên trong data.js
+        // ============================================================
+        const VIP_IDS = [
+            "moneycatvn", 
+            "tima", 
+            "jeffapp", 
+            "crezu", 
+            "kamo", 
+            "dong247"
+        ];
+        // ============================================================
+
         // CẬP NHẬT GIỜ
         function updateTime() {
             document.getElementById('real-time').innerText = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
         }
         updateTime();
-        setInterval(updateTime, 60000); // Cập nhật mỗi phút
+        setInterval(updateTime, 60000);
 
         let currentTab = 'vay';
         const container = document.getElementById('app-container');
         const emptyState = document.getElementById('empty-state');
-        const apiIndicator = document.getElementById('api-indicator');
         const DEFAULT_LOGO = "https://img.icons8.com/color/96/money-bag.png";
+        
+        // Biến lưu trữ danh sách tạm thời để xử lý Xem thêm
+        let currentList = [];
+        let isExpanded = false; // Trạng thái: false = rút gọn, true = xem hết
 
-        function renderApps() {
+        function renderApps(fullList = null) {
             container.innerHTML = '';
             
-            if (typeof OFFERS === 'undefined') {
-                container.innerHTML = `<div class="col-span-full text-center text-red-500 py-10 font-bold bg-red-50 rounded-xl border border-red-200">⚠️ Lỗi kết nối dữ liệu (data.js)</div>`;
-                return;
+            // Logic lọc và sắp xếp
+            let list = fullList;
+            if (!list) {
+                if (typeof OFFERS === 'undefined') return;
+                
+                // 1. Lọc theo Tab
+                list = OFFERS.filter(item => item.type === currentTab);
+
+                // 2. Sắp xếp: VIP lên đầu -> Có Link lên nhì -> Còn lại xuống bét
+                list.sort((a, b) => {
+                    // Check VIP
+                    const isVipA = VIP_IDS.includes(a.id);
+                    const isVipB = VIP_IDS.includes(b.id);
+                    if (isVipA && !isVipB) return -1;
+                    if (!isVipA && isVipB) return 1;
+
+                    // Check Có Link
+                    const hasLinkA = a.link && a.link.trim().length > 5;
+                    const hasLinkB = b.link && b.link.trim().length > 5;
+                    if (hasLinkA && !hasLinkB) return -1;
+                    if (!hasLinkA && hasLinkB) return 1;
+                    
+                    return 0;
+                });
+                currentList = list; // Lưu lại để dùng cho nút Xem thêm
             }
 
-            let filtered = OFFERS.filter(item => item.type === currentTab);
-
-            // SẮP XẾP: CÓ LINK LÊN ĐẦU
-            filtered.sort((a, b) => {
-                const hasLinkA = a.link && a.link.trim().length > 5;
-                const hasLinkB = b.link && b.link.trim().length > 5;
-                if (hasLinkA && !hasLinkB) return -1;
-                if (!hasLinkA && hasLinkB) return 1;
-                return 0;
-            });
-
-            if (filtered.length === 0) {
+            if (list.length === 0) {
                 emptyState.classList.remove('hidden');
                 emptyState.classList.add('flex');
+                document.getElementById('load-more-container')?.remove();
                 return;
             }
             emptyState.classList.add('hidden');
             emptyState.classList.remove('flex');
 
-            filtered.forEach(app => {
+            // 3. Logic cắt danh sách (Hiển thị 6 hay hiển thị hết?)
+            const itemsToShow = isExpanded ? list : list.slice(0, 6);
+
+            // 4. Vẽ Card
+            itemsToShow.forEach(app => {
                 const hasLink = app.link && app.link.trim().length > 5;
                 const btnClass = hasLink 
-                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-100 btn-active cursor-pointer" 
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-md btn-active cursor-pointer" 
                     : "bg-slate-100 text-slate-400 cursor-not-allowed";
                 const btnText = hasLink ? "ĐĂNG KÝ NGAY" : "ĐANG CẬP NHẬT";
                 const action = hasLink ? `onclick="window.open('${app.link}', '_blank')"` : "";
+                
+                // Badge VIP
+                const isVip = VIP_IDS.includes(app.id);
+                const badge = isVip 
+                    ? '<div class="absolute top-0 right-0 bg-yellow-400 text-yellow-900 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10 shadow-sm">ĐỀ XUẤT 🔥</div>'
+                    : (currentTab === 'vay' && hasLink ? '<div class="absolute top-0 right-0 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10">DUYỆT NHANH</div>' : '');
 
                 const html = `
-                <div class="bg-white rounded-2xl border border-slate-100 app-card overflow-hidden flex flex-col h-full relative group">
-                    ${currentTab === 'vay' && hasLink ? '<div class="absolute top-0 right-0 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-1 rounded-bl-xl z-10">DUYỆT NHANH</div>' : ''}
-                    
+                <div class="bg-white rounded-2xl border border-slate-100 app-card overflow-hidden flex flex-col h-full relative group animate-fade-in">
+                    ${badge}
                     <div class="p-5 flex flex-col flex-grow">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-2xl border border-slate-50 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1.5 group-hover:scale-105 transition-transform">
@@ -268,10 +307,39 @@
                 </div>`;
                 container.insertAdjacentHTML('beforeend', html);
             });
+
+            // 5. Xử lý nút Xem Thêm
+            handleLoadMoreButton(list.length);
+        }
+
+        function handleLoadMoreButton(totalItems) {
+            // Xóa nút cũ nếu có
+            const oldBtn = document.getElementById('load-more-container');
+            if (oldBtn) oldBtn.remove();
+
+            // Nếu số lượng App > 6 và chưa mở rộng -> Hiện nút
+            if (totalItems > 6 && !isExpanded) {
+                const btnHtml = `
+                <div id="load-more-container" class="col-span-full flex justify-center mt-6">
+                    <button onclick="expandList()" class="group flex items-center gap-2 px-8 py-3 bg-white border border-slate-200 hover:border-blue-300 hover:bg-blue-50 rounded-full text-slate-600 font-bold text-sm shadow-sm transition-all hover:scale-105">
+                        Xem thêm ${totalItems - 6} gói ưu đãi khác
+                        <svg class="w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                </div>`;
+                container.insertAdjacentHTML('afterend', btnHtml);
+            }
+        }
+
+        // Hàm khi bấm nút Xem thêm
+        function expandList() {
+            isExpanded = true; // Bật chế độ hiện hết
+            renderApps(currentList); // Vẽ lại với danh sách đầy đủ
         }
 
         function switchTab(tab) {
             currentTab = tab;
+            isExpanded = false; // Reset lại trạng thái rút gọn khi chuyển tab
+            
             ['vay', 'bank', 'the'].forEach(t => {
                 const btn = document.getElementById(`btn-${t}`);
                 if (t === tab) {
@@ -289,8 +357,7 @@
             try {
                 const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
                 const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`);
-                if (!res.ok) throw new Error("Proxy Error");
-                
+                if (!res.ok) return;
                 const json = await res.json();
                 const raw = JSON.parse(json.contents);
                 const apiData = raw.data || (Array.isArray(raw) && raw[0]?.data) || [];
@@ -310,15 +377,14 @@
                     if (count > 0) {
                         renderApps(); 
                     }
-                    apiIndicator.className = "w-2.5 h-2.5 rounded-full bg-green-500";
+                    document.getElementById('api-indicator').className = "w-2.5 h-2.5 rounded-full bg-green-500";
                 }
             } catch (e) { 
-                console.log('Sync skipped'); 
-                apiIndicator.className = "w-2.5 h-2.5 rounded-full bg-slate-300";
+                document.getElementById('api-indicator').className = "w-2.5 h-2.5 rounded-full bg-slate-300";
             }
         }
 
-        // Start
+        // START
         renderApps();
         setTimeout(syncApi, 1500);
     </script>
