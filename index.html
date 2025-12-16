@@ -33,11 +33,9 @@
     <style>
         body { background-color: #f0f4f8; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         .no-select { -webkit-user-select: none; -moz-user-select: none; user-select: none; }
-        /* Thanh cuộn đẹp hơn trên PC */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="text-slate-900 text-[16px] no-select min-h-screen flex flex-col">
@@ -46,7 +44,6 @@
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.onkeydown = function(e) {
             if(e.keyCode == 123) return false;
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
             if(e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'S'.charCodeAt(0))) return false;
         }
     </script>
@@ -65,8 +62,8 @@
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                     <span>Hệ thống Online</span>
                 </div>
-                <button onclick="document.getElementById('app-container').scrollIntoView({behavior: 'smooth'})" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs md:text-sm shadow-sm transition-colors">
-                    Tìm khoản vay
+                <button onclick="fetchApps()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-xs md:text-sm shadow-sm transition-colors">
+                    Làm mới
                 </button>
             </div>
         </div>
@@ -82,50 +79,20 @@
             <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3 leading-tight">
                 Tổng Hợp Gói Vay <br class="md:hidden" /> <span class="text-blue-600">Uy Tín Nhất 2025</span>
             </h2>
-            <p class="text-slate-500 max-w-2xl mx-auto text-sm md:text-base">
-                Chỉ cần CCCD • Không thẩm định người thân • Giải ngân trong 15 phút
-            </p>
         </div>
 
-        <div class="mb-8 bg-white rounded-2xl shadow-sm border border-blue-100 overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 border-b border-blue-100">
-                <h3 class="font-bold text-blue-800 text-sm md:text-base flex items-center gap-2 uppercase">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    Mẹo Tăng Tỷ Lệ Duyệt 99%
-                </h3>
-            </div>
-            <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="flex gap-3 items-start">
-                    <span class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">1</span>
-                    <p class="text-xs md:text-sm text-slate-600">Thu nhập ghi <strong>> 7 triệu/tháng</strong> (Hệ thống ưu tiên).</p>
-                </div>
-                <div class="flex gap-3 items-start">
-                    <span class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">2</span>
-                    <p class="text-xs md:text-sm text-slate-600">Điền tên <strong>Công Ty cụ thể</strong>, tránh ghi "Làm tự do".</p>
-                </div>
-                <div class="flex gap-3 items-start">
-                    <span class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">3</span>
-                    <p class="text-xs md:text-sm text-slate-600">Dùng <strong>Sim chính chủ</strong> hoạt động trên 6 tháng.</p>
-                </div>
-                <div class="flex gap-3 items-start">
-                    <span class="flex-shrink-0 w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">4</span>
-                    <p class="text-xs md:text-sm text-slate-600">Nên đăng ký <strong>3 - 4 gói</strong> cùng lúc để chắc chắn có tiền.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex items-center justify-between mb-4 px-1">
-            <h2 class="font-bold text-lg md:text-xl text-slate-800 flex items-center gap-2">
-                <span class="w-1.5 h-6 bg-green-500 rounded-r-md block"></span>
-                Đề xuất tốt nhất
-            </h2>
-            <span class="bg-red-50 text-red-500 text-[10px] font-bold px-2 py-1 rounded uppercase animate-pulse">Hot hôm nay</span>
+        <div id="debug-box" class="hidden mb-6 bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+            <h3 class="text-red-600 font-bold mb-1">⚠️ Không tải được dữ liệu</h3>
+            <p id="debug-msg" class="text-xs text-red-500 font-mono break-all mb-2"></p>
+            <button onclick="loadBackupData()" class="bg-red-100 hover:bg-red-200 text-red-700 text-xs font-bold px-3 py-2 rounded transition">
+                Dùng danh sách dự phòng
+            </button>
         </div>
 
         <div id="app-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
             <div id="skeleton-loader" class="col-span-full text-center py-10">
                 <div class="animate-spin rounded-full h-10 w-10 border-4 border-slate-200 border-t-blue-600 mx-auto mb-3"></div>
-                <p class="text-sm text-slate-500">Đang cập nhật gói vay mới nhất...</p>
+                <p class="text-sm text-slate-500 animate-pulse">Đang kết nối máy chủ...</p>
             </div>
         </div>
 
@@ -133,10 +100,6 @@
 
     <div class="bg-slate-100 p-6 text-center border-t border-slate-200 mt-auto">
         <p class="text-[10px] text-slate-400 mb-2">© 2025 Financial Service Aggregator</p>
-        <div class="flex justify-center gap-2">
-            <span class="px-2 py-1 bg-white rounded border text-[9px] font-bold text-gray-500">SSL SECURED</span>
-            <span class="px-2 py-1 bg-white rounded border text-[9px] font-bold text-gray-500">256-BIT</span>
-        </div>
     </div>
 
     <div id="promo-popup" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -148,9 +111,9 @@
             </div>
             <h3 class="text-lg font-extrabold text-slate-900 mb-2">ƯU ĐÃI ĐẶC BIỆT!</h3>
             <p class="text-xs text-slate-600 mb-5 leading-relaxed">
-                Đăng ký ngay hôm nay để nhận khoản vay <strong>0% Lãi Suất</strong>. Giải ngân ưu tiên.
+                Đăng ký ngay hôm nay để nhận khoản vay <strong>0% Lãi Suất</strong>.
             </p>
-            <button onclick="handleRedirect('https://hl-link.net/nVT5020', 'Popup_MoneyCat', false)" class="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 text-white font-bold py-3 rounded-xl shadow-lg text-sm uppercase">
+            <button onclick="handleRedirect('https://hl-link.net/nVT5020', 'Popup_MoneyCat')" class="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 text-white font-bold py-3 rounded-xl shadow-lg text-sm uppercase">
                 NHẬN ƯU ĐÃI NGAY
             </button>
         </div>
@@ -158,25 +121,25 @@
 
     <div id="loading-screen" class="hidden fixed inset-0 bg-white/95 backdrop-blur z-50 flex-col items-center justify-center text-center p-5">
         <div class="animate-spin rounded-full h-12 w-12 border-4 border-slate-200 border-t-green-600 mb-4"></div>
-        <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng an toàn...</h2>
-        <a id="manual-link" href="#" class="hidden mt-6 text-blue-600 text-sm underline">Tiếp tục</a>
+        <h2 class="text-lg font-bold text-slate-800">Đang chuyển hướng...</h2>
+        <a id="manual-link" href="#" class="hidden mt-6 text-blue-600 text-sm underline">Bấm vào đây nếu đợi lâu</a>
     </div>
 
     <script>
-        // CẤU HÌNH API CỦA BẠN
-        const API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
-        
-        // DANH SÁCH DỰ PHÒNG (Dùng khi API lỗi để web không bị trắng)
+        // === CẤU HÌNH API ===
+        const ORIGINAL_API_URL = 'https://publisher-api.riofintech.net/offer/all?pub_id=28janns&token=hpoRHLinw3JgcQaV6g6SaQ%3D%3D';
+
+        // DANH SÁCH DỰ PHÒNG (Dùng khi mạng lỗi)
         const BACKUP_DATA = [
-            { ten: "MoneyCat", logo: "https://moneycat.vn/public/img/logo.png", hanmuc: "500k - 10Tr", laisuat: "0% Lần đầu", tag: "DUYỆT 5 PHÚT", mota: "Vay online siêu tốc 24/7", link: "https://hl-link.net/nVT5020" },
-            { ten: "Moneyveo", logo: "https://moneyveo.vn/img/logo.svg", hanmuc: "1Tr - 10Tr", laisuat: "Ưu đãi thấp", tag: "DỄ DUYỆT", mota: "Chỉ cần CCCD chính chủ", link: "https://hl-link.net/BISmL10" },
-            { ten: "Tamo", logo: "https://www.tamo.vn/images/logo.svg", hanmuc: "1Tr - 20Tr", laisuat: "0% 30 Ngày", tag: "HẠN MỨC CAO", mota: "Giải ngân nhanh trong ngày", link: "https://hl-link.net/doi5p20" }
+            { name: "MoneyCat", logo: "https://moneycat.vn/public/img/logo.png", min_loan: 1000000, max_loan: 10000000, short_description: "Duyệt nhanh 5 phút", tracking_link: "https://hl-link.net/nVT5020" },
+            { name: "Moneyveo", logo: "https://moneyveo.vn/img/logo.svg", min_loan: 500000, max_loan: 15000000, short_description: "Ưu đãi lãi suất thấp", tracking_link: "https://hl-link.net/BISmL10" }
         ];
 
         const container = document.getElementById('app-container');
         const loader = document.getElementById('skeleton-loader');
+        const debugBox = document.getElementById('debug-box');
+        const debugMsg = document.getElementById('debug-msg');
 
-        // Hàm định dạng số tiền (1000000 -> 1Tr)
         function formatMoney(num) {
             if (!num) return 'Liên hệ';
             if (num >= 1000000) return (num/1000000) + 'Tr';
@@ -184,59 +147,81 @@
             return num;
         }
 
-        // HÀM CHÍNH: Lấy dữ liệu
+        // === HÀM GỌI API THÔNG MINH (THỬ NHIỀU CÁCH) ===
         async function fetchApps() {
-            try {
-                // Thử gọi API trực tiếp
-                // Lưu ý: Nếu web chạy trực tiếp trên trình duyệt, API này thường chặn (CORS).
-                // Tôi dùng cơ chế "Proxy" để lách qua.
-                
-                // Sử dụng AllOrigins để bypass CORS (Giải pháp cho web tĩnh không có backend)
-                const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(API_URL);
-                const response = await fetch(proxyUrl);
-                
-                if (!response.ok) throw new Error('Lỗi kết nối');
-                
-                const dataWrapper = await response.json();
-                const realData = JSON.parse(dataWrapper.contents); // Parse dữ liệu thật từ Proxy
-                
-                // Xử lý dữ liệu trả về từ RioFintech
-                // Cấu trúc thường là mảng hoặc object có key 'data'
-                const listOffers = Array.isArray(realData) ? realData : (realData.data || []);
+            container.innerHTML = ''; 
+            container.appendChild(loader);
+            debugBox.classList.add('hidden');
+            loader.classList.remove('hidden');
 
-                if (listOffers.length > 0) {
-                    renderApps(listOffers, true); // true = dữ liệu từ API
-                } else {
-                    renderApps(BACKUP_DATA, false); // Không có data thì dùng backup
+            // Danh sách các cách để lấy dữ liệu (Ưu tiên từ trên xuống dưới)
+            const methods = [
+                { name: 'Proxy 1 (Corsproxy.io)', url: 'https://corsproxy.io/?' + encodeURIComponent(ORIGINAL_API_URL) },
+                { name: 'Proxy 2 (AllOrigins)', url: 'https://api.allorigins.win/get?url=' + encodeURIComponent(ORIGINAL_API_URL) },
+                { name: 'Direct (Thử vận may)', url: ORIGINAL_API_URL }
+            ];
+
+            let finalData = null;
+            let lastError = '';
+
+            for (let method of methods) {
+                try {
+                    console.log(`Đang thử cách: ${method.name}...`);
+                    const response = await fetch(method.url);
+                    if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+                    
+                    const rawText = await response.json();
+                    
+                    // Xử lý dữ liệu tùy theo Proxy trả về
+                    let realData = rawText;
+                    if (method.name.includes('AllOrigins')) {
+                        realData = JSON.parse(rawText.contents);
+                    }
+
+                    // Tìm mảng dữ liệu trong đống JSON trả về
+                    // API thường trả về dạng: [array] hoặc {data: [array]} hoặc {offers: [array]}
+                    let list = Array.isArray(realData) ? realData : (realData.data || realData.offers || []);
+                    
+                    if (list && list.length > 0) {
+                        finalData = list;
+                        break; // Thành công thì thoát vòng lặp ngay
+                    } else {
+                         throw new Error('Dữ liệu trả về rỗng');
+                    }
+
+                } catch (e) {
+                    console.error(`Cách ${method.name} thất bại:`, e);
+                    lastError = e.message;
                 }
+            }
 
-            } catch (error) {
-                console.log("Dùng danh sách dự phòng do lỗi API:", error);
-                renderApps(BACKUP_DATA, false);
-            } finally {
+            if (finalData) {
+                renderApps(finalData);
                 loader.classList.add('hidden');
+            } else {
+                // Nếu thử hết cách mà vẫn tạch
+                loader.classList.add('hidden');
+                debugBox.classList.remove('hidden');
+                debugMsg.innerText = `Lỗi: ${lastError}. Hãy thử dùng Backup.`;
             }
         }
 
-        // HÀM HIỂN THỊ LÊN MÀN HÌNH
-        function renderApps(list, isApi) {
-            // Xóa loader, giữ lại container sạch
-            container.innerHTML = ''; 
+        // === HÀM HIỂN THỊ ===
+        function renderApps(list) {
+            container.innerHTML = '';
             
             list.forEach((app, index) => {
-                // Chuẩn hóa tên trường dữ liệu (Vì API tên khác, Backup tên khác)
+                // MAP DỮ LIỆU: Cột trái là tên trong code HTML - Cột phải là tên từ API
+                // Ní mở Console F12 lên xem API trả về tên gì thì sửa cột phải nếu cần
                 let item = {
-                    ten: isApi ? (app.offer_name || app.name) : app.ten,
-                    logo: isApi ? (app.logo || app.image) : app.logo,
-                    link: isApi ? (app.tracking_link || app.link) : app.link,
-                    mota: isApi ? (app.short_description || "Duyệt nhanh trong ngày") : app.mota,
-                    hanmuc: isApi ? `${formatMoney(app.min_loan)} - ${formatMoney(app.max_loan)}` : app.hanmuc,
-                    tag: "DUYỆT NHANH", // Tag mặc định
+                    ten: app.offer_name || app.name || app.title || "Gói Vay",
+                    logo: app.logo || app.image || app.icon || "https://img.icons8.com/color/96/money-bag.png",
+                    link: app.tracking_link || app.link || app.url || "#",
+                    mota: app.short_description || app.description || "Duyệt nhanh 24/7",
+                    hanmuc: (app.min_loan && app.max_loan) ? `${formatMoney(app.min_loan)} - ${formatMoney(app.max_loan)}` : "500k - 10Tr",
+                    tag: "DUYỆT NHANH",
                     laisuat: "Ưu đãi tốt"
                 };
-
-                // Nếu thiếu ảnh logo thì dùng ảnh mặc định
-                if(!item.logo) item.logo = "https://img.icons8.com/color/96/money-bag.png";
 
                 let counterId = `counter-${index}`;
                 let fakeView = Math.floor(Math.random() * 500) + 300;
@@ -250,18 +235,16 @@
                         </div>
                         <span class="text-[9px] text-slate-400 font-medium border border-slate-200 px-1 rounded">QC</span>
                     </div>
-
                     <div class="p-4 flex flex-col flex-grow">
                         <div class="flex items-center gap-3 mb-4">
                             <div class="w-12 h-12 rounded-lg border border-gray-100 shadow-sm flex-shrink-0 overflow-hidden bg-white p-1">
-                                <img src="${item.logo}" class="w-full h-full object-contain" alt="${item.ten}" onerror="this.src='https://img.icons8.com/color/48/money-bag.png'"/>
+                                <img src="${item.logo}" class="w-full h-full object-contain" alt="${item.ten}" onerror="this.src='https://img.icons8.com/color/96/money-bag.png'"/>
                             </div>
                             <div class="flex-1 min-w-0">
                                 <h3 class="font-bold text-slate-900 text-base leading-tight mb-0.5 truncate">${item.ten}</h3>
                                 <p class="text-[11px] text-slate-500 line-clamp-2 leading-snug">${item.mota}</p>
                             </div>
                         </div>
-
                         <div class="grid grid-cols-2 gap-0 mb-4 bg-slate-50 rounded-lg border border-slate-100 overflow-hidden mt-auto">
                             <div class="text-center border-r border-slate-200 py-2">
                                 <p class="text-[9px] text-slate-400 uppercase font-bold mb-0.5">Hạn mức</p>
@@ -272,44 +255,39 @@
                                 <p class="font-bold text-action text-xs md:text-sm">${item.laisuat}</p>
                             </div>
                         </div>
-
                         <button onclick="handleRedirect('${item.link}', '${item.ten}')" class="w-full bg-gradient-to-r from-green-600 to-action hover:from-green-700 text-white font-bold py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 text-sm uppercase">
                             ĐĂNG KÝ
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
-                        
                         <div class="mt-2 text-center text-[10px] text-slate-400">
                             <span id="${counterId}" class="font-bold text-slate-600">${fakeView}</span> hồ sơ vừa duyệt
                         </div>
                     </div>
                 </div>
                 `;
-                
                 container.insertAdjacentHTML('beforeend', html);
                 startLiveCounter(counterId);
             });
         }
 
+        function loadBackupData() {
+            renderApps(BACKUP_DATA);
+            debugBox.classList.add('hidden');
+        }
+
         // HÀM CLICK CHUYỂN HƯỚNG
         function handleRedirect(link, name) {
-            // Tracking Google Analytics
-            if (typeof gtag === 'function') {
-                gtag('event', 'click_dang_ky', { 'app_ten': name, 'link': link });
-            }
-            
+            if (typeof gtag === 'function') gtag('event', 'click_dang_ky', { 'app_ten': name, 'link': link });
             const loader = document.getElementById('loading-screen');
             const manual = document.getElementById('manual-link');
-            
-            document.getElementById('promo-popup').classList.add('hidden');
+            closePopup();
             loader.classList.remove('hidden');
             loader.style.display = 'flex';
-            
             manual.href = link;
             setTimeout(() => { window.location.href = link; }, 800);
             setTimeout(() => { manual.classList.remove('hidden'); }, 3000);
         }
 
-        // Tiện ích: Đếm số ảo
         function startLiveCounter(id) {
             let randomTime = Math.floor(Math.random() * 60000) + 20000;
             setTimeout(() => {
@@ -324,17 +302,17 @@
             }, randomTime);
         }
 
-        // Popup Logic
+        function closePopup() { document.getElementById('promo-popup').classList.add('hidden'); document.getElementById('promo-popup').style.display = 'none'; }
+        
         setTimeout(() => {
-            if(!localStorage.getItem('popup_seen_v2')) {
+            if(!localStorage.getItem('popup_seen_v3')) {
                 document.getElementById('promo-popup').classList.remove('hidden');
                 document.getElementById('promo-popup').style.display = 'flex';
-                localStorage.setItem('popup_seen_v2', 'true');
+                localStorage.setItem('popup_seen_v3', 'true');
             }
         }, 4000);
-        function closePopup() { document.getElementById('promo-popup').classList.add('hidden'); document.getElementById('promo-popup').style.display = 'none'; }
 
-        // CHẠY NGAY
+        // CHẠY NGAY KHI VÀO WEB
         fetchApps();
 
     </script>
