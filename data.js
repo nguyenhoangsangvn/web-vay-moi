@@ -28,7 +28,7 @@ const OFFERS = [
     { id: "credy", type: "vay", name: "Credy", link: "", logo: "", desc: "Giải pháp tài chính linh hoạt" },
     { id: "vimayman", type: "vay", name: "Ví May Mắn", link: "", logo: "", desc: "Ví vay tiền tiện lợi" },
     { id: "shbfinance", type: "vay", name: "SHB Finance", link: "", logo: "", desc: "Vay tiền mặt SHB Finance" },
-    { id: "cayvang", type: "vay", name: "CayVang", link: "", logo: "https://hl-link.net/towLs20", desc: "Vay Cây Vàng - Duyệt nhanh" },
+    { id: "cayvang", type: "vay", name: "CayVang", link: "https://hl-link.net/towLs20", logo: "", desc: "Vay Cây Vàng - Duyệt nhanh" },
     { id: "vietmoney", type: "vay", name: "VietMoney", link: "", logo: "", desc: "Cầm đồ trực tuyến an toàn" },
     { id: "binixo", type: "vay", name: "Binixo", link: "", logo: "", desc: "Kết nối vay nhanh" },
     { id: "fec", type: "vay", name: "FE CREDIT", link: "", logo: "", desc: "Vay tiêu dùng tín chấp" },
